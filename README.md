@@ -1,4 +1,3 @@
 plateforme observatoire photographique des paysages
 ===
-
-application pour observatoire photographique des paysages
+Application pour observatoire photographique des paysages (landscape observatory)
