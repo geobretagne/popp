@@ -1,0 +1,11 @@
+name = POPP - Mass import
+description = Allows users to import photo series
+package = POPP
+core = 7.x
+
+
+; Information added by drupal.org packaging script on 2013-06-02
+version = "7.x-0.1"
+core = "7.x"
+project = "POPP"
+datestamp = "1417535093"

@@ -1,0 +1,13 @@
+<?php
+
+function popp_install_install()
+{
+    /*
+    * Set a variable to tell the module other installation steps are not done yet
+    */
+    variable_set('is_popp_install_done', false);
+    /*
+     * Define the default theme
+     */
+    variable_set('theme_default', 'popp');
+}

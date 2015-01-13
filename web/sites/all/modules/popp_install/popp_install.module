@@ -1,0 +1,177 @@
+<?php
+
+function popp_install_menu()
+{
+    $items                      = [];
+    $items['admin/popp-installation'] = [
+        'title'            => t('POPP - Installation'),
+        'page callback'    => 'drupal_get_form',
+        'page arguments'   => ['popp_install_install_form'],
+        'access arguments' => ['administer modules']
+    ];
+
+    return $items;
+}
+
+function popp_install_install_form($form, &$form_state)
+{
+    $form_state['rebuild'] = true;
+    if (! isset($form_state['storage']['step'])) {
+        return installStepOne($form, $form_state);
+    } else {
+        switch ($form_state['storage']['step']) {
+            case 2:
+                return installStepTwo($form, $form_state);
+                break;
+            default:
+                return installStepOne($form, $form_state);
+        }
+    }
+}
+
+function installStepOne($form, &$form_state)
+{
+    $form['op'] = [
+        '#type' => 'hidden',
+        '#value' => t('Refresh information'),
+    ];
+    $form['presentation']                  = [
+        '#type'   => 'markup',
+        '#prefix' => '<div class="row">
+                        <div class="col-xs-12">
+                          <p>' . t('Bienvenue dans le programme d\'installation du module POPP.'). '</p>
+                        </div>
+                      </div>'
+    ];
+    $form['site_name'] = [
+        '#type' => 'textfield',
+        '#required' => true,
+        '#title' => t('Nom du site'),
+        '#default_value' => variable_get('site_name'),
+    ];
+    $form['language'] = [
+        '#title' => t('Langage du site'),
+        '#type' => 'select',
+        '#options' => array_keys(language_list()),
+        '#default_value' => array_key_exists('fr',language_list())?'1':'0',
+    ];
+    $form['submit_step_one']               = [
+        '#type'                     => 'submit',
+        '#name'                     => 'stepOne_send',
+        '#value'                    => t('Envoyer'),
+        '#executes_submit_callback' => false,
+        '#validate'                 => ['installStepOne_validate']
+    ];
+    $form_state['rebuild']                 = true;
+    return $form;
+}
+
+function installStepOne_validate($form, &$form_state)
+{
+    /*
+     * Let's include l10n_update module, in order to firstly fetch available updates
+     */
+    $langs = language_list();
+    $langsTable = array_keys($langs);
+    $langcode = $langsTable[$form_state['values']['language']];
+    variable_set('language_default', $langs[$langcode]);
+    variable_set('site_name',$form_state['values']['site_name']);
+    module_load_include('admin.inc', 'l10n_update');
+    module_load_include('inc', 'l10n_update');
+    $projects = l10n_update_get_projects();
+
+    // Absence of projects is an error and only occurs if the database table
+    // was truncated. In this case we rebuild the project data.
+    if (!$projects) {
+        l10n_update_build_projects();
+        $projects = l10n_update_get_projects();
+    }
+    // Do fetch available updates
+    l10n_update_admin_import_form_submit($form, $form_state);
+    $modules             = ['structure_front']; // Array of module names
+    $enable_dependencies = true; // Whether or not to enable dependant modules
+    if (module_enable($modules, $enable_dependencies)) {
+        /*
+         * Revert features to get initial configuration work
+        */
+        theme_enable(['popp']);
+        $feature    = features_get_features('structure_front');
+        $components = array_keys($feature->info['features']);
+        features_revert(['structure_front' => $components]);
+        // Now tell the form to go to step 2
+        $form_state['storage']['step'] = 2;
+    }else{
+        drupal_set_message(t('Impossible d\'activer le module POPP Structure','error'));
+    }
+
+
+}
+
+function installStepTwo($form, &$form_state)
+{
+    /*
+     * Then we load again l10n_update, this time in order to tell Drupal to update translations ...
+     */
+    module_load_include('admin.inc', 'l10n_update');
+    module_load_include('inc', 'l10n_update');
+    $history = l10n_update_get_history();
+    $available = l10n_update_available_releases();
+    $updates = l10n_update_build_updates($history, $available);
+    /*
+     * ... by putting them into a form element.
+     */
+    $form['updates'] = [
+        '#type' => 'value',
+        '#value' => $updates,
+    ];
+
+    $form['op'] = [
+        '#type' => 'hidden',
+        '#value' => t('Update translations'),
+    ];
+
+    $form['export_file'] = [
+        '#type'              => 'file',
+        '#description'       => t('Extension autorisée : export'),
+        '#upload_validators' => ['file_validate_extensions' => ['export']],
+        '#title'             => t('Fichier de contenu (facultatif)'),
+    ];
+    $form['submit_step_two'] = [
+        '#type'                     => 'submit',
+        '#name'                     => 'stepTwo_send',
+        '#value'                    => t('Terminer'),
+        '#executes_submit_callback' => false,
+        '#validate'                 => ['installStepTwo_validate']
+    ];
+
+    return $form;
+}
+
+
+function installStepTwo_validate($form, &$form_state)
+{
+
+    variable_set('is_popp_install_done', true);
+    module_load_include('admin.inc', 'l10n_update');
+    module_load_include('inc', 'l10n_update');
+    l10n_update_admin_import_form_submit($form, $form_state);
+    $validators = ['file_validate_extensions' => ['export']];
+    if ($file = file_save_upload('export_file', $validators)) {
+
+        /*
+         * Import nodes
+         */
+        $nodes  = file_get_contents(drupal_realpath($file->uri));
+        $result = node_export_import($nodes);
+        if ($result['success'] == true) {
+            drupal_set_message(t('Contenu importé avec succès'));
+        }else{
+            drupal_set_message("Le fichier envoyé n'est pas valide", "error");
+            drupal_goto("admin/popp-installation");
+            file_delete($file);
+        }
+        file_delete($file);
+    }
+    batch_process('<front>');
+    drupal_set_message(t('Contenu importé avec succès'));
+}

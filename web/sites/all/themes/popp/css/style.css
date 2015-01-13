@@ -1,9 +1,4 @@
 /**
- * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
- * remove this comment and start adding your styles to this file.
- */
-
-/**
   *
   * General properties
   *
@@ -34,6 +29,10 @@ a,a:focus,a:hover{
     max-width:100%;
 }
 
+.noPadding{
+    padding:0;
+}
+
 .noPaddingTop{
     padding-top:0;
 }
@@ -42,11 +41,62 @@ a,a:focus,a:hover{
     border-radius:0;
 }
 
+section{
+    padding:0 !important;
+}
+
+.headerHeight{
+    height:130px;
+}
+
+.node-type-opp-photo .row > div{
+    padding:0;
+}
+
+input[type="file"]{
+    box-sizing:initial;
+    padding:5px 0;
+}
+
+/*
+    Installation
+*/
+
+#greyBackground {
+    background-color: #000;
+    height: 100%;
+    opacity: 0.7;
+    position: fixed;
+    width: 100%;
+    z-index: 8888;
+}
+
+#installAlert {
+    left: 38%;
+    position: fixed;
+    top: 50%;
+    width: 520px;
+    z-index: 8889;
+}
+
 /**
   *
   * Top navbar & menus
   *
 **/
+#navbar .navbar-collapse{
+    position:relative;
+}
+
+#textLogo{
+    bottom: 3px;
+    color: #a0a0a0;
+    font-style: italic;
+    left: 195px;
+    letter-spacing: 3px;
+    position: absolute;
+}
+
 .navbar-default {
     background: none;
     border: none;
@@ -67,25 +117,35 @@ a,a:focus,a:hover{
 
 #mainLogo{
     position:absolute;
+    z-index:1;
 }
 
-#topMenu > ul:first-child {
+#topMenu ul:first-child {
     left: 165px;
+    margin-bottom: 20px;
     margin-top: 35px;
     position: relative;
-    margin-bottom: 20px;
 }
-#topMenu > ul > li > a:not(:first-child){
+
+#topMenu section > div.noRadius > ul > li{
+    display:inline-block;
+}
+
+#topMenu section > div.noRadius > ul > .li > a{
+    padding-bottom:5px;
+}
+
+#topMenu section > div.noRadius > ul > li > a:not(:first-child){
     margin:0 10px;
 }
-#topMenu > ul > li > a:first-child{
+#topMenu section > div.noRadius > ul > li > a:first-child{
     margin:0 10px 0 0;
 }
 
-#topMenu > ul > li > a:last-child{
+#topMenu section > div.noRadius > ul > li > a:last-child{
     margin:0 0 0 10px;
 }
-#topMenu > ul > li > a {
+#topMenu section > div.noRadius > ul > li > a {
     font-family: Arial,sans-serif;
     font-size: 17px;
     font-weight: bold;
@@ -96,21 +156,53 @@ a,a:focus,a:hover{
     display:none;
 }
 
-#navbar>.container, .main-container, footer.container>.region, footer.container>.row{
-    width:1024px;
+#topMenu section > div > ul > li > a{
+    padding:0;
 }
 
+#topMenu section > div > ul > li{
+    padding:10px 15px;
+}
+#navbar > .container, .main-container, footer.container > .region, footer.container>.row{
+    width:1024px;
+}
+#navbar .container{
+    padding:0;
+}
 footer.container >.row{
     margin:auto;
 }
 #topMenu a{
     border-bottom:4px solid transparent;
+    color:#000;
 }
-#topMenu .active a, #topMenu a:hover, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+#topMenu section > div > ul > li.active > a, #topMenu section > div.noRadius > ul > li > a:hover{
+    color: #4b4b4b;
     background:none;
-    border-bottom:4px solid #d9313e;
+    border-bottom:2px solid #00b0d8;
 }
 
+#topMenu section > div > ul > li > ul > li > a, #topMenu section > div > ul > li > ul > li > a:focus, #topMenu section > div > ul > li > a.dropdown-toggle:focus{
+    border-bottom:2px solid transparent;
+}
+
+.dropdown-menu{
+    margin-top:0;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, #topMenu .dropdown-menu > .active > a, #topMenu .dropdown-menu > .active > a:hover, #topMenu .dropdown-menu > .active > a:focus {
+    background-color:#00b0d8;
+    color:#fff;
+}
+
+.dropdown-menu li a:hover, #topMenu .dropdown-menu li a:hover{
+    background-color:#00b0d8;
+    color:#fff;
+}
+
+#topMenu .dropdown-menu{
+    top:71%;
+}
 /**
   *
   * Login block
@@ -127,7 +219,7 @@ footer.container >.row{
     margin-bottom:0;
 }
 #block-user-login h2.block-title {
-    background-color: #d9313e;
+    background-color: #00b0d8;
 
 }
 
@@ -211,6 +303,14 @@ footer .col-xs-3{
 
 }
 
+#europeFooter{
+    color:#cdcdcd;
+    text-align:center;
+}
+
+#europeFooter img{
+    margin-right:10px;
+}
 /**
   *
   * Partners view
@@ -230,7 +330,7 @@ footer .col-xs-3{
 }
 
 /** Photo's details template **/
-.node-type-photo .field-name-field-photo img{
+.node-type-opp-photo .field-name-field-photo img{
     max-width:100%;
 }
 

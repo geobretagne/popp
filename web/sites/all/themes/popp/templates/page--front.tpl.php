@@ -1,5 +1,16 @@
-<?php
+<?php //POPP
+$block = module_invoke('menu', 'block_view', 'menu-popp-principal');
+if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done') !== true && current_path() != "admin/popp-installation"){
+    ?>
+    <div id="greyBackground">
+    </div>
+    <div class="well" id="installAlert">
+        <p><?=t('Attention ! Pour terminer l\'installation de POPP, merci de cliquer sur ')?><a id="removeInstallModal" href="#overlay=admin/popp-installation"><?=t('ce lien !')?></a></p>
+    </div>
+    <?php
+}
 ?>
+
 <header id="navbar" role="banner" class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -18,21 +29,16 @@
             </button>
         </div>
 
-        <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
             <div class="navbar-collapse collapse">
                 <nav id="topMenu" role="navigation">
-                    <?php if (!empty($primary_nav)): ?>
-                        <?php print render($primary_nav); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($secondary_nav)): ?>
-                        <?php print render($secondary_nav); ?>
-                    <?php endif; ?>
-                    <?php if (!empty($page['navigation'])): ?>
-                        <?php print render($page['navigation']); ?>
-                    <?php endif; ?>
+                        <section>
+                            <div class="noRadius">
+                                <?= render($block['content'])?>
+                            </div>
+                        </section>
                 </nav>
+                <p id="textLogo">Plateforme des Observatoires Photographiques du Paysage de Bretagne</p>
             </div>
-        <?php endif; ?>
     </div>
     <?php //if($is_front): ?>
     <div id="landscape">
@@ -63,7 +69,7 @@
                 <?php print render($tabs); ?>
             <?php endif; ?>
             <div class="well">
-                <img class="image" src="/<?=path_to_theme()?>/img/carte.png" alt="Carte des OPP" title="Carte des OPP"/>
+                <!-- <img class="image" src="/<?=path_to_theme()?>/img/carte.png" alt="Carte des OPP" title="Carte des OPP"/> -->
                 <?php print render($page['content']); ?>
             </div>
         </section>
@@ -91,6 +97,13 @@
             <img src="/<?php print path_to_theme(); ?>/img/facebook.jpg" class="socialLogo" alt="Retrouvez-nous sur Facebook" title="Retrouvez-nous sur Facebook"/>
             <img src="/<?php print path_to_theme(); ?>/img/twitter.jpg" class="socialLogo" alt="Retrouvez-nous sur Twitter" title="Retrouvez-nous sur Twitter"/>
             <img src="/<?php print path_to_theme(); ?>/img/contact.jpg" class="socialLogo" alt="Contactez-nous" title="Contactez-nous"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <p id="europeFooter">
+                <img height="50px" src="/<?=path_to_theme()?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img height="50px" src="/<?=path_to_theme()?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée par l'Union européenne.
+            </p>
         </div>
     </div>
 </footer>

@@ -54,7 +54,7 @@
     <?php endif;?>
     <?php
         print render($title_suffix); ?>
-        <div class="<?=(($block_html_id == "block-menu-menu-menu-footer") || $block->region == 'content'?'':'well ')?>noRadius">
+        <div class="<?=(($block_html_id == "block-menu-menu-menu-footer" || $block_html_id == "block-menu-menu-popp-principal") || $block->region == 'content'?'':'well ')?>noRadius">
             <?php print $content ?>
         </div>
 </section> <!-- /.block -->
