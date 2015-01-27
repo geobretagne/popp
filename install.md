@@ -1,6 +1,6 @@
 <h1>Installation</h1>
 <h2>Database</h2>
-<p>To begin, create a PostgreSQL database, and set its characters set to UTF-8.</p>
+<p>To begin, create a PostgreSQL database, and set its encoding set to UTF-8.</p>
 <p>Execute the followings commands in postgres command line :</p>
 <ul>
 <li>
