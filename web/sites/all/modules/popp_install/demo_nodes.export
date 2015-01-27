@@ -1,0 +1,558 @@
+array(
+  (object) array(
+      'vid' => '31',
+      'uid' => '1',
+      'title' => 'Série Brest',
+      'log' => '',
+      'status' => '1',
+      'comment' => '2',
+      'promote' => '1',
+      'sticky' => '0',
+      'vuuid' => '28e64e1a-20f0-47b3-b21d-6c0c28f1b08c',
+      'nid' => '31',
+      'type' => 'opp_photo',
+      'language' => 'fr',
+      'created' => '1422349979',
+      'changed' => '1422352290',
+      'tnid' => '0',
+      'translate' => '0',
+      'uuid' => 'ed2cfba7-3ab6-49da-ad78-ebe3e799effe',
+      'revision_timestamp' => '1422352290',
+      'revision_uid' => '1',
+      'field_popp_photo_author' => array(
+        'und' => array(
+          array(
+            'value' => 'Jean Machin',
+            'format' => NULL,
+            'safe_value' => 'Jean Machin',
+          ),
+        ),
+      ),
+      'field_popp_photo_description' => array(
+        'und' => array(
+          array(
+            'value' => 'Test série Brest',
+            'format' => NULL,
+            'safe_value' => 'Test série Brest',
+          ),
+        ),
+      ),
+      'field_popp_photo_subject' => array(
+        'und' => array(
+          array(
+            'value' => 'Encore un test',
+            'format' => NULL,
+            'safe_value' => 'Encore un test',
+          ),
+        ),
+      ),
+      'field_popp_photo_content_type' => array(
+        'und' => array(
+          array(
+            'target_id' => '17',
+          ),
+        ),
+      ),
+      'field_popp_photo_format' => array(
+        'und' => array(
+          array(
+            'target_id' => '14',
+          ),
+        ),
+      ),
+      'field_popp_photo_tags' => array(),
+      'field_popp_collection_photo' => array(
+        'und' => array(
+          array(
+            'value' => '25',
+            'revision_id' => '25',
+          ),
+        ),
+      ),
+      'field_popp_photo_copyrights' => array(
+        'und' => array(
+          array(
+            'target_id' => '22',
+          ),
+        ),
+      ),
+      'field_popp_photo_editor' => array(
+        'und' => array(
+          array(
+            'target_id' => '1',
+          ),
+        ),
+      ),
+      'field_popp_geolocalisation_photo' => array(
+        'und' => array(
+          array(
+            'geometry' => '0101000020E6100000D0EF367FB9C111C0BE8BCC90542D4840',
+          ),
+        ),
+      ),
+      'field_popp_photo_date' => array(
+        'und' => array(
+          array(
+            'value' => '2015-01-27 00:00:00',
+            'timezone' => 'Europe/Paris',
+            'timezone_db' => 'Europe/Paris',
+            'date_type' => 'datetime',
+          ),
+        ),
+      ),
+      'field_popp_photo_contributor' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          'sioc:Item',
+          'foaf:Document',
+        ),
+        'title' => array(
+          'predicates' => array(
+            'dc:title',
+          ),
+        ),
+        'created' => array(
+          'predicates' => array(
+            'dc:date',
+            'dc:created',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'changed' => array(
+          'predicates' => array(
+            'dc:modified',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'body' => array(
+          'predicates' => array(
+            'content:encoded',
+          ),
+        ),
+        'uid' => array(
+          'predicates' => array(
+            'sioc:has_creator',
+          ),
+          'type' => 'rel',
+        ),
+        'name' => array(
+          'predicates' => array(
+            'foaf:name',
+          ),
+        ),
+        'comment_count' => array(
+          'predicates' => array(
+            'sioc:num_replies',
+          ),
+          'datatype' => 'xsd:integer',
+        ),
+        'last_activity' => array(
+          'predicates' => array(
+            'sioc:last_activity_date',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+      ),
+      'cid' => '0',
+      'last_comment_timestamp' => '1422349979',
+      'last_comment_name' => NULL,
+      'last_comment_uid' => '1',
+      'comment_count' => '0',
+      'name' => 'admin',
+      'picture' => '0',
+      'data' => 'b:0;',
+      'path' => FALSE,
+      'menu' => NULL,
+      'node_export_drupal_version' => '7',
+      'field_collection_deploy' => array(
+        'field_popp_collection_photo' => array(),
+      ),
+    ),
+  (object) array(
+      'vid' => '29',
+      'uid' => '1',
+      'title' => 'Serie Elven',
+      'log' => '',
+      'status' => '1',
+      'comment' => '2',
+      'promote' => '1',
+      'sticky' => '0',
+      'vuuid' => '7f4cf660-8b5a-450f-8b55-c34a76cb5ca0',
+      'nid' => '29',
+      'type' => 'opp_photo',
+      'language' => 'fr',
+      'created' => '1422265165',
+      'changed' => '1422351931',
+      'tnid' => '0',
+      'translate' => '0',
+      'uuid' => '88ce2714-4382-4e6e-b489-8ebc97ccc6e0',
+      'revision_timestamp' => '1422351931',
+      'revision_uid' => '1',
+      'field_popp_photo_author' => array(
+        'und' => array(
+          array(
+            'value' => 'Inconnu',
+            'format' => NULL,
+            'safe_value' => 'Inconnu',
+          ),
+        ),
+      ),
+      'field_popp_photo_description' => array(
+        'und' => array(
+          array(
+            'value' => "Série montrant l'évolution d'un bourg",
+            'format' => NULL,
+            'safe_value' => 'Série montrant l&#039;évolution d&#039;un bourg',
+          ),
+        ),
+      ),
+      'field_popp_photo_subject' => array(
+        'und' => array(
+          array(
+            'value' => 'Autre série de test',
+            'format' => NULL,
+            'safe_value' => 'Autre série de test',
+          ),
+        ),
+      ),
+      'field_popp_photo_content_type' => array(
+        'und' => array(
+          array(
+            'target_id' => '17',
+          ),
+        ),
+      ),
+      'field_popp_photo_format' => array(
+        'und' => array(
+          array(
+            'target_id' => '14',
+          ),
+        ),
+      ),
+      'field_popp_photo_tags' => array(),
+      'field_popp_collection_photo' => array(
+        'und' => array(
+          array(
+            'value' => '13',
+            'revision_id' => '13',
+          ),
+          array(
+            'value' => '14',
+            'revision_id' => '14',
+          ),
+          array(
+            'value' => '15',
+            'revision_id' => '15',
+          ),
+          array(
+            'value' => '16',
+            'revision_id' => '16',
+          ),
+        ),
+      ),
+      'field_popp_photo_copyrights' => array(
+        'und' => array(
+          array(
+            'target_id' => '22',
+          ),
+        ),
+      ),
+      'field_popp_photo_editor' => array(
+        'und' => array(
+          array(
+            'target_id' => '1',
+          ),
+        ),
+      ),
+      'field_popp_geolocalisation_photo' => array(
+        'und' => array(
+          array(
+            'geometry' => '0101000020E6100000E6C87A585EBC04C08B300F07CBDD4740',
+          ),
+        ),
+      ),
+      'field_popp_photo_date' => array(
+        'und' => array(
+          array(
+            'value' => '2015-01-20 00:00:00',
+            'timezone' => 'Europe/Paris',
+            'timezone_db' => 'Europe/Paris',
+            'date_type' => 'datetime',
+          ),
+        ),
+      ),
+      'field_popp_photo_contributor' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          'sioc:Item',
+          'foaf:Document',
+        ),
+        'title' => array(
+          'predicates' => array(
+            'dc:title',
+          ),
+        ),
+        'created' => array(
+          'predicates' => array(
+            'dc:date',
+            'dc:created',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'changed' => array(
+          'predicates' => array(
+            'dc:modified',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'body' => array(
+          'predicates' => array(
+            'content:encoded',
+          ),
+        ),
+        'uid' => array(
+          'predicates' => array(
+            'sioc:has_creator',
+          ),
+          'type' => 'rel',
+        ),
+        'name' => array(
+          'predicates' => array(
+            'foaf:name',
+          ),
+        ),
+        'comment_count' => array(
+          'predicates' => array(
+            'sioc:num_replies',
+          ),
+          'datatype' => 'xsd:integer',
+        ),
+        'last_activity' => array(
+          'predicates' => array(
+            'sioc:last_activity_date',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+      ),
+      'cid' => '0',
+      'last_comment_timestamp' => '1422265165',
+      'last_comment_name' => NULL,
+      'last_comment_uid' => '1',
+      'comment_count' => '0',
+      'name' => 'admin',
+      'picture' => '0',
+      'data' => 'b:0;',
+      'path' => FALSE,
+      'menu' => NULL,
+      'node_export_drupal_version' => '7',
+      'field_collection_deploy' => array(
+        'field_popp_collection_photo' => array(),
+      ),
+    ),
+  (object) array(
+      'vid' => '30',
+      'uid' => '1',
+      'title' => 'Un endroit en Bretagne',
+      'log' => '',
+      'status' => '1',
+      'comment' => '2',
+      'promote' => '1',
+      'sticky' => '0',
+      'vuuid' => 'fd1e622b-5877-4344-9400-6e3ccae6e640',
+      'nid' => '30',
+      'type' => 'opp_photo',
+      'language' => 'fr',
+      'created' => '1422265165',
+      'changed' => '1422351719',
+      'tnid' => '0',
+      'translate' => '0',
+      'uuid' => '5601461d-bedc-4f60-be86-8c27b1af4df1',
+      'revision_timestamp' => '1422351719',
+      'revision_uid' => '1',
+      'field_popp_photo_author' => array(
+        'und' => array(
+          array(
+            'value' => 'Max Grammaire',
+            'format' => NULL,
+            'safe_value' => 'Max Grammaire',
+          ),
+        ),
+      ),
+      'field_popp_photo_description' => array(
+        'und' => array(
+          array(
+            'value' => "Il s'agit ici de photographies",
+            'format' => NULL,
+            'safe_value' => 'Il s&#039;agit ici de photographies',
+          ),
+        ),
+      ),
+      'field_popp_photo_subject' => array(
+        'und' => array(
+          array(
+            'value' => 'Photographies',
+            'format' => NULL,
+            'safe_value' => 'Photographies',
+          ),
+        ),
+      ),
+      'field_popp_photo_content_type' => array(
+        'und' => array(
+          array(
+            'target_id' => '17',
+          ),
+        ),
+      ),
+      'field_popp_photo_format' => array(
+        'und' => array(
+          array(
+            'target_id' => '14',
+          ),
+        ),
+      ),
+      'field_popp_photo_tags' => array(),
+      'field_popp_collection_photo' => array(
+        'und' => array(
+          array(
+            'value' => '17',
+            'revision_id' => '17',
+          ),
+          array(
+            'value' => '18',
+            'revision_id' => '18',
+          ),
+          array(
+            'value' => '19',
+            'revision_id' => '19',
+          ),
+          array(
+            'value' => '20',
+            'revision_id' => '20',
+          ),
+          array(
+            'value' => '21',
+            'revision_id' => '21',
+          ),
+          array(
+            'value' => '22',
+            'revision_id' => '22',
+          ),
+          array(
+            'value' => '23',
+            'revision_id' => '23',
+          ),
+          array(
+            'value' => '24',
+            'revision_id' => '24',
+          ),
+        ),
+      ),
+      'field_popp_photo_copyrights' => array(
+        'und' => array(
+          array(
+            'target_id' => '22',
+          ),
+        ),
+      ),
+      'field_popp_photo_editor' => array(
+        'und' => array(
+          array(
+            'target_id' => '1',
+          ),
+        ),
+      ),
+      'field_popp_geolocalisation_photo' => array(
+        'und' => array(
+          array(
+            'geometry' => '0101000020E610000089356697BF890BC08167533BCD684840',
+          ),
+        ),
+      ),
+      'field_popp_photo_date' => array(
+        'und' => array(
+          array(
+            'value' => '2015-01-19 00:00:00',
+            'timezone' => 'Europe/Paris',
+            'timezone_db' => 'Europe/Paris',
+            'date_type' => 'datetime',
+          ),
+        ),
+      ),
+      'field_popp_photo_contributor' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          'sioc:Item',
+          'foaf:Document',
+        ),
+        'title' => array(
+          'predicates' => array(
+            'dc:title',
+          ),
+        ),
+        'created' => array(
+          'predicates' => array(
+            'dc:date',
+            'dc:created',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'changed' => array(
+          'predicates' => array(
+            'dc:modified',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+        'body' => array(
+          'predicates' => array(
+            'content:encoded',
+          ),
+        ),
+        'uid' => array(
+          'predicates' => array(
+            'sioc:has_creator',
+          ),
+          'type' => 'rel',
+        ),
+        'name' => array(
+          'predicates' => array(
+            'foaf:name',
+          ),
+        ),
+        'comment_count' => array(
+          'predicates' => array(
+            'sioc:num_replies',
+          ),
+          'datatype' => 'xsd:integer',
+        ),
+        'last_activity' => array(
+          'predicates' => array(
+            'sioc:last_activity_date',
+          ),
+          'datatype' => 'xsd:dateTime',
+          'callback' => 'date_iso8601',
+        ),
+      ),
+      'cid' => '0',
+      'last_comment_timestamp' => '1422265165',
+      'last_comment_name' => NULL,
+      'last_comment_uid' => '1',
+      'comment_count' => '0',
+      'name' => 'admin',
+      'picture' => '0',
+      'data' => 'b:0;',
+      'path' => FALSE,
+      'menu' => NULL,
+      'node_export_drupal_version' => '7',
+      'field_collection_deploy' => array(
+        'field_popp_collection_photo' => array(),
+      ),
+    ),
+)

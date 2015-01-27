@@ -364,14 +364,71 @@ footer .col-xs-3{
     color:#000;
     text-shadow: 0 0 5px #fff;
 }
+.activePhoto{
+    position:relative;
+}
+.toZoom{
+    display:inline-block;
+}
+.checkSelected{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 20px;
+    color:#050;
+    text-shadow: 0 0 3px #fff;
+}
 
 .relPosition{
     position:relative;
 }
-.view-id-affichage_s_rie{
+
+#thumbnailsViewPlaceHolder{
     text-align:center;
 }
-.view-id-affichage_s_rie .views-row{
+
+#thumbnailsViewPlaceHolder .views-row, #photoResult .views-row{
     display:inline-block;
-    margin-right:10px;
+    margin:0 5px;
+}
+
+#thumbnailsViewPlaceHolder .views-row:first-child, #photoResult .views-row:first-child{
+    margin:0 5px 0 0;
+}
+
+#thumbnailsViewPlaceHolder .views-row:last-child, #photoResult .views-row:last-child{
+    margin:0 0 0 5px;
+}
+
+#photoResult{
+    bottom: 15px;
+    left:35px;
+    position: absolute;
+    z-index: 100;
+    opacity:0.8;
+    padding:5px;
+    width:695px;
+    text-align:center;
+}
+
+#photoResult:hover, #photoResult:focus{
+    opacity:1;
+}
+
+.relativePos{
+    position:relative;
+}
+.view .first .progress-disabled{
+    float:left;
+}
+.view .last .progress-disabled{
+    float:right;
+}
+
+#photoDataPlaceHolder span.views-label{
+    font-weight: bold;
+}
+
+.breadcrumb{
+    margin-left:-15px;
 }

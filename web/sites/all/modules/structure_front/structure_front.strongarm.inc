@@ -276,11 +276,17 @@ function structure_front_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '12',
+          'weight' => '0',
         ),
         'path' => array(
           'weight' => '2',
@@ -444,7 +450,7 @@ function structure_front_strongarm() {
     'domain' => '',
     'prefix' => 'fr',
     'weight' => '0',
-    'javascript' => 'DfY8Yf9WDy0JgqvrUNCBA8Y9G0YCXqkhAvovSEjzNQ4',
+    'javascript' => '9eKho9F9LNnGQcpEc86JlLZXxzRBo9U4_cRgi2oNDwQ',
   );
   $export['language_default'] = $strongarm;
 
@@ -501,6 +507,12 @@ function structure_front_strongarm() {
       'type' => 'menu',
       'title' => 'Management',
       'name' => 'management',
+    ),
+    'menu-administration-contenu' => array(
+      'enabled' => 1,
+      'weight' => '0',
+      'type' => 'menu',
+      'name' => 'menu-administration-contenu',
     ),
     'menu-menu-footer' => array(
       'enabled' => 1,

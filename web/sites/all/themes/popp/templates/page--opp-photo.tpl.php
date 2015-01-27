@@ -5,8 +5,13 @@
  * Date: 20/11/2014
  * Time: 14:51
  */
+global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
-$commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =:nid",array(":nid"=>$nodeToDisplay['field_popp_photo_editor']['#object']->nid))->fetchField();
+$node = node_load($nodeToDisplay['#node']->nid);
+$commentsCount = count($nodeToDisplay['comments']['comments']) -2;
+if($commentsCount < 0)
+    $commentsCount = 0;
+
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -71,7 +76,7 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
  * @see     html.tpl.php
  * @ingroup themeable
  */
-
+drupal_add_js(drupal_get_path('theme','popp').'/js/photo_display.js');
 ?>
 <header id="navbar" role="banner" class="navbar navbar-default">
     <div class="container">
@@ -95,12 +100,6 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
         <?php if (! empty($primary_nav) || ! empty($secondary_nav) || ! empty($page['navigation'])): ?>
             <div class="navbar-collapse collapse">
                 <nav id="topMenu" role="navigation">
-                    <?php if (! empty($primary_nav)): ?>
-                        <?php print render($primary_nav); ?>
-                    <?php endif; ?>
-                    <?php if (! empty($secondary_nav)): ?>
-                        <?php print render($secondary_nav); ?>
-                    <?php endif; ?>
                     <?php if (! empty($page['navigation'])): ?>
                         <?php print render($page['navigation']); ?>
                     <?php endif; ?>
@@ -144,18 +143,18 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
             <?php endif; ?>
             <div class="well relPosition">
                 <!-- ICI le contenu principal -->
-                <a class="showInBox" rel=lightbox" data-title="" data-toggle="lightbox"
-                   href="<?= file_create_url($nodeToDisplay['field_popp_photo_photography']['#items'][0]['uri']) ?>">
+                <a class="showInBox" id="showInBox" rel=lightbox" data-title="" data-toggle="lightbox"
+                   href="">
                     <span title="Plein écran" class="glyphicon glyphicon-fullscreen topRight"></span>
                 </a>
-                <?= drupal_render($nodeToDisplay['field_popp_photo_photography']) ?>
+                <div id="photoPh"></div>
             </div>
         </section>
 
         <aside class="col-sm-3" role="complementary">
             <div class="region region-sidebar-second">
                 <div class="well noPadding">
-                    <div class="row">
+                    <div class="row" style="margin:0 0;padding:5px;">
                         <div class="col-xs-12">
                             <div class="pull-right dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
@@ -171,7 +170,7 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
                             </div>
                         </div>
                     </div>
-                    <div class="panel-group marginTop" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
@@ -212,6 +211,24 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
                                 </div>
                             </div>
                         </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Photo courante
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <div id="photoDataPlaceHolder">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -226,7 +243,9 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <?= drupal_render($page['carousel_serie']) ?>
+            <div class="well" id="thumbnailsViewPlaceHolder">
+                <?= drupal_render($nodeToDisplay['field_popp_collection_photo']) ?>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -252,7 +271,8 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
                     <div role="tabpanel" class="tab-pane highlight" id="temoignages"><p>Nam metus nibh, fermentum at
                             lacinia gravida, posuere at augue. Aenean eget maximus augue.</p></div>
                     <div role="tabpanel" class="tab-pane highlight" id="commentaires">
-                        <?= render($nodeToDisplay['comments']); ?>
+                        <?= (!isset($nodeToDisplay['comments']['comments'])?'<h3>'.t('Aucun commentaire pour le moment').'</h3>'.($user->uid != 0?'':theme('comment_post_forbidden', array('node' => $node))):'')?>
+                        <?= render(comment_node_page_additions($node)) ?>
                     </div>
 
                 </div>
@@ -283,9 +303,7 @@ $commentsCount = db_query("SELECT COUNT(cid) AS count FROM {comment} WHERE nid =
     <div class="row">
         <div class="col-xs-12">
             <p id="europeFooter">
-                <img height="50px" src="<?= path_to_theme() ?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img
-                    height="50px" src="<?= path_to_theme() ?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée
-                par l'Union européenne. L'Europe s'engage en Bretagne avec le FEDER
+                <img height="50px" src="/<?=path_to_theme()?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img height="50px" src="/<?=path_to_theme()?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée par l'Union européenne.
             </p>
         </div>
     </div>

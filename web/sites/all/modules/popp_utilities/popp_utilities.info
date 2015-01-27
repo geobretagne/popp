@@ -1,0 +1,6 @@
+name = POPP utilities
+description = Openlayer behaviors and other
+core = 7.x
+package = POPP
+dependencies[] = openlayers
+dependencies[] = lightbox2

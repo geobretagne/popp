@@ -86,19 +86,11 @@ function structure_front_image_default_styles() {
 function structure_front_node_info() {
   $items = array(
     'opp_photo' => array(
-      'name' => t('Photo POPP'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Identifiant de la ressource'),
-      'help' => '',
-    ),
-    'opp_serie' => array(
       'name' => t('Série POPP'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Titre'),
+      'title_label' => t('Nom de la série'),
       'help' => '',
     ),
     'partner_logo' => array(

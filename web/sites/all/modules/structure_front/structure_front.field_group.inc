@@ -21,19 +21,17 @@ function structure_front_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Métadonnées (Dublin core)',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
-      0 => 'field_popp_photo_linked_serie',
-      1 => 'field_popp_photo_subject',
-      2 => 'field_popp_photo_description',
-      3 => 'field_popp_photo_author',
-      4 => 'field_popp_photo_editor',
-      5 => 'field_popp_photo_contributor',
-      6 => 'field_popp_photo_date',
+      0 => 'field_popp_photo_description',
+      1 => 'field_popp_photo_editor',
+      2 => 'field_popp_photo_date',
+      3 => 'field_popp_photo_contributor',
+      4 => 'field_popp_photo_format',
+      5 => 'field_popp_photo_author',
+      6 => 'field_popp_photo_subject',
       7 => 'field_popp_photo_content_type',
-      8 => 'field_popp_photo_format',
-      9 => 'field_popp_photo_copyrights',
-      10 => 'title',
+      8 => 'field_popp_photo_copyrights',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -58,11 +56,11 @@ function structure_front_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Éléments de la photo',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_popp_photo_photography',
-      1 => 'field_popp_photo_geolocation',
-      2 => 'field_popp_photo_tags',
+      0 => 'field_popp_collection_photo',
+      1 => 'field_popp_photo_tags',
+      2 => 'field_popp_geolocalisation_photo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -10,44 +10,44 @@
 function admin_structure_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-administration-contenu_ajouter-un-logo-partenaire:node/add/logo-partenaire
-  $menu_links['menu-administration-contenu_ajouter-un-logo-partenaire:node/add/logo-partenaire'] = array(
+  // Exported menu link: menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo
+  $menu_links['menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo'] = array(
     'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/logo-partenaire',
-    'router_path' => 'node/add',
+    'link_path' => 'node/add/partner-logo',
+    'router_path' => 'node/add/partner-logo',
     'link_title' => 'Ajouter un logo partenaire',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-administration-contenu_ajouter-un-logo-partenaire:node/add/logo-partenaire',
+      'identifier' => 'menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/logo-structures-porteuses
-  $menu_links['menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/logo-structures-porteuses'] = array(
+  // Exported menu link: menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/supporting-structure
+  $menu_links['menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/supporting-structure'] = array(
     'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/logo-structures-porteuses',
-    'router_path' => 'node/add',
+    'link_path' => 'node/add/supporting-structure',
+    'router_path' => 'node/add/supporting-structure',
     'link_title' => 'Ajouter un logo structure porteuse',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/logo-structures-porteuses',
+      'identifier' => 'menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/supporting-structure',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -43,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-une-faq:node/add/faq
@@ -67,40 +67,20 @@ function admin_structure_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-une-photo:node/add/opp-photo
-  $menu_links['menu-administration-contenu_ajouter-une-photo:node/add/opp-photo'] = array(
+  // Exported menu link: menu-administration-contenu_ajouter-une-srie:node/add/opp-photo
+  $menu_links['menu-administration-contenu_ajouter-une-srie:node/add/opp-photo'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'node/add/opp-photo',
     'router_path' => 'node/add/opp-photo',
-    'link_title' => 'Ajouter une photo',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-administration-contenu_ajouter-une-photo:node/add/opp-photo',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-administration-contenu_ajouter-une-srie:node/add/opp-serie
-  $menu_links['menu-administration-contenu_ajouter-une-srie:node/add/opp-serie'] = array(
-    'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/opp-serie',
-    'router_path' => 'node/add/opp-serie',
     'link_title' => 'Ajouter une série',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-administration-contenu_ajouter-une-srie:node/add/opp-serie',
+      'identifier' => 'menu-administration-contenu_ajouter-une-srie:node/add/opp-photo',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -127,7 +107,7 @@ function admin_structure_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -42,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_grer-les-tags:admin/structure/taxonomy
@@ -147,7 +127,7 @@ function admin_structure_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -48,
     'customized' => 1,
   );
   // Translatables
@@ -155,7 +135,6 @@ function admin_structure_menu_default_menu_links() {
   t('Ajouter un logo partenaire');
   t('Ajouter un logo structure porteuse');
   t('Ajouter une FAQ');
-  t('Ajouter une photo');
   t('Ajouter une série');
   t('Gestion des utilisateurs');
   t('Gérer les TAGS');

@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Admin Structure feature.
  */
+
+include_once 'admin_structure.features.inc';

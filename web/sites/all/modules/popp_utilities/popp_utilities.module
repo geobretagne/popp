@@ -1,0 +1,21 @@
+<?php
+
+// implementing hook_init()
+
+
+// implementing hook_openlayers_behaviors()
+function popp_utilities_openlayers_behaviors() {
+    return array(
+         'openlayers_behavior_popp' => array(
+             'title' => t('Photo serie display'),
+             'description' => t('Allows searching a photo serie on a map'),
+             'type' => 'layer',
+             'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
+             'behavior' => array(
+                 'file' => 'openlayers_behavior_popp_series.class.php',
+                 'class' => 'openlayers_behavior_popp_series',
+                 'parent' => 'openlayers_behavior',
+             ),
+         ),
+     );
+}

@@ -14,27 +14,24 @@ function admin_structure_default_fe_block_settings() {
 
   $export['menu-menu-administration-contenu'] = array(
     'cache' => -1,
-    'css_class' => '',
     'custom' => 0,
     'delta' => 'menu-administration-contenu',
     'module' => 'menu',
     'node_types' => array(),
     'pages' => '',
-    'roles' => array(
-      'Administrateur' => 4,
-    ),
+    'roles' => array(),
     'themes' => array(
-      'frontmap' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'frontmap',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'popp' => array(
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'popp',
-        'weight' => -12,
+        'weight' => 0,
       ),
       'seven' => array(
         'region' => '',

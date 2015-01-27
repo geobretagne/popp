@@ -68,8 +68,7 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
             <?php if (!empty($tabs)): ?>
                 <?php print render($tabs); ?>
             <?php endif; ?>
-            <div class="well">
-                <!-- <img class="image" src="/<?=path_to_theme()?>/img/carte.png" alt="Carte des OPP" title="Carte des OPP"/> -->
+            <div class="well relativePos">
                 <?php print render($page['content']); ?>
             </div>
         </section>

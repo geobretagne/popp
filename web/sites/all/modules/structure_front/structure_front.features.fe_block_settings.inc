@@ -72,7 +72,7 @@ function structure_front_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -137,38 +137,6 @@ function structure_front_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
-    'visibility' => 0,
-  );
-
-  $export['views-popp_photo_serie_display-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'popp_photo_serie_display-block',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'popp' => array(
-        'region' => 'carousel_serie',
-        'status' => 1,
-        'theme' => 'popp',
-        'weight' => -14,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
     'visibility' => 0,
   );
 
