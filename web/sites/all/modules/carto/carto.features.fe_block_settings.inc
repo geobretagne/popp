@@ -12,38 +12,6 @@ function carto_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['views--exp-popp_view_home-page'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => '-exp-popp_view_home-page',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '<front>',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'popp' => array(
-        'region' => 'sidebar_second',
-        'status' => 1,
-        'theme' => 'popp',
-        'weight' => -14,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 1,
-  );
-
   $export['views-popp_main_photo_display-block_1'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -53,22 +21,10 @@ function carto_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'popp' => array(
         'region' => '',
         'status' => 0,
         'theme' => 'popp',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
         'weight' => 0,
       ),
     ),
@@ -85,22 +41,10 @@ function carto_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'popp' => array(
         'region' => '',
         'status' => 0,
         'theme' => 'popp',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
         'weight' => 0,
       ),
     ),

@@ -110,7 +110,7 @@ function structure_front_node_info() {
       'help' => '',
     ),
     'supporting_structure' => array(
-      'name' => t('Structure porteuse'),
+      'name' => t('Page de la Structure Porteuse'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -118,6 +118,7 @@ function structure_front_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
 

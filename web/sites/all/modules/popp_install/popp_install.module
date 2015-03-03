@@ -96,12 +96,12 @@ function installStepOne_validate($form, &$form_state)
          * Revert features to get initial configuration work
         */
         theme_enable(['popp']);
-        $feature    = features_get_features('structure_front');
-        $components = array_keys($feature->info['features']);
-        features_revert(['structure_front' => $components]);
         $feature    = features_get_features('term_taxonomy');
         $components = array_keys($feature->info['features']);
         features_revert(['term_taxonomy' => $components]);
+        $feature    = features_get_features('structure_front');
+        $components = array_keys($feature->info['features']);
+        features_revert(['structure_front' => $components]);
         // Now tell the form to go to step 2
         $form_state['storage']['step'] = 2;
     }else{
@@ -226,6 +226,7 @@ function installStepTwo_validate($form, &$form_state)
     $feature    = features_get_features('admin_structure');
     $components = array_keys($feature->info['features']);
     features_revert(['admin_structure' => $components]);
+    cache_clear_all();
     batch_process('<front>');
     drupal_set_message(t('Contenu importé avec succès'));
 }

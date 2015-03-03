@@ -450,7 +450,7 @@ function structure_front_strongarm() {
     'domain' => '',
     'prefix' => 'fr',
     'weight' => '0',
-    'javascript' => '9eKho9F9LNnGQcpEc86JlLZXxzRBo9U4_cRgi2oNDwQ',
+    'javascript' => 'aFIqKACQf9Tu8qwK1hQ_BiFVB36hk7rPA2bedm_nZq4',
   );
   $export['language_default'] = $strongarm;
 

@@ -8,7 +8,7 @@
 global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
 $node = node_load($nodeToDisplay['#node']->nid);
-$commentsCount = count($nodeToDisplay['comments']['comments']) -2;
+$commentsCount = isset($nodeToDisplay['comments']['comments'])?count($nodeToDisplay['comments']['comments']) -2:0;
 if($commentsCount < 0)
     $commentsCount = 0;
 
@@ -245,6 +245,14 @@ drupal_add_js(drupal_get_path('theme','popp').'/js/photo_display.js');
         <div class="col-xs-12">
             <div class="well" id="thumbnailsViewPlaceHolder">
                 <?= drupal_render($nodeToDisplay['field_popp_collection_photo']) ?>
+                <?php
+                if(in_array('administrator', $user->roles)){
+                    ?>
+                    <div style="overflow:auto;"><p>&nbsp;<a class="pull-right btn btn-primary" href="/field-collection/field-popp-collection-photo/add/node/<?=$nodeToDisplay['#node']->nid?>?destination=node/<?=$nodeToDisplay['#node']->nid?>">Ajouter</a></p></div>
+                    <?php
+                }
+                ?>
+
             </div>
         </div>
     </div>
@@ -268,11 +276,15 @@ drupal_add_js(drupal_get_path('theme','popp').'/js/photo_display.js');
                             odio vel euismod eleifend, augue metus molestie felis, eget faucibus augue libero sit amet
                             dui. Nam metus nibh, fermentum at lacinia gravida, posuere at augue. Aenean eget maximus
                             augue.</p></div>
-                    <div role="tabpanel" class="tab-pane highlight" id="temoignages"><p>Nam metus nibh, fermentum at
-                            lacinia gravida, posuere at augue. Aenean eget maximus augue.</p></div>
+                    <div role="tabpanel" class="tab-pane highlight" id="temoignages">
+                        <?= drupal_render($nodeToDisplay['field_popp_collection_testimony'])?>
+                    </div>
                     <div role="tabpanel" class="tab-pane highlight" id="commentaires">
                         <?= (!isset($nodeToDisplay['comments']['comments'])?'<h3>'.t('Aucun commentaire pour le moment').'</h3>'.($user->uid != 0?'':theme('comment_post_forbidden', array('node' => $node))):'')?>
-                        <?= render(comment_node_page_additions($node)) ?>
+                        <?php
+                        $form = comment_node_page_additions($node);
+                        ?>
+                        <?= render($form) ?>
                     </div>
 
                 </div>

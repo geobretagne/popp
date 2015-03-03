@@ -282,7 +282,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '8';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Contenu : Auteur */
+  /* Champ: Contenu : Auteur photo initiale */
   $handler->display->display_options['fields']['field_popp_photo_author']['id'] = 'field_popp_photo_author';
   $handler->display->display_options['fields']['field_popp_photo_author']['table'] = 'field_data_field_popp_photo_author';
   $handler->display->display_options['fields']['field_popp_photo_author']['field'] = 'field_popp_photo_author';
@@ -310,7 +310,7 @@ function structure_front_views_default_views() {
     t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Auteur'),
+    t('Auteur photo initiale'),
   );
   $export['popp_photo_serie_display'] = $view;
 
@@ -367,6 +367,12 @@ function structure_front_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div id="photoResult"></div>';
+  /* Relation: Contenu : Photo POPP (field_popp_collection_photo) */
+  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['id'] = 'field_popp_collection_photo_value';
+  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['table'] = 'field_data_field_popp_collection_photo';
+  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['field'] = 'field_popp_collection_photo_value';
+  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['delta'] = '-1';
   /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -395,45 +401,14 @@ function structure_front_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Critère de filtrage: Contenu : Sujet (field_popp_photo_subject) */
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['id'] = 'field_popp_photo_subject_value';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['table'] = 'field_data_field_popp_photo_subject';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['field'] = 'field_popp_photo_subject_value';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['expose']['operator_id'] = 'field_popp_photo_subject_value_op';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['expose']['label'] = 'Sujet';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['expose']['operator'] = 'field_popp_photo_subject_value_op';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['expose']['identifier'] = 'field_popp_photo_subject_value';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'opp_photo' => 'opp_photo',
   );
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['group_info']['label'] = 'Sujet (field_popp_photo_subject)';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['group_info']['identifier'] = 'field_popp_photo_subject_value';
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_popp_photo_subject_value']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
-  );
-  /* Critère de filtrage: Contenu : Contributeur (field_popp_photo_contributor) */
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['id'] = 'field_popp_photo_contributor_target_id';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['table'] = 'field_data_field_popp_photo_contributor';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['field'] = 'field_popp_photo_contributor_target_id';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['expose']['operator_id'] = 'field_popp_photo_contributor_target_id_op';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['expose']['label'] = 'Contributeur';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['expose']['operator'] = 'field_popp_photo_contributor_target_id_op';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['expose']['identifier'] = 'field_popp_photo_contributor_target_id';
-  $handler->display->display_options['filters']['field_popp_photo_contributor_target_id']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -443,7 +418,6 @@ function structure_front_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'accueil';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Accueil';
@@ -468,9 +442,7 @@ function structure_front_views_default_views() {
     t('suivant ›'),
     t('dernier »'),
     t('<div id="photoResult"></div>'),
-    t('Sujet'),
-    t('Sujet (field_popp_photo_subject)'),
-    t('Contributeur'),
+    t('Élément de collection de champs provenant de field_popp_collection_photo'),
     t('Page'),
   );
   $export['popp_view_home'] = $view;
@@ -661,14 +633,17 @@ function structure_front_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Contenu : Contenu */
-  $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
-  $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
-  $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
-  $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
-  $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Relation: Adhésion OG : Adhésion OG à partir de Nœud */
+  $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
+  $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
+  /* Champ: Contenu : Titre */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Nom de l\'OPP';
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -686,14 +661,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'popp_page' => 'popp_page',
-  );
-  /* Critère de filtrage: Contenu : Entrée Menu (field_popp_entry_menu) */
-  $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
-  $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
-  $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
-  $handler->display->display_options['filters']['field_popp_entry_menu_value']['value'] = array(
-    1 => '1',
+    'opp_takepart' => 'opp_takepart',
   );
 
   /* Display: Page */
@@ -714,6 +682,8 @@ function structure_front_views_default_views() {
     t('Trier par'),
     t('Asc'),
     t('Desc'),
+    t('Adhésion OG à partir de node'),
+    t('Nom de l\'OPP'),
     t('Page'),
   );
   $export['popp_view_page_participez'] = $view;

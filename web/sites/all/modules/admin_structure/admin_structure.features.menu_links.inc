@@ -50,6 +50,46 @@ function admin_structure_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 1,
   );
+  // Exported menu link: menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart
+  $menu_links['menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'node/add/opp-takepart',
+    'router_path' => 'node/add/opp-takepart',
+    'link_title' => 'Ajouter un OPP Participatif',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_ajouter-un-opp-standard:node/add/opp
+  $menu_links['menu-administration-contenu_ajouter-un-opp-standard:node/add/opp'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'node/add/opp',
+    'router_path' => 'node/add/opp',
+    'link_title' => 'Ajouter un OPP Standard',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-administration-contenu_ajouter-un-opp-standard:node/add/opp',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
   // Exported menu link: menu-administration-contenu_ajouter-une-faq:node/add/faq
   $menu_links['menu-administration-contenu_ajouter-une-faq:node/add/faq'] = array(
     'menu_name' => 'menu-administration-contenu',
@@ -110,6 +150,26 @@ function admin_structure_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
+  // Exported menu link: menu-administration-contenu_grer-les-sries:popp-view-all-serie
+  $menu_links['menu-administration-contenu_grer-les-sries:popp-view-all-serie'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'popp-view-all-serie',
+    'router_path' => 'popp-view-all-serie',
+    'link_title' => 'Gérer les séries',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-administration-contenu_grer-les-sries:popp-view-all-serie',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+  );
   // Exported menu link: menu-administration-contenu_grer-les-tags:admin/structure/taxonomy
   $menu_links['menu-administration-contenu_grer-les-tags:admin/structure/taxonomy'] = array(
     'menu_name' => 'menu-administration-contenu',
@@ -132,12 +192,15 @@ function admin_structure_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('Ajouter un OPP Participatif');
+  t('Ajouter un OPP Standard');
   t('Ajouter un logo partenaire');
   t('Ajouter un logo structure porteuse');
   t('Ajouter une FAQ');
   t('Ajouter une série');
   t('Gestion des utilisateurs');
   t('Gérer les TAGS');
+  t('Gérer les séries');
 
 
   return $menu_links;

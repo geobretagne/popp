@@ -1,21 +1,114 @@
 <?php
 
-// implementing hook_init()
+require_once(drupal_get_path('module','popp_utilities').'/includes/helper_functions.php');
 
+function popp_utilities_block_info()
+{
+    $blocks = array();
+
+    $blocks['popp_search_block'] = array(
+        'info' => t('Bloc de recherche POPP'),
+    );
+
+    return $blocks;
+}
+
+function popp_utilities_block_view($delta = '') {
+    $block = array();
+
+    switch ($delta) {
+        case 'popp_search_block':
+            drupal_add_css(drupal_get_path('module','popp_utilities').'/css/search_block.css');
+            $block['subject'] = 'Recherche';
+            $datas = getInfosFromSeries();
+            $block['content'] = generateInputs($datas);
+            break;
+    }
+
+    return $block;
+}
+
+function generateInputs($datas){
+    $result = '<div id="popp_search_block"><form autocomplete="off"><div id="accordion">';
+    $first = true;
+    foreach($datas as $label => $category){
+        $result .= '<div class="panel panel-default">
+                        <div id="headingOne" role="tab" class="panel-heading">
+                            <h4 class="panel-title">
+                                <a aria-controls="collapseOne" aria-expanded="'.($first?'true':'false').'" href="#'.strtolower(str_replace(' ','_',$label)).'" data-parent="#accordion" data-toggle="collapse">'.$label.'</a>
+                            </h4>
+                        </div>
+                        <div aria-labelledby="'.strtolower(str_replace(' ','_',$label)).'" id="'.strtolower(str_replace(' ','_',$label)).'" role="tabpanel" class="panel-collapse collapse '.($first?'in':'').'">
+                         <div class="panel-body">';
+        foreach($category as $item => $data) {
+            switch ($data['type']) {
+                case "select":
+                    $result .= generateSelect($item, $data);
+                    break;
+                case "checkbox":
+
+                    break;
+            }
+        }
+        $result.= '</div></div></div>';
+        $first = false;
+    }
+    $result.='<button class="btn btn-primary btn-block" id="searchButton">Rechercher</button>';
+    return $result."</form></div>";
+}
+
+function generateSelect($item, $data){
+    $input = '<div class="search-select">
+        <label for="'.$item.'">'.$data['label'].' :</label>
+        <select class="form-control" name="'.$item.'" id="'.$item.'">
+            <option value=""> - Tout -</option>
+        ';
+        if(is_array($data['values'])){
+            foreach($data['values'] as $id => $inputData) {
+                $input.= '<option presenton="'.implode(',',$inputData['presentOnNode']).'" value="'.$id.'">'.$inputData['label'].'</option>';
+            }
+        }
+    $input .= '</select>
+        </div>';
+    return $input;
+}
 
 // implementing hook_openlayers_behaviors()
-function popp_utilities_openlayers_behaviors() {
+function popp_utilities_openlayers_behaviors()
+{
     return array(
-         'openlayers_behavior_popp' => array(
-             'title' => t('Photo serie display'),
-             'description' => t('Allows searching a photo serie on a map'),
-             'type' => 'layer',
-             'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-             'behavior' => array(
-                 'file' => 'openlayers_behavior_popp_series.class.php',
-                 'class' => 'openlayers_behavior_popp_series',
-                 'parent' => 'openlayers_behavior',
-             ),
-         ),
-     );
+       'openlayers_behavior_popp_series_display' => array(
+            'title' => t('Photo serie display'),
+            'description' => t('Allows searching a photo serie on a map'),
+            'type' => 'layer',
+            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior' => array(
+                'file' => 'openlayers_behavior_popp_series.class.php',
+                'class' => 'openlayers_behavior_popp_series',
+                'parent' => 'openlayers_behavior',
+            ),
+        ),
+        'openlayers_behavior_cluster_popp' => array(
+            'title' => t('Clustering - POPP Style'),
+            'description' => t('Groups points on a map depending on zoom level. You should NOT activate cluster feature at the same time.'),
+            'type' => 'layer',
+            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior' => array(
+                'file' => 'openlayers_behavior_cluster_popp.class.php',
+                'class' => 'openlayers_behavior_cluster_popp',
+                'parent' => 'openlayers_behavior',
+            ),
+        ),
+        'openlayers_search_behavior_popp' => array(
+            'title' => t('Search - POPP'),
+            'description' => t('Allows filtering POPP photo series'),
+            'type' => 'layer',
+            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior' => array(
+                'file' => 'openlayers_behavior_popp_search.class.php',
+                'class' => 'openlayers_behavior_popp_search',
+                'parent' => 'openlayers_behavior',
+            ),
+        )
+    );
 }

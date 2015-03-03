@@ -21,23 +21,11 @@ function structure_front_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'popp' => array(
         'region' => 'footer_bottom',
         'status' => 1,
         'theme' => 'popp',
         'weight' => -13,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
       ),
     ),
     'title' => '<none>',
@@ -53,27 +41,35 @@ function structure_front_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'popp' => array(
         'region' => 'navigation',
         'status' => 1,
         'theme' => 'popp',
         'weight' => -14,
       ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
     ),
     'title' => '<none>',
     'visibility' => 0,
+  );
+
+  $export['popp_utilities-popp_search_block'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'popp_search_block',
+    'module' => 'popp_utilities',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'popp' => array(
+        'region' => 'sidebar_second',
+        'status' => 1,
+        'theme' => 'popp',
+        'weight' => -19,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
   );
 
   $export['views-7bf7855bef46b46b5b9b37a0c1c2e407'] = array(
@@ -85,22 +81,10 @@ function structure_front_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'popp' => array(
         'region' => 'footer_top',
         'status' => 1,
         'theme' => 'popp',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
         'weight' => 0,
       ),
     ),
@@ -117,23 +101,11 @@ function structure_front_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'popp' => array(
         'region' => 'footer_top',
         'status' => 1,
         'theme' => 'popp',
         'weight' => -13,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
       ),
     ),
     'title' => '<none>',

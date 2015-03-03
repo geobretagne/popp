@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the POPP OPP feature.
+ */
+
+include_once 'popp_opp.features.inc';

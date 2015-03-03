@@ -389,15 +389,11 @@ footer .col-xs-3{
 
 #thumbnailsViewPlaceHolder .views-row, #photoResult .views-row{
     display:inline-block;
-    margin:0 5px;
+    margin:0 5px 0 0;
 }
 
 #thumbnailsViewPlaceHolder .views-row:first-child, #photoResult .views-row:first-child{
     margin:0 5px 0 0;
-}
-
-#thumbnailsViewPlaceHolder .views-row:last-child, #photoResult .views-row:last-child{
-    margin:0 0 0 5px;
 }
 
 #photoResult{
@@ -431,4 +427,16 @@ footer .col-xs-3{
 
 .breadcrumb{
     margin-left:-15px;
+}
+
+#mapDiv{
+    padding:0;
+}
+
+#block-popp-utilities-popp-search-block .well{
+    padding:5px;
+}
+
+.panel {
+    margin-bottom: 5px;
 }
