@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Structure Front feature.
+ */
+
+include_once 'structure_front.features.inc';

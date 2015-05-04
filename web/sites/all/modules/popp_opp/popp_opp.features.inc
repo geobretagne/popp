@@ -30,7 +30,7 @@ function popp_opp_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titre'),
       'help' => '',
     ),
     'opp_takepart' => array(
@@ -38,9 +38,10 @@ function popp_opp_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titre'),
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

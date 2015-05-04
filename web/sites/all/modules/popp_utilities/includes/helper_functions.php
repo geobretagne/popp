@@ -9,16 +9,16 @@
 
 function getInfosFromSeries()
 {
-    $nodes = node_load_multiple(array(), array('type' => 'opp_photo'));
+    $nodes = node_load_multiple(array(), array('type' => 'popp_photo_serie'));
     $searchFields = [];
     foreach ($nodes as $node) {
-        fetchTaxonomyField($searchFields, $node, t('Ensemble paysager'), t('Paysage'), 'landcape_set', 'field_popp_landscape_set');
-        fetchTaxonomyField($searchFields, $node, t('Unité paysagère'), t('Paysage'), 'landscape_units', 'field_landscape_unit');
-        fetchTaxonomyField($searchFields, $node, t('Pays'), t('Localisation'), 'popp_countries', 'field_popp_photo_country');
-        fetchTaxonomyField($searchFields, $node, t('Région'), t('Localisation'), 'region', 'field_popp_photo_region');
-        fetchTaxonomyField($searchFields, $node, t('Département'), t('Localisation'), 'counties', 'field_popp_photo_county');
-        fetchTaxonomyField($searchFields, $node, t('Ville'), t('Localisation'), 'towns', 'field_popp_photo_town');
-        getDatesFromPhotoSerie($searchFields, t('Dates'), $node);
+        fetchTaxonomyField($searchFields, $node, t('Ensemble paysager'), t('Paysage'), 'landcape_set', 'field_popp_serie_landscape_set');
+        fetchTaxonomyField($searchFields, $node, t('Unité paysagère'), t('Paysage'), 'landscape_units', 'field_popp_serie_landscape_unit');
+        fetchTaxonomyField($searchFields, $node, t('Pays'), t('Localisation'), 'popp_countries', 'field_popp_serie_country');
+        fetchTaxonomyField($searchFields, $node, t('Région'), t('Localisation'), 'region', 'field_popp_serie_district');
+        fetchTaxonomyField($searchFields, $node, t('Département'), t('Localisation'), 'counties', 'field_popp_serie_county');
+        fetchTaxonomyField($searchFields, $node, t('Ville'), t('Localisation'), 'towns', 'field_popp_serie_town');
+        //getDatesFromPhotoSerie($searchFields, t('Dates'), $node);
     }
     setInfosUnique($searchFields);
     return $searchFields;

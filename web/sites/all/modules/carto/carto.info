@@ -1,7 +1,7 @@
 name = Carto
 core = 7.x
 package = POPP
-version = 7.x-1.0-beta6
+version = 7.x-1.0-beta8
 project = carto
 dependencies[] = entityreference
 dependencies[] = entityreference_filter
@@ -20,6 +20,7 @@ features[fe_block_settings][] = views-popp_results_view-block
 features[features_api][] = api:2
 features[image][] = photo_sheet_display
 features[openlayers_maps][] = popp_home_map
+features[openlayers_maps][] = popp_serie_edit_map
 features[openlayers_styles][] = popp_marker_focus
 features[openlayers_styles][] = popp_marker_hover
 features[openlayers_styles][] = popp_markers

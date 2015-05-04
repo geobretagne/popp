@@ -1,7 +1,12 @@
 <?php
 
-require_once(drupal_get_path('module','popp_utilities').'/includes/helper_functions.php');
+require_once(drupal_get_path('module', 'popp_utilities') . '/includes/helper_functions.php');
 
+
+/**
+ * @return array
+ * Hook block_info, allows activating POPP search block
+ */
 function popp_utilities_block_info()
 {
     $blocks = array();
@@ -13,13 +18,20 @@ function popp_utilities_block_info()
     return $blocks;
 }
 
-function popp_utilities_block_view($delta = '') {
+
+/**
+ * @param string $delta
+ * @return array
+ * Hook block view, allows displaying search block
+ */
+function popp_utilities_block_view($delta = '')
+{
     $block = array();
 
     switch ($delta) {
         case 'popp_search_block':
-            drupal_add_css(drupal_get_path('module','popp_utilities').'/css/search_block.css');
-            $block['subject'] = 'Recherche';
+            drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
+            $block['subject'] = t('Recherche');
             $datas = getInfosFromSeries();
             $block['content'] = generateInputs($datas);
             break;
@@ -28,66 +40,82 @@ function popp_utilities_block_view($delta = '') {
     return $block;
 }
 
-function generateInputs($datas){
-    $result = '<div id="popp_search_block"><form autocomplete="off"><div id="accordion">';
-    $first = true;
-    foreach($datas as $label => $category){
-        $result .= '<div class="panel panel-default">
+/**
+ * @param $dataSet
+ * @return string
+ * This function generates an accordion, organized by categories
+ */
+function generateInputs($dataSet)
+{
+    $result = cache_get('popp_search');
+    if (!$result) {
+        $result = '<div id="popp_search_block"><form id="poppSearchForm" autocomplete="off"><div id="accordion">';
+        $first = true;
+        foreach ($dataSet as $label => $category) {
+            $result .= '<div class="panel panel-default">
                         <div id="headingOne" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a aria-controls="collapseOne" aria-expanded="'.($first?'true':'false').'" href="#'.strtolower(str_replace(' ','_',$label)).'" data-parent="#accordion" data-toggle="collapse">'.$label.'</a>
+                                <a aria-controls="collapseOne" aria-expanded="' . ($first ? 'true' : 'false') . '" href="#' . strtolower(str_replace(' ', '_', $label)) . '" data-parent="#accordion" data-toggle="collapse">' . $label . '</a>
                             </h4>
                         </div>
-                        <div aria-labelledby="'.strtolower(str_replace(' ','_',$label)).'" id="'.strtolower(str_replace(' ','_',$label)).'" role="tabpanel" class="panel-collapse collapse '.($first?'in':'').'">
+                        <div aria-labelledby="' . strtolower(str_replace(' ', '_', $label)) . '" id="' . strtolower(str_replace(' ', '_', $label)) . '" role="tabpanel" class="panel-collapse collapse ' . ($first ? 'in' : '') . '">
                          <div class="panel-body">';
-        foreach($category as $item => $data) {
-            switch ($data['type']) {
-                case "select":
-                    $result .= generateSelect($item, $data);
-                    break;
-                case "checkbox":
+            foreach ($category as $item => $data) {
+                switch ($data['type']) {
+                    case "select":
+                        $result .= generateSelect($item, $data);
+                        break;
+                    case "checkbox":
 
-                    break;
+                        break;
+                }
             }
+            $result .= '</div></div></div>';
+            $first = false;
         }
-        $result.= '</div></div></div>';
-        $first = false;
+        $result .= '<div class="checkbox"><label for="spatialSearch">Recherche spatiale <input id="spatialSearch" type="checkbox" name="spatialSearch"/></label></div>';
+        $result .= '<button class="btn btn-primary btn-block" id="searchButton">Rechercher</button>';
+        cache_set('popp_search', $result . "</form></div>");
+        return $result;
+    } else {
+        return $result->data;
     }
-    $result.='<button class="btn btn-primary btn-block" id="searchButton">Rechercher</button>';
-    return $result."</form></div>";
+
+
 }
 
-function generateSelect($item, $data){
+/**
+ * @param $item
+ * @param $data
+ * @return string
+ * Returns an HTML string containing a select, filled with found items
+ */
+
+function generateSelect($item, $data)
+{
     $input = '<div class="search-select">
-        <label for="'.$item.'">'.$data['label'].' :</label>
-        <select class="form-control" name="'.$item.'" id="'.$item.'">
+        <label for="' . $item . '">' . $data['label'] . ' :</label>
+        <select class="form-control" name="' . $item . '" id="' . $item . '">
             <option value=""> - Tout -</option>
         ';
-        if(is_array($data['values'])){
-            foreach($data['values'] as $id => $inputData) {
-                $input.= '<option presenton="'.implode(',',$inputData['presentOnNode']).'" value="'.$id.'">'.$inputData['label'].'</option>';
-            }
+    if (!empty($data['values'])) {
+        foreach ($data['values'] as $id => $inputData) {
+            $input .= '<option presenton="' . implode(',', $inputData['presentOnNode']) . '" value="' . $id . '">' . $inputData['label'] . '</option>';
         }
+    }
     $input .= '</select>
         </div>';
     return $input;
 }
 
-// implementing hook_openlayers_behaviors()
+/**
+ * @return array
+ * Implementing hook_openlayers_behaviors()
+ * This function allows to activate special POPP behaviors on OL maps
+ */
 function popp_utilities_openlayers_behaviors()
 {
     return array(
-       'openlayers_behavior_popp_series_display' => array(
-            'title' => t('Photo serie display'),
-            'description' => t('Allows searching a photo serie on a map'),
-            'type' => 'layer',
-            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => array(
-                'file' => 'openlayers_behavior_popp_series.class.php',
-                'class' => 'openlayers_behavior_popp_series',
-                'parent' => 'openlayers_behavior',
-            ),
-        ),
         'openlayers_behavior_cluster_popp' => array(
             'title' => t('Clustering - POPP Style'),
             'description' => t('Groups points on a map depending on zoom level. You should NOT activate cluster feature at the same time.'),
@@ -109,6 +137,70 @@ function popp_utilities_openlayers_behaviors()
                 'class' => 'openlayers_behavior_popp_search',
                 'parent' => 'openlayers_behavior',
             ),
-        )
+        ),
+        'openlayers_behavior_popp_popup' => array(
+            'title' => t('Popup - POPP'),
+            'description' => t('Allows showing popups when hovering a photo serie point'),
+            'type' => 'layer',
+            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior' => array(
+                'file' => 'openlayers_behavior_popp_popup.class.php',
+                'class' => 'openlayers_behavior_popp_popup',
+                'parent' => 'openlayers_behavior',
+            ),
+        ),
+        'openlayers_behavior_popp_series_display' => array(
+            'title' => t('Photo serie display'),
+            'description' => t('Allows searching a photo serie on a map'),
+            'type' => 'layer',
+            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior' => array(
+                'file' => 'openlayers_behavior_popp_series.class.php',
+                'class' => 'openlayers_behavior_popp_series',
+                'parent' => 'openlayers_behavior',
+            ),
+        ),
     );
 }
+
+function popp_utilities_form_alter($form, &$form_state){
+
+}
+
+function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$form_state) {
+    if($entity_form['#entity']->type == 'popp_photo' && $entity_form['#entity']->is_new){
+        $entity_form['field_popp_photo_thesaurus']['und'][1] = $entity_form['field_popp_photo_thesaurus']['und'][0];
+        $parentNid = $form_state['build_info']['args'][0]->nid;
+        $existingThesaurus = getExistingThesaurus($parentNid);
+        $entity_form['title']['#default_value'] = 'LOL';
+        //dpm($existingThesaurus);
+    }
+}
+
+function getExistingThesaurus($parentNid){
+    module_load_include('inc', 'entity', 'includes/entity.controller');
+    module_load_include('inc', 'field_collection');
+    $parentNode = node_load($parentNid);
+    $result = [];
+    foreach($parentNode->field_popp_serie_photo_list['und'] as $photoId){
+        $photo = node_load($photoId['target_id']);
+        foreach($photo->field_popp_photo_thesaurus['und'] as $item){
+            $entity = field_collection_item_load($item['value']);
+            $result[] = ['changes' => $entity->field_popp_thes_changes, 'thes_elements' => $entity->field_popp_thes_elt, 'evolutions' => $entity->field_popp_thes_evol];
+        }
+    }
+    return $result;
+}
+
+/*
+function createThesaurus($photoNode, $params){
+    module_load_include('inc', 'entity', 'includes/entity.controller');
+    // Setup the values in the structure expected by the field_collection entity.
+    $entity = entity_create('field_collection_item', ['field_name' => 'field_popp_collection_photo']);
+    $entity->setHostEntity('node', $node);
+    $entity->field_popp_photo_collection_file['und'][] = (array)$file;
+    $entity->field_popp_photo_collection_date['und'][0]['value'] = date('Y-m-d',strtotime('09 June 1991'));
+    $entity->field_popp_photo_collection_ri['und'][0]['value']  = 'Test RI';
+    $entity->save();
+    node_save($node);
+}*/

@@ -152,5 +152,136 @@ function carto_openlayers_maps() {
   );
   $export['popp_home_map'] = $openlayers_maps;
 
+  $openlayers_maps = new stdClass();
+  $openlayers_maps->disabled = FALSE; /* Edit this to true to make a default openlayers_maps disabled initially */
+  $openlayers_maps->api_version = 1;
+  $openlayers_maps->name = 'popp_serie_edit_map';
+  $openlayers_maps->title = 'Carte édition série';
+  $openlayers_maps->description = 'This map is only used while editing or creating a photo serie';
+  $openlayers_maps->data = array(
+    'width' => 'auto',
+    'height' => '400px',
+    'image_path' => 'sites/all/modules/openlayers/themes/default_dark/img/',
+    'css_path' => 'sites/all/modules/openlayers/themes/default_dark/style.css',
+    'proxy_host' => '',
+    'hide_empty_map' => 0,
+    'center' => array(
+      'initial' => array(
+        'centerpoint' => '0,0',
+        'zoom' => '0',
+      ),
+      'restrict' => array(
+        'restrictextent' => 0,
+        'restrictedExtent' => '',
+      ),
+    ),
+    'behaviors' => array(
+      'openlayers_behavior_keyboarddefaults' => array(),
+      'openlayers_behavior_attribution' => array(
+        'separator' => '',
+      ),
+      'openlayers_behavior_layerswitcher' => array(
+        'ascending' => 1,
+        'sortBaseLayer' => '0',
+        'roundedCorner' => 1,
+        'roundedCornerColor' => '#222222',
+        'maximizeDefault' => 0,
+        'div' => '',
+      ),
+      'openlayers_behavior_mouseposition' => array(
+        'prefix' => '',
+        'separator' => ', ',
+        'suffix' => '',
+        'numDigits' => '8',
+        'emptyString' => '',
+      ),
+      'openlayers_behavior_navigation' => array(
+        'zoomWheelEnabled' => 1,
+        'zoomBoxEnabled' => 1,
+        'documentDrag' => 0,
+      ),
+      'openlayers_behavior_ole' => array(
+        'processing_controls' => array(
+          'MergeFeature' => 0,
+          'SplitFeature' => 0,
+          'CleanFeature' => 0,
+          'DeleteFeature' => 0,
+          'ImportFeature' => 0,
+        ),
+        'editing_controls' => array(
+          'DragFeature' => 0,
+          'DrawHole' => 0,
+          'ModifyFeature' => 0,
+        ),
+        'other_controls' => array(
+          'Navigation' => 'Navigation',
+          'UndoRedo' => 0,
+          'LayerSettings' => 0,
+          'SnappingSettings' => 0,
+        ),
+        'feature_types' => array(
+          'point' => 0,
+          'path' => 0,
+          'polygon' => 0,
+        ),
+        'feature_limit' => '0',
+        'element_id' => '',
+      ),
+      'openlayers_behavior_panzoombar' => array(
+        'zoomWorldIcon' => 0,
+        'panIcons' => 1,
+      ),
+    ),
+    'default_layer' => 'mapquest_osm',
+    'layers' => array(
+      'mapquest_osm' => 'mapquest_osm',
+      'mapquest_openaerial' => 'mapquest_openaerial',
+    ),
+    'layer_weight' => array(
+      'postgis_formatter_layer' => '0',
+      'popp_views_home_layer_openlayers_1' => '0',
+      'openlayers_geojson_picture_this' => '0',
+      'openlayers_kml_example' => '0',
+    ),
+    'layer_styles' => array(
+      'openlayers_kml_example' => '0',
+      'openlayers_geojson_picture_this' => '0',
+      'popp_views_home_layer_openlayers_1' => '0',
+      'postgis_formatter_layer' => '0',
+    ),
+    'layer_styles_select' => array(
+      'openlayers_kml_example' => '0',
+      'openlayers_geojson_picture_this' => '0',
+      'popp_views_home_layer_openlayers_1' => '0',
+      'postgis_formatter_layer' => '0',
+    ),
+    'layer_styles_temporary' => array(
+      'openlayers_kml_example' => '0',
+      'openlayers_geojson_picture_this' => '0',
+      'popp_views_home_layer_openlayers_1' => '0',
+      'postgis_formatter_layer' => '0',
+    ),
+    'layer_activated' => array(
+      'openlayers_kml_example' => 0,
+      'openlayers_geojson_picture_this' => 0,
+      'popp_views_home_layer_openlayers_1' => 0,
+      'postgis_formatter_layer' => 0,
+    ),
+    'layer_switcher' => array(
+      'openlayers_kml_example' => 0,
+      'openlayers_geojson_picture_this' => 0,
+      'popp_views_home_layer_openlayers_1' => 0,
+      'postgis_formatter_layer' => 0,
+    ),
+    'projection' => 'EPSG:3857',
+    'displayProjection' => 'EPSG:4326',
+    'styles' => array(
+      'default' => 'default',
+      'select' => 'default_select',
+      'temporary' => 'default',
+    ),
+  );
+  $export['popp_serie_edit_map'] = $openlayers_maps;
+
   return $export;
 }

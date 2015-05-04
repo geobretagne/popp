@@ -21,11 +21,23 @@ function admin_structure_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
       'popp' => array(
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'popp',
         'weight' => -18,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
       ),
     ),
     'title' => '',

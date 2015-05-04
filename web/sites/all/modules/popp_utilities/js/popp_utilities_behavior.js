@@ -17,7 +17,6 @@ var doCenter = true;
                 $(context).data("openlayers").Strategy = null;
                 data = $(context).data("openlayers");
                 /* Remember last position before a search */
-                var map = data.map;
                 prepareMap();
                 data.openlayers.events.on({
                     "zoomend": resetLayers
@@ -45,7 +44,6 @@ var doCenter = true;
                             var fullExtent = point.geometry.getBounds();
                             data.openlayers.events.remove('moveend');
                             if(doCenter){
-                                console.log(doCenter);
                                 this.map.setCenter(fullExtent.toArray());
                             }
                             data.openlayers.events.on({
@@ -55,6 +53,7 @@ var doCenter = true;
                         },
                         onUnselect: function (feature) {
                             $("#photoResult").html("").removeClass("well");
+                            delete lastFeature;
                             Drupal.attachBehaviors();
                         }
                     }
@@ -71,6 +70,21 @@ var doCenter = true;
         var layers = data.openlayers.getLayersByClass('OpenLayers.Layer.Vector');
         popupSelect.events.unregister("onSelect");
         if (layers[0].features[0] !== undefined) {
+            for (var i in layers[0].features){
+                if (layers[0].features[i].cluster != null) {
+                    for(var j in layers[0].cluster){
+                        var id = layers[0].features[i].cluster[j].id;
+                        if(lastFeature !== undefined && id == lastFeature.id){
+                            return;
+                        }
+                    }
+                } else {
+                    var id = layers[0].features[i].id;
+                    if(lastFeature !== undefined && id == lastFeature.id){
+                        return;
+                    }
+                }
+            }
             for (var i in layers[0].features){
                 if (layers[0].features[i].cluster != null) {
                     for(var j in layers[0].cluster){
@@ -125,21 +139,35 @@ var doCenter = true;
         }
     }
 
+    /**
+     * Refreshes view if map have moved
+     */
     function refreshList() {
+        if($("#spatialSearch:checked").size() == 0 && lastFeature !== undefined){
+            return;
+        }
         var layers = data.openlayers.getLayersByClass('OpenLayers.Layer.Vector');
-        if (layers.length > 0) {
+        var atLeastOneOnScreen = lastFeature !== undefined && lastFeature.onScreen()?true:false;
+        if (layers.length > 0 && (lastFeature === undefined || !lastFeature.onScreen())) {
             for (var i in layers) {
                 if (layers[i].features[0] !== undefined) {
                     for (var j in layers[i].features) {
                         if (layers[i].features[j].onScreen() && layers[i].features[j].style == null) {
                             doCenter = false;
+                            popupSelect.unselectAll();
                             popupSelect.select(layers[i].features[j]);
                             doCenter = true;
                             return;
+                        }else if(layers[i].features[j].onScreen()){
+                            atLeastOneOnScreen = true;
                         }
                     }
                 }
             }
+        }
+        if(!atLeastOneOnScreen){
+            popupSelect.unselectAll();
+            lastFeature = undefined;
         }
     }
 
@@ -156,6 +184,11 @@ var doCenter = true;
         return result;
     }
 
+    /**
+     * Displays a view with search results at the bottom of the map
+     * @param nid
+     * @param source
+     */
     function displaySerie(nid, source) {
         if (lastNid == nid && source != "clickIcon") {
             return;
@@ -168,7 +201,7 @@ var doCenter = true;
         $.post(
             Drupal.settings.basePath + 'views/ajax',
             {
-                view_name: 'popp_results_view', view_display_id: 'block', view_args: nid
+                view_name: 'popp_search_result_view', view_display_id: 'block', view_args: nid
             },
 
             function (response) {

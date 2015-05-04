@@ -77,15 +77,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '3a882369-da06-481c-965f-9d7346abe3a9',
     'vocabulary_machine_name' => 'county',
-    'field_county_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 22,
-          'format' => NULL,
-          'safe_value' => 22,
-        ),
-      ),
-    ),
+    'field_county_code' => array(),
   );
   $terms[] = array(
     'name' => 'anglais',
@@ -118,15 +110,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '48777e3a-71a1-423b-8b10-37be89b6f7a0',
     'vocabulary_machine_name' => 'county',
-    'field_county_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 29,
-          'format' => NULL,
-          'safe_value' => 29,
-        ),
-      ),
-    ),
+    'field_county_code' => array(),
   );
   $terms[] = array(
     'name' => 'Eau continentale',
@@ -229,15 +213,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '928c1ca0-6617-4f54-97cc-b9c5aca34f1b',
     'vocabulary_machine_name' => 'county',
-    'field_county_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 56,
-          'format' => NULL,
-          'safe_value' => 56,
-        ),
-      ),
-    ),
+    'field_county_code' => array(),
   );
   $terms[] = array(
     'name' => 'LGV Grand Ouest',
@@ -289,15 +265,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'b94417f3-98e0-46fa-af91-984619235399',
     'vocabulary_machine_name' => 'popp_countries',
-    'field_country_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 'FR',
-          'format' => NULL,
-          'safe_value' => 'FR',
-        ),
-      ),
-    ),
+    'field_country_code' => array(),
   );
   $terms[] = array(
     'name' => 'Sillon de l\'Arz',
@@ -373,15 +341,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'e5d019da-318c-41cb-aa8b-98d4cf847eec',
     'vocabulary_machine_name' => 'county',
-    'field_county_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 35,
-          'format' => NULL,
-          'safe_value' => 35,
-        ),
-      ),
-    ),
+    'field_county_code' => array(),
   );
   $terms[] = array(
     'name' => 'Enregistrement sonore',

@@ -1,8 +1,8 @@
 name = Admin Structure
-description = Menu, Right, Modules
+description = Menus, Rights, Modules
 core = 7.x
 package = POPP
-version = 7.x-1.0-beta7
+version = 7.x-1.0-beta8
 project = admin_structure
 dependencies[] = admin_menu
 dependencies[] = contact

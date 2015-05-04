@@ -6,6 +6,11 @@
 (function ($) {
     var data;
     var availableNids = [], acceptedNids = [];
+
+    /**
+     * Creating openlayers search behavior
+     * @type {{attach: Function}}
+     */
     Drupal.behaviors.openlayers_behavior_popp_search = {
         'attach': function (context, settings) {
             if ($(context).data("openlayers") != undefined) {
@@ -62,7 +67,10 @@
         return result;
     }
 
-
+    /**
+     * Search function
+     * TODO : implement thesaurus
+     */
     function updateAvailableNids(){
         availableNids = new Array();
         var layers = data.openlayers.getLayersByClass('OpenLayers.Layer.Vector');
@@ -87,6 +95,20 @@
         availableNids = $.unique(availableNids);
     }
 
+    /**
+     * saveActualSearch function
+     * TODO : make saved data persist
+     */
+    function saveActualSearch(){
+        console.log(data.openlayers.getCenter());
+        console.log(data.openlayers.getZoom());
+        console.log(JSON.stringify($("#poppSearchForm").serializeArray()));
+    }
+
+    /**
+     * updateSearchFields
+     * This function hides or shows options of search selects
+     */
     function updateSearchFields(){
         updateAvailableNids();
         $("#popp_search_block select option").each(function(i,elt){
@@ -108,8 +130,13 @@
         });
     }
 
+    /**
+     * This function hides or shows features on map according to search results
+     * @param e
+     * @returns {boolean}
+     */
     function updateLayers(e){
-
+        var spatialSearch = $("#spatialSearch:checked").size();
         var result = new Array();
         $("#popp_search_block select option").each(function(i,elt){
             if($(elt).prop('selected') && $(elt).val() != ''){
@@ -126,7 +153,7 @@
                     for (var j in layers[i].features) {
                         if (layers[i].features[j].cluster != null) {
                             for(var k in layers[i].features[j].cluster){
-                               if(result.indexOf(layers[i].features[j].cluster[k].data.nid) == -1){
+                               if(result.indexOf(layers[i].features[j].cluster[k].data.nid) == -1 || (spatialSearch && !layers[i].features[j].cluster[k].onScreen())){
                                    layers[i].features[j].cluster[k].style = { visibility: 'hidden' };
                                    popupSelect.unselect(layers[i].features[j]);
                                }else{
@@ -138,7 +165,7 @@
                                }
                             }
                         }else {
-                            if(result.indexOf(layers[i].features[j].data.nid) == -1){
+                            if(result.indexOf(layers[i].features[j].data.nid) == -1 || (spatialSearch && !layers[i].features[j].onScreen())){
                                 layers[i].features[j].style = { visibility: 'hidden' };
                                 popupSelect.unselect(layers[i].features[j]);
                             }else{
