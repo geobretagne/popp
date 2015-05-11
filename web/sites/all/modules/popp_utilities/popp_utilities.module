@@ -163,18 +163,46 @@ function popp_utilities_openlayers_behaviors()
     );
 }
 
-function popp_utilities_form_alter($form, &$form_state){
+function popp_utilities_entity_form_validate(&$entity_form, &$form_state){
+    if($entity_form['#entity']->type != 'popp_photo'){
+        return;
+    }
+    if($entity_form['#entity']->is_new){
+        $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['form'];
+    }else{
+        $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][0]['form'];
+    }
+    $thesAmount = (seekThesaurusAmount($inlineForm['field_popp_photo_thesaurus']['und'], 'field_popp_thes_elt') + seekThesaurusAmount($inlineForm['field_popp_photo_nonreq_thes']['und'], 'field_popp_nonreqthes_elt'));
+    if($thesAmount < 2){
+        form_error($entity_form['field_popp_photo_thesaurus'], 'Vous devez saisir au moins deux éléments de thésaurus');
+    }
+}
 
+function seekThesaurusAmount($elements, $key){
+    $count = 0;
+    foreach($elements as $element){
+        if(!is_array($element)){
+            continue;
+        }
+        if(!empty($element[$key][LANGUAGE_NONE][0]['tid'])){
+            $count ++;
+        }
+    }
+    return $count;
 }
 
 function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$form_state) {
     if($entity_form['#entity']->type == 'popp_photo' && $entity_form['#entity']->is_new){
-        $entity_form['field_popp_photo_thesaurus']['und'][1] = $entity_form['field_popp_photo_thesaurus']['und'][0];
         $parentNid = $form_state['build_info']['args'][0]->nid;
         $existingThesaurus = getExistingThesaurus($parentNid);
-        $entity_form['title']['#default_value'] = 'LOL';
-        //dpm($existingThesaurus);
+        $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';
+        foreach($existingThesaurus as $id => $thesElement){
+            $entity_form['field_popp_photo_thesaurus']['und'][$id] = $entity_form['field_popp_photo_thesaurus']['und'][0];
+            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_elt']['und']['#default_value'] = [$thesElement['thes_elements']['und'][0]['tid'] =>1];
+            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_evol']['und']['#default_value'] = [0=>'stability'];
+        }
     }
+    $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';
 }
 
 function getExistingThesaurus($parentNid){

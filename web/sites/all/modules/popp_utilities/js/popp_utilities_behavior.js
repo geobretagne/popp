@@ -139,9 +139,6 @@ var doCenter = true;
         }
     }
 
-    /**
-     * Refreshes view if map have moved
-     */
     function refreshList() {
         if($("#spatialSearch:checked").size() == 0 && lastFeature !== undefined){
             return;
@@ -184,11 +181,6 @@ var doCenter = true;
         return result;
     }
 
-    /**
-     * Displays a view with search results at the bottom of the map
-     * @param nid
-     * @param source
-     */
     function displaySerie(nid, source) {
         if (lastNid == nid && source != "clickIcon") {
             return;
