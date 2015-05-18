@@ -24,26 +24,17 @@ function popp_mass_import_menu()
  */
 function getImportFormStepTwo($form, &$form_state)
 {
-    $form['generalInfos'] = [
-        '#type'   => 'markup',
-        '#suffix' => '<p>' . t($form_state['storage']['serieNid'] . 'Pour ajouter les photos à la série, cliquez sur le bouton "Ajouter des fichiers", sélectionnez les photos de votre série, puis cliquez sur "Continuer"') . '</p>',
+    $form['excel']         = [
+        '#type'              => 'file',
+        '#title'             => t('Tableau d\'import'),
+        '#description'       => t('Extension autorisée : csv'),
+        '#upload_validators' => ['file_validate_extensions' => ['csv']],
     ];
-    $form['photos']       = [
-        '#type'              => 'plupload',
-        '#title'             => t('Photographies'),
-        '#upload_validators' => [
-            'file_validate_extensions' => ['jpg jpeg gif png'],
-            'my_custom_file_validator' => [''],
-        ],
-        '#plupload_settings' => [
-            'runtimes'   => 'html5',
-            'chunk_size' => '1mb',
-        ],
-    ];
-    $form['send']         = [
+    $form['send']          = [
         '#type'                     => 'submit',
-        '#default_value'            => 'Continuer',
-        '#executes_submit_callback' => false,
+        '#value'                    => t('Terminer'),
+        '#name'                     => t('Terminer'),
+        '#validate'                 => ['popp_mass_import_form_step_two_validate'],
     ];
     $form['#validate'][]  = 'popp_mass_import_form_step_two_submit';
 
@@ -53,7 +44,7 @@ function getImportFormStepTwo($form, &$form_state)
 function popp_mass_import_form($form, &$form_state)
 {
     $form_state['rebuild'] = true;
-    if (! isset($form_state['storage']['serieNid'])) {
+    if (! isset($form_state['storage']['to_remove'])) {
         return getImportFormStepOne($form, $form_state);
     } else {
         return getImportFormStepTwo($form, $form_state);
@@ -64,13 +55,13 @@ function getImportFormStepOne($form, &$form_state)
 {
     $form['generalInfos']  = [
         '#type'   => 'markup',
-        '#suffix' => '<p>' . t('Pour commencer, indiquez le classeur de votre série puis cliquez sur "Continuer"') . '</p>',
+        '#suffix' => '<p>' . t('Pour commencer, indiquez le fichier ZIP de vos photos puis cliquez sur "Continuer"') . '</p>',
     ];
-    $form['excel']         = [
+    $form['zip']         = [
         '#type'              => 'file',
-        '#title'             => t('Classeur'),
-        '#description'       => t('Extension autorisée : csv'),
-        '#upload_validators' => ['file_validate_extensions' => ['csv']],
+        '#title'             => t('Photographies'),
+        '#description'       => t('Extension autorisée : zip'),
+        '#upload_validators' => ['file_validate_extensions' => ['zip']],
     ];
     $form['send']          = [
         '#type'                     => 'submit',
@@ -84,37 +75,93 @@ function getImportFormStepOne($form, &$form_state)
     return $form;
 }
 
+
 function popp_mass_import_form_step_one_validate($form, &$form_state)
+{
+    global $user;
+    $validators = ['file_validate_extensions' => ['zip']];
+    $file       = file_save_upload('zip', $validators, 'temporary://');
+    if(false === $file){
+        form_set_error('zip', t('Impossible de sauvegarder le fichier zip'));
+        return;
+    }
+    $zip = new ArchiverZip(drupal_realpath($file->uri));
+    $contents = $zip->listContents();
+    $zip->extract(drupal_realpath("public://unzip/".$file->filename.'/'));
+    if(!file_exists(drupal_realpath("public://unzip/".$file->filename.'/'.$contents[0]))){
+        form_set_error('zip', t('Impossible d\'extraire le fichier zip'));
+        drupal_set_message('Impossible d\'envoyer le fichier ZIP');
+        return;
+    }
+    $form_state['storage']['to_remove'] = drupal_realpath("public://unzip/".$file->filename);
+    $form_state['storage']['fn'] = $file->filename;
+    unset($zip);
+    file_delete($file, true);
+    /**
+     * Ensuite parser le fichier excel, création d'un node pour la série et de n nodes pour les photos qui vont avec.
+     * Ensuite, étape 2
+     */
+}
+
+
+function popp_mass_import_form_step_two_validate($form, &$form_state)
 {
     global $user;
     $validators = ['file_validate_extensions' => ['csv']];
     $file       = file_save_upload('excel', $validators, 'public://');
     $parser     = fopen(file_create_url($file->uri), 'r');
-    /* Twice, in order to get the values of the serie */
-    $serie       = fgetcsv($parser, 0, ';');
-    $serie       = fgetcsv($parser, 0, ';');
-    $nid         = 0;
-    $node        = new stdClass();
-    $node->title = $serie[0];
-    $node->type  = 'serie_popp';
-    node_object_prepare($node); // Sets some defaults. Invokes hook_prepare() and hook_node_prepare().
-    $node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
-    $node->uid      = $user->uid;
-    $node->status   = 1; //(1 or 0): published or not
-    $node->promote  = 0; //(1 or 0): promoted to front page
-    $node->comment  = 0; // 0 = comments disabled, 1 = read only, 2 = read/write
-    $node           = node_submit($node); // Prepare node for saving
-    node_save($node);
-
-    if ($node) {
-        if (insertPhotoNodes($parser, $node->nid, $form_state)) {
-            $form_state['storage']['serieNid'] = $node->nid;
-        } else {
-            drupal_set_message(t("Une erreur est survenue en parcourant le tableur au niveau de la série. Vérifiez le format de vos données, puis réessayez.", "error"));
+    $nextIsSerie = false;
+    while($serie = fgetcsv($parser, 0, ';')){
+        if($serie[0] == "Titre serie*"){
+            $nextIsSerie = true;
+            continue;
         }
-    } else {
-        drupal_set_message(t("Une erreur est survenue en parcourant le tableur au niveau de la série. Vérifiez le format de vos données, puis réessayez.", "error"));
+        if($nextIsSerie){
+            setUtf8($serie);
+            if(!checkMandatorySerie($serie)){
+                drupal_set_message(t("Les champs requis pour la série @serie n'ont pas été renseignés", ['@serie' => $serie[0]]),"warning");
+            }
+            $node        = new stdClass();
+            $node->title = $serie[0];
+            $node->type  = 'popp_photo_serie';
+            node_object_prepare($node); // Sets some defaults. Invokes hook_prepare() and hook_node_prepare().
+            $node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+            $node->uid      = $user->uid;
+            $node->status   = 1; //(1 or 0): published or not
+            $node->promote  = 0; //(1 or 0): promoted to front page
+            $node->comment  = 1; // 0 = comments disabled, 1 = read only, 2 = read/write
+            $node->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]['tid'] = $serie[1];
+            $node->field_popp_serie_landscape_typo[LANGUAGE_NONE][0]['tid'] = $serie[2];
+            $node->field_popp_serie_author_intent[LANGUAGE_NONE][0]['value'] = $serie[3];
+            $node->field_popp_serie_first_desc[LANGUAGE_NONE][0]['value'] = $serie[4].'<br/><i>Le '.$serie[5].'</i>';
+            $node->field_popp_serie_int_identifier[LANGUAGE_NONE][0]['value'] = $serie[6];
+            $node->field_popp_serie_county[LANGUAGE_NONE][0]['tid'] = $serie[7];
+            $node->field_popp_serie_town[LANGUAGE_NONE][0]['tid'] = $serie[8];
+            $node->field_popp_serie_place[LANGUAGE_NONE][0]['feeds'] = true;
+            $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt'] = 'GEOMETRYCOLLECTION('.$serie[9].')';
+            $node->field_popp_serie_landscape_set[LANGUAGE_NONE][0]['tid'] = $serie[10];
+            $node->field_popp_serie_landscape_unit[LANGUAGE_NONE][0]['tid'] = $serie[11];
+            $node->field_popp_serie_per[LANGUAGE_NONE][0]['period'] = 'year';
+            $node->field_popp_serie_per[LANGUAGE_NONE][0]['interval'] = '1';
+            $node           = node_submit($node); // Prepare node for saving
+            node_save($node);
+            if ($node) {
+                // Jump one line
+                fgetcsv($parser, 0, ';');
+                $result = insertPhotoNodes($parser, $node, $form_state);
+                if (is_array($result)) {
+                    drupal_set_message(t("Série @serie importée avec succès", ['@serie'=>$node->title]));
+                }
+            } else {
+                drupal_set_message(t("Une erreur est survenue en parcourant le tableur au niveau de la série ".$serie[0].". Celle-ci n'a pas été ajoutée. Vérifiez le format de vos données, puis réessayez.", "warning"));
+            }
+            file_delete($file);
+        }else{
+            drupal_set_message(t("Série non-reconnue : ").$serie[0], "warning");
+        }
+
     }
+
 
     file_delete($file, true);
     /**
@@ -123,45 +170,92 @@ function popp_mass_import_form_step_one_validate($form, &$form_state)
      */
 }
 
-function insertPhotoNodes(&$parser, $serie_nid, &$form_state)
+function checkMandatorySerie($serie){
+    if(trim($serie[0]) == "" || trim($serie[1]) == "" || trim($serie[2]) == "" || trim($serie[3]) == "" || trim($serie[4]) == "" || trim($serie[5]) == "" || trim($serie[8]) == "" || trim($serie[9]) == "" ){
+        return false;
+    }
+    if(!is_numeric($serie[1]) || !is_numeric($serie[2]) || !is_numeric($serie[8])){
+        return false;
+    }
+    return true;
+}
+
+function checkMandatoryPhoto($photo, $folderName){
+    if(trim($photo[0]) == "" || trim($photo[5]) == "" || trim($photo[10]) == ""){
+        return false;
+    }
+    if(!is_numeric($photo[5]) || !is_file(drupal_realpath('public://unzip/'.$folderName.'/'.$photo[10]))){
+        drupal_set_message(t("Fichier @file non trouvé au chemin @path", ['@file' => $photo[10], '@path' => drupal_realpath('public://unzip/'.$folderName.'/'.$photo[10])]));
+        return false;
+    }
+    return true;
+}
+
+function setUtf8(&$line){
+    foreach($line as &$item){
+        $item = utf8_encode($item);
+    }
+}
+
+function insertPhotoNodes(&$parser, $serie_node, &$form_state)
 {
     // TODO : Get the taxonomy term id by searching human readable value
     global $user;
-    // Jump directly to next line to avoid titles
-    $line  = fgetcsv($parser, 0, ';');
     $count = 0;
+    $cpt = 0;
+    $result = [];
+    $first = true;
     while ($line = fgetcsv($parser, 0, ';')) {
-        foreach ($line as &$lineToConvert) {
-            // Convert to utf8
-            $lineToConvert = utf8_encode($lineToConvert);
+        if($first){
+            // Jump headers
+            $first = false;
+            continue;
+        }
+        $cpt++;
+        setUtf8($line);
+        if(!checkMandatoryPhoto($line, $form_state['storage']['fn'])){
+            drupal_set_message(t("Impossible d'ajouter la photo n°@cpt", ['@cpt' => $cpt]));
+            continue;
         }
         $node        = new stdClass();
-        $node->title = $line[9];
-        $node->type  = 'photo';
+        $node->title = $serie_node->title.' - photo '.$cpt;
+        $node->type  = 'popp_photo';
         node_object_prepare($node); // Sets some defaults. Invokes hook_prepare() and hook_node_prepare().
-        $node->language                                     = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
-        $node->uid                                          = $user->uid;
-        $node->status                                       = 1; //(1 or 0): published or not
-        $node->promote                                      = 0; //(1 or 0): promoted to front page
-        $node->comment                                      = 0; // 0 = comments disabled, 1 = read only, 2 = read/write
-        $node->field_popp_photo_subject[LANGUAGE_NONE][0]['value']       = $line[1];
-        $node->field_popp_photo_description[LANGUAGE_NONE][0]['value'] = $line[2];
-        $node->field_popp_photo_author[LANGUAGE_NONE][0]['value']      = $line[3];
-        $node->field_popp_photo_linked_serie[LANGUAGE_NONE][0]           = [
+        $node->language                                                = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+        $node->uid                                                     = $user->uid;
+        $node->status                                                  = 1; //(1 or 0): published or not
+        $node->promote                                                 = 0; //(1 or 0): promoted to front page
+        $node->comment                                                 = 0; // 0 = comments disabled, 1 = read only, 2 = read/write
+        $node->field_popp_photo_author[LANGUAGE_NONE][0]['value']     = $line[0];
+        $node->field_popp_photo_description[LANGUAGE_NONE][0]['value'] = $line[1];
+        $date = DateTime::createFromFormat('d/m/Y', $line[2]);
+        $node->field_popp_photo_date[LANGUAGE_NONE][0]['value'] = $date->format('Y-m-d H:i:s');
+        $node->field_popp_photo_format[LANGUAGE_NONE][0]['tid'] = $line[3];
+        $node->field_popp_photo_internal_id[LANGUAGE_NONE][0]['value'] = $line[4];
+        $node->field_popp_photo_copyrights[LANGUAGE_NONE][0]['tid'] = $line[5];
+        $node->field_popp_photo_camera_type[LANGUAGE_NONE][0]['value'] = $line[7];
+        $node->field_popp_photo_focal[LANGUAGE_NONE][0]['value'] = $line[8];
+        $node->field_popp_photo_aperture[LANGUAGE_NONE][0]['value'] = $line[9];
+        $file_temp = file_get_contents(drupal_realpath('public://unzip/'.$form_state['storage']['fn'].'/'.$line[10]));
+        $file = file_save_data($file_temp, 'public://uploadedPhotos/' . $line[10], FILE_EXISTS_RENAME);
+        unlink(drupal_realpath('public://unzip/'.$form_state['storage']['fn'].'/'.$line[10]));
+        $node->field_popp_photo_file['und'][] = (array)$file;
+// drupal_realpath('public://unzip/'.$folderName.'/'.$line[10])
+        /*$node->field_popp_photo_linked_serie[LANGUAGE_NONE][0]         = [
             'target_id'   => $serie_nid,
             'target_type' => 'node',
         ];
-        $node->field_popp_photo_editor[LANGUAGE_NONE][0]              = [
+        $node->field_popp_photo_editor[LANGUAGE_NONE][0]               = [
             'target_id'   => $line[4],
             'target_type' => 'taxonomy_term',
         ];
-        $node->field_popp_photo_contributor[LANGUAGE_NONE][0]         = [
+        $node->field_popp_photo_contributor[LANGUAGE_NONE][0]          = [
             'target_id'   => $line[5],
             'target_type' => 'taxonomy_term',
         ];
-        $date                                               = DateTime::createFromFormat('d/m/Y', $line[6]);
+        $date                                                          = DateTime::createFromFormat('d/m/Y', $line[6]);
         $node->field_popp_photo_date[LANGUAGE_NONE][0]['value']        = $date->format('Y-m-d H:i:s');
-        $node->field_popp_photo_content_type[LANGUAGE_NONE][0]      = [
+        $node->field_popp_photo_content_type[LANGUAGE_NONE][0]         = [
             'target_id'   => $line[7],
             'target_type' => 'taxonomy_term',
         ];
@@ -169,54 +263,38 @@ function insertPhotoNodes(&$parser, $serie_nid, &$form_state)
             'target_id'   => $line[8],
             'target_type' => 'taxonomy_term',
         ];
-        $node->field_popp_photo_copyrights[LANGUAGE_NONE][0]               = [
+        $node->field_popp_photo_copyrights[LANGUAGE_NONE][0]           = [
             'target_id'   => $line[10],
             'target_type' => 'taxonomy_term',
-        ];
-        $node                                               = node_submit($node); // Prepare node for saving
+        ];*/
+        $node                                                          = node_submit($node); // Prepare node for saving
         node_save($node);
+        $serie_node->field_popp_serie_photo_list[LANGUAGE_NONE][]['target_id'] = $node->nid;
+        node_save($serie_node);
         if (false !== $node) {
             $count++;
-            $form_state['storage']['sent'][$node->nid] = $line[0];
+            $result[] = $node->nid;
         } else {
-            drupal_set_message(t("Une erreur est survenue lors de l'ajout du fichier ") . $line[0], "warning");
+            drupal_set_message(t("Une erreur est survenue lors de l'ajout du fichier @file", ['@file' => $line[10]]), "warning");
         }
     }
-    if ($count > 0) {
-        drupal_set_message($count . t(" photos ont été ajoutées"));
-
-        return true;
-    } else {
-        return false;
+    try{
+        rmdir(drupal_realpath('public://unzip/'.$form_state['storage']['fn']));
+    }catch(Exception $e){
+        drupal_set_message(t("Impossible de supprimer le répertoire temporaire. Merci de contacter un administrateur"));
     }
+
+    if ($count > 0) {
+        drupal_set_message(t("@count photos ont été ajoutées", ['@count' => $count]));
+    }
+    return $result;
 }
 
-function popp_mass_import_form_step_two_submit($form, &$form_state)
-{
-    foreach ($form_state['values']['photos'] as $file) {
-        if (in_array($file['name'], $form_state['storage']['sent'])) {
-            $nid       = array_search($file['name'], $form_state['storage']['sent']);
-            $node      = node_load($nid);
-            $file_temp = file_get_contents($file['tmppath']);
-            $file      = file_save_data($file_temp, 'public://' . $file['name'], FILE_EXISTS_RENAME);
-            /* For later use, will generate image styles :
-                image_style_create_derivative(image_style_load($style_name), $file_loaded->uri, $style_path);
-             */
-            $node->field_photo = [
-                'und' => [
-                    0 => [
-                        'fid'      => $file->fid,
-                        'filename' => $file->filename,
-                        'filemime' => $file->filemime,
-                        'uid'      => 1,
-                        'uri'      => $file->uri,
-                        'status'   => 1,
-                        'display'  => 1
-                    ]
-                ]
-            ];
-            node_save($node);
-        }
+
+function delTree($dir) {
+    $files = array_diff(scandir($dir), array('.','..'));
+    foreach ($files as $file) {
+        (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
     }
-    drupal_set_message(t('Les photos ont bien été ajoutées.'));
+    return rmdir($dir);
 }
