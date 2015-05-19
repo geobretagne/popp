@@ -133,6 +133,7 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
             $node->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]['tid'] = $serie[1];
             $node->field_popp_serie_landscape_typo[LANGUAGE_NONE][0]['tid'] = $serie[2];
             $node->field_popp_serie_author_intent[LANGUAGE_NONE][0]['value'] = $serie[3];
+            $node->field_popp_serie_first_desc[LANGUAGE_NONE][0]['format'] = 'full_html';
             $node->field_popp_serie_first_desc[LANGUAGE_NONE][0]['value'] = $serie[4].'<br/><i>Le '.$serie[5].'</i>';
             $node->field_popp_serie_int_identifier[LANGUAGE_NONE][0]['value'] = $serie[6];
             $node->field_popp_serie_county[LANGUAGE_NONE][0]['tid'] = $serie[7];
