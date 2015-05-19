@@ -16,16 +16,12 @@
             e.stopImmediatePropagation();
             return false;
         });
-        $.post(
-            Drupal.settings.basePath + 'views/ajax',
-            {
-                view_name: 'popp_search_result_view', view_display_id: 'block_1'
-            },
-            replacePhotos
-        );
-        $("#thumbnailsViewPlaceHolder").on('mouseup', '.pagination a', function(e){
-            $(document).ajaxSuccess(setCheckedPhoto);
-        });
+        var defaultId = getPhotoId();
+        if(!defaultId){
+            defaultId = $("a[linkedphoto]").first().attr("linkedphoto");
+        }
+        setCheckedPhoto(defaultId);
+        loadPhoto(defaultId);
     });
     function getPhotoId () {
         return Drupal.arg(2);
@@ -57,29 +53,11 @@
 
     function replacePhoto(response)
     {
-        console.log(response);
         if (response[1] !== undefined)
         {
             var viewHtml = response[1].data;
             $("#photoPh").html(viewHtml);
-            Drupal.attachBehaviors();
             changeLightBoxUrl();
-        }
-    }
-
-    function replacePhotos(response){
-        if(response[1] !== undefined){
-            var viewHtml = response[1].data;
-            $("#thumbnailsViewPlaceHolder").html(viewHtml);
-            Drupal.attachBehaviors();
-            if(first){
-                var photo = getPhotoId();
-                if(photo != false){
-                    loadPhoto(photo);
-                }else{
-                    loadPhoto($(".toZoom").first().attr('linkedphoto'));
-                }
-            }
         }
     }
 

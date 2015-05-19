@@ -440,3 +440,7 @@ footer .col-xs-3{
 .panel {
     margin-bottom: 5px;
 }
+
+.one-sidebar .breadcrumb{
+    margin-left:0;
+}
