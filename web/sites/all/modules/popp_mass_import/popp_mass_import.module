@@ -141,6 +141,7 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
             $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt'] = 'GEOMETRYCOLLECTION('.$serie[9].')';
             $node->field_popp_serie_landscape_set[LANGUAGE_NONE][0]['tid'] = $serie[10];
             $node->field_popp_serie_landscape_unit[LANGUAGE_NONE][0]['tid'] = $serie[11];
+            $node->field_popp_serie_per[LANGUAGE_NONE][0] = getPeriodAndInterval($serie[12]);
             $node->field_popp_serie_per[LANGUAGE_NONE][0]['period'] = 'year';
             $node->field_popp_serie_per[LANGUAGE_NONE][0]['interval'] = '1';
             $node           = node_submit($node); // Prepare node for saving
@@ -162,12 +163,26 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
 
     }
 
-
     file_delete($file, true);
-    /**
-     * Ensuite parser le fichier excel, création d'un node pour la série et de n nodes pour les photos qui vont avec.
-     * Ensuite, étape 2
-     */
+}
+
+function getPeriodAndInterval($input){
+    if(preg_match('/(a|A)/', $input)){
+        $period = 'year';
+    }else if(preg_match('/(m|M)$/', $input)){
+        $period = 'month';
+    }else if(preg_match('/(s|S)/', $input)) {
+        $period = 'week';
+    }else if(preg_match('/(h|H)/', $input)) {
+        $period = 'hour';
+    }else if(preg_match('/(mn|MN)$/', $input)){
+        $period = 'minute';
+    }else{
+        $period = 'year';
+        drupal_set_message(t('Attention ! La période @period n\'a pas été reconnue. Année utilisée par défaut', ['@period' => $input]));
+    }
+    $interval = preg_match('/[0-9]*/', $input);
+    return ['period' => $period, 'interval' => isset($matches[0])?$matches[0]:'1'];
 }
 
 function checkMandatorySerie($serie){
@@ -233,6 +248,7 @@ function insertPhotoNodes(&$parser, $serie_node, &$form_state)
         $node->field_popp_photo_format[LANGUAGE_NONE][0]['tid'] = $line[3];
         $node->field_popp_photo_internal_id[LANGUAGE_NONE][0]['value'] = $line[4];
         $node->field_popp_photo_copyrights[LANGUAGE_NONE][0]['tid'] = $line[5];
+        $node->field_popp_photo_hour[LANGUAGE_NONE][0]['value'] = _hms_formatted_to_seconds($line[6], 'h:m');
         $node->field_popp_photo_camera_type[LANGUAGE_NONE][0]['value'] = $line[7];
         $node->field_popp_photo_focal[LANGUAGE_NONE][0]['value'] = $line[8];
         $node->field_popp_photo_aperture[LANGUAGE_NONE][0]['value'] = $line[9];
@@ -292,7 +308,7 @@ function insertPhotoNodes(&$parser, $serie_node, &$form_state)
 
 
 function delTree($dir) {
-    $files = array_diff(scandir($dir), array('.','..'));
+    $files = array_diff(scandir($dir), ['.','..']);
     foreach ($files as $file) {
         (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
     }
