@@ -11,15 +11,18 @@ $node = node_load($nodeToDisplay['#node']->nid);
 $commentsCount = isset($nodeToDisplay['comments']['comments']) ? count($nodeToDisplay['comments']['comments']) - 2 : 0;
 if ($commentsCount < 0)
     $commentsCount = 0;
-$image = field_get_items('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo');
-$output = field_view_value('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo', $image[0], array(
-    'type' => 'image',
-    'settings' => array(
-        'image_style' => 'sidebar_image',
-        'image_link' => '',
-    ),
-));
-
+if(isset($node->field_popp_serie_supp_struct['und'])){
+    $image = field_get_items('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo');
+    $output = field_view_value('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo', $image[0], array(
+        'type' => 'image',
+        'settings' => array(
+            'image_style' => 'sidebar_image',
+            'image_link' => '',
+        ),
+    ));
+}else{
+    $output = '';
+}
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -260,7 +263,14 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
         <div class="col-xs-12">
             <div class="well">
                 <div id="thumbnailsViewPlaceHolder">
-
+                    <?php
+                    $testimonies = views_get_view('popp_search_result_view');
+                    $testimonies->set_display('block_1');
+                    $testimonies->set_arguments([$nodeToDisplay['#node']->nid]);
+                    $testimonies->pre_execute();
+                    $testimonies->execute('block_1');
+                    print $testimonies->render();
+                    ?>
                 </div>
             </div>
         </div>
