@@ -130,24 +130,25 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
             $node->status   = 1; //(1 or 0): published or not
             $node->promote  = 0; //(1 or 0): promoted to front page
             $node->comment  = 1; // 0 = comments disabled, 1 = read only, 2 = read/write
-            $node->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]['tid'] = $serie[1];
-            $node->field_popp_serie_landscape_typo[LANGUAGE_NONE][0]['tid'] = $serie[2];
-            $node->field_popp_serie_author_intent[LANGUAGE_NONE][0]['value'] = $serie[3];
+            $node->field_popp_serie_opp[LANGUAGE_NONE][0]['tid'] = $serie[1];
+            $node->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]['tid'] = $serie[2];
+            $node->field_popp_serie_landscape_typo[LANGUAGE_NONE][0]['tid'] = $serie[3];
+            $node->field_popp_serie_author_intent[LANGUAGE_NONE][0]['value'] = $serie[4];
             $node->field_popp_serie_first_desc[LANGUAGE_NONE][0]['format'] = 'full_html';
-            $node->field_popp_serie_first_desc[LANGUAGE_NONE][0]['value'] = $serie[4].'<br/><i>Le '.$serie[5].'</i>';
-            $node->field_popp_serie_int_identifier[LANGUAGE_NONE][0]['value'] = $serie[6];
-            $node->field_popp_serie_county[LANGUAGE_NONE][0]['tid'] = $serie[7];
-            $node->field_popp_serie_town[LANGUAGE_NONE][0]['tid'] = $serie[8];
+            $node->field_popp_serie_first_desc[LANGUAGE_NONE][0]['value'] = $serie[5].'<br/><i>Le '.$serie[6].'</i>';
+            $node->field_popp_serie_int_identifier[LANGUAGE_NONE][0]['value'] = $serie[7];
+            $node->field_popp_serie_county[LANGUAGE_NONE][0]['tid'] = $serie[8];
+            $node->field_popp_serie_town[LANGUAGE_NONE][0]['tid'] = $serie[9];
             $node->field_popp_serie_place[LANGUAGE_NONE][0]['feeds'] = true;
-            $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt'] = 'GEOMETRYCOLLECTION('.$serie[9].')';
-            $node->field_popp_serie_landscape_set[LANGUAGE_NONE][0]['tid'] = $serie[10];
-            $node->field_popp_serie_landscape_unit[LANGUAGE_NONE][0]['tid'] = $serie[11];
-            $node->field_popp_serie_per[LANGUAGE_NONE][0] = getPeriodAndInterval($serie[12]);
-            $node->field_popp_serie_per[LANGUAGE_NONE][0]['period'] = 'year';
-            $node->field_popp_serie_per[LANGUAGE_NONE][0]['interval'] = '1';
+            $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt'] = 'GEOMETRYCOLLECTION('.$serie[10].')';
+            $node->field_popp_serie_landscape_set[LANGUAGE_NONE][0]['tid'] = $serie[11];
+            $node->field_popp_serie_landscape_unit[LANGUAGE_NONE][0]['tid'] = $serie[12];
+            $node->field_popp_serie_per[LANGUAGE_NONE][0] = getPeriodAndInterval($serie[13]);
             $node           = node_submit($node); // Prepare node for saving
             node_save($node);
             if ($node) {
+                $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] = '53-'.sprintf('%02d', $user->uid).'-'.sprintf('%04d', $node->nid);
+                node_save($node);
                 // Jump one line
                 fgetcsv($parser, 0, ';');
                 $result = insertPhotoNodes($parser, $node, $form_state);
