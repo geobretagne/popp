@@ -9,11 +9,11 @@ require_once(drupal_get_path('module', 'popp_utilities') . '/includes/helper_fun
  */
 function popp_utilities_block_info()
 {
-    $blocks = array();
+    $blocks = [];
 
-    $blocks['popp_search_block'] = array(
+    $blocks['popp_search_block'] = [
         'info' => t('Bloc de recherche POPP'),
-    );
+    ];
 
     return $blocks;
 }
@@ -26,7 +26,7 @@ function popp_utilities_block_info()
  */
 function popp_utilities_block_view($delta = '')
 {
-    $block = array();
+    $block = [];
 
     switch ($delta) {
         case 'popp_search_block':
@@ -76,7 +76,7 @@ function generateInputs($dataSet)
         $result .= '<div class="checkbox"><label for="spatialSearch">Recherche spatiale <input id="spatialSearch" type="checkbox" name="spatialSearch"/></label></div>';
         $result .= '<button class="btn btn-primary btn-block" id="searchButton">Rechercher</button>';
         cache_set('popp_search', $result . "</form></div>");
-        return $result;
+        return $result. "</form></div>";
     } else {
         return $result->data;
     }
@@ -115,59 +115,59 @@ function generateSelect($item, $data)
  */
 function popp_utilities_openlayers_behaviors()
 {
-    return array(
-        'openlayers_behavior_cluster_popp' => array(
+    return [
+        'openlayers_behavior_cluster_popp' => [
             'title' => t('Clustering - POPP Style'),
             'description' => t('Groups points on a map depending on zoom level. You should NOT activate cluster feature at the same time.'),
             'type' => 'layer',
             'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => array(
+            'behavior' => [
                 'file' => 'openlayers_behavior_cluster_popp.class.php',
                 'class' => 'openlayers_behavior_cluster_popp',
                 'parent' => 'openlayers_behavior',
-            ),
-        ),
-        'openlayers_search_behavior_popp' => array(
+            ],
+        ],
+        'openlayers_search_behavior_popp' => [
             'title' => t('Search - POPP'),
             'description' => t('Allows filtering POPP photo series'),
             'type' => 'layer',
             'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => array(
+            'behavior' => [
                 'file' => 'openlayers_behavior_popp_search.class.php',
                 'class' => 'openlayers_behavior_popp_search',
                 'parent' => 'openlayers_behavior',
-            ),
-        ),
-        'openlayers_behavior_popp_popup' => array(
+            ],
+        ],
+        'openlayers_behavior_popp_popup' => [
             'title' => t('Popup - POPP'),
             'description' => t('Allows showing popups when hovering a photo serie point'),
             'type' => 'layer',
             'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => array(
+            'behavior' => [
                 'file' => 'openlayers_behavior_popp_popup.class.php',
                 'class' => 'openlayers_behavior_popp_popup',
                 'parent' => 'openlayers_behavior',
-            ),
-        ),
-        'openlayers_behavior_popp_series_display' => array(
+            ],
+        ],
+        'openlayers_behavior_popp_series_display' => [
             'title' => t('Photo serie display'),
             'description' => t('Allows searching a photo serie on a map'),
             'type' => 'layer',
             'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => array(
+            'behavior' => [
                 'file' => 'openlayers_behavior_popp_series.class.php',
                 'class' => 'openlayers_behavior_popp_series',
                 'parent' => 'openlayers_behavior',
-            ),
-        ),
-    );
+            ],
+        ],
+    ];
 }
 
 function popp_utilities_entity_form_validate(&$entity_form, &$form_state){
     if($entity_form['#entity']->type != 'popp_photo'){
         return;
     }
-    if($entity_form['#entity']->is_new){
+    if(isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new){
         $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['form'];
     }else{
         $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][0]['form'];
@@ -218,6 +218,16 @@ function getExistingThesaurus($parentNid){
         }
     }
     return $result;
+}
+
+/**
+ * Implements hook_node_submit().
+ */
+function popp_utilities_node_submit($node, $form, &$form_state)
+{
+    if($node->type == 'popp_photo' || $node->type == 'popp_serie'){
+        cache_clear_all();
+    }
 }
 
 /*

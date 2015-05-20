@@ -88,6 +88,7 @@
     }
 
     function saveActualSearch(){
+        console.log(availableNids);
         console.log(data.openlayers.getCenter());
         console.log(data.openlayers.getZoom());
         console.log(JSON.stringify($("#poppSearchForm").serializeArray()));
@@ -115,9 +116,13 @@
     }
 
     function updateLayers(e){
-        var spatialSearch = $("#spatialSearch:checked").size();
+        var spatialSearch = $("#spatialSearch:checked").size() > 0;
+        if(spatialSearch){
+            doCenter = false;
+        }
+
         var result = new Array();
-        $("#popp_search_block select option").each(function(i,elt){
+        $("#poppSearchForm select option").each(function(i,elt){
             if($(elt).prop('selected') && $(elt).val() != ''){
                 var tab = $(elt).attr('presenton').split(',');
                 result.push(tab);
@@ -132,7 +137,7 @@
                     for (var j in layers[i].features) {
                         if (layers[i].features[j].cluster != null) {
                             for(var k in layers[i].features[j].cluster){
-                               if(result.indexOf(layers[i].features[j].cluster[k].data.nid) == -1 || (spatialSearch && !layers[i].features[j].cluster[k].onScreen())){
+                               if(result.indexOf(layers[i].features[j].cluster[k].data.nid) == -1 || (spatialSearch && !layers[i].features[j].onScreen())){
                                    layers[i].features[j].cluster[k].style = { visibility: 'hidden' };
                                    popupSelect.unselect(layers[i].features[j]);
                                }else{
@@ -162,7 +167,7 @@
                 layers[i].redraw();
             }
         }
-        saveActualSearch();
+      //  saveActualSearch();
         e.preventDefault();
         e.stopImmediatePropagation();
         return false;
