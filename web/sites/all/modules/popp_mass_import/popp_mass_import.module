@@ -24,6 +24,7 @@ function popp_mass_import_menu()
  */
 function getImportFormStepTwo($form, &$form_state)
 {
+    drupal_set_message("Pour continuer, indiquez le tableau CSV et appuyez sur \"Terminer\"");
     $form['excel']         = [
         '#type'              => 'file',
         '#title'             => t('Tableau d\'import'),
@@ -144,6 +145,7 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
             $node->field_popp_serie_landscape_set[LANGUAGE_NONE][0]['tid'] = $serie[11];
             $node->field_popp_serie_landscape_unit[LANGUAGE_NONE][0]['tid'] = $serie[12];
             $node->field_popp_serie_per[LANGUAGE_NONE][0] = getPeriodAndInterval($serie[13]);
+            $node->field_popp_serie_init_resp[LANGUAGE_NONE][0]['target_id'] = $user->uid;
             $node           = node_submit($node); // Prepare node for saving
             node_save($node);
             if ($node) {
@@ -201,8 +203,12 @@ function checkMandatoryPhoto($photo, $folderName){
     if(trim($photo[0]) == "" || trim($photo[5]) == "" || trim($photo[10]) == ""){
         return false;
     }
-    if(!is_numeric($photo[5]) || !is_file(drupal_realpath('public://unzip/'.$folderName.'/'.$photo[10]))){
-        drupal_set_message(t("Fichier @file non trouvé au chemin @path", ['@file' => $photo[10], '@path' => drupal_realpath('public://unzip/'.$folderName.'/'.$photo[10])]));
+    if(!is_file(drupal_realpath('public://unzip/'.$folderName.'/'.$photo[10]))){
+        drupal_set_message(t("Photo @file non trouvée dans le fichier ZIP", ['@file' => $photo[10], '@path' => drupal_realpath('public://unzip/'.$folderName.'/'.$photo[10])]));
+        return false;
+    }
+    if(!is_numeric($photo[5])){
+        drupal_set_message(t("Identifiant de la licence de la photo non trouvé"));
         return false;
     }
     return true;
@@ -216,7 +222,6 @@ function setUtf8(&$line){
 
 function insertPhotoNodes(&$parser, $serie_node, &$form_state)
 {
-    // TODO : Get the taxonomy term id by searching human readable value
     global $user;
     $count = 0;
     $cpt = 0;
