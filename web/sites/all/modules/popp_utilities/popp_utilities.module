@@ -221,12 +221,23 @@ function getExistingThesaurus($parentNid){
 }
 
 /**
- * Implements hook_node_submit().
+ * Implements hook_node_insert().
  */
-function popp_utilities_node_submit($node, $form, &$form_state)
+function popp_utilities_node_insert($node)
 {
-    if($node->type == 'popp_photo' || $node->type == 'popp_serie'){
-        cache_clear_all();
+    clearCacheSearch($node);
+}
+/**
+ * Implements hook_node_update().
+ */
+function popp_utilities_node_update($node){
+    clearCacheSearch($node);
+}
+function clearCacheSearch($node){
+    if($node->type == 'popp_photo' || $node->type == 'popp_photo_serie'){
+        if(false !== cache_get('popp_search')){
+            cache_clear_all('popp_search','cache');
+        }
     }
 }
 
