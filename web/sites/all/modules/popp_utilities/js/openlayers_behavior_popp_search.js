@@ -122,8 +122,8 @@
         }
 
         var result = new Array();
-        $("#poppSearchForm select option").each(function(i,elt){
-            if($(elt).prop('selected') && $(elt).val() != ''){
+        $("#poppSearchForm select option, #advancedSearchModal input").each(function(i,elt){
+            if(($(elt).prop('selected') || $(elt).prop('checked')) && $(elt).val() != ''){
                 var tab = $(elt).attr('presenton').split(',');
                 result.push(tab);
             }

@@ -14,6 +14,9 @@ function popp_utilities_block_info()
     $blocks['popp_search_block'] = [
         'info' => t('Bloc de recherche POPP'),
     ];
+    $blocks['popp_advanced_search_block'] = [
+        'info' => t('Bloc de recherche avancée POPP'),
+    ];
 
     return $blocks;
 }
@@ -32,14 +35,31 @@ function popp_utilities_block_view($delta = '')
         case 'popp_search_block':
             drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
             $block['subject'] = t('Recherche');
-            $datas = getInfosFromSeries();
-            $block['content'] = generateInputs($datas);
+            $data = getInfosFromSeries();
+            $block['content'] = generateInputs($data);
+            break;
+        case 'popp_advanced_search_block':
+            drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
+            $block['subject'] = t('Recherche avancée');
+            $data = getThesaurusFromSeries();
+            $block['content'] = generateThesaurusForm($data);
             break;
     }
 
     return $block;
 }
 
+function generateThesaurusForm($data){
+    $result = '<div id="advancedSearchModal" class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
+                    <button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>×</span></button>
+                    <h4 class="modal-title">Recherche avancée</h4>
+                </div>
+                <div class="modal-body">';
+    $result .= getTermsList($data['required']);
+    $result .= getTermsList($data['non_required']);
+    $result .= '<button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>Fermer la fenêtre</span></button></div></div></div></div>';
+    return $result;
+}
 /**
  * @param $dataSet
  * @return string
@@ -69,6 +89,9 @@ function generateInputs($dataSet)
 
                         break;
                 }
+            }
+            if($label == 'Avancée'){
+                $result .= '<p>&nbsp;</p><button id="thesSearchButton" data-toggle="modal" data-target="#advancedSearchModal" class="btn btn-primary btn-block">Voir thésaurus</button>';
             }
             $result .= '</div></div></div>';
             $first = false;
