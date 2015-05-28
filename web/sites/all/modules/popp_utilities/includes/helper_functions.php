@@ -49,27 +49,53 @@ function getThesaurusFromSeries()
     return ['required' => $result, 'non_required' => $resultNonReq];
 }
 
-function getTermsList($data)
+function getTermsList($data, $level = 3)
 {
-    $result = '';
-    foreach ($data as $term) {
-        $result .= '<ul>';
-        $result .= '<li><input type="checkbox" class="advancedSearchThesaurus" presenton="' . implode(',', array_unique($term['global'])) . '"/> ' . $term['name'];
-        if (! empty($term['child'])) {
-            $result .= getTermsList($term['child']);
+    $result = '<table style="table-layout:fixed;" class="table table-striped"><thead></thead><tbody>';
+    if (count($data) == 0) {
+        return "";
+    }
+    foreach ($data as $category) {
+        $result .= '<tr class="collapseChilds" data-target=".' . sanitizeForClassName($category['name']) . '"><td colspan="3"><span class="glyphicon glyphicon-plus"></span> ' . $category['name'] . '</td></tr>';
+        $result .= '<tr style="display:none;" class="' . sanitizeForClassName($category['name']) . '"><th>Thème</th><th>Éléments</th><th>Variations</th></tr>';
+        foreach ($category['child'] as $child) {
+            $result .= '<tr style="display:none;" class="' . sanitizeForClassName($category['name']) . '"><td>' . $child['name'] . '</td><td colspan="2">' . getTermsWithInputs($child['child']) . '</td></tr>';
         }
-        $result .= '</li></ul>';
     }
 
-    return $result;
+    return $result . '</tbody></table>';
 }
 
-$changes = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
+function getTermsWithInputs($terms)
+{
+    $result = '';
+    foreach ($terms as $term) {
+        $result .= '<div class="row"><div class="col-md-4"><input type="checkbox" class="advancedSearchThesaurus" presenton="' . implode(',', array_unique($term['global'])) . '"/> ' . $term['name'] . '</div><div class="col-md-8">' . generateSelectWithChanges($term['changes']) . '</div></div>';
+    }
+
+    return $result . '';
+}
+
+function generateSelectWithChanges($changes)
+{
+    $result = '<select multiple="multiple" class="changesSelect">';
+    foreach ($changes as $key => $values) {
+        $result .= '<option presenton="' . implode(',', $values) . '">' . getLocalizedChangeLabel($key) . '</option>';
+    }
+
+    return $result . '</select>';
+}
+
+function getLocalizedChangeLabel($change)
+{
+    $changes = ['stability' => t('Stabilité'), 'appeared' => t('Apparition'), 'disappeared' => t('Disparition'), 'increase' => t('Augmentation'), 'decrease' => t('Diminution'), 'appearance_change' => t('Changement d\'apparence')];
+
+    return (isset($changes[$change]) ? $changes[$change] : 'Erreur');
+}
 
 function fetchThesaurusFields(&$result, &$resultNonReq, $serie)
 {
-    $changes       = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
-    $notToPreserve = array_merge($changes, ['global']);
+    $changes = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
     foreach ($serie->field_popp_serie_photo_list[LANGUAGE_NONE] as $photoNid) {
         $photo = node_load($photoNid['target_id']);
         if (isset($photo->field_popp_photo_thesaurus[LANGUAGE_NONE])) {
@@ -79,12 +105,15 @@ function fetchThesaurusFields(&$result, &$resultNonReq, $serie)
                 $entity = $entity[$thesElt['value']];
                 $tid    = $entity->field_popp_thes_elt[LANGUAGE_NONE][0]['tid'];
                 foreach ($entity->field_popp_thes_evol[LANGUAGE_NONE] as $change) {
-                    $set[$tid][$change['value']][] = $serie->nid;
+                    $set[$tid]['changes'][$change['value']][] = $serie->nid;
                 }
                 $taxo                  = taxonomy_term_load($tid);
                 $set[$tid]['name']     = $taxo->name;
                 $set[$tid]['global'][] = $serie->nid;
                 $parents               = taxonomy_get_parents_all($tid);
+                if (count($parents) <= 2) {
+                    continue;
+                }
                 array_shift($parents); // Avoid getting current element as parent
                 $result = merge($result, putInParent($parents, $set, $set[$tid], $changes), true);
             }
@@ -96,12 +125,15 @@ function fetchThesaurusFields(&$result, &$resultNonReq, $serie)
                 $entity = $entity[$thesElt['value']];
                 $tid    = $entity->field_popp_nonreqthes_elt[LANGUAGE_NONE][0]['tid'];
                 foreach ($entity->field_field_popp_nonreqthes_evol[LANGUAGE_NONE] as $change) {
-                    $set[$tid][$change['value']][] = $serie->nid;
+                    $set[$tid]['changes'][$change['value']][] = $serie->nid;
                 }
                 $taxo                  = taxonomy_term_load($tid);
                 $set[$tid]['name']     = $taxo->name;
                 $set[$tid]['global'][] = $serie->nid;
                 $parents               = taxonomy_get_parents_all($tid);
+                if (count($parents) <= 2) {
+                    continue;
+                }
                 array_shift($parents);
                 $resultNonReq = merge(putInParent($parents, $set, $set[$tid], $changes), $resultNonReq, true);
             }
@@ -121,7 +153,7 @@ function putInParent($parents, $result, $baseResult, $changes)
         'global' => $baseResult['global'],
     ];
     foreach ($changes as $change) {
-        $actual[$parent->tid][$change] = (isset($baseResult[$change])?$baseResult[$change]:[]);
+        $actual[$parent->tid]['changes'][$change] = (isset($baseResult['changes'][$change]) ? $baseResult['changes'][$change] : []);
     }
     $actual[$parent->tid]['child'] = $result;
 
@@ -162,10 +194,18 @@ function fetchClassicalField(&$resultArray, $node, $label, $category, $readableN
 function fetchTaxonomyField(&$resultArray, $node, $label, $category, $readableName, $fieldName)
 {
     $results = [];
+    if (! isset($node->{$fieldName}['und'][0]['tid'])) {
+        return;
+    }
     if (isset($node->{$fieldName}['und'][0]['tid'])) {
-        $term                                                                                                     = taxonomy_term_load($node->{$fieldName}['und'][0]['tid']);
-        $resultArray[$category][$readableName]['values'][$node->{$fieldName}['und'][0]['tid']]['presentOnNode'][] = $node->nid;
-        $resultArray[$category][$readableName]['values'][$node->{$fieldName}['und'][0]['tid']]['label']           = $term->name;
+        $term = taxonomy_term_load($node->{$fieldName}['und'][0]['tid']);
+        if (isset($term->name)) {
+            if (! isset($resultArray[$category][$readableName]['values'][$node->{$fieldName}['und'][0]['tid']]['presentOnNode'])) {
+                $resultArray[$category][$readableName]['values'][$node->{$fieldName}['und'][0]['tid']]['presentOnNode'] = [];
+            }
+            $resultArray[$category][$readableName]['values'][$node->{$fieldName}['und'][0]['tid']]['presentOnNode'][] = $node->nid;
+            $resultArray[$category][$readableName]['values'][$node->{$fieldName}['und'][0]['tid']]['label']           = $term->name;
+        }
     }
     $resultArray[$category][$readableName]['type']  = 'select';
     $resultArray[$category][$readableName]['label'] = $label;
@@ -192,6 +232,11 @@ function merge(array $a, array $b, $preserveNumericKeys = true)
             if (! $preserveNumericKeys && is_int($key)) {
                 $a[] = $value;
             } elseif (is_array($value) && is_array($a[$key])) {
+                if ($key == 'global') {
+                    $preserveNumericKeys = false;
+                } else {
+                    $preserveNumericKeys = true;
+                }
                 $a[$key] = merge($a[$key], $value, $preserveNumericKeys);
             } else {
                 $a[$key] = $value;
@@ -202,4 +247,15 @@ function merge(array $a, array $b, $preserveNumericKeys = true)
     }
 
     return $a;
+}
+
+function sanitizeForClassName($str)
+{
+    $unwanted_array = ['Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E',
+                       'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U',
+                       'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ç' => 'c',
+                       'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
+                       'ö' => 'o', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'y', 'þ' => 'b', 'ÿ' => 'y', ' ' => '_'];
+
+    return strtolower(strtr($str, $unwanted_array));
 }

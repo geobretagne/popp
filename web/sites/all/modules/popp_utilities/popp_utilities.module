@@ -11,7 +11,7 @@ function popp_utilities_block_info()
 {
     $blocks = [];
 
-    $blocks['popp_search_block'] = [
+    $blocks['popp_search_block']          = [
         'info' => t('Bloc de recherche POPP'),
     ];
     $blocks['popp_advanced_search_block'] = [
@@ -24,6 +24,7 @@ function popp_utilities_block_info()
 
 /**
  * @param string $delta
+ *
  * @return array
  * Hook block view, allows displaying search block
  */
@@ -35,13 +36,14 @@ function popp_utilities_block_view($delta = '')
         case 'popp_search_block':
             drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
             $block['subject'] = t('Recherche');
-            $data = getInfosFromSeries();
+            $data             = getInfosFromSeries();
             $block['content'] = generateInputs($data);
             break;
         case 'popp_advanced_search_block':
+            drupal_add_js(drupal_get_path('module', 'popp_utilities') . '/js/search.js');
             drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
             $block['subject'] = t('Recherche avancée');
-            $data = getThesaurusFromSeries();
+            $data             = getThesaurusFromSeries();
             $block['content'] = generateThesaurusForm($data);
             break;
     }
@@ -49,28 +51,34 @@ function popp_utilities_block_view($delta = '')
     return $block;
 }
 
-function generateThesaurusForm($data){
+function generateThesaurusForm($data)
+{
     $result = '<div id="advancedSearchModal" class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
                     <button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>×</span></button>
                     <h4 class="modal-title">Recherche avancée</h4>
+                    <p style="font-style:italic;">Cliquez sur une catégorie pour voir les thèmes</p>
                 </div>
-                <div class="modal-body">';
+                <div class="modal-body"><form autocomplete="off">';
     $result .= getTermsList($data['required']);
     $result .= getTermsList($data['non_required']);
-    $result .= '<button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>Fermer la fenêtre</span></button></div></div></div></div>';
+    $result .= '<button aria-label="Fermer" data-dismiss="modal" class="btn btn-primary btn-block" type="button">Fermer la fenêtre</button>
+</form></div></div></div></div>';
+
     return $result;
 }
+
 /**
  * @param $dataSet
+ *
  * @return string
  * This function generates an accordion, organized by categories
  */
 function generateInputs($dataSet)
 {
     $result = cache_get('popp_search');
-    if (!$result) {
+    if (! $result) {
         $result = '<div id="popp_search_block"><form id="poppSearchForm" autocomplete="off"><div id="accordion">';
-        $first = true;
+        $first  = true;
         foreach ($dataSet as $label => $category) {
             $result .= '<div class="panel panel-default">
                         <div id="headingOne" role="tab" class="panel-heading">
@@ -90,8 +98,8 @@ function generateInputs($dataSet)
                         break;
                 }
             }
-            if($label == 'Avancée'){
-                $result .= '<p>&nbsp;</p><button id="thesSearchButton" data-toggle="modal" data-target="#advancedSearchModal" class="btn btn-primary btn-block">Voir thésaurus</button>';
+            if ($label == 'Avancée') {
+                $result .= '<p>&nbsp;</p><a id="thesSearchButton" data-toggle="modal" data-target="#advancedSearchModal" class="btn btn-primary btn-block">Afficher thésaurus</a>';
             }
             $result .= '</div></div></div>';
             $first = false;
@@ -99,17 +107,17 @@ function generateInputs($dataSet)
         $result .= '<div class="checkbox"><label for="spatialSearch">Recherche spatiale <input id="spatialSearch" type="checkbox" name="spatialSearch"/></label></div>';
         $result .= '<button class="btn btn-primary btn-block" id="searchButton">Rechercher</button>';
         cache_set('popp_search', $result . "</form></div>");
-        return $result. "</form></div>";
+
+        return $result . "</form></div>";
     } else {
         return $result->data;
     }
-
-
 }
 
 /**
  * @param $item
  * @param $data
+ *
  * @return string
  * Returns an HTML string containing a select, filled with found items
  */
@@ -121,13 +129,14 @@ function generateSelect($item, $data)
         <select class="form-control" name="' . $item . '" id="' . $item . '">
             <option value=""> - Tout -</option>
         ';
-    if (!empty($data['values'])) {
+    if (! empty($data['values'])) {
         foreach ($data['values'] as $id => $inputData) {
             $input .= '<option presenton="' . implode(',', $inputData['presentOnNode']) . '" value="' . $id . '">' . $inputData['label'] . '</option>';
         }
     }
     $input .= '</select>
         </div>';
+
     return $input;
 }
 
@@ -139,107 +148,113 @@ function generateSelect($item, $data)
 function popp_utilities_openlayers_behaviors()
 {
     return [
-        'openlayers_behavior_cluster_popp' => [
-            'title' => t('Clustering - POPP Style'),
+        'openlayers_behavior_cluster_popp'        => [
+            'title'       => t('Clustering - POPP Style'),
             'description' => t('Groups points on a map depending on zoom level. You should NOT activate cluster feature at the same time.'),
-            'type' => 'layer',
-            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => [
-                'file' => 'openlayers_behavior_cluster_popp.class.php',
-                'class' => 'openlayers_behavior_cluster_popp',
+            'type'        => 'layer',
+            'path'        => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior'    => [
+                'file'   => 'openlayers_behavior_cluster_popp.class.php',
+                'class'  => 'openlayers_behavior_cluster_popp',
                 'parent' => 'openlayers_behavior',
             ],
         ],
-        'openlayers_search_behavior_popp' => [
-            'title' => t('Search - POPP'),
+        'openlayers_search_behavior_popp'         => [
+            'title'       => t('Search - POPP'),
             'description' => t('Allows filtering POPP photo series'),
-            'type' => 'layer',
-            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => [
-                'file' => 'openlayers_behavior_popp_search.class.php',
-                'class' => 'openlayers_behavior_popp_search',
+            'type'        => 'layer',
+            'path'        => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior'    => [
+                'file'   => 'openlayers_behavior_popp_search.class.php',
+                'class'  => 'openlayers_behavior_popp_search',
                 'parent' => 'openlayers_behavior',
             ],
         ],
-        'openlayers_behavior_popp_popup' => [
-            'title' => t('Popup - POPP'),
+        'openlayers_behavior_popp_popup'          => [
+            'title'       => t('Popup - POPP'),
             'description' => t('Allows showing popups when hovering a photo serie point'),
-            'type' => 'layer',
-            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => [
-                'file' => 'openlayers_behavior_popp_popup.class.php',
-                'class' => 'openlayers_behavior_popp_popup',
+            'type'        => 'layer',
+            'path'        => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior'    => [
+                'file'   => 'openlayers_behavior_popp_popup.class.php',
+                'class'  => 'openlayers_behavior_popp_popup',
                 'parent' => 'openlayers_behavior',
             ],
         ],
         'openlayers_behavior_popp_series_display' => [
-            'title' => t('Photo serie display'),
+            'title'       => t('Photo serie display'),
             'description' => t('Allows searching a photo serie on a map'),
-            'type' => 'layer',
-            'path' => drupal_get_path('module', 'popp_utilities') . '/includes',
-            'behavior' => [
-                'file' => 'openlayers_behavior_popp_series.class.php',
-                'class' => 'openlayers_behavior_popp_series',
+            'type'        => 'layer',
+            'path'        => drupal_get_path('module', 'popp_utilities') . '/includes',
+            'behavior'    => [
+                'file'   => 'openlayers_behavior_popp_series.class.php',
+                'class'  => 'openlayers_behavior_popp_series',
                 'parent' => 'openlayers_behavior',
             ],
         ],
     ];
 }
 
-function popp_utilities_entity_form_validate(&$entity_form, &$form_state){
-    if($entity_form['#entity']->type != 'popp_photo'){
+function popp_utilities_entity_form_validate(&$entity_form, &$form_state)
+{
+    if ($entity_form['#entity']->type != 'popp_photo') {
         return;
     }
-    if(isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new){
+    if (isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new) {
         $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['form'];
-    }else{
+    } else {
         $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][0]['form'];
     }
     $thesAmount = (seekThesaurusAmount($inlineForm['field_popp_photo_thesaurus']['und'], 'field_popp_thes_elt') + seekThesaurusAmount($inlineForm['field_popp_photo_nonreq_thes']['und'], 'field_popp_nonreqthes_elt'));
-    if($thesAmount < 2){
+    if ($thesAmount < 2) {
         form_error($entity_form['field_popp_photo_thesaurus'], 'Vous devez saisir au moins deux éléments de thésaurus');
     }
 }
 
-function seekThesaurusAmount($elements, $key){
+function seekThesaurusAmount($elements, $key)
+{
     $count = 0;
-    foreach($elements as $element){
-        if(!is_array($element)){
+    foreach ($elements as $element) {
+        if (! is_array($element)) {
             continue;
         }
-        if(!empty($element[$key][LANGUAGE_NONE][0]['tid'])){
-            $count ++;
+        if (! empty($element[$key][LANGUAGE_NONE][0]['tid'])) {
+            $count++;
         }
     }
+
     return $count;
 }
 
-function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$form_state) {
-    if($entity_form['#entity']->type == 'popp_photo' && $entity_form['#entity']->is_new){
-        $parentNid = $form_state['build_info']['args'][0]->nid;
-        $existingThesaurus = getExistingThesaurus($parentNid);
+function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$form_state)
+{
+    if ($entity_form['#entity']->type == 'popp_photo' && $entity_form['#entity']->is_new) {
+        $parentNid                          = $form_state['build_info']['args'][0]->nid;
+        $existingThesaurus                  = getExistingThesaurus($parentNid);
         $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';
-        foreach($existingThesaurus as $id => $thesElement){
-            $entity_form['field_popp_photo_thesaurus']['und'][$id] = $entity_form['field_popp_photo_thesaurus']['und'][0];
-            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_elt']['und']['#default_value'] = [$thesElement['thes_elements']['und'][0]['tid'] =>1];
-            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_evol']['und']['#default_value'] = [0=>'stability'];
+        foreach ($existingThesaurus as $id => $thesElement) {
+            $entity_form['field_popp_photo_thesaurus']['und'][$id]                                                  = $entity_form['field_popp_photo_thesaurus']['und'][0];
+            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_elt']['und']['#default_value']  = [$thesElement['thes_elements']['und'][0]['tid'] => 1];
+            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_evol']['und']['#default_value'] = [0 => 'stability'];
         }
     }
     $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';
 }
 
-function getExistingThesaurus($parentNid){
+function getExistingThesaurus($parentNid)
+{
     module_load_include('inc', 'entity', 'includes/entity.controller');
     module_load_include('inc', 'field_collection');
     $parentNode = node_load($parentNid);
-    $result = [];
-    foreach($parentNode->field_popp_serie_photo_list['und'] as $photoId){
+    $result     = [];
+    foreach ($parentNode->field_popp_serie_photo_list['und'] as $photoId) {
         $photo = node_load($photoId['target_id']);
-        foreach($photo->field_popp_photo_thesaurus['und'] as $item){
-            $entity = field_collection_item_load($item['value']);
+        foreach ($photo->field_popp_photo_thesaurus['und'] as $item) {
+            $entity   = field_collection_item_load($item['value']);
             $result[] = ['changes' => $entity->field_popp_thes_changes, 'thes_elements' => $entity->field_popp_thes_elt, 'evolutions' => $entity->field_popp_thes_evol];
         }
     }
+
     return $result;
 }
 
@@ -250,16 +265,20 @@ function popp_utilities_node_insert($node)
 {
     clearCacheSearch($node);
 }
+
 /**
  * Implements hook_node_update().
  */
-function popp_utilities_node_update($node){
+function popp_utilities_node_update($node)
+{
     clearCacheSearch($node);
 }
-function clearCacheSearch($node){
-    if($node->type == 'popp_photo' || $node->type == 'popp_photo_serie'){
-        if(false !== cache_get('popp_search')){
-            cache_clear_all('popp_search','cache');
+
+function clearCacheSearch($node)
+{
+    if ($node->type == 'popp_photo' || $node->type == 'popp_photo_serie') {
+        if (false !== cache_get('popp_search')) {
+            cache_clear_all('popp_search', 'cache');
         }
     }
 }
