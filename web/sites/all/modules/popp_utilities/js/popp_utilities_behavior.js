@@ -140,7 +140,8 @@ var doCenter = true;
     }
 
     function refreshList() {
-        if($("#spatialSearch:checked").size() == 0 && lastFeature !== undefined){
+        if($("#spatialSearch:checked").size() == 0){
+            doCenter = true;
             return;
         }
         var layers = data.openlayers.getLayersByClass('OpenLayers.Layer.Vector');

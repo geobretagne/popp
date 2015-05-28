@@ -140,8 +140,6 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
             $node->field_popp_serie_int_identifier[LANGUAGE_NONE][0]['value'] = $serie[7];
             $node->field_popp_serie_county[LANGUAGE_NONE][0]['tid'] = $serie[8];
             $node->field_popp_serie_town[LANGUAGE_NONE][0]['tid'] = $serie[9];
-            $node->field_popp_serie_place[LANGUAGE_NONE][0]['feeds'] = true;
-            $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt'] = 'GEOMETRYCOLLECTION('.$serie[10].')';
             $node->field_popp_serie_landscape_set[LANGUAGE_NONE][0]['tid'] = $serie[11];
             $node->field_popp_serie_landscape_unit[LANGUAGE_NONE][0]['tid'] = $serie[12];
             $node->field_popp_serie_per[LANGUAGE_NONE][0] = getPeriodAndInterval($serie[13]);
@@ -154,6 +152,9 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
                 // Jump one line
                 fgetcsv($parser, 0, ';');
                 $result = insertPhotoNodes($parser, $node, $form_state);
+                $node->field_popp_serie_place[LANGUAGE_NONE][0]['feeds'] = true;
+                $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt'] = 'GEOMETRYCOLLECTION('.$serie[10].')';
+                node_save($node);
                 if (is_array($result)) {
                     drupal_set_message(t("Série @serie importée avec succès", ['@serie'=>$node->title]));
                 }
