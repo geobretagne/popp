@@ -8,6 +8,7 @@
 global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
 $node = node_load($nodeToDisplay['#node']->nid);
+$output = '';
 $commentsCount = isset($nodeToDisplay['comments']['comments']) ? count($nodeToDisplay['comments']['comments']) - 2 : 0;
 if ($commentsCount < 0)
     $commentsCount = 0;
@@ -20,8 +21,6 @@ if(isset($node->field_popp_serie_supp_struct['und'])){
             'image_link' => '',
         ),
     ));
-}else{
-    $output = '';
 }
 /**
  * @file
@@ -188,28 +187,9 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                             <div>
                                 <div class="panel-body">
                                     <div class="field">
-                                        <?= drupal_render($nodeToDisplay['field_popp_serie_first_desc']) ?>
+                                        <?= drupal_render($nodeToDisplay['field_popp_serie_supp_struct']) ?>
+                                        <?= drupal_render($nodeToDisplay['field_popp_serie_opp']) ?>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                       aria-expanded="true" aria-controls="collapseOne">
-                                        Série
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                                 aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    <div class="field">
-                                        <div class="field-label">Titre:&nbsp;</div>
-                                        <?= $title ?>
-                                    </div>
-                                    <?= drupal_render($nodeToDisplay['title']) ?>
                                 </div>
                             </div>
                         </div>
@@ -218,14 +198,16 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Métadonnées
+                                        Série <?=$nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value']?>
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                                  aria-labelledby="headingTwo">
                                 <div class="panel-body">
-                                    <?= drupal_render($nodeToDisplay['field_popp_serie_supp_struct']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_per']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_thematic_axis']) ?>
+
                                 </div>
                             </div>
                         </div>
@@ -244,6 +226,27 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                     <div id="photoDataPlaceHolder">
 
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="true" aria-controls="collapseOne">
+                                        Territoire
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_county']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_town']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_set']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_unit']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_per']) ?>
+                                    <?= str_replace('))', '', str_replace('GEOMETRYCOLLECTION(POINT(', '', drupal_render($nodeToDisplay['field_popp_serie_place']))) ?>
                                 </div>
                             </div>
                         </div>
@@ -280,22 +283,23 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs photoTabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#analyse" aria-controls="analyse" role="tab"
-                                                              data-toggle="tab">Analyse</a></li>
-                    <li role="presentation"><a href="#temoignages" aria-controls="temoignages" role="tab"
-                                               data-toggle="tab">Témoignages</a></li>
+                    <li role="presentation" class="active"><a href="#descriptions" aria-controls="descriptions" role="tab"
+                                                              data-toggle="tab">Descriptions</a></li>
+                    <li role="presentation"><a href="#changements" aria-controls="changements" role="tab"
+                                               data-toggle="tab">Changements</a></li>
                     <li role="presentation"><a href="#commentaires" aria-controls="commentaires" role="tab"
                                                data-toggle="tab">Commentaires (<?= $commentsCount ?>)</a></li>
+                    <li role="presentation"><a href="#sons" aria-controls="sons" role="tab"
+                                               data-toggle="tab">Sons</a>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active highlight" id="analyse"><p>Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Nullam posuere posuere libero et venenatis. Nullam tincidunt,
-                            odio vel euismod eleifend, augue metus molestie felis, eget faucibus augue libero sit amet
-                            dui. Nam metus nibh, fermentum at lacinia gravida, posuere at augue. Aenean eget maximus
-                            augue.</p></div>
-                    <div role="tabpanel" class="tab-pane highlight" id="temoignages">
+                    <div role="tabpanel" class="tab-pane active highlight" id="descriptions">
+                        <?= drupal_render($nodeToDisplay['field_popp_serie_author_intent']) ?>
+                        <?= drupal_render($nodeToDisplay['field_popp_serie_first_desc']) ?>
+                    </div>
+                    <div role="tabpanel" class="tab-pane highlight" id="sons">
                         <?php
                         $testimonies = views_get_view('popp_testimonies_display');
                         $testimonies->set_display('block');
@@ -312,7 +316,40 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         ?>
                         <?= render($form) ?>
                     </div>
-
+                    <div role="tabpanel" class="tab-pane highlight" id="changements">
+                        <h4>Changements par rapport à la photo précédente</h4>
+                        <table style="width:100%;text-align:center;" class="table table-striped table-bordered">
+                            <thead">
+                                <tr>
+                                    <th style="text-align:center;">Éléments</th><th style="text-align:center;">Stabilité</th><th style="text-align:center;">Apparition</th><th style="text-align:center;">Disparition</th><th style="text-align:center;">Modification</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size:15px;">
+                            <tr>
+                                <td>Haie</td><td>X</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>Poteaux</td><td></td><td>X</td><td></td><td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h4>Changements intervenus sur la durée de la série</h4>
+                        <table style="width:100%;text-align:center;" class="table table-striped table-bordered">
+                            <thead">
+                            <tr>
+                                <th style="text-align:center;">Éléments</th><th style="text-align:center;">Stabilité</th><th style="text-align:center;">Apparition</th><th style="text-align:center;">Disparition</th><th style="text-align:center;">Modification</th>
+                            </tr>
+                            </thead>
+                            <tbody style="font-size:15px;">
+                            <tr>
+                                <td>Haie</td><td>5</td><td></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td>Poteaux</td><td></td><td>2</td><td></td><td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
