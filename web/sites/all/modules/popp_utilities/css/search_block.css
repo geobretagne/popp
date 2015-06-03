@@ -1,6 +1,20 @@
-.search-select:first-child{
-    padding-top:0;
+.search-select:first-child {
+    padding-top: 0;
 }
-.search-select{
-    padding-top:10px;
+
+.search-select {
+    padding-top: 10px;
+}
+
+select.changesSelect[multiple] {
+    height: 55px;
+    width: 100%;
+}
+
+.collapseChilds {
+    font-size: 12px;
+}
+
+.collapseChilds:hover {
+    cursor: pointer;
 }

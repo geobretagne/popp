@@ -26,21 +26,22 @@ function popp_opp_views_api($module = NULL, $api = NULL) {
 function popp_opp_node_info() {
   $items = array(
     'opp' => array(
-      'name' => t('OPP Standard'),
+      'name' => t('Porteur OPP'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titre'),
       'help' => '',
     ),
     'opp_takepart' => array(
-      'name' => t('OPP Participatif'),
+      'name' => t('Porteur  OPP-PA'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titre'),
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

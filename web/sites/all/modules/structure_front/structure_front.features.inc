@@ -31,17 +31,9 @@ function structure_front_image_default_styles() {
 
   // Exported image style: logos_footer.
   $styles['logos_footer'] = array(
-    'name' => 'logos_footer',
     'label' => 'Logos footer',
     'effects' => array(
       1 => array(
-        'label' => 'Échelle',
-        'help' => 'La mise à l\'échelle maintiendra les proportions originales de l\'image. Si une seule dimension est précisée, l\'autre dimension sera calculée automatiquement.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => '',
@@ -55,21 +47,29 @@ function structure_front_image_default_styles() {
 
   // Exported image style: miniature_serie_photo.
   $styles['miniature_serie_photo'] = array(
-    'name' => 'miniature_serie_photo',
     'label' => 'Miniature serie photo',
     'effects' => array(
       2 => array(
-        'label' => 'Échelle',
-        'help' => 'La mise à l\'échelle maintiendra les proportions originales de l\'image. Si une seule dimension est précisée, l\'autre dimension sera calculée automatiquement.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => '',
           'height' => 85,
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: sidebar_image.
+  $styles['sidebar_image'] = array(
+    'label' => 'Sidebar image',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 120,
+          'height' => '',
           'upscale' => 0,
         ),
         'weight' => 1,
@@ -85,16 +85,16 @@ function structure_front_image_default_styles() {
  */
 function structure_front_node_info() {
   $items = array(
-    'opp_photo' => array(
-      'name' => t('Série POPP'),
+    'partner_logo' => array(
+      'name' => t('Logo partenaire'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Nom de la série'),
+      'title_label' => t('Titre'),
       'help' => '',
     ),
-    'partner_logo' => array(
-      'name' => t('Logo partenaire'),
+    'popp_documentation' => array(
+      'name' => t('Documentation'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -109,8 +109,40 @@ function structure_front_node_info() {
       'title_label' => t('Titre'),
       'help' => '',
     ),
+    'popp_photo' => array(
+      'name' => t('Photo'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
+      'help' => '',
+    ),
+    'popp_photo_serie' => array(
+      'name' => t('Série photo'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre de la série'),
+      'help' => '',
+    ),
+    'popp_reference_document' => array(
+      'name' => t('Document référence'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Identifiant du document de référence'),
+      'help' => '',
+    ),
+    'popp_testimony_sheet' => array(
+      'name' => t('Son'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre du témoignage'),
+      'help' => '',
+    ),
     'supporting_structure' => array(
-      'name' => t('Page de la Structure Porteuse'),
+      'name' => t('Structure Porteuse'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

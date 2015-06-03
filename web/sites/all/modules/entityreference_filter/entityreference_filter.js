@@ -28,7 +28,7 @@ Drupal.behaviors.entityreference_filter_dynamic = {
           if (element.length > 0) {
             elements[controlling_filter] = element;
             element.attr('autocomplete', 'off');
-            var url = settings['basePath'] + 'entityreference_filter/update/' + view + '/' + controlling_filter;
+            var url = settings['basePath'] + settings['pathPrefix'] + 'entityreference_filter/update/' + view + '/' + controlling_filter;
 
             element.once('entityreference_filter').change(function() {
               var ajax = new Drupal.ajax(false, false, {url: url});

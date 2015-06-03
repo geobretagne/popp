@@ -21,30 +21,22 @@ function carto_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'popp' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'popp',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['views-popp_results_view-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'popp_results_view-block',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
       'popp' => array(
         'region' => '',
         'status' => 0,
         'theme' => 'popp',
+        'weight' => 10,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
         'weight' => 0,
       ),
     ),

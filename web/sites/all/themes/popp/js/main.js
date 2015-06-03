@@ -7,12 +7,11 @@
         /**
          * Remove attributes that forces logos height & width
          */
-      //  $(".front #landscape").delay("3000").slideUp("slow").prev().addClass("headerHeight");
-        $("#block-views-logos-partenaires-block .views-field-field-logo-partenaire-solo img,.node-type-opp-photo .field-name-field-photo img").each(function(i,elt){
+        $("#block-views-logos-partenaires-block .views-field-field-logo-partenaire-solo img,.node-type-opp-photo .field-name-field-photo img").each(function (i, elt) {
             $(this).removeAttr("height");
             $(this).removeAttr("width");
         });
-        $("a#removeInstallModal").click(function(){
+        $("a#removeInstallModal").click(function () {
             $("#greyBackground, #installAlert").remove("");
         });
     });

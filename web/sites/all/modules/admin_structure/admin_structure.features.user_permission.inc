@@ -14,7 +14,7 @@ function admin_structure_user_default_permissions() {
   $permissions['access site map'] = array(
     'name' => 'access site map',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Root' => 'Root',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -25,7 +25,7 @@ function admin_structure_user_default_permissions() {
   $permissions['access site-wide contact form'] = array(
     'name' => 'access site-wide contact form',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Root' => 'Root',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),

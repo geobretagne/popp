@@ -3,14 +3,12 @@
  */
 (function($) {
     var checkedPhoto = 0;
+    var nid = 0;
     var cpt =0;
+    var first = true;
     $(document).ready(function(){
-        var photo = getPhotoId();
-        if(photo != false){
-            loadPhoto(photo);
-        }else{
-            loadPhoto($(".toZoom").first().attr('linkedphoto'));
-        }
+
+        nid = getNodeId();
         // Change photo on click on a thumbnail
         $("#thumbnailsViewPlaceHolder").on('click', '.toZoom', function(e){
             loadPhoto($(this).attr('linkedphoto'));
@@ -18,21 +16,26 @@
             e.stopImmediatePropagation();
             return false;
         });
-        $("#thumbnailsViewPlaceHolder").on('mouseup', '.pagination a', function(e){
-            $(document).ajaxSuccess(setCheckedPhoto);
-        });
+        var defaultId = getPhotoId();
+        if(!defaultId){
+            defaultId = $("a[linkedphoto]").first().attr("linkedphoto");
+        }
+        setCheckedPhoto(defaultId);
+        loadPhoto(defaultId);
     });
     function getPhotoId () {
         return Drupal.arg(2);
+    }
+
+    function getNodeId () {
+        return Drupal.arg(1);
     }
 
     function setCheckedPhoto(photo){
         $(document).off('ajaxSuccess');
         if(photo == null || typeof(photo) == "object"){
             photo = checkedPhoto;
-            console.log(photo);
             if(cpt == 2){
-                $(document).off('ajaxSuccess');
                 cpt = 0;
             }
         }
@@ -54,7 +57,6 @@
         {
             var viewHtml = response[1].data;
             $("#photoPh").html(viewHtml);
-            Drupal.attachBehaviors();
             changeLightBoxUrl();
         }
     }
@@ -69,18 +71,22 @@
 
     function loadPhoto(id){
         setCheckedPhoto(id);
+        $.get(Drupal.settings.basePath + 'utilities/ajax/'+nid+'/'+id, function(data){
+                $("#tabThesaurus").html(data);
+            }
+        );
         $.post(
             // Display first element of entity collection on load
             Drupal.settings.basePath + 'views/ajax',
             {
-                view_name: 'popp_field_collection_serie',view_display_id: 'block',view_args: id
+                view_name: 'popp_search_result_view',view_display_id: 'block_2',view_args: nid+'/'+id
             },
             replacePhoto
         );
         $.post(
             Drupal.settings.basePath + 'views/ajax',
             {
-                view_name: 'popp_field_collection_serie', view_display_id: 'block_1', view_args:id
+                view_name: 'popp_search_result_view', view_display_id: 'block_3', view_args:nid+'/'+id
             },
             replaceInfos
         );

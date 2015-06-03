@@ -30,26 +30,6 @@ function admin_structure_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/supporting-structure
-  $menu_links['menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/supporting-structure'] = array(
-    'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/supporting-structure',
-    'router_path' => 'node/add/supporting-structure',
-    'link_title' => 'Ajouter un logo structure porteuse',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-administration-contenu_ajouter-un-logo-structure-porteuse:node/add/supporting-structure',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -45,
-    'customized' => 1,
-  );
   // Exported menu link: menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart
   $menu_links['menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart'] = array(
     'menu_name' => 'menu-administration-contenu',
@@ -110,17 +90,17 @@ function admin_structure_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-une-srie:node/add/opp-photo
-  $menu_links['menu-administration-contenu_ajouter-une-srie:node/add/opp-photo'] = array(
+  // Exported menu link: menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie
+  $menu_links['menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie'] = array(
     'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/opp-photo',
-    'router_path' => 'node/add/opp-photo',
+    'link_path' => 'node/add/popp-photo-serie',
+    'router_path' => 'node/add/popp-photo-serie',
     'link_title' => 'Ajouter une série',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-administration-contenu_ajouter-une-srie:node/add/opp-photo',
+      'identifier' => 'menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -128,6 +108,26 @@ function admin_structure_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure
+  $menu_links['menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'node/add/supporting-structure',
+    'router_path' => 'node/add/supporting-structure',
+    'link_title' => 'Ajouter une structure porteuse',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_gestion-des-utilisateurs:admin/people
@@ -190,17 +190,38 @@ function admin_structure_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
+  // Exported menu link: menu-administration-contenu_import-de-masse:popp/import
+  $menu_links['menu-administration-contenu_import-de-masse:popp/import'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'popp/import',
+    'router_path' => 'popp/import',
+    'link_title' => 'Import de masse',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-administration-contenu_import-de-masse:popp/import',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Ajouter un OPP Participatif');
   t('Ajouter un OPP Standard');
   t('Ajouter un logo partenaire');
-  t('Ajouter un logo structure porteuse');
   t('Ajouter une FAQ');
+  t('Ajouter une structure porteuse');
   t('Ajouter une série');
   t('Gestion des utilisateurs');
   t('Gérer les TAGS');
   t('Gérer les séries');
+  t('Import de masse');
 
 
   return $menu_links;

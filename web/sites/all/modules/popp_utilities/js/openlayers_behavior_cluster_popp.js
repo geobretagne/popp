@@ -154,7 +154,7 @@ Drupal.theme.openlayersPopup = function (feature) {
                 visited[mapwide_id] = true;
             }
 
-            classes = ['openlayers-popup', 'openlayers-popup-feature'];
+            classes = [];
             if (i == 0) {
                 classes.push('first');
             }
