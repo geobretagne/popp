@@ -6,6 +6,16 @@
 (function ($) {
     var data;
     var availableNids = [], acceptedNids = [];
+    $(document).ready(function(){
+        $("#spatialSearch").click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            } else {
+                $(this).addClass('active');
+            }
+        });
+    });
+
     Drupal.behaviors.openlayers_behavior_popp_search = {
         'attach': function (context, settings) {
             if ($(context).data("openlayers") != undefined) {
@@ -116,7 +126,7 @@
     }
 
     function updateLayers(e) {
-        var spatialSearch = $("#spatialSearch:checked").size() > 0;
+        var spatialSearch = $("#spatialSearch").hasClass('active');
         if (spatialSearch) {
             doCenter = false;
         }
@@ -156,6 +166,8 @@
                                 if (first) {
                                     first = false;
                                     popupSelect.select(layers[i].features[j]);
+                                }else{
+                                    popupSelect.unselect(layers[i].features[j]);
                                 }
                                 delete layers[i].features[j].style;
                             }

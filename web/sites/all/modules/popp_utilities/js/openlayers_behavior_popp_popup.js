@@ -95,9 +95,9 @@ Drupal.openlayers.addBehavior('openlayers_behavior_popp_popup', function (data, 
                 Drupal.attachBehaviors();
             },
             outFeature: function (feature) {
-                map.removePopup(feature.popup);
+                /*map.removePopup(feature.popup);
                 feature.popup.destroy();
-                feature.popup = null;
+                feature.popup = null;*/
             }
         }
     );

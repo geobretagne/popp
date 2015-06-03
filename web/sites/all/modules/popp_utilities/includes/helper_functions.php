@@ -249,6 +249,159 @@ function merge(array $a, array $b, $preserveNumericKeys = true)
     return $a;
 }
 
+function getChangesTable($node)
+{
+    $changes = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
+
+    $result       = '<table style="width:100%;text-align:center;" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;">' . t('Éléments') . '</th>
+                            <th style="text-align:center;">' . t('Stabilité') . '</th>
+                            <th style="text-align:center;">' . t('Apparition') . '</th>
+                            <th style="text-align:center;">' . t('Disparition') . '</th>
+                            <th style="text-align:center;">' . t('Augmentation') . '</th>
+                            <th style="text-align:center;">' . t('Diminution') . '</th>
+                            <th style="text-align:center;">' . t('Chgt d\'apparence') . '</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+    $tableContent = getChangesAsArray($node, $changes);
+    foreach ($tableContent as $line) {
+        $result .= '<tr><td>' . $line['name'] . '</td>';
+        foreach ($changes as $change) {
+            $result .= '<td>' . count($line['changes'][$change]) . '</td>';
+        }
+        $result .= '</tr>';
+    }
+
+    return $result .= '</tbody></table>';
+}
+
+function getChangesSinceLastPhotoTable($serieNid, $actualNid)
+{
+    $node         = node_load($serieNid);
+    $changes      = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
+    $result       = '<table style="width:100%;text-align:center;" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;">' . t('Éléments') . '</th>
+                            <th style="text-align:center;">' . t('Stabilité') . '</th>
+                            <th style="text-align:center;">' . t('Apparition') . '</th>
+                            <th style="text-align:center;">' . t('Disparition') . '</th>
+                            <th style="text-align:center;">' . t('Augmentation') . '</th>
+                            <th style="text-align:center;">' . t('Diminution') . '</th>
+                            <th style="text-align:center;">' . t('Chgt d\'apparence') . '</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+    $tableContent = getChangesSincePreviousAsArray($node, $changes, $actualNid);
+    if(false === $tableContent){
+        print 'N/A';
+        drupal_exit();
+    }
+    foreach ($tableContent as $line) {
+        $result .= '<tr><td>' . $line['name'] . '</td>';
+        foreach ($changes as $change) {
+            $result .= '<td>' . (count($line['changes'][$change]) > 0 ? 'X' : ''). '</td>';
+        }
+        $result .= '</tr>';
+    }
+    if(empty($tableContent)){
+        $result.='<tr><td colspan="7">Aucun changement</td>';
+    }
+    print ($result .= '</tbody></table>');
+}
+
+function getChangesAsArray($node, $changes)
+{
+
+    $set = [];
+    foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $photoNid) {
+        $photo = node_load($photoNid['target_id']);
+        if (isset($photo->field_popp_photo_thesaurus[LANGUAGE_NONE])) {
+            foreach ($photo->field_popp_photo_thesaurus[LANGUAGE_NONE] as $thesElt) {
+                $entity = entity_load('field_collection_item', [$thesElt['value']]);
+                $entity = $entity[$thesElt['value']];
+                $tid    = $entity->field_popp_thes_elt[LANGUAGE_NONE][0]['tid'];
+                foreach ($entity->field_popp_thes_evol[LANGUAGE_NONE] as $change) {
+                    if (! isset($set[$tid]['changes'])) {
+                        $set[$tid]['changes'] = array_fill_keys(array_values($changes), []);
+                    }
+                    $set[$tid]['changes'][$change['value']][] = $photo->nid;
+                }
+                $taxo              = taxonomy_term_load($tid);
+                $set[$tid]['name'] = $taxo->name;
+            }
+        }
+        if (isset($photo->field_popp_photo_nonreq_thes[LANGUAGE_NONE])) {
+            foreach ($photo->field_popp_photo_nonreq_thes[LANGUAGE_NONE] as $thesElt) {
+                $entity = entity_load('field_collection_item', [$thesElt['value']]);
+                $entity = $entity[$thesElt['value']];
+                $tid    = $entity->field_popp_nonreqthes_elt[LANGUAGE_NONE][0]['tid'];
+                foreach ($entity->field_field_popp_nonreqthes_evol[LANGUAGE_NONE] as $change) {
+                    if (! isset($set[$tid]['changes'])) {
+                        $set[$tid]['changes'] = array_fill_keys(array_values($changes), []);
+                    }
+                    $set[$tid]['changes'][$change['value']][] = $photo->nid;
+                }
+                $taxo              = taxonomy_term_load($tid);
+                $set[$tid]['name'] = $taxo->name;
+            }
+        }
+    }
+
+    return $set;
+}
+
+function getChangesSincePreviousAsArray($node, $changes, $target)
+{
+    $set = [];
+    $first = true;
+    foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $photoNid) {
+        if ($photoNid['target_id'] != $target) {
+            if($first){
+                $first = false;
+            }
+            continue;
+        }else if($first){
+            return false;
+        }
+        $photo = node_load($photoNid['target_id']);
+        if (isset($photo->field_popp_photo_thesaurus[LANGUAGE_NONE])) {
+            foreach ($photo->field_popp_photo_thesaurus[LANGUAGE_NONE] as $thesElt) {
+                $entity = entity_load('field_collection_item', [$thesElt['value']]);
+                $entity = $entity[$thesElt['value']];
+                $tid    = $entity->field_popp_thes_elt[LANGUAGE_NONE][0]['tid'];
+                foreach ($entity->field_popp_thes_evol[LANGUAGE_NONE] as $change) {
+                    if (! isset($set[$tid]['changes'])) {
+                        $set[$tid]['changes'] = array_fill_keys(array_values($changes), []);
+                    }
+                    $set[$tid]['changes'][$change['value']][] = $photo->nid;
+                }
+                $taxo              = taxonomy_term_load($tid);
+                $set[$tid]['name'] = $taxo->name;
+            }
+        }
+        if (isset($photo->field_popp_photo_nonreq_thes[LANGUAGE_NONE])) {
+            foreach ($photo->field_popp_photo_nonreq_thes[LANGUAGE_NONE] as $thesElt) {
+                $entity = entity_load('field_collection_item', [$thesElt['value']]);
+                $entity = $entity[$thesElt['value']];
+                $tid    = $entity->field_popp_nonreqthes_elt[LANGUAGE_NONE][0]['tid'];
+                foreach ($entity->field_field_popp_nonreqthes_evol[LANGUAGE_NONE] as $change) {
+                    if (! isset($set[$tid]['changes'])) {
+                        $set[$tid]['changes'] = array_fill_keys(array_values($changes), []);
+                    }
+                    $set[$tid]['changes'][$change['value']][] = $photo->nid;
+                }
+                $taxo              = taxonomy_term_load($tid);
+                $set[$tid]['name'] = $taxo->name;
+            }
+        }
+    }
+    return $set;
+}
+
 function sanitizeForClassName($str)
 {
     $unwanted_array = ['Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E',

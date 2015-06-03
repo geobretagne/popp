@@ -69,11 +69,6 @@ function carto_openlayers_maps() {
         'high_label_outline_color' => '#ffffff',
         'externalGraphic' => '/sites/all/themes/popp/img/camera_cluster.png',
       ),
-      'openlayers_behavior_hover' => array(
-        'layers' => array(
-          'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
-        ),
-      ),
       'openlayers_behavior_layerswitcher' => array(
         'ascending' => 1,
         'sortBaseLayer' => '0',
@@ -94,16 +89,25 @@ function carto_openlayers_maps() {
           'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
         ),
       ),
+      'openlayers_behavior_popp_popup' => array(
+        'layers' => array(
+          'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
+        ),
+        'popupAtPosition' => 'mouse',
+        'panMapIfOutOfView' => 0,
+        'keepInMap' => 1,
+      ),
       'openlayers_search_behavior_popp' => array(
         'layers' => array(
           'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
         ),
       ),
     ),
-    'default_layer' => 'mapquest_osm',
+    'default_layer' => 'osm_mapnik',
     'layers' => array(
-      'google_satellite' => 'google_satellite',
-      'mapquest_osm' => 'mapquest_osm',
+      'ortho_ancienne' => 'ortho_ancienne',
+      'ortho' => 'ortho',
+      'osm_mapnik' => 'osm_mapnik',
       'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
     ),
     'layer_weight' => array(
@@ -167,7 +171,7 @@ function carto_openlayers_maps() {
     'hide_empty_map' => 0,
     'center' => array(
       'initial' => array(
-        'centerpoint' => '0,0',
+        'centerpoint' => '-2.109375006808678, 48.224672647766155',
         'zoom' => '0',
       ),
       'restrict' => array(
@@ -235,7 +239,7 @@ function carto_openlayers_maps() {
     'default_layer' => 'mapquest_osm',
     'layers' => array(
       'mapquest_osm' => 'mapquest_osm',
-      'mapquest_openaerial' => 'mapquest_openaerial',
+      'openlayers_kml_example' => 'openlayers_kml_example',
     ),
     'layer_weight' => array(
       'postgis_formatter_layer' => '0',
@@ -262,13 +266,13 @@ function carto_openlayers_maps() {
       'postgis_formatter_layer' => '0',
     ),
     'layer_activated' => array(
-      'openlayers_kml_example' => 0,
+      'openlayers_kml_example' => 'openlayers_kml_example',
       'openlayers_geojson_picture_this' => 0,
       'popp_views_home_layer_openlayers_1' => 0,
       'postgis_formatter_layer' => 0,
     ),
     'layer_switcher' => array(
-      'openlayers_kml_example' => 0,
+      'openlayers_kml_example' => 'openlayers_kml_example',
       'openlayers_geojson_picture_this' => 0,
       'popp_views_home_layer_openlayers_1' => 0,
       'postgis_formatter_layer' => 0,

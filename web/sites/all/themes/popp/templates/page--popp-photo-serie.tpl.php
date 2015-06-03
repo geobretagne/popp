@@ -318,37 +318,9 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="changements">
                         <h4>Changements par rapport à la photo précédente</h4>
-                        <table style="width:100%;text-align:center;" class="table table-striped table-bordered">
-                            <thead">
-                                <tr>
-                                    <th style="text-align:center;">Éléments</th><th style="text-align:center;">Stabilité</th><th style="text-align:center;">Apparition</th><th style="text-align:center;">Disparition</th><th style="text-align:center;">Modification</th>
-                                </tr>
-                            </thead>
-                            <tbody style="font-size:15px;">
-                            <tr>
-                                <td>Haie</td><td>X</td><td></td><td></td><td></td>
-                            </tr>
-                            <tr>
-                                <td>Poteaux</td><td></td><td>X</td><td></td><td></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div id="tabThesaurus"></div>
                         <h4>Changements intervenus sur la durée de la série</h4>
-                        <table style="width:100%;text-align:center;" class="table table-striped table-bordered">
-                            <thead">
-                            <tr>
-                                <th style="text-align:center;">Éléments</th><th style="text-align:center;">Stabilité</th><th style="text-align:center;">Apparition</th><th style="text-align:center;">Disparition</th><th style="text-align:center;">Modification</th>
-                            </tr>
-                            </thead>
-                            <tbody style="font-size:15px;">
-                            <tr>
-                                <td>Haie</td><td>5</td><td></td><td></td><td></td>
-                            </tr>
-                            <tr>
-                                <td>Poteaux</td><td></td><td>2</td><td></td><td></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <?=getChangesTable($node)?>
                     </div>
                 </div>
             </div>

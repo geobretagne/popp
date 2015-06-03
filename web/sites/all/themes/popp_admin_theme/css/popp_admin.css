@@ -1,0 +1,25 @@
+.term-reference-tree-level .term-reference-tree-level .term-reference-tree-level li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.no-term-reference-tree-button {
+    display:none;
+}
+
+.form-radio{
+    display:none;
+}
+
+.term-reference-tree-level .term-reference-tree-level .term-reference-tree-level li .form-radio{
+    display:inline;
+}
+
+.group-evolution div.form-type-checkbox{
+    display:inline-block;
+    margin-left:5px;
+}
+
+body.admin-menu #toolbar{
+    margin-top:-13px;
+}

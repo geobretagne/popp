@@ -186,38 +186,18 @@ function installStepTwo_validate($form, &$form_state)
         file_delete($file);
     }else{
         $nodes  = file_get_contents(drupal_realpath(drupal_get_path('module','popp_install').'/nodes.export'));
-        $result = node_export_import($nodes);
-        if ($result['success'] == true) {
-            drupal_set_message(t('Contenu importé avec succès'));
-        }
-    }
-    if(isset($form_state['values']['demo_photo_series']) && $form_state['values']['demo_photo_series'] == "1"){
-        // Extract image files
-      /*  $zip = new ArchiverZip(drupal_realpath(drupal_get_path('module','popp_install').'/demo_nodes.zip'));
-        $zip->extract(drupal_realpath("public://"));
-        unset($zip);*/
-        // Import photo series nodes
-        $nodes  = file_get_contents(drupal_realpath(drupal_get_path('module','popp_install').'/demo_nodes.export'));
-        $result = node_export_import($nodes);
-        if ($result['success'] == true) {
-            drupal_set_message(t('Contenu de démonstration importé avec succès'));
-        }
-        $nodes = db_query("SELECT * FROM {node} WHERE type = 'opp_photo'");
-        $geos = ['GEOMETRYCOLLECTION(POINT(-4.43918417713935 48.3541432379493))', 'GEOMETRYCOLLECTION(POINT(-2.59197682499608 47.7327584098976))', 'GEOMETRYCOLLECTION(POINT(-3.44225996285121 48.8187631757019))'];
-        $files = [0 => ['_M8G9023.JPG'],
-            1 => ['2005_Hab1_elven le bourg.JPG', '2006_Hab1_elven.JPG', '2005_hab2_damgan penerf.JPG', '2006_Hab2_damgan penerf.JPG'],
-            2 => ['05000101.JPG', '05000102.JPG', '05000103.JPG', '05000104.JPG', '05000105.jpg', '05000106.jpg', '05000107.jpg', '05000108.jpg']];
-        foreach ($nodes as $key => $leNode) {
-            $leNode = node_load($leNode->nid);
-            foreach ($files[$key] as $no => $fichier) {
-                $file_temp = file_get_contents(DRUPAL_ROOT . '/sites/all/modules/popp_install/images/' . $fichier);
-                $file = file_save_data($file_temp, 'public://' . $fichier, FILE_EXISTS_REPLACE);
-                updateFieldCollection($leNode, $file);
+        try{
+            $result = node_export_import($nodes);
+        }catch(Exception $e){
+
+        }finally{
+            if ($result['success'] == true) {
+                drupal_set_message(t('Contenu importé avec succès'));
+            }else{
+                die(var_dump($nodes));
             }
-            $leNode->field_popp_geolocalisation_photo['und'][0]['feeds'] = true;
-            $leNode->field_popp_geolocalisation_photo['und'][0]['wkt'] = $geos[$key];
-            node_save($leNode);
         }
+
 
     }
     $feature    = features_get_features('carto');

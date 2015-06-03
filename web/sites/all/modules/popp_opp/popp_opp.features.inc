@@ -26,7 +26,7 @@ function popp_opp_views_api($module = NULL, $api = NULL) {
 function popp_opp_node_info() {
   $items = array(
     'opp' => array(
-      'name' => t('OPP Standard'),
+      'name' => t('Porteur OPP'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -34,7 +34,7 @@ function popp_opp_node_info() {
       'help' => '',
     ),
     'opp_takepart' => array(
-      'name' => t('OPP Participatif'),
+      'name' => t('Porteur  OPP-PA'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

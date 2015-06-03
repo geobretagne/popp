@@ -3,6 +3,18 @@
 require_once(drupal_get_path('module', 'popp_utilities') . '/includes/helper_functions.php');
 
 
+function popp_utilities_menu()
+{
+    return [
+        'utilities/ajax/%/%' => [
+            'page callback'    => 'getChangesSinceLastPhotoTable',
+            'page arguments'   => [2,3],
+            'access arguments' => ['access content'],
+            'type'             => MENU_CALLBACK,
+        ],
+    ];
+}
+
 /**
  * @return array
  * Hook block_info, allows activating POPP search block
@@ -56,7 +68,7 @@ function generateThesaurusForm($data)
     $result = '<div id="advancedSearchModal" class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
                     <button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>×</span></button>
                     <h4 class="modal-title">Recherche avancée</h4>
-                    <p style="font-style:italic;">Cliquez sur une catégorie pour voir les thèmes</p>
+                    <p style="font-style:italic;">Cliquez sur une catégorie pour voir les thèmes. Si vous ne choisissez aucun type d\'évolution, les photographies contenant l\'élément seront recherchées.</p>
                 </div>
                 <div class="modal-body"><form autocomplete="off">';
     $result .= getTermsList($data['required']);
@@ -99,12 +111,12 @@ function generateInputs($dataSet)
                 }
             }
             if ($label == 'Avancée') {
-                $result .= '<p>&nbsp;</p><a id="thesSearchButton" data-toggle="modal" data-target="#advancedSearchModal" class="btn btn-primary btn-block">Afficher thésaurus</a>';
+                $result .= '<p>&nbsp;</p><a id="thesSearchButton" data-toggle="modal" data-target="#advancedSearchModal" class="btn btn-info btn-block">Afficher thésaurus</a>';
             }
             $result .= '</div></div></div>';
             $first = false;
         }
-        $result .= '<div class="checkbox"><label for="spatialSearch">Recherche spatiale <input id="spatialSearch" type="checkbox" name="spatialSearch"/></label></div>';
+        $result .= '<div style="padding:5px 0;"><a class="btn btn-info btn-block" id="spatialSearch"/>Recherche spatiale</a></div>';
         $result .= '<button class="btn btn-primary btn-block" id="searchButton">Rechercher</button>';
         cache_set('popp_search', $result . "</form></div>");
 
@@ -203,9 +215,13 @@ function popp_utilities_entity_form_validate(&$entity_form, &$form_state)
     if (isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new) {
         $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['form'];
     } else {
-        $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][0]['form'];
+        if(isset($form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][1]['form'])){
+            $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][1]['form'];
+        }else{
+            $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][0]['form'];
+        }
     }
-    $thesAmount = (seekThesaurusAmount($inlineForm['field_popp_photo_thesaurus']['und'], 'field_popp_thes_elt') + seekThesaurusAmount($inlineForm['field_popp_photo_nonreq_thes']['und'], 'field_popp_nonreqthes_elt'));
+    $thesAmount = (seekThesaurusAmount($inlineForm['field_popp_photo_thesaurus']['und'], 'field_popp_thes_elt'));
     if ($thesAmount < 2) {
         form_error($entity_form['field_popp_photo_thesaurus'], 'Vous devez saisir au moins deux éléments de thésaurus');
     }
@@ -228,7 +244,7 @@ function seekThesaurusAmount($elements, $key)
 
 function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$form_state)
 {
-    if ($entity_form['#entity']->type == 'popp_photo' && $entity_form['#entity']->is_new) {
+    if ($entity_form['#entity']->type == 'popp_photo' && (isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new)) {
         $parentNid                          = $form_state['build_info']['args'][0]->nid;
         $existingThesaurus                  = getExistingThesaurus($parentNid);
         $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';

@@ -71,6 +71,10 @@
 
     function loadPhoto(id){
         setCheckedPhoto(id);
+        $.get(Drupal.settings.basePath + 'utilities/ajax/'+nid+'/'+id, function(data){
+                $("#tabThesaurus").html(data);
+            }
+        );
         $.post(
             // Display first element of entity collection on load
             Drupal.settings.basePath + 'views/ajax',

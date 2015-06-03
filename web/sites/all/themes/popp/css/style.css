@@ -444,3 +444,7 @@ footer .col-xs-3{
 .one-sidebar .breadcrumb{
     margin-left:0;
 }
+
+body.admin-menu #toolbar{
+    margin-top:-13px;
+}

@@ -23,8 +23,8 @@ function structure_front_field_group_info() {
     'label' => 'Contributor',
     'weight' => '4',
     'children' => array(
-      0 => 'field_popp_serie_init_resp',
-      1 => 'field_popp_serie_next_resp',
+      0 => 'field_popp_serie_next_resp',
+      1 => 'field_popp_serie_init_resp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -49,15 +49,16 @@ function structure_front_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Coverage',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_popp_serie_landscape_set',
-      1 => 'field_popp_serie_country',
-      2 => 'field_popp_serie_district',
-      3 => 'field_popp_serie_county',
-      4 => 'field_popp_serie_town',
-      5 => 'field_popp_serie_place',
+      0 => 'field_popp_serie_country',
+      1 => 'field_popp_serie_town',
+      2 => 'field_popp_serie_county',
+      3 => 'field_popp_serie_place',
+      4 => 'field_popp_serie_district',
+      5 => 'field_popp_serie_landscape_set',
       6 => 'field_popp_serie_landscape_unit',
+      7 => 'field_popp_serie_per',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -70,6 +71,60 @@ function structure_front_field_group_info() {
     ),
   );
   $export['group_coverage|node|popp_photo_serie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_creator|node|popp_photo|form';
+  $field_group->group_name = 'group_creator';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Creator',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_popp_photo_author',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-creator field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_creator|node|popp_photo|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_date|node|popp_photo|form';
+  $field_group->group_name = 'group_date';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Date',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_popp_photo_date',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-date field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_date|node|popp_photo|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -102,6 +157,144 @@ function structure_front_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_description|node|popp_photo|form';
+  $field_group->group_name = 'group_description';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Description',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_popp_photo_description',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-description field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_description|node|popp_photo|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_evolution|field_collection_item|field_popp_photo_nonreq_thes|form';
+  $field_group->group_name = 'group_evolution';
+  $field_group->entity_type = 'field_collection_item';
+  $field_group->bundle = 'field_popp_photo_nonreq_thes';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Evolution',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_field_popp_nonreqthes_evol',
+      1 => 'field_popp_nonreqthes_changes',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-evolution field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_evolution|field_collection_item|field_popp_photo_nonreq_thes|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_evolution|field_collection_item|field_popp_photo_thesaurus|form';
+  $field_group->group_name = 'group_evolution';
+  $field_group->entity_type = 'field_collection_item';
+  $field_group->bundle = 'field_popp_photo_thesaurus';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Evolution',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_popp_thes_changes',
+      1 => 'field_popp_thes_evol',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Evolution',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-evolution field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_evolution|field_collection_item|field_popp_photo_thesaurus|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_format|node|popp_photo_serie|form';
+  $field_group->group_name = 'group_format';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo_serie';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Format',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_popp_serie_format',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-format field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_format|node|popp_photo_serie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_format|node|popp_photo|form';
+  $field_group->group_name = 'group_format';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Format',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_popp_photo_format',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-format field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_format|node|popp_photo|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_identifier|node|popp_photo_serie|form';
   $field_group->group_name = 'group_identifier';
   $field_group->entity_type = 'node';
@@ -113,6 +306,7 @@ function structure_front_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_popp_serie_int_identifier',
+      1 => 'field_popp_serie_identifier',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -125,6 +319,33 @@ function structure_front_field_group_info() {
     ),
   );
   $export['group_identifier|node|popp_photo_serie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_identifier|node|popp_photo|form';
+  $field_group->group_name = 'group_identifier';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Identifier',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_popp_photo_internal_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-identifier field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_identifier|node|popp_photo|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -156,6 +377,44 @@ function structure_front_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_non_oai_pmh|node|popp_photo|form';
+  $field_group->group_name = 'group_non_oai_pmh';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Métadonnées hors OAI-PMH',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_popp_photo_aperture',
+      1 => 'field_popp_photo_camera_type',
+      2 => 'field_popp_photo_hour',
+      3 => 'field_popp_photo_film_type',
+      4 => 'field_popp_photo_iso',
+      5 => 'field_popp_photo_focal',
+      6 => 'field_popp_photo_orientation',
+      7 => 'field_popp_photo_original_weight',
+      8 => 'field_popp_photo_camera_inclinat',
+      9 => 'field_popp_photo_tripod_height',
+      10 => 'field_popp_photo_altitude',
+      11 => 'field_popp_photo_tidal_coeff',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-non-oai-pmh field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_non_oai_pmh|node|popp_photo|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_publisher|node|popp_photo_serie|form';
   $field_group->group_name = 'group_publisher';
   $field_group->entity_type = 'node';
@@ -183,6 +442,33 @@ function structure_front_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_rights|node|popp_photo|form';
+  $field_group->group_name = 'group_rights';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Rights',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_popp_photo_copyrights',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-rights field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_rights|node|popp_photo|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_subject|node|popp_photo_serie|form';
   $field_group->group_name = 'group_subject';
   $field_group->entity_type = 'node';
@@ -194,6 +480,8 @@ function structure_front_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_popp_serie_thematic_axis',
+      1 => 'field_popp_serie_landscape_typo',
+      2 => 'field_popp_serie_opp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -206,6 +494,34 @@ function structure_front_field_group_info() {
     ),
   );
   $export['group_subject|node|popp_photo_serie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_subject|node|popp_photo|form';
+  $field_group->group_name = 'group_subject';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Subject',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_popp_photo_nonreq_thes',
+      1 => 'field_popp_photo_thesaurus',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-subject field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_subject|node|popp_photo|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

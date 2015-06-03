@@ -42,26 +42,26 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Utilisateur: Nom */
+  /* Champ: Utilisateur : Nom */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Utilisateur: Date de création */
+  /* Critère de tri: Utilisateur : Date de création */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Utilisateur: Actif */
+  /* Critère de filtrage: Utilisateur : Actif */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Utilisateur: Rôles */
+  /* Critère de filtrage: Utilisateur : Rôles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
   $handler->display->display_options['filters']['rid']['field'] = 'rid';
@@ -107,6 +107,114 @@ function structure_front_views_default_views() {
     t('Entity Reference'),
   );
   $export['getter_popp_pa'] = $view;
+
+  $view = new view();
+  $view->name = 'popp_export_preparation';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'POPP - Préparation de l\'export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Éléments par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« premier';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ précédent';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Champ: Vocabulaire de taxonomie : Nom */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['label'] = 'Type de champs';
+  /* Champ: Terme de taxonomie : Identifiant (ID) du terme */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = 'ID à reporter sur le fichier d\'import';
+  /* Champ: Terme de taxonomie : Nom */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Libellé';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Critère de tri: Vocabulaire de taxonomie : Identifiant (ID) de vocabulaire */
+  $handler->display->display_options['sorts']['vid']['id'] = 'vid';
+  $handler->display->display_options['sorts']['vid']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['sorts']['vid']['field'] = 'vid';
+  /* Critère de filtrage: Terme de taxonomie : Vocabulaire */
+  $handler->display->display_options['filters']['vid']['id'] = 'vid';
+  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['vid']['field'] = 'vid';
+  $handler->display->display_options['filters']['vid']['value'] = array(
+    15 => '15',
+    16 => '16',
+    2 => '2',
+    10 => '10',
+    3 => '3',
+    8 => '8',
+    13 => '13',
+    19 => '19',
+    4 => '4',
+  );
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['separator'] = ';';
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['style_options']['encoding'] = 'utf8_decode';
+  $handler->display->display_options['path'] = 'popp/export_preparation';
+  $translatables['popp_export_preparation'] = array(
+    t('Master'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
+    t('Asc'),
+    t('Desc'),
+    t('Éléments par page'),
+    t('- Tout -'),
+    t('Décalage'),
+    t('« premier'),
+    t('‹ précédent'),
+    t('suivant ›'),
+    t('dernier »'),
+    t('Type de champs'),
+    t('ID à reporter sur le fichier d\'import'),
+    t('.'),
+    t(','),
+    t('Libellé'),
+    t('Data export'),
+  );
+  $export['popp_export_preparation'] = $view;
 
   $view = new view();
   $view->name = 'popp_partners_logos';
@@ -184,7 +292,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Contenu: Logo structure porteuse */
+  /* Champ: Contenu : Logo structure porteuse */
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['id'] = 'field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['table'] = 'field_data_field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['field'] = 'field_popp_supp_struct_logo';
@@ -195,11 +303,11 @@ function structure_front_views_default_views() {
     'image_style' => 'logos_footer',
     'image_link' => '',
   );
-  /* Sort criterion: Global: Random */
+  /* Critère de tri: Global : Au hasard */
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -216,7 +324,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Logos partenaires';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Champ: Contenu: Logo partenaire */
+  /* Champ: Contenu : Logo partenaire */
   $handler->display->display_options['fields']['field_popp_partner_logo']['id'] = 'field_popp_partner_logo';
   $handler->display->display_options['fields']['field_popp_partner_logo']['table'] = 'field_data_field_popp_partner_logo';
   $handler->display->display_options['fields']['field_popp_partner_logo']['field'] = 'field_popp_partner_logo';
@@ -228,13 +336,13 @@ function structure_front_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Contenu: Ordre d&#039;affichage (field_popp_partner_display_order) */
+  /* Critère de tri: Contenu : Ordre d&#039;affichage (field_popp_partner_display_order) */
   $handler->display->display_options['sorts']['field_popp_partner_display_order_value']['id'] = 'field_popp_partner_display_order_value';
   $handler->display->display_options['sorts']['field_popp_partner_display_order_value']['table'] = 'field_data_field_popp_partner_display_order';
   $handler->display->display_options['sorts']['field_popp_partner_display_order_value']['field'] = 'field_popp_partner_display_order_value';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -257,18 +365,18 @@ function structure_front_views_default_views() {
   $export['popp_partners_logos'] = $view;
 
   $view = new view();
-  $view->name = 'popp_photo_serie_display';
+  $view->name = 'popp_testimonies_display';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Photo series display';
+  $view->human_name = 'POPP - Affichage témoignages série';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Affichage série';
+  $handler->display->display_options['title'] = '--aucun--';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -278,41 +386,95 @@ function structure_front_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '8';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Broken/missing handler */
-  $handler->display->display_options['fields']['field_popp_photo_author']['id'] = 'field_popp_photo_author';
-  $handler->display->display_options['fields']['field_popp_photo_author']['table'] = 'field_data_field_popp_photo_author';
-  $handler->display->display_options['fields']['field_popp_photo_author']['field'] = 'field_popp_photo_author';
-  /* Filter criterion: Contenu: Publié */
+  /* Comportement en l'absence de résultats: Global : Zone de texte */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h3>Aucun son pour le moment</h3>';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  /* Relation: Entity Reference : Entité référante */
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['id'] = 'reverse_field_popp_serie_testimonies_node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['field'] = 'reverse_field_popp_serie_testimonies_node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['required'] = TRUE;
+  /* Champ: Contenu : Titre */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Champ: Contenu : Fichier */
+  $handler->display->display_options['fields']['field_popp_tty_file']['id'] = 'field_popp_tty_file';
+  $handler->display->display_options['fields']['field_popp_tty_file']['table'] = 'field_data_field_popp_tty_file';
+  $handler->display->display_options['fields']['field_popp_tty_file']['field'] = 'field_popp_tty_file';
+  $handler->display->display_options['fields']['field_popp_tty_file']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_file']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_tty_file']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_popp_tty_file']['type'] = 'jplayer_player';
+  $handler->display->display_options['fields']['field_popp_tty_file']['settings'] = array(
+    'mode' => 'single',
+    'autoplay' => '0',
+    'solution' => 'html, flash',
+    'preload' => 'metadata',
+    'volume' => '80',
+    'muted' => '0',
+    'repeat' => 'none',
+    'backgroundColor' => '000000',
+  );
+  /* Critère de tri: Contenu : Date de publication */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filtre contextuel: Contenu : Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_popp_serie_testimonies_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Tout';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'opp_photo' => 'opp_photo',
+    'popp_testimony_sheet' => 'popp_testimony_sheet',
   );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  $translatables['popp_photo_serie_display'] = array(
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['popp_testimonies_display'] = array(
     t('Master'),
-    t('Affichage série'),
+    t('--aucun--'),
     t('plus'),
     t('Appliquer'),
     t('Réinitialiser'),
     t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Broken handler field_data_field_popp_photo_author.field_popp_photo_author'),
+    t('<h3>Aucun son pour le moment</h3>'),
+    t('Contenu référençant Contenu depuis field_popp_serie_testimonies'),
+    t('Tout'),
+    t('Block'),
   );
-  $export['popp_photo_serie_display'] = $view;
+  $export['popp_testimonies_display'] = $view;
 
   $view = new view();
   $view->name = 'popp_view_home';
@@ -362,50 +524,44 @@ function structure_front_views_default_views() {
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Pied de page: Global: Unfiltered text */
+  /* Pied de page: Global : Texte non filtré */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div id="photoResult"></div>';
-  /* Relationship: Broken/missing handler */
-  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['id'] = 'field_popp_collection_photo_value';
-  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['table'] = 'field_data_field_popp_collection_photo';
-  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['field'] = 'field_popp_collection_photo_value';
-  $handler->display->display_options['relationships']['field_popp_collection_photo_value']['required'] = TRUE;
-  /* Champ: Contenu: Titre */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Champ: Contenu: Géolocalisation */
+  /* Champ: Contenu : Géolocalisation */
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['id'] = 'field_popp_serie_geolocation';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['table'] = 'field_data_field_popp_serie_geolocation';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['field'] = 'field_popp_serie_geolocation';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['label'] = '';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_popp_serie_geolocation']['type'] = 'wkt';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['settings'] = array(
-    'map' => 'default',
+    'map' => 'popp_home_map',
   );
-  /* Sort criterion: Contenu: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Publié */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'opp_photo' => 'opp_photo',
+    'popp_photo_serie' => 'popp_photo_serie',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
 
@@ -441,7 +597,6 @@ function structure_front_views_default_views() {
     t('suivant ›'),
     t('dernier »'),
     t('<div id="photoResult"></div>'),
-    t('field_popp_collection_photo_value'),
     t('Page'),
   );
   $export['popp_view_home'] = $view;
@@ -472,32 +627,32 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Contenu: Contenu */
+  /* Champ: Contenu : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Contenu: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Publié */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Contenu: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Contenu : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -553,32 +708,32 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Contenu: Contenu */
+  /* Champ: Contenu : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Contenu: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Publié */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Contenu: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Contenu : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -633,29 +788,29 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Relationship: Adhésion OG: Adhésion OG à partir de Nœud */
+  /* Relation: Adhésion OG : Adhésion OG à partir de Nœud */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Champ: Contenu: Titre */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Nom de l\'OPP';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Sort criterion: Contenu: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Publié */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -713,32 +868,32 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Champ: Contenu: Contenu */
+  /* Champ: Contenu : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Contenu: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Publié */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Contenu: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Contenu : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -800,7 +955,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Champ: Contenu: Logo structure porteuse */
+  /* Champ: Contenu : Logo structure porteuse */
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['id'] = 'field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['table'] = 'field_data_field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['field'] = 'field_popp_supp_struct_logo';
@@ -811,25 +966,25 @@ function structure_front_views_default_views() {
     'image_style' => 'thumbnail',
     'image_link' => '',
   );
-  /* Champ: Contenu: Description courte */
+  /* Champ: Contenu : Description courte */
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['id'] = 'field_popp_supp_struc_shortdesc';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['table'] = 'field_data_field_popp_supp_struc_shortdesc';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['field'] = 'field_popp_supp_struc_shortdesc';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['label'] = '';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['element_label_colon'] = FALSE;
-  /* Sort criterion: Contenu: Titre */
+  /* Critère de tri: Contenu : Titre */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  /* Filter criterion: Contenu: Publié */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';

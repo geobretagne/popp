@@ -14,7 +14,7 @@ function popp_mass_import_menu()
             'title'            => t('Importer une série'),
             'page callback'    => 'drupal_get_form',
             'page arguments'   => ['popp_mass_import_form'],
-            'access arguments' => ['access content']
+            'access arguments' => ['popp mass_import']
         ],
     ];
 }
