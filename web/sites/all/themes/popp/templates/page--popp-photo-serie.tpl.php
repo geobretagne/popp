@@ -9,6 +9,17 @@ global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
 $node = node_load($nodeToDisplay['#node']->nid);
 $output = '';
+$town = $node->field_popp_serie_town['und'][0]['tid'];
+$town = taxonomy_term_load($town);
+$town = $town?$town->name:'';
+$firstShot = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][0]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
+$firstShot = $firstShot->format('d/m/Y');
+$lastShot = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][count($node->field_popp_serie_photo_list[LANGUAGE_NONE])]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
+$lastShot = $lastShot->format('d/m/Y');
+$thematicAxis = '';
+foreach($node->field_popp_serie_thematic_axis[LANGUAGE_NONE] as $axis){
+    $thematicAxis .= ($thematicAxis != ''?' - ':''.$axis['taxonomy_term']->name);
+}
 $commentsCount = isset($nodeToDisplay['comments']['comments']) ? count($nodeToDisplay['comments']['comments']) - 2 : 0;
 if ($commentsCount < 0)
     $commentsCount = 0;
@@ -153,16 +164,15 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                 <ul class="action-links"><?php print render($action_links); ?></ul>
             <?php endif; ?>
             <div class="well relPosition">
-                <!-- ICI le contenu principal -->
+                <strong><?=$node->title?> - <?=$town?> - Du <?=$firstShot?> au <?=$lastShot?> - <?=$thematicAxis?></strong>
                 <a class="showInBox" id="showInBox" rel="lightbox" data-title="" data-toggle="lightbox"
-                   href="">
+                   href="" style="position: relative; float: right;">
                     <span title="Plein écran" class="glyphicon glyphicon-fullscreen topRight"></span>
                 </a>
-
                 <div id="photoPh"></div>
             </div>
         </section>
-        <aside class="col-sm-3" role="complementary">
+        <aside class="col-sm-3" role="complementary" style="padding-right:0;">
             <div class="region region-sidebar-second">
                 <div class="well noPadding">
                     <div class="row" style="margin:0 0;padding:5px;">
@@ -258,7 +268,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
 
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 noPadding">
 
         </div>
     </div>
