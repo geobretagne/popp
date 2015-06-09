@@ -122,13 +122,16 @@ var doCenter = true;
             var nid = point.attributes.nid;
             var bound = new OpenLayers.Bounds();
 
-            for (var i in layers[0].features) {
-                if (layers[0].features[i].cluster != null) {
-                    bound.extend(layers[0].features[i].cluster[0].geometry.getBounds());
-                } else {
-                    bound.extend(layers[0].features[i].geometry.getBounds());
+            for (var l in layers){
+                for (var i in layers[l].features) {
+                    if (layers[l].features[i].cluster != null) {
+                        bound.extend(layers[l].features[i].cluster[0].geometry.getBounds());
+                    } else {
+                        bound.extend(layers[l].features[i].geometry.getBounds());
+                    }
                 }
             }
+
             data.openlayers.setCenter(bound.getCenterLonLat());
             data.openlayers.zoomToExtent(bound);
             data.openlayers.zoomTo(data.openlayers.getZoom() - 1);

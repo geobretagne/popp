@@ -13,6 +13,26 @@ body.toolbar-drawer{
     padding-top:0 !important;
 }
 
+.btn-info{
+    background-color:#666666;
+    border:1px solid transparent;
+}
+
+.btn-primary{
+    background-color:#333;
+    border:1px solid transparent;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.active{
+    border:1px solid #fe7108;
+    background-color:#333;
+}
+
+.btn-info.active, .btn-info:hover, .btn-info:focus{
+    background-color:#666666;
+    border:1px solid #fe7108;
+}
+
 /* Removes weird dots outside clicked links with FF */
 a,a:focus,a:hover{
     outline: none;
@@ -88,13 +108,15 @@ input[type="file"]{
     position:relative;
 }
 
-#textLogo{
-    bottom: 3px;
+#textLogo {
     color: #a0a0a0;
+    font-size: 16px;
     font-style: italic;
-    left: 195px;
+    font-weight: bold;
+    left: 190px;
     letter-spacing: 3px;
     position: absolute;
+    top: 40px;
 }
 
 .navbar-default {
@@ -146,6 +168,7 @@ input[type="file"]{
     margin:0 0 0 10px;
 }
 #topMenu section > div.noRadius > ul > li > a {
+    color:#fff;
     font-family: Arial,sans-serif;
     font-size: 17px;
     font-weight: bold;
@@ -154,6 +177,24 @@ input[type="file"]{
 
 #topMenu .secondary{
     display:none;
+}
+
+#topMenu{
+    margin-top: 50px;
+    position: relative;
+    top: 15px;
+}
+
+.no-landscape #topMenu ul:first-child{
+    margin-top:0;
+}
+
+header.no-landscape, #landscape{
+    border-bottom:2px solid #fe7108;
+}
+
+a, a:hover, a:focus, .panel-title > a{
+    color:#fe7108;
 }
 
 #topMenu section > div > ul > li > a{
@@ -169,6 +210,10 @@ input[type="file"]{
 #navbar .container{
     padding:0;
 }
+
+#navbar{
+    background:#323232;
+}
 footer.container >.row{
     margin:auto;
 }
@@ -177,9 +222,9 @@ footer.container >.row{
     color:#000;
 }
 #topMenu section > div > ul > li.active > a, #topMenu section > div.noRadius > ul > li > a:hover{
-    color: #4b4b4b;
+    color: #fff;
     background:none;
-    border-bottom:2px solid #00b0d8;
+    border-bottom:2px solid #fe7108;
 }
 
 #topMenu section > div > ul > li > ul > li > a, #topMenu section > div > ul > li > ul > li > a:focus, #topMenu section > div > ul > li > a.dropdown-toggle:focus{
@@ -317,7 +362,7 @@ footer .col-xs-3{
   *
 **/
 
-.view-logos-partenaires .view-content{
+.view-popp-partners-logos .view-content{
     text-align:center;
 }
 
@@ -325,8 +370,8 @@ footer .col-xs-3{
     max-width:185px;
     margin-bottom:5px;
 }
-#block-views-logos-partenaires-block .views-row{
-    display:inline-block;
+.view-popp-partners-logos .views-row{
+    text-align:center;
 }
 
 /** Photo's details template **/
@@ -358,7 +403,7 @@ footer .col-xs-3{
 
 .topRight{
     position: absolute;
-    right: 30px;
+    right: 15px;
     top: 30px;
     font-size: 30px;
     color:#000;
@@ -447,4 +492,31 @@ footer .col-xs-3{
 
 body.admin-menu #toolbar{
     margin-top:-13px;
+}
+
+div.main-container + footer.footer.first{
+    border-bottom: 5px solid #ff7109;
+}
+#accordion label{
+    font-weight:normal;
+}
+#accordion li a{
+    color:#ff7109;
+}
+
+.badgePa{
+    background:#9b59b6;
+}
+
+.badgeClassic{
+    background:#3498db;
+}
+
+#photoPh{
+    border-top: 3px solid #3498db;
+    padding-top: 10px;
+}
+
+#photoPh.pa{
+    border-color:#9b59b6;
 }

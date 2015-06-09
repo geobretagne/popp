@@ -26,6 +26,42 @@ Drupal.theme.prototype.openlayersPopup = function (feature) {
     return output;
 };
 
+/**
+ * Theming popup
+ */
+Drupal.theme.openlayersPopup = function (feature) {
+    if (feature.cluster) {
+        var output = '';
+        var visited = []; // to keep track of already-visited items
+        var classes = [];
+
+        for (var i = 0; i < feature.cluster.length; i++) {
+            var pf = feature.cluster[i]; // pseudo-feature
+            if (typeof pf.drupalFID != 'undefined') {
+                var mapwide_id = feature.layer.drupalID + pf.drupalFID;
+                if (mapwide_id in visited) continue;
+                visited[mapwide_id] = true;
+            }
+
+            classes = [];
+            if (i == 0) {
+                classes.push('first');
+            }
+            if (i == (feature.cluster.length - 1)) {
+                classes.push('last');
+            }
+
+            output += '<div class="'+classes.join(' ')+'">' +
+            Drupal.theme.prototype.openlayersPopup(pf) + '</div>';
+        }
+        return output;
+    }
+    else {
+        return Drupal.theme.prototype.openlayersPopup(feature);
+    }
+};
+
+
 // Make sure the namespace exists
 Drupal.openlayers.popup = Drupal.openlayers.popup || {};
 /**
@@ -61,14 +97,8 @@ Drupal.openlayers.addBehavior('openlayers_behavior_popp_popup', function (data, 
             renderIntent: 'temporary',
             overFeature: function (feature) {
                 var lonlat;
-                if (options.popupAtPosition == 'mouse') {
-                    lonlat = map.getLonLatFromPixel(
-                        this.handlers.feature.evt.xy
-                    );
-                } else {
-                    lonlat = feature.geometry.getBounds().getCenterLonLat();
-                }
-
+                lonlat = feature.geometry.getBounds().getCenterLonLat();
+                var position =  map.getPixelFromLonLat(lonlat);
                 // Create FramedCloud popup.
                 popup = new OpenLayers.Popup.FramedCloud(
                     'popup',
@@ -79,25 +109,30 @@ Drupal.openlayers.addBehavior('openlayers_behavior_popp_popup', function (data, 
                     null,
                     true,
                     function (evt) {
-                        while( map.popups.length ) {
+                        while (map.popups.length) {
                             map.removePopup(map.popups[0]);
                         }
                         Drupal.openlayers.popup.popupSelect.unselect(selectedFeature);
                     }
                 );
-
-                // Assign popup to feature and map.
-                popup.panMapIfOutOfView = options.panMapIfOutOfView;
                 popup.keepInMap = options.keepInMap;
                 selectedFeature = feature;
                 feature.popup = popup;
                 map.addPopup(popup, true);
+                var top = parseInt(jQuery('#popup').css('top'));
+                if(popup.relativePosition == "tr" || popup.relativePosition == "tl"){
+                    top -= 15;
+                }else{
+                    console.log('BOTTOM');
+                    top += 10;
+                }
+                jQuery("#popup").css('top', top);
                 Drupal.attachBehaviors();
             },
             outFeature: function (feature) {
                 /*map.removePopup(feature.popup);
-                feature.popup.destroy();
-                feature.popup = null;*/
+                 feature.popup.destroy();
+                 feature.popup = null;*/
             }
         }
     );
