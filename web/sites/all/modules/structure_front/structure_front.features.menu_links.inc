@@ -195,23 +195,6 @@ function structure_front_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_structures-porteuses:popp-structure
-  $menu_links['menu-popp-principal_structures-porteuses:popp-structure'] = array(
-    'menu_name' => 'menu-popp-principal',
-    'link_path' => 'popp-structure',
-    'router_path' => 'popp-structure',
-    'link_title' => 'Structures Porteuses',
-    'options' => array(
-      'identifier' => 'menu-popp-principal_structures-porteuses:popp-structure',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-  );
   // Translatables
   // Included for use with string extractors like potx.
   t('<span class="glyphicon glyphicon-log-in"></span>');
@@ -224,7 +207,6 @@ function structure_front_menu_default_menu_links() {
   t('Mentions légales');
   t('Participez');
   t('Plan du site');
-  t('Structures Porteuses');
 
 
   return $menu_links;

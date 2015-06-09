@@ -31,7 +31,7 @@ function structure_front_default_fe_block_settings() {
         'region' => 'footer_bottom',
         'status' => 1,
         'theme' => 'popp',
-        'weight' => -13,
+        'weight' => -20,
       ),
       'seven' => array(
         'region' => '',
@@ -156,10 +156,10 @@ function structure_front_default_fe_block_settings() {
         'weight' => 0,
       ),
       'popp' => array(
-        'region' => 'footer_top',
+        'region' => 'partners_footer',
         'status' => 1,
         'theme' => 'popp',
-        'weight' => 0,
+        'weight' => -20,
       ),
       'seven' => array(
         'region' => '',

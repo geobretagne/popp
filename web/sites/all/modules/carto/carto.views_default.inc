@@ -410,6 +410,16 @@ function carto_views_default_views() {
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* Relation: Adhésion OG : Groupe Nœud de l'adhésion OG */
+  $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
+  $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
+  $handler->display->display_options['relationships']['og_membership_related_node_group']['required'] = TRUE;
+  /* Relation: Adhésion OG : Type */
+  $handler->display->display_options['relationships']['type']['id'] = 'type';
+  $handler->display->display_options['relationships']['type']['table'] = 'og_membership';
+  $handler->display->display_options['relationships']['type']['field'] = 'type';
+  $handler->display->display_options['relationships']['type']['required'] = TRUE;
   /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -432,6 +442,17 @@ function carto_views_default_views() {
   $handler->display->display_options['fields']['field_popp_serie_place']['settings'] = array(
     'map' => 'default',
   );
+  /* Champ: Contenu : Titre */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
+  $handler->display->display_options['fields']['title_1']['label'] = 'Titre OG';
+  /* Champ: Contenu : Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'og_membership_related_node_group';
   /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -451,12 +472,50 @@ function carto_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_photo_serie' => 'popp_photo_serie',
   );
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'node';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'og_membership_related_node_group';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'opp' => 'opp',
+  );
 
   /* Display: Layer Home */
   $handler = $view->new_display('openlayers', 'Layer Home', 'openlayers_1');
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+
+  /* Display: Layer Home PA */
+  $handler = $view->new_display('openlayers', 'Layer Home PA', 'openlayers_2');
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Critère de filtrage: Contenu : Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'popp_photo_serie' => 'popp_photo_serie',
+  );
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'node';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'og_membership_related_node_group';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'opp_takepart' => 'opp_takepart',
+  );
   $translatables['popp_views_home_layer'] = array(
     t('Master'),
     t('plus'),
@@ -465,7 +524,12 @@ function carto_views_default_views() {
     t('Trier par'),
     t('Asc'),
     t('Desc'),
+    t('Groupe node de l\'adhésion OG'),
+    t('Type d\'adhésion OG'),
+    t('Titre OG'),
+    t('Type'),
     t('Layer Home'),
+    t('Layer Home PA'),
   );
   $export['popp_views_home_layer'] = $view;
 
