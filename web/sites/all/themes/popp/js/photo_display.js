@@ -7,7 +7,10 @@
     var cpt =0;
     var first = true;
     $(document).ready(function(){
-
+        if(Drupal.arg(3) == "pa"){
+            $('.region-sidebar-second > .well').css('border-top', '2px solid #ff7109');
+        }
+        $(".breadcrumb").css('margin', '0 -15px 15px -15px');
         nid = getNodeId();
         // Change photo on click on a thumbnail
         $("#thumbnailsViewPlaceHolder").on('click', '.toZoom', function(e){

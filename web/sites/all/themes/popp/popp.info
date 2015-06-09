@@ -8,19 +8,19 @@ base theme = bootstrap
 ;; Regions
 ;;;;;;;;;;;;;;;;;;;;;
 
-regions[navigation]     = 'Navigation'
-regions[header]         = 'Top Bar'
-regions[highlighted]    = 'Highlighted'
-regions[help]           = 'Help'
-regions[content]        = 'Content'
+regions[navigation] = 'Navigation'
+regions[header] = 'Top Bar'
+regions[highlighted] = 'Highlighted'
+regions[help] = 'Help'
+regions[content] = 'Content'
 regions[carousel_serie] = 'Photo series carousel'
-regions[sidebar_first]  = 'Primary'
+regions[sidebar_first] = 'Primary'
 regions[sidebar_second] = 'Secondary'
-regions[footer_top]     = 'Footer top'
-regions[footer_bottom]  = 'Footer bottom'
-regions[page_top]       = 'Page top'
-regions[page_bottom]    = 'Page bottom'
-
+regions[footer_top] = 'Footer top'
+regions[footer_bottom] = 'Footer bottom'
+regions[page_top] = 'Page top'
+regions[page_bottom] = 'Page bottom'
+regions[partners_footer] = 'Partners footer'
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
@@ -40,7 +40,7 @@ stylesheets[all][] = css/style.css
 ; ;; Scripts
 ; ;;;;;;;;;;;;;;;;;;;;;
 
-scripts[]  = 'js/main.js'
+scripts[] = 'js/main.js'
 ;
 ; scripts[] = 'bootstrap/js/affix.js'
 ; scripts[] = 'bootstrap/js/alert.js'

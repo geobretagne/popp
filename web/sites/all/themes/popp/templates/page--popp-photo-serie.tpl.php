@@ -7,20 +7,39 @@
  */
 global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
-$node = node_load($nodeToDisplay['#node']->nid);
-$output = '';
+$node          = node_load($nodeToDisplay['#node']->nid);
+$output        = '';
+$town          = $node->field_popp_serie_town['und'][0]['tid'];
+$town          = taxonomy_term_load($town);
+$town          = $town ? $town->name : '';
+$firstShot     = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][0]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
+$firstShot     = $firstShot->format('d/m/Y');
+$lastShot      = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][count($node->field_popp_serie_photo_list[LANGUAGE_NONE])]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
+$lastShot      = $lastShot->format('d/m/Y');
+$thematicAxis  = '';
+$isPa = false;
+$opp = (isset($node->og_group_ref[LANGUAGE_NONE][0]['target_id'])?node_load($node->og_group_ref[LANGUAGE_NONE][0]['target_id']):false);
+if(false !== $opp){
+    if($opp->type == 'opp_takepart'){
+        $isPa = true;
+    }
+}
+foreach ($node->field_popp_serie_thematic_axis[LANGUAGE_NONE] as $axis) {
+    $thematicAxis .= ($thematicAxis != '' ? ' - ' : '' . $axis['taxonomy_term']->name);
+}
 $commentsCount = isset($nodeToDisplay['comments']['comments']) ? count($nodeToDisplay['comments']['comments']) - 2 : 0;
-if ($commentsCount < 0)
+if ($commentsCount < 0) {
     $commentsCount = 0;
-if(isset($node->field_popp_serie_supp_struct['und'])){
-    $image = field_get_items('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo');
-    $output = field_view_value('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo', $image[0], array(
-        'type' => 'image',
-        'settings' => array(
+}
+if (isset($node->field_popp_serie_supp_struct['und'])) {
+    $image  = field_get_items('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo');
+    $output = field_view_value('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo', $image[0], [
+        'type'     => 'image',
+        'settings' => [
             'image_style' => 'sidebar_image',
-            'image_link' => '',
-        ),
-    ));
+            'image_link'  => '',
+        ],
+    ]);
 }
 /**
  * @file
@@ -89,7 +108,7 @@ if(isset($node->field_popp_serie_supp_struct['und'])){
 
 drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
 ?>
-<header id="navbar" role="banner" class="navbar navbar-default">
+<header id="navbar" role="banner" class="navbar navbar-default no-landscape">
     <div class="container">
         <div class="navbar-header">
             <?php if ($logo): ?>
@@ -107,62 +126,58 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                 <span class="icon-bar"></span>
             </button>
         </div>
-
-        <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-            <div class="navbar-collapse collapse">
-                <nav id="topMenu" role="navigation">
-                    <?php if (!empty($page['navigation'])): ?>
-                        <?php print render($page['navigation']); ?>
-                    <?php endif; ?>
-                </nav>
-            </div>
-        <?php endif; ?>
+        <div class="navbar-collapse collapse">
+            <p id="textLogo">Plateforme des Observatoires Photographiques du Paysage de Bretagne</p>
+            <nav id="topMenu" role="navigation">
+                <section>
+                    <div class="noRadius">
+                        <?= render($page['navigation']) ?>
+                    </div>
+                </section>
+            </nav>
+        </div>
     </div>
-    <?php //if($is_front): ?>
-    <div id="landscape">
-    </div>
-    <?php //endif; ?>
 </header>
 
-<div class="main-container container">
+<div class="main-container container no-landscape">
 
     <header role="banner" id="page-header">
-        <?php if (!empty($site_slogan)): ?>
+        <?php if (! empty($site_slogan)): ?>
             <p class="lead"><?php print $site_slogan; ?></p>
         <?php endif; ?>
 
         <?php print render($page['header']); ?>
     </header>
     <!-- /#page-header -->
-    <?php if (!empty($breadcrumb)): print $breadcrumb; endif; ?>
+    <?php if (! empty($breadcrumb)): print $breadcrumb; endif; ?>
     <a id="main-content"></a>
     <?php print $messages; ?>
     <div class="row">
         <section class="col-sm-9">
-            <?php if (!empty($page['highlighted'])): ?>
+            <?php if (! empty($page['highlighted'])): ?>
                 <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
             <?php endif; ?>
 
-            <?php if (!empty($tabs)): ?>
+            <?php if (! empty($tabs)): ?>
                 <?php print render($tabs); ?>
             <?php endif; ?>
-            <?php if (!empty($page['help'])): ?>
+            <?php if (! empty($page['help'])): ?>
                 <?php print render($page['help']); ?>
             <?php endif; ?>
-            <?php if (!empty($action_links)): ?>
+            <?php if (! empty($action_links)): ?>
                 <ul class="action-links"><?php print render($action_links); ?></ul>
             <?php endif; ?>
             <div class="well relPosition">
-                <!-- ICI le contenu principal -->
+                <p style="margin-bottom: 5px;"><?= $node->title ?> - <?= $town ?><span class="badge pull-right <?=$isPa?'badgePa':'badgeClassic'?>"><?= $isPa?'OPP Participatif':'OPP'?></span></p>
                 <a class="showInBox" id="showInBox" rel="lightbox" data-title="" data-toggle="lightbox"
-                   href="">
+                   href="" style="position: relative; float: right;top:15px;">
                     <span title="Plein écran" class="glyphicon glyphicon-fullscreen topRight"></span>
                 </a>
 
-                <div id="photoPh"></div>
+                <div id="photoPh" class="<?=($isPa?'pa':'')?>"></div>
             </div>
         </section>
-        <aside class="col-sm-3" role="complementary">
+        <aside class="col-sm-3" role="complementary" style="padding-right:0;">
             <div class="region region-sidebar-second">
                 <div class="well noPadding">
                     <div class="row" style="margin:0 0;padding:5px;">
@@ -198,7 +213,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Série <?=$nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value']?>
+                                        Série <?= $nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] ?>
                                     </a>
                                 </h4>
                             </div>
@@ -258,11 +273,11 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
 
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 noPadding">
 
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin:0 -30px;">
         <div class="col-xs-12">
             <div class="well">
                 <div id="thumbnailsViewPlaceHolder">
@@ -278,12 +293,13 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin:0 -30px;">
         <div class="col-xs-12">
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs photoTabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#descriptions" aria-controls="descriptions" role="tab"
+                    <li role="presentation" class="active"><a href="#descriptions" aria-controls="descriptions"
+                                                              role="tab"
                                                               data-toggle="tab">Descriptions</a></li>
                     <li role="presentation"><a href="#changements" aria-controls="changements" role="tab"
                                                data-toggle="tab">Changements</a></li>
@@ -310,7 +326,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         ?>
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="commentaires">
-                        <?= (!isset($nodeToDisplay['comments']['comments']) ? '<h3>' . t('Aucun commentaire pour le moment') . '</h3>' . ($user->uid != 0 ? '' : theme('comment_post_forbidden', array('node' => $node))) : '') ?>
+                        <?= (! isset($nodeToDisplay['comments']['comments']) ? '<h3>' . t('Aucun commentaire pour le moment') . '</h3>' . ($user->uid != 0 ? '' : theme('comment_post_forbidden', ['node' => $node])) : '') ?>
                         <?php
                         $form = comment_node_page_additions($node);
                         ?>
@@ -318,9 +334,10 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="changements">
                         <h4>Changements par rapport à la photo précédente</h4>
+
                         <div id="tabThesaurus"></div>
                         <h4>Changements intervenus sur la durée de la série</h4>
-                        <?=getChangesTable($node)?>
+                        <?= getChangesTable($node) ?>
                     </div>
                 </div>
             </div>
@@ -349,6 +366,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
     </div>
     <div class="row">
         <div class="col-xs-12">
+            <?php print render($page['partners_footer']); ?>
             <p id="europeFooter">
                 <img height="50px" src="/<?= path_to_theme() ?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img
                     height="50px" src="/<?= path_to_theme() ?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée

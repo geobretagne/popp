@@ -11,7 +11,7 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
 }
 ?>
 
-<header id="navbar" role="banner" class="navbar navbar-default">
+<header id="navbar" role="banner" class="navbar navbar-default border-bottom">
     <div class="container">
         <div class="navbar-header">
             <?php if ($logo): ?>
@@ -28,17 +28,16 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
                 <span class="icon-bar"></span>
             </button>
         </div>
-
-            <div class="navbar-collapse collapse">
-                <nav id="topMenu" role="navigation">
-                        <section>
-                            <div class="noRadius">
-                                <?= render($block['content'])?>
-                            </div>
-                        </section>
-                </nav>
-                <p id="textLogo">Plateforme des Observatoires Photographiques du Paysage de Bretagne</p>
-            </div>
+        <div class="navbar-collapse collapse">
+            <p id="textLogo">Plateforme des Observatoires Photographiques du Paysage de Bretagne</p>
+            <nav id="topMenu" role="navigation">
+                    <section>
+                        <div class="noRadius">
+                            <?= render($block['content'])?>
+                        </div>
+                    </section>
+            </nav>
+        </div>
     </div>
     <?php //if($is_front): ?>
     <div id="landscape">
@@ -100,6 +99,7 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
     </div>
     <div class="row">
         <div class="col-xs-12">
+            <?php print render($page['partners_footer']); ?>
             <p id="europeFooter">
                 <img height="50px" src="/<?=path_to_theme()?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img height="50px" src="/<?=path_to_theme()?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée par l'Union européenne.
             </p>

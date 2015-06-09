@@ -7,7 +7,7 @@
     display:none;
 }
 
-.form-radio{
+div.term-reference-tree > .term-reference-tree-level .form-radio{
     display:none;
 }
 
