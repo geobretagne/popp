@@ -36,6 +36,7 @@ function carto_openlayers_maps() {
     'behaviors' => array(
       'openlayers_behavior_cluster_popp' => array(
         'clusterlayer' => array(
+          'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
           'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
         ),
         'distance' => '20',
@@ -86,11 +87,13 @@ function carto_openlayers_maps() {
       'openlayers_behavior_panzoom' => array(),
       'openlayers_behavior_popp_series_display' => array(
         'layers' => array(
+          'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
           'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
         ),
       ),
       'openlayers_behavior_popp_popup' => array(
         'layers' => array(
+          'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
           'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
         ),
         'popupAtPosition' => 'mouse',
@@ -99,6 +102,7 @@ function carto_openlayers_maps() {
       ),
       'openlayers_search_behavior_popp' => array(
         'layers' => array(
+          'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
           'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
         ),
       ),
@@ -109,9 +113,11 @@ function carto_openlayers_maps() {
       'ortho' => 'ortho',
       'osm_mapnik' => 'osm_mapnik',
       'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
+      'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
     ),
     'layer_weight' => array(
       'popp_views_home_layer_openlayers_1' => '0',
+      'popp_views_home_layer_openlayers_2' => '0',
       'postgis_formatter_layer' => '0',
       'openlayers_geojson_picture_this' => '0',
       'openlayers_kml_example' => '0',
@@ -120,27 +126,32 @@ function carto_openlayers_maps() {
       'openlayers_kml_example' => '0',
       'openlayers_geojson_picture_this' => '0',
       'postgis_formatter_layer' => '0',
+      'popp_views_home_layer_openlayers_2' => 'popp_markers_pa',
       'popp_views_home_layer_openlayers_1' => 'popp_markers',
     ),
     'layer_styles_select' => array(
       'openlayers_kml_example' => '0',
       'openlayers_geojson_picture_this' => '0',
       'postgis_formatter_layer' => '0',
+      'popp_views_home_layer_openlayers_2' => 'popp_marker_focus',
       'popp_views_home_layer_openlayers_1' => 'popp_marker_focus',
     ),
     'layer_styles_temporary' => array(
       'openlayers_kml_example' => '0',
       'openlayers_geojson_picture_this' => '0',
       'postgis_formatter_layer' => '0',
+      'popp_views_home_layer_openlayers_2' => 'popp_marker_hover',
       'popp_views_home_layer_openlayers_1' => 'popp_marker_hover',
     ),
     'layer_activated' => array(
+      'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
       'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
       'openlayers_kml_example' => 0,
       'openlayers_geojson_picture_this' => 0,
       'postgis_formatter_layer' => 0,
     ),
     'layer_switcher' => array(
+      'popp_views_home_layer_openlayers_2' => 'popp_views_home_layer_openlayers_2',
       'popp_views_home_layer_openlayers_1' => 'popp_views_home_layer_openlayers_1',
       'openlayers_kml_example' => 0,
       'openlayers_geojson_picture_this' => 0,

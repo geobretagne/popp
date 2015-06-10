@@ -149,7 +149,6 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
         <?php print render($page['header']); ?>
     </header>
     <!-- /#page-header -->
-    <?php if (! empty($breadcrumb)): print $breadcrumb; endif; ?>
     <a id="main-content"></a>
     <?php print $messages; ?>
     <div class="row">
@@ -180,7 +179,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
         <aside class="col-sm-3" role="complementary" style="padding-right:0;">
             <div class="region region-sidebar-second">
                 <div class="well noPadding">
-                    <div class="row" style="margin:0 0;padding:5px;">
+                    <div class="row" style="margin:0 0;padding:5px;background:#333;">
                         <div class="col-xs-12 noPadding">
                             <?= drupal_render($output) ?>
                             <div class="pull-right dropdown">
@@ -350,7 +349,6 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
 <footer class="footer container">
     <div class="row">
         <div class="col-xs-2">
-            <img src="/<?php print path_to_theme(); ?>/img/logo_footer.jpg" alt="<?php print t('Home'); ?>"/>
         </div>
         <div class="col-xs-7">
             <?php print render($page['footer_bottom']); ?>

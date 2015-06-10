@@ -175,7 +175,6 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
 <footer class="footer container">
     <div class="row">
         <div class="col-xs-2">
-            <img src="/<?php print path_to_theme(); ?>/img/logo_footer.jpg" alt="<?php print t('Home'); ?>" />
         </div>
         <div class="col-xs-7">
             <?php print render($page['footer_bottom']); ?>

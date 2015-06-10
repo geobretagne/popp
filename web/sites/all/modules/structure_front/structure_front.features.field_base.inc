@@ -2375,6 +2375,9 @@ function structure_front_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'og_group_ref',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -2389,13 +2392,21 @@ function structure_front_field_default_field_bases() {
           'og_behavior' => array(
             'status' => TRUE,
           ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
         ),
         'membership_type' => 'og_membership_type_default',
+        'sort' => array(
+          'type' => 'none',
+        ),
         'target_bundles' => array(
-          0 => 'opp',
+          'opp' => 'opp',
+          'opp_takepart' => 'opp_takepart',
         ),
       ),
       'handler_submit' => 'Change handler',
+      'profile2_private' => FALSE,
       'target_type' => 'node',
     ),
     'target_type' => 'node',

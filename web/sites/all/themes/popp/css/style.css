@@ -520,3 +520,7 @@ div.main-container + footer.footer.first{
 #photoPh.pa{
     border-color:#9b59b6;
 }
+
+.no-landscape + div{
+    margin-top:35px;
+}
