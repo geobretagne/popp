@@ -2,7 +2,6 @@
 /**
  * @file
  * POPP theme implementation for comments.
- *
  * Available variables:
  * - $author: Comment author. Can be link or plain text.
  * - $content: An array of comment items. Use render($content) to print them all, or
@@ -41,31 +40,32 @@
  * - $title_suffix (array): An array containing additional output populated by
  * modules, intended to be displayed after the main title tag that appears in
  * the template.
- *
  * These two variables are provided for context:
  * - $comment: Full comment object.
  * - $node: Node object the comments are attached to.
- *
  * Other variables:
  * - $classes_array: Array of html class attribute values. It is flattened
  * into a string within the variable $classes.
- *
- * @see template_preprocess()
- * @see template_preprocess_comment()
- * @see template_process()
- * @see theme_comment()
- *
+ * @see     template_preprocess()
+ * @see     template_preprocess_comment()
+ * @see     template_process()
+ * @see     theme_comment()
  * @ingroup themeable
  */
 ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
     <?php print $picture ?>
-    <?php print render($title_prefix); ?>
-    <h3<?php print $title_attributes; ?>><?php print $title ?></h3>
+    <?php
+    if(strip_tags($title) != "false"): ?>
+    <h3 class="notCurrent" <?php print $title_attributes; ?>><span class="commentTitle">Photo n°</span><span
+            class="photoCommentNumber"><?= (strip_tags($title) + 1) ?></span></h3>
+    <?php else: ?>
+        <h3 class="notCurrent" <?php print $title_attributes; ?>><span class="commentTitle">Document référence</span><span
+                class="photoCommentNumber" style="display:none;"><?= strip_tags($title) ?></span></h3>
+    <?php endif; ?>
     <?php print render($title_suffix); ?>
     <div class="submitted">
         <?php print $permalink; ?>
-        <?php print $submitted; ?>
     </div>
     <div class="content"<?php print $content_attributes; ?>>
         <?php
@@ -79,5 +79,7 @@
             </div>
         <?php endif; ?>
     </div>
+    <?php print render($title_prefix); ?>
     <?php print render($content['links']) ?>
+    <div class="pull-right"><?php print $submitted; ?></div>
 </div>

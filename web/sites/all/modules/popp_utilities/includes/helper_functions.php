@@ -103,6 +103,9 @@ function fetchThesaurusFields(&$result, &$resultNonReq, $serie)
                 $set    = [];
                 $entity = entity_load('field_collection_item', [$thesElt['value']]);
                 $entity = $entity[$thesElt['value']];
+                if(!isset($entity->field_popp_thes_evol[LANGUAGE_NONE])){
+                    continue;
+                }
                 $tid    = $entity->field_popp_thes_elt[LANGUAGE_NONE][0]['tid'];
                 foreach ($entity->field_popp_thes_evol[LANGUAGE_NONE] as $change) {
                     $set[$tid]['changes'][$change['value']][] = $serie->nid;
@@ -270,7 +273,7 @@ function getChangesTable($node)
     foreach ($tableContent as $line) {
         $result .= '<tr><td>' . $line['name'] . '</td>';
         foreach ($changes as $change) {
-            $result .= '<td>' . count($line['changes'][$change]) . '</td>';
+            $result .= '<td>' . (isset($line['changes'][$change]) ? count($line['changes'][$change]) : 0 ). '</td>';
         }
         $result .= '</tr>';
     }
@@ -296,19 +299,19 @@ function getChangesSinceLastPhotoTable($serieNid, $actualNid)
                     </thead>
                     <tbody>';
     $tableContent = getChangesSincePreviousAsArray($node, $changes, $actualNid);
-    if(false === $tableContent){
+    if (false === $tableContent) {
         print 'N/A';
         drupal_exit();
     }
     foreach ($tableContent as $line) {
         $result .= '<tr><td>' . $line['name'] . '</td>';
         foreach ($changes as $change) {
-            $result .= '<td>' . (count($line['changes'][$change]) > 0 ? 'X' : ''). '</td>';
+            $result .= '<td>' . (count($line['changes'][$change]) > 0 ? 'X' : '') . '</td>';
         }
         $result .= '</tr>';
     }
-    if(empty($tableContent)){
-        $result.='<tr><td colspan="7">Aucun changement</td>';
+    if (empty($tableContent)) {
+        $result .= '<tr><td colspan="7">Aucun changement</td>';
     }
     print ($result .= '</tbody></table>');
 }
@@ -323,6 +326,9 @@ function getChangesAsArray($node, $changes)
             foreach ($photo->field_popp_photo_thesaurus[LANGUAGE_NONE] as $thesElt) {
                 $entity = entity_load('field_collection_item', [$thesElt['value']]);
                 $entity = $entity[$thesElt['value']];
+                if(!isset($entity->field_popp_thes_evol[LANGUAGE_NONE])){
+                    continue;
+                }
                 $tid    = $entity->field_popp_thes_elt[LANGUAGE_NONE][0]['tid'];
                 foreach ($entity->field_popp_thes_evol[LANGUAGE_NONE] as $change) {
                     if (! isset($set[$tid]['changes'])) {
@@ -356,16 +362,18 @@ function getChangesAsArray($node, $changes)
 
 function getChangesSincePreviousAsArray($node, $changes, $target)
 {
-    $set = [];
+    $set   = [];
     $first = true;
     foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $photoNid) {
         if ($photoNid['target_id'] != $target) {
-            if($first){
+            if ($first) {
                 $first = false;
             }
             continue;
-        }else if($first){
-            return false;
+        } else {
+            if ($first) {
+                return false;
+            }
         }
         $photo = node_load($photoNid['target_id']);
         if (isset($photo->field_popp_photo_thesaurus[LANGUAGE_NONE])) {
@@ -399,6 +407,7 @@ function getChangesSincePreviousAsArray($node, $changes, $target)
             }
         }
     }
+
     return $set;
 }
 

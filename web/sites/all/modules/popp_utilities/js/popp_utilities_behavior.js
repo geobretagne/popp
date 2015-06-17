@@ -52,7 +52,7 @@ var doCenter = true;
                             Drupal.attachBehaviors();
                         },
                         onUnselect: function (feature) {
-                            $("#photoResult").html("").removeClass("well");
+                            $("#photoResult").html("").hide();
                             delete lastFeature;
                             Drupal.attachBehaviors();
                         }
@@ -191,7 +191,7 @@ var doCenter = true;
         }
         lastNid = nid;
         if (nid == null) {
-            $("#photoResult").html("").removeClass("well");
+            $("#photoResult").html('').hide();
             return;
         }
         $.post(
@@ -203,7 +203,7 @@ var doCenter = true;
             function (response) {
                 if (response[1] !== undefined) {
                     var viewHtml = response[1].data;
-                    $("#photoResult").html(viewHtml).addClass("well");
+                    $("#photoResult").html(viewHtml).show();
                     Drupal.attachBehaviors();
                 }
             }

@@ -11,77 +11,6 @@ function carto_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'popp_main_photo_display';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'field_collection_item';
-  $view->human_name = 'POPP Affichage Photo';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'plus';
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Éléments par page';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« premier';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ précédent';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relation: Gestionnaire défectueux/manquant */
-  $handler->display->display_options['relationships']['field_popp_collection_photo_node']['id'] = 'field_popp_collection_photo_node';
-  $handler->display->display_options['relationships']['field_popp_collection_photo_node']['table'] = 'field_collection_item';
-  $handler->display->display_options['relationships']['field_popp_collection_photo_node']['field'] = 'field_popp_collection_photo_node';
-  $handler->display->display_options['relationships']['field_popp_collection_photo_node']['required'] = TRUE;
-  /* Filtre contextuel: Élément Field collection : Identifiant de Élément field collection */
-  $handler->display->display_options['arguments']['item_id']['id'] = 'item_id';
-  $handler->display->display_options['arguments']['item_id']['table'] = 'field_collection_item';
-  $handler->display->display_options['arguments']['item_id']['field'] = 'item_id';
-  $handler->display->display_options['arguments']['item_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['item_id']['exception']['title'] = 'Tout';
-  $handler->display->display_options['arguments']['item_id']['default_argument_type'] = 'raw';
-  $handler->display->display_options['arguments']['item_id']['default_argument_options']['index'] = '0';
-  $handler->display->display_options['arguments']['item_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['item_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['item_id']['summary_options']['items_per_page'] = '25';
-
-  /* Display: Bloc */
-  $handler = $view->new_display('block', 'Bloc', 'block_1');
-  $translatables['popp_main_photo_display'] = array(
-    t('Master'),
-    t('plus'),
-    t('Appliquer'),
-    t('Réinitialiser'),
-    t('Trier par'),
-    t('Asc'),
-    t('Desc'),
-    t('Éléments par page'),
-    t('- Tout -'),
-    t('Décalage'),
-    t('« premier'),
-    t('‹ précédent'),
-    t('suivant ›'),
-    t('dernier »'),
-    t('field_popp_collection_photo_node'),
-    t('Tout'),
-    t('Bloc'),
-  );
-  $export['popp_main_photo_display'] = $view;
-
-  $view = new view();
   $view->name = 'popp_search_result_view';
   $view->description = '';
   $view->tag = 'default';
@@ -193,6 +122,7 @@ function carto_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'popp_reference_document' => 'popp_reference_document',
     'popp_photo' => 'popp_photo',
   );
 
@@ -217,7 +147,7 @@ function carto_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -257,11 +187,22 @@ function carto_views_default_views() {
     'image_style' => 'miniature_serie_photo',
     'image_link' => '',
   );
+  /* Champ: Global : Voir le compteur de résultats */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = '';
+  $handler->display->display_options['fields']['counter']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  $handler->display->display_options['fields']['counter']['reverse'] = 0;
   /* Champ: Contenu : Date de la prise de vue */
   $handler->display->display_options['fields']['field_popp_photo_date']['id'] = 'field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['table'] = 'field_data_field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['field'] = 'field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_photo_date']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_photo_date']['alter']['text'] = 'N°[counter] - [field_popp_photo_date]';
   $handler->display->display_options['fields']['field_popp_photo_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_popp_photo_date']['settings'] = array(
     'format_type' => 'short',
@@ -287,6 +228,7 @@ function carto_views_default_views() {
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Champ: Contenu : Photographie */
   $handler->display->display_options['fields']['field_popp_photo_file']['id'] = 'field_popp_photo_file';
@@ -300,6 +242,28 @@ function carto_views_default_views() {
     'image_style' => 'photo_sheet_display',
     'image_link' => '',
   );
+  /* Champ: Contenu : Fichier */
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['id'] = 'field_popp_refdoc_file';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['table'] = 'field_data_field_popp_refdoc_file';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['field'] = 'field_popp_refdoc_file';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['settings'] = array(
+    'image_style' => 'photo_sheet_display',
+    'image_link' => '',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Filtre contextuel: Contenu : Nid */
+  $handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['arguments']['nid_1']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid_1']['exception']['title'] = 'Tout';
+  $handler->display->display_options['arguments']['nid_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['nid_1']['default_argument_options']['index'] = '1';
+  $handler->display->display_options['arguments']['nid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid_1']['summary_options']['items_per_page'] = '25';
 
   /* Display: Bloc 3 */
   $handler = $view->new_display('block', 'Bloc 3', 'block_3');
@@ -363,6 +327,7 @@ function carto_views_default_views() {
     t('suivant ›'),
     t('dernier »'),
     t('<a class="toZoom" linkedphoto="[nid_1]" href="/node/[nid]/[nid_1]">[field_popp_photo_file]</a>'),
+    t('N°[counter] - [field_popp_photo_date]'),
     t('Bloc 2'),
     t('Bloc 3'),
     t('Date et heure'),
@@ -406,7 +371,7 @@ function carto_views_default_views() {
     'other_bottom' => 'nid',
     'other_left' => 'nid',
     'name_field' => 'title',
-    'description_field' => 'title',
+    'description_field' => 'field_popp_serie_first_desc',
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
@@ -453,6 +418,12 @@ function carto_views_default_views() {
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['relationship'] = 'og_membership_related_node_group';
+  /* Champ: Contenu : Description fine des éléments de paysage à la premiere prise de vue */
+  $handler->display->display_options['fields']['field_popp_serie_first_desc']['id'] = 'field_popp_serie_first_desc';
+  $handler->display->display_options['fields']['field_popp_serie_first_desc']['table'] = 'field_data_field_popp_serie_first_desc';
+  $handler->display->display_options['fields']['field_popp_serie_first_desc']['field'] = 'field_popp_serie_first_desc';
+  $handler->display->display_options['fields']['field_popp_serie_first_desc']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_serie_first_desc']['element_label_colon'] = FALSE;
   /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -477,8 +448,9 @@ function carto_views_default_views() {
   $handler->display->display_options['filters']['type_1']['table'] = 'node';
   $handler->display->display_options['filters']['type_1']['field'] = 'type';
   $handler->display->display_options['filters']['type_1']['relationship'] = 'og_membership_related_node_group';
+  $handler->display->display_options['filters']['type_1']['operator'] = 'not in';
   $handler->display->display_options['filters']['type_1']['value'] = array(
-    'opp' => 'opp',
+    'opp_takepart' => 'opp_takepart',
   );
 
   /* Display: Layer Home */

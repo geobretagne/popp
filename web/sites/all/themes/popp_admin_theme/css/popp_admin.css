@@ -23,3 +23,15 @@ div.term-reference-tree > .term-reference-tree-level .form-radio{
 body.admin-menu #toolbar{
     margin-top:-13px;
 }
+
+.group-contributor{
+    display:none;
+}
+
+input[readonly]{
+    background-color:#ededed;
+}
+
+fieldset.ief-form, .ief-row-form{
+    background: #efefef;
+}

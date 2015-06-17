@@ -50,7 +50,6 @@ Drupal.theme.openlayersPopup = function (feature) {
             if (i == (feature.cluster.length - 1)) {
                 classes.push('last');
             }
-
             output += '<div class="'+classes.join(' ')+'">' +
             Drupal.theme.prototype.openlayersPopup(pf) + '</div>';
         }
@@ -112,7 +111,6 @@ Drupal.openlayers.addBehavior('openlayers_behavior_popp_popup', function (data, 
                         while (map.popups.length) {
                             map.removePopup(map.popups[0]);
                         }
-                        Drupal.openlayers.popup.popupSelect.unselect(selectedFeature);
                     }
                 );
                 popup.keepInMap = options.keepInMap;
@@ -123,7 +121,6 @@ Drupal.openlayers.addBehavior('openlayers_behavior_popp_popup', function (data, 
                 if(popup.relativePosition == "tr" || popup.relativePosition == "tl"){
                     top -= 15;
                 }else{
-                    console.log('BOTTOM');
                     top += 10;
                 }
                 jQuery("#popup").css('top', top);

@@ -308,6 +308,29 @@ function structure_front_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'popp_thematic_local_axes' => array(
+      'name' => 'Axes thématiques locaux',
+      'machine_name' => 'popp_thematic_local_axes',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'popp_towns' => array(
       'name' => 'Communes',
       'machine_name' => 'popp_towns',

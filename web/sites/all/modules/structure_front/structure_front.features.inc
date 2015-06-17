@@ -114,7 +114,7 @@ function structure_front_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titre'),
       'help' => '',
     ),
     'popp_photo_serie' => array(
@@ -123,6 +123,14 @@ function structure_front_node_info() {
       'description' => '',
       'has_title' => '1',
       'title_label' => t('Titre de la série'),
+      'help' => '',
+    ),
+    'popp_record_field' => array(
+      'name' => t('Fiche terrain'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
       'help' => '',
     ),
     'popp_reference_document' => array(
@@ -138,7 +146,7 @@ function structure_front_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Titre du témoignage'),
+      'title_label' => t('Titre du son'),
       'help' => '',
     ),
     'supporting_structure' => array(

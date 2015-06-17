@@ -14,7 +14,7 @@ function popp_mass_import_menu()
             'title'            => t('Importer une série'),
             'page callback'    => 'drupal_get_form',
             'page arguments'   => ['popp_mass_import_form'],
-            'access arguments' => ['popp mass_import']
+            'access arguments' => ['access content']
         ],
     ];
 }
@@ -155,7 +155,7 @@ function popp_mass_import_form_step_two_validate($form, &$form_state)
                 fgetcsv($parser, 0, ';');
                 $result                                                  = insertPhotoNodes($parser, $node, $form_state);
                 $node->field_popp_serie_place[LANGUAGE_NONE][0]['feeds'] = true;
-                $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt']   = 'GEOMETRYCOLLECTION(' . str_replace(',', '', $serie[10]) . ')';
+                $node->field_popp_serie_place[LANGUAGE_NONE][0]['wkt']   = 'GEOMETRYCOLLECTION(' . str_replace(',','',$serie[10]) . ')';
                 node_save($node);
                 if (is_array($result)) {
                     drupal_set_message(t("Série @serie importée avec succès", ['@serie' => $node->title]));
@@ -176,20 +176,27 @@ function getPeriodAndInterval($input)
 {
     if (preg_match('/(a|A)/', $input)) {
         $period = 'year';
-    } elseif (preg_match('/(m|M)$/', $input)) {
-        $period = 'month';
-    } elseif (preg_match('/(s|S)/', $input)) {
-        $period = 'week';
-    } elseif (preg_match('/(h|H)/', $input)) {
-        $period = 'hour';
-    } elseif (preg_match('/(mn|MN)$/', $input)) {
-        $period = 'minute';
     } else {
-        $period = 'year';
-        drupal_set_message(t('Attention ! La période @period n\'a pas été reconnue. Année utilisée par défaut', ['@period' => $input]));
+        if (preg_match('/(m|M)$/', $input)) {
+            $period = 'month';
+        } else {
+            if (preg_match('/(s|S)/', $input)) {
+                $period = 'week';
+            } else {
+                if (preg_match('/(h|H)/', $input)) {
+                    $period = 'hour';
+                } else {
+                    if (preg_match('/(mn|MN)$/', $input)) {
+                        $period = 'minute';
+                    } else {
+                        $period = 'year';
+                        drupal_set_message(t('Attention ! La période @period n\'a pas été reconnue. Année utilisée par défaut', ['@period' => $input]));
+                    }
+                }
+            }
+        }
     }
-
-    preg_match('/[0-9]*/', $input);
+    $interval = preg_match('/[0-9]*/', $input);
 
     return ['period' => $period, 'interval' => isset($matches[0]) ? $matches[0] : '1'];
 }
