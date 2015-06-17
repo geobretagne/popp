@@ -11,6 +11,89 @@ function structure_front_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'caddy';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Panier';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Panier';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Éléments par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« premier';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ précédent';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'node';
+  /* Champ: Contenu : Titre */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Critère de tri: Contenu : Date de publication */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Critère de filtrage: Contenu : Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'popp_photo_serie' => 'popp_photo_serie',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'mon-panier';
+  $translatables['caddy'] = array(
+    t('Master'),
+    t('Panier'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
+    t('Asc'),
+    t('Desc'),
+    t('Éléments par page'),
+    t('- Tout -'),
+    t('Décalage'),
+    t('« premier'),
+    t('‹ précédent'),
+    t('suivant ›'),
+    t('dernier »'),
+    t('Page'),
+  );
+  $export['caddy'] = $view;
+
+  $view = new view();
   $view->name = 'getter_popp_pa';
   $view->description = '';
   $view->tag = 'default';
@@ -365,11 +448,288 @@ function structure_front_views_default_views() {
   $export['popp_partners_logos'] = $view;
 
   $view = new view();
+  $view->name = 'popp_refdoc_display';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'POPP - Affichage document référence';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'POPP - Affichage document référence';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relation: Entity Reference : Entité référante */
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['id'] = 'reverse_field_popp_serie_refdoc_node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['field'] = 'reverse_field_popp_serie_refdoc_node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['required'] = TRUE;
+  /* Champ: Contenu : Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Champ: Contenu : Nid */
+  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid_1']['relationship'] = 'reverse_field_popp_serie_refdoc_node';
+  $handler->display->display_options['fields']['nid_1']['label'] = '';
+  $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
+  /* Champ: Contenu : Fichier */
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['id'] = 'field_popp_refdoc_file';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['table'] = 'field_data_field_popp_refdoc_file';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['field'] = 'field_popp_refdoc_file';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['alter']['text'] = '<a class="toZoom" href="/node/[nid_1]/[nid]" linkedphoto="[nid]" referencedoc="true">[field_popp_refdoc_file]</a>';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_popp_refdoc_file']['settings'] = array(
+    'image_style' => 'miniature_serie_photo',
+    'image_link' => '',
+  );
+  /* Champ: Contenu : Date */
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['id'] = 'field_popp_refdoc_date';
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['table'] = 'field_data_field_popp_refdoc_date';
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['field'] = 'field_popp_refdoc_date';
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['alter']['text'] = 'Ref - [field_popp_refdoc_date]';
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_refdoc_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Critère de tri: Contenu : Date de publication */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filtre contextuel: Contenu : Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_popp_serie_refdoc_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Tout';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Critère de filtrage: Contenu : Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'popp_reference_document' => 'popp_reference_document',
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+
+  /* Display: Bloc */
+  $handler = $view->new_display('block', 'Bloc', 'block_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Champ: Contenu : Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Champ: Contenu : Nid */
+  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid_1']['relationship'] = 'reverse_field_popp_serie_refdoc_node';
+  $handler->display->display_options['fields']['nid_1']['label'] = '';
+  $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
+  /* Champ: Contenu : Date */
+  $handler->display->display_options['fields']['field_popp_refdoc_date_1']['id'] = 'field_popp_refdoc_date_1';
+  $handler->display->display_options['fields']['field_popp_refdoc_date_1']['table'] = 'field_data_field_popp_refdoc_date';
+  $handler->display->display_options['fields']['field_popp_refdoc_date_1']['field'] = 'field_popp_refdoc_date';
+  $handler->display->display_options['fields']['field_popp_refdoc_date_1']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Champ: Contenu : Auteur / Photographe */
+  $handler->display->display_options['fields']['field_popp_refdoc_author']['id'] = 'field_popp_refdoc_author';
+  $handler->display->display_options['fields']['field_popp_refdoc_author']['table'] = 'field_data_field_popp_refdoc_author';
+  $handler->display->display_options['fields']['field_popp_refdoc_author']['field'] = 'field_popp_refdoc_author';
+  $handler->display->display_options['fields']['field_popp_refdoc_author']['label'] = 'Auteur';
+  $handler->display->display_options['fields']['field_popp_refdoc_author']['empty'] = 'Inconnu(e)';
+  /* Champ: Contenu : Licence du document */
+  $handler->display->display_options['fields']['field_popp_refdoc_licence']['id'] = 'field_popp_refdoc_licence';
+  $handler->display->display_options['fields']['field_popp_refdoc_licence']['table'] = 'field_data_field_popp_refdoc_licence';
+  $handler->display->display_options['fields']['field_popp_refdoc_licence']['field'] = 'field_popp_refdoc_licence';
+  $handler->display->display_options['fields']['field_popp_refdoc_licence']['label'] = 'Licence';
+  $handler->display->display_options['fields']['field_popp_refdoc_licence']['type'] = 'taxonomy_term_reference_plain';
+  $translatables['popp_refdoc_display'] = array(
+    t('Master'),
+    t('POPP - Affichage document référence'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
+    t('Asc'),
+    t('Desc'),
+    t('Contenu référençant Contenu depuis field_popp_serie_refdoc'),
+    t('<a class="toZoom" href="/node/[nid_1]/[nid]" linkedphoto="[nid]" referencedoc="true">[field_popp_refdoc_file]</a>'),
+    t('Ref - [field_popp_refdoc_date]'),
+    t('Tout'),
+    t('Block'),
+    t('Bloc'),
+    t('Date'),
+    t('Auteur'),
+    t('Inconnu(e)'),
+    t('Licence'),
+  );
+  $export['popp_refdoc_display'] = $view;
+
+  $view = new view();
+  $view->name = 'popp_serie_documentation_display';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'POPP - Affichage documentation';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'POPP - Affichage documentation';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Éléments par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« premier';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ précédent';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relation: Entity Reference : Entité référante */
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['id'] = 'reverse_field_popp_serie_documentation_node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['field'] = 'reverse_field_popp_serie_documentation_node';
+  $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['required'] = TRUE;
+  /* Champ: Contenu : Documentation */
+  $handler->display->display_options['fields']['field_popp_documentation_file']['id'] = 'field_popp_documentation_file';
+  $handler->display->display_options['fields']['field_popp_documentation_file']['table'] = 'field_data_field_popp_documentation_file';
+  $handler->display->display_options['fields']['field_popp_documentation_file']['field'] = 'field_popp_documentation_file';
+  $handler->display->display_options['fields']['field_popp_documentation_file']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_documentation_file']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_documentation_file']['click_sort_column'] = 'fid';
+  /* Champ: Contenu : Légende */
+  $handler->display->display_options['fields']['field_popp_documentation_legend']['id'] = 'field_popp_documentation_legend';
+  $handler->display->display_options['fields']['field_popp_documentation_legend']['table'] = 'field_data_field_popp_documentation_legend';
+  $handler->display->display_options['fields']['field_popp_documentation_legend']['field'] = 'field_popp_documentation_legend';
+  $handler->display->display_options['fields']['field_popp_documentation_legend']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_documentation_legend']['element_label_colon'] = FALSE;
+  /* Critère de tri: Contenu : Date de publication */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filtre contextuel: Contenu : Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'reverse_field_popp_serie_documentation_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Tout';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Critère de filtrage: Contenu : Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Critère de filtrage: Contenu : Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'popp_documentation' => 'popp_documentation',
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['popp_serie_documentation_display'] = array(
+    t('Master'),
+    t('POPP - Affichage documentation'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
+    t('Asc'),
+    t('Desc'),
+    t('Éléments par page'),
+    t('- Tout -'),
+    t('Décalage'),
+    t('« premier'),
+    t('‹ précédent'),
+    t('suivant ›'),
+    t('dernier »'),
+    t('Contenu référençant Contenu depuis field_popp_serie_documentation'),
+    t('Tout'),
+    t('Block'),
+  );
+  $export['popp_serie_documentation_display'] = $view;
+
+  $view = new view();
   $view->name = 'popp_testimonies_display';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'POPP - Affichage témoignages série';
+  $view->human_name = 'POPP - Affichage sons série';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -388,8 +748,28 @@ function structure_front_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_popp_tty_file' => 'field_popp_tty_file',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_popp_tty_file' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Comportement en l'absence de résultats: Global : Zone de texte */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -402,18 +782,96 @@ function structure_front_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['field'] = 'reverse_field_popp_serie_testimonies_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['required'] = TRUE;
+  /* Relation: Contenu : Auteur */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  /* Champ: Contenu : Licence du son */
+  $handler->display->display_options['fields']['field_popp_tty_rights']['id'] = 'field_popp_tty_rights';
+  $handler->display->display_options['fields']['field_popp_tty_rights']['table'] = 'field_data_field_popp_tty_rights';
+  $handler->display->display_options['fields']['field_popp_tty_rights']['field'] = 'field_popp_tty_rights';
+  $handler->display->display_options['fields']['field_popp_tty_rights']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_rights']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_rights']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_tty_rights']['type'] = 'taxonomy_term_reference_plain';
+  /* Champ: Contenu : Date d'enregistrement */
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['id'] = 'field_popp_tty_recording_date';
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['table'] = 'field_data_field_popp_tty_recording_date';
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['field'] = 'field_popp_tty_recording_date';
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_tty_recording_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Champ: Contenu : Durée */
+  $handler->display->display_options['fields']['field_popp_tty_duration']['id'] = 'field_popp_tty_duration';
+  $handler->display->display_options['fields']['field_popp_tty_duration']['table'] = 'field_data_field_popp_tty_duration';
+  $handler->display->display_options['fields']['field_popp_tty_duration']['field'] = 'field_popp_tty_duration';
+  $handler->display->display_options['fields']['field_popp_tty_duration']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_duration']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_duration']['alter']['text'] = '[field_popp_tty_duration] mn';
+  $handler->display->display_options['fields']['field_popp_tty_duration']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_tty_duration']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Champ: Contenu : Présentation du son */
+  $handler->display->display_options['fields']['field_popp_tty_descr']['id'] = 'field_popp_tty_descr';
+  $handler->display->display_options['fields']['field_popp_tty_descr']['table'] = 'field_data_field_popp_tty_descr';
+  $handler->display->display_options['fields']['field_popp_tty_descr']['field'] = 'field_popp_tty_descr';
+  $handler->display->display_options['fields']['field_popp_tty_descr']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_descr']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_descr']['element_label_colon'] = FALSE;
+  /* Champ: Contenu : Structure responsable de la création du contenu */
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['id'] = 'field_popp_tty_resp_structure';
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['table'] = 'field_data_field_popp_tty_resp_structure';
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['field'] = 'field_popp_tty_resp_structure';
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_tty_resp_structure']['settings'] = array(
+    'link' => 0,
+  );
   /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = 'Informations';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = 'Titre: [title]<br/>
+Présentation : [field_popp_tty_descr]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Champ: Contenu : Auteur / Preneur de son */
+  $handler->display->display_options['fields']['field_popp_tty_author']['id'] = 'field_popp_tty_author';
+  $handler->display->display_options['fields']['field_popp_tty_author']['table'] = 'field_data_field_popp_tty_author';
+  $handler->display->display_options['fields']['field_popp_tty_author']['field'] = 'field_popp_tty_author';
+  $handler->display->display_options['fields']['field_popp_tty_author']['label'] = 'Contexte';
+  $handler->display->display_options['fields']['field_popp_tty_author']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_author']['alter']['text'] = 'Auteur / Preneur de son : [field_popp_tty_author]<br/>
+Contributeur : TODO SYLVAIN<br/>
+Strcuture responsable de la création du contenu : [field_popp_tty_resp_structure]<br/>';
+  $handler->display->display_options['fields']['field_popp_tty_author']['element_label_colon'] = FALSE;
   /* Champ: Contenu : Fichier */
   $handler->display->display_options['fields']['field_popp_tty_file']['id'] = 'field_popp_tty_file';
   $handler->display->display_options['fields']['field_popp_tty_file']['table'] = 'field_data_field_popp_tty_file';
   $handler->display->display_options['fields']['field_popp_tty_file']['field'] = 'field_popp_tty_file';
-  $handler->display->display_options['fields']['field_popp_tty_file']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_tty_file']['label'] = 'Lecture';
+  $handler->display->display_options['fields']['field_popp_tty_file']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_tty_file']['alter']['text'] = '[field_popp_tty_file]
+<div class="pull-right">
+Date : [field_popp_tty_recording_date]<br/>
+Durée : [field_popp_tty_duration]<br/>
+Licence : [field_popp_tty_rights]<br/>
+</div>';
   $handler->display->display_options['fields']['field_popp_tty_file']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_popp_tty_file']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_popp_tty_file']['type'] = 'jplayer_player';
@@ -471,6 +929,22 @@ function structure_front_views_default_views() {
     t('Desc'),
     t('<h3>Aucun son pour le moment</h3>'),
     t('Contenu référençant Contenu depuis field_popp_serie_testimonies'),
+    t('auteur'),
+    t('[field_popp_tty_duration] mn'),
+    t('Informations'),
+    t('Titre: [title]<br/>
+Présentation : [field_popp_tty_descr]'),
+    t('Contexte'),
+    t('Auteur / Preneur de son : [field_popp_tty_author]<br/>
+Contributeur : TODO SYLVAIN<br/>
+Strcuture responsable de la création du contenu : [field_popp_tty_resp_structure]<br/>'),
+    t('Lecture'),
+    t('[field_popp_tty_file]
+<div class="pull-right">
+Date : [field_popp_tty_recording_date]<br/>
+Durée : [field_popp_tty_duration]<br/>
+Licence : [field_popp_tty_rights]<br/>
+</div>'),
     t('Tout'),
     t('Block'),
   );

@@ -6,12 +6,30 @@ require_once(drupal_get_path('module', 'popp_utilities') . '/includes/helper_fun
 function popp_utilities_menu()
 {
     return [
-        'utilities/ajax/%/%' => [
+        'utilities/ajax/%/%'            => [
             'page callback'    => 'getChangesSinceLastPhotoTable',
-            'page arguments'   => [2,3],
+            'page arguments'   => [2, 3],
             'access arguments' => ['access content'],
             'type'             => MENU_CALLBACK,
         ],
+        'utilities/ajax_table_desc/%/%' => [
+            'page callback'    => 'getPhotoDescTable',
+            'page arguments'   => [2, 3],
+            'access arguments' => ['access content'],
+            'type'             => MENU_CALLBACK,
+        ],
+        'utilities/ajax_them_axes/%'    => [
+            'page callback'    => 'getSameThematicSeries',
+            'page arguments'   => [2],
+            'access arguments' => ['access content'],
+            'type'             => MENU_CALLBACK,
+        ],
+        'utilities/ajax_photo_licences/%' => [
+            'page callback' => 'getPhotoLicences',
+            'page arguments' => [2],
+            'access arguments' => ['access content'],
+            'type' => MENU_CALLBACK,
+        ]
     ];
 }
 
@@ -65,18 +83,23 @@ function popp_utilities_block_view($delta = '')
 
 function generateThesaurusForm($data)
 {
-    $result = '<div id="advancedSearchModal" class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
+    if (false == $result = cache_get('popp_thessearch')) {
+        $result = '<div id="advancedSearchModal" class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
                     <button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>×</span></button>
                     <h4 class="modal-title">Recherche avancée</h4>
                     <p style="font-style:italic;">Cliquez sur une catégorie pour voir les thèmes. Si vous ne choisissez aucun type d\'évolution, les photographies contenant l\'élément seront recherchées.</p>
                 </div>
                 <div class="modal-body"><form autocomplete="off">';
-    $result .= getTermsList($data['required']);
-    $result .= getTermsList($data['non_required']);
-    $result .= '<button aria-label="Fermer" data-dismiss="modal" class="btn btn-primary btn-block" type="button">Fermer la fenêtre</button>
+        $result .= getTermsList($data['required']);
+        $result .= getTermsList($data['non_required']);
+        $result .= '<button aria-label="Fermer" data-dismiss="modal" class="btn btn-primary btn-block" type="button">Fermer la fenêtre</button>
 </form></div></div></div></div>';
+        cache_set('popp_thessearch', $result);
 
-    return $result;
+        return $result;
+    }
+
+    return $result->data;
 }
 
 /**
@@ -212,23 +235,36 @@ function popp_utilities_entity_form_validate(&$entity_form, &$form_state)
     if ($entity_form['#entity']->type != 'popp_photo') {
         return;
     }
-    if (isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new) {
-        $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['form'];
-    } else {
-        if(isset($form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][1]['form'])){
-            $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][1]['form'];
-        }else{
-            $inlineForm = $form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'][0]['form'];
+    $inlineForm = null;
+    foreach ($form_state['values']['field_popp_serie_photo_list'][LANGUAGE_NONE]['entities'] as $id => $element) {
+        if (isset($element['form'])) {
+            $inlineForm = $element['form'];
+            break;
         }
     }
-    $thesAmount = (seekThesaurusAmount($inlineForm['field_popp_photo_thesaurus']['und'], 'field_popp_thes_elt'));
+    $thesAmount = seekThesaurusAmount($entity_form['#entity']->field_popp_photo_thesaurus[LANGUAGE_NONE], 'field_popp_thes_elt');
     if ($thesAmount < 2) {
         form_error($entity_form['field_popp_photo_thesaurus'], 'Vous devez saisir au moins deux éléments de thésaurus');
     }
 }
 
+function popp_utilities_node_presave($node)
+{
+    if ($node->type == 'popp_photo_serie') {
+        $region                                                       = taxonomy_term_load($node->field_popp_serie_district[LANGUAGE_NONE][0]['tid']);
+        $supportingStruct                                             = $node->field_popp_serie_supp_struct[LANGUAGE_NONE][0]['target_id'];
+        $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] = $region->field_regional_code[LANGUAGE_NONE][0]['value'] . ' ' . sprintf('%02d', $supportingStruct) . ' ' . sprintf('%04d', $node->nid);
+    }
+}
+
+function popp_utilities_node_insert($node)
+{
+    clearCacheSearch($node);
+}
+
 function seekThesaurusAmount($elements, $key)
 {
+    print_r($elements);
     $count = 0;
     foreach ($elements as $element) {
         if (! is_array($element)) {
@@ -244,17 +280,73 @@ function seekThesaurusAmount($elements, $key)
 
 function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$form_state)
 {
+    $entity_form['actions']['ief_edit_save']['#value'] = 'Sauvegarder';
+    if ($entity_form['#entity']->type == 'popp_photo') {
+        $entity_form['#title'] = 'Ajouter une photo';
+    }
     if ($entity_form['#entity']->type == 'popp_photo' && (isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new)) {
-        $parentNid                          = $form_state['build_info']['args'][0]->nid;
-        $existingThesaurus                  = getExistingThesaurus($parentNid);
-        $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';
-        foreach ($existingThesaurus as $id => $thesElement) {
-            $entity_form['field_popp_photo_thesaurus']['und'][$id]                                                  = $entity_form['field_popp_photo_thesaurus']['und'][0];
-            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_elt']['und']['#default_value']  = [$thesElement['thes_elements']['und'][0]['tid'] => 1];
-            $entity_form['field_popp_photo_thesaurus']['und'][$id]['field_popp_thes_evol']['und']['#default_value'] = [0 => 'stability'];
+        $parentNid         = $form_state['build_info']['args'][0]->nid;
+        $existingThesaurus = getExistingThesaurus($parentNid);
+        $existingNonOaiPmh = getNotOaiPmhData($parentNid);
+        $index             = 0;
+        foreach ($existingThesaurus as $thesElement) {
+            if (! ifThesaurusOk($thesElement)) {
+                continue;
+            }
+            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]                                                          = $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][0];
+            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['#parents'][5]                                           = $index;
+            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_elt'][LANGUAGE_NONE]['#default_value']  = [$thesElement['thes_elements'][LANGUAGE_NONE][0]['tid'] => 1];
+            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_evol'][LANGUAGE_NONE]['#default_value'] = [0 => 'stability'];
+            $index++;
+        }
+        foreach ($existingNonOaiPmh as $key => $data) {
+            $entity_form[$key][LANGUAGE_NONE][0]['value']['#default_value'] = $data;
         }
     }
+
     $entity_form['#element_validate'][] = 'popp_utilities_entity_form_validate';
+}
+
+function ifThesaurusOk($thesElement)
+{
+    foreach ($thesElement['evolutions'][LANGUAGE_NONE] as $evolution) {
+        if ($evolution['value'] == 'disappeared') {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function getNotOaiPmhData($parentNid)
+{
+    $parentNode = node_load($parentNid);
+    $result     = [];
+    if (isset($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE][0])) {
+        $photoId   = $parentNode->field_popp_serie_photo_list[LANGUAGE_NONE][count($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE]) - 1]['target_id'];
+        $photo     = node_load($photoId);
+        $fieldList = [
+            'field_popp_photo_hour',
+            'field_popp_photo_camera_type',
+            'field_popp_photo_focal',
+            'field_popp_photo_aperture',
+            'field_popp_photo_film_type',
+            'field_popp_photo_iso',
+            'field_popp_photo_original_weight',
+            'field_popp_photo_camera_inclinat',
+            'field_popp_photo_tripod_height',
+            'field_popp_photo_orientation',
+            'field_popp_photo_altitude',
+            'field_popp_photo_tidal_coeff'
+        ];
+        foreach ($fieldList as $field) {
+            if (isset($photo->{$field}[LANGUAGE_NONE][0]['value'])) {
+                $result[$field] = $photo->{$field}[LANGUAGE_NONE][0]['value'];
+            }
+        }
+    }
+
+    return $result;
 }
 
 function getExistingThesaurus($parentNid)
@@ -263,23 +355,17 @@ function getExistingThesaurus($parentNid)
     module_load_include('inc', 'field_collection');
     $parentNode = node_load($parentNid);
     $result     = [];
-    foreach ($parentNode->field_popp_serie_photo_list['und'] as $photoId) {
-        $photo = node_load($photoId['target_id']);
-        foreach ($photo->field_popp_photo_thesaurus['und'] as $item) {
+    $index      = count($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE]);
+    $index--;
+    if (isset($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE][$index])) {
+        $photo = node_load($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE][$index]['target_id']);
+        foreach ($photo->field_popp_photo_thesaurus[LANGUAGE_NONE] as $item) {
             $entity   = field_collection_item_load($item['value']);
-            $result[] = ['changes' => $entity->field_popp_thes_changes, 'thes_elements' => $entity->field_popp_thes_elt, 'evolutions' => $entity->field_popp_thes_evol];
+            $result[] = ['thes_elements' => $entity->field_popp_thes_elt, 'evolutions' => $entity->field_popp_thes_evol];
         }
     }
 
     return $result;
-}
-
-/**
- * Implements hook_node_insert().
- */
-function popp_utilities_node_insert($node)
-{
-    clearCacheSearch($node);
 }
 
 /**
@@ -295,19 +381,103 @@ function clearCacheSearch($node)
     if ($node->type == 'popp_photo' || $node->type == 'popp_photo_serie') {
         if (false !== cache_get('popp_search')) {
             cache_clear_all('popp_search', 'cache');
+            cache_clear_all('popp_thessearch', 'cache');
         }
     }
 }
 
-/*
-function createThesaurus($photoNode, $params){
-    module_load_include('inc', 'entity', 'includes/entity.controller');
-    // Setup the values in the structure expected by the field_collection entity.
-    $entity = entity_create('field_collection_item', ['field_name' => 'field_popp_collection_photo']);
-    $entity->setHostEntity('node', $node);
-    $entity->field_popp_photo_collection_file['und'][] = (array)$file;
-    $entity->field_popp_photo_collection_date['und'][0]['value'] = date('Y-m-d',strtotime('09 June 1991'));
-    $entity->field_popp_photo_collection_ri['und'][0]['value']  = 'Test RI';
-    $entity->save();
-    node_save($node);
-}*/
+function getPhotoDescTable($serieNid, $photoOrder)
+{
+    $serie       = node_load($serieNid);
+    $otherPhotos = '';
+    $result = '';
+    $result      .= '<table class="table table-striped"><thead><tr><th>Photo</th><th>Description des éléments / des changements</th></tr></thead><tbody>';
+    if (isset($serie->field_popp_serie_refdoc[LANGUAGE_NONE][0]['target_id'])) {
+        $refdoc = node_load($serie->field_popp_serie_refdoc[LANGUAGE_NONE][0]['target_id']);
+        if($photoOrder == "-1"){
+            print '<div class="field field-type-interval field-label-above"><div class="field-label">Lieu de conservation:</div>'.$refdoc->	field_popp_refdoc_storage_place[LANGUAGE_NONE][0]['value'].'</div>
+        <div class="field field-type-interval field-label-above"><div class="field-label">Description précise du document:</div>'.$refdoc->field_popp_refdoc_precise_desc['und'][0]['value'].'</div>';
+            return;
+        }
+        $otherPhotos .= '<tr><td>Document référence</td><td>' . $refdoc->field_popp_refdoc_precise_desc[LANGUAGE_NONE][0]['value'] . '</td></tr>';
+    }
+    foreach ($serie->field_popp_serie_photo_list[LANGUAGE_NONE] as $index => $photoNid) {
+        if (! isset($photoNid['target_id'])) {
+            continue;
+        }
+        $photo = node_load($photoNid['target_id']);
+        if (isset($photo->field_popp_photo_description[LANGUAGE_NONE][0]['value']) && $photo->field_popp_photo_description[LANGUAGE_NONE][0]['value'] != '') {
+            $description = $photo->field_popp_photo_description[LANGUAGE_NONE][0]['value'];
+        } else {
+            $description = "Pas de description";
+        }
+        if ($index != $photoOrder) {
+            $otherPhotos .= '<tr><td>Photo n°' . ($index + 1) . '</td><td>' . $description . '</td></tr>';
+        } else {
+            $result .= '<tr><td>Photo courante</td><td>' . $description . '</td></tr>';
+        }
+    }
+    $result .= $otherPhotos;
+    $result .= '</tbody></table>';
+
+    print $result;
+}
+
+function getSameThematicSeries($nid)
+{
+    $serie       = node_load($nid);
+    $result      = "";
+    $resultTable = [];
+    if (! isset($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]) && ! isset($serie->field_popp_serie_loc_axes[LANGUAGE_NONE][0])) {
+        return "";
+    }
+    if (isset($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE][0])) {
+        foreach ($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE] as $thematicAxis) {
+            $query       = db_query("SELECT nid, title
+FROM {node} n
+,{field_data_field_popp_serie_thematic_axis} ta
+WHERE n.nid = ta.entity_id
+AND ta.field_popp_serie_thematic_axis_tid = :tid", [':tid' => $thematicAxis['tid']]);
+            $resultTable = array_replace($query->fetchAllKeyed(), $resultTable);
+        }
+    }
+    if (isset($serie->field_popp_serie_loc_axes[LANGUAGE_NONE])) {
+        foreach ($serie->field_popp_serie_loc_axes[LANGUAGE_NONE] as $thematicAxis) {
+            $query       = db_query("SELECT nid, title
+FROM {node} n
+,{field_data_field_popp_serie_thematic_axis} ta
+WHERE n.nid = ta.entity_id
+AND ta.field_popp_serie_thematic_axis_tid = :tid
+AND n.nid != :nid", [':tid' => $thematicAxis['tid'],
+                     ':nid' => $nid]);
+            $resultTable = array_replace($query->fetchAllKeyed(), $resultTable);
+        }
+    }
+
+    foreach ($resultTable as $nid => $title) {
+        $result .= '<a href="/node/' . $nid . '">' . $title . '</a><br/>';
+    }
+    if ($result != "") {
+        $result = '<div class="field-label">Série(s) du même axe thématique:&nbsp;</div>' . $result;
+    }
+    print '<div class="field field-type-interval field-label-above">' . $result . '</div>';
+}
+
+function getPhotoLicences($nid)
+{
+    $serie       = node_load($nid);
+    $resultTable = [];
+    if (! isset($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]) && ! isset($serie->field_popp_serie_loc_axes[LANGUAGE_NONE][0])) {
+        return "";
+    }
+    if (isset($serie->field_popp_serie_photo_list[LANGUAGE_NONE][0])) {
+        foreach ($serie->field_popp_serie_photo_list[LANGUAGE_NONE] as $photo) {
+            $photography = node_load($photo['target_id']);
+            if(isset($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0])){
+                $taxo = taxonomy_term_load($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0]['tid']);
+                $resultTable[$taxo->tid] = $taxo->name;
+            }
+        }
+    }
+    print('<div class="field field-type-interval field-label-above"><div class="field-label">Licence(s) des photos de la série:</div>'.implode(', ', $resultTable).'</div>');
+}

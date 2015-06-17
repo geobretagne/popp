@@ -31,3 +31,7 @@ body.admin-menu #toolbar{
 input[readonly]{
     background-color:#ededed;
 }
+
+fieldset.ief-form, .ief-row-form{
+    background: #efefef;
+}

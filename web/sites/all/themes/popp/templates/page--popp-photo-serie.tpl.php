@@ -8,25 +8,32 @@
 global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
 $node          = node_load($nodeToDisplay['#node']->nid);
-$output        = '';
-$town          = $node->field_popp_serie_town['und'][0]['tid'];
-$town          = taxonomy_term_load($town);
-$town          = $town ? $town->name : '';
-$firstShot     = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][0]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
-$firstShot     = $firstShot->format('d/m/Y');
-$lastShot      = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][count($node->field_popp_serie_photo_list[LANGUAGE_NONE])]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
-$lastShot      = $lastShot->format('d/m/Y');
-$thematicAxis  = '';
+$listePhotos   = [];
+foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $photo) {
+    $listePhotos[] = ['nid' => $photo['target_id']];
+}
+$listePhotos = json_encode($listePhotos);
+$output      = '';
+$town        = $node->field_popp_serie_town['und'][0]['tid'];
+$town        = taxonomy_term_load($town);
+$town        = $town ? $town->name : '';
+$firstShot   = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][0]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
+$firstShot   = $firstShot->format('d/m/Y');
+$lastShot    = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][count($node->field_popp_serie_photo_list[LANGUAGE_NONE]) - 1]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
+$lastShot    = $lastShot->format('d/m/Y');
+$dateDescr   = '';
+if (isset($node->field_popp_serie_first_desc_date[LANGUAGE_NONE][0]['value'])) {
+    $tmp       = new DateTime($node->field_popp_serie_first_desc_date[LANGUAGE_NONE][0]['value']);
+    $dateDescr = '<i>Le ' . $tmp->format('d/m/Y') . '</i>';
+}
 $isPa = false;
-$opp = (isset($node->og_group_ref[LANGUAGE_NONE][0]['target_id'])?node_load($node->og_group_ref[LANGUAGE_NONE][0]['target_id']):false);
-if(false !== $opp){
-    if($opp->type == 'opp_takepart'){
+$opp  = (isset($node->og_group_ref[LANGUAGE_NONE][0]['target_id']) ? node_load($node->og_group_ref[LANGUAGE_NONE][0]['target_id']) : false);
+if (false !== $opp) {
+    if ($opp->type == 'opp_takepart') {
         $isPa = true;
     }
 }
-foreach ($node->field_popp_serie_thematic_axis[LANGUAGE_NONE] as $axis) {
-    $thematicAxis .= ($thematicAxis != '' ? ' - ' : '' . $axis['taxonomy_term']->name);
-}
+
 $commentsCount = isset($nodeToDisplay['comments']['comments']) ? count($nodeToDisplay['comments']['comments']) - 2 : 0;
 if ($commentsCount < 0) {
     $commentsCount = 0;
@@ -41,6 +48,12 @@ if (isset($node->field_popp_serie_supp_struct['und'])) {
         ],
     ]);
 }
+
+$docsView = views_get_view('popp_serie_documentation_display');
+$docsView->set_display('block');
+$docsView->set_arguments([$nodeToDisplay['#node']->nid]);
+$docsView->pre_execute();
+$docsView->execute('block');
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -105,9 +118,10 @@ if (isset($node->field_popp_serie_supp_struct['und'])) {
  * @see     html.tpl.php
  * @ingroup themeable
  */
-
 drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
 ?>
+<div style="display:none;" id="photoList" data='<?= $listePhotos ?>'></div>
+<div style="display:none;" id="currentPhoto" data='0'></div>
 <header id="navbar" role="banner" class="navbar navbar-default no-landscape">
     <div class="container">
         <div class="navbar-header">
@@ -167,13 +181,15 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                 <ul class="action-links"><?php print render($action_links); ?></ul>
             <?php endif; ?>
             <div class="well relPosition">
-                <p style="margin-bottom: 5px;"><?= $node->title ?> - <?= $town ?><span class="badge pull-right <?=$isPa?'badgePa':'badgeClassic'?>"><?= $isPa?'OPP Participatif':'OPP'?></span></p>
+                <p style="margin-bottom: 5px;"><?= $node->title ?> - <?= $town ?><span
+                        class="badge pull-right <?= $isPa ? 'badgePa' : 'badgeClassic' ?>"><?= $isPa ? 'OPP Participatif' : 'OPP' ?></span>
+                </p>
                 <a class="showInBox" id="showInBox" rel="lightbox" data-title="" data-toggle="lightbox"
-                   href="" style="position: relative; float: right;top:15px;">
-                    <span title="Plein écran" class="glyphicon glyphicon-fullscreen topRight"></span>
+                   href=""">
+                <span title="Plein écran" class="glyphicon glyphicon-fullscreen topRight"></span>
                 </a>
 
-                <div id="photoPh" class="<?=($isPa?'pa':'')?>"></div>
+                <div id="photoPh" class="<?= ($isPa ? 'pa' : '') ?>"></div>
             </div>
         </section>
         <aside class="col-sm-3" role="complementary" style="padding-right:0;">
@@ -189,7 +205,9 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Format 1</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                               href="<?php print "/printpdf/node/" . $node->nid ?>">Fiche
+                                            terrain</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Format 2</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">...</a></li>
                                 </ul>
@@ -212,7 +230,8 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Série <?= $nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] ?>
+                                        Série <span
+                                            id="serieId"><?= $nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] ?></span>
                                     </a>
                                 </h4>
                             </div>
@@ -221,7 +240,11 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                 <div class="panel-body">
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_per']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_thematic_axis']) ?>
-
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_loc_axes']) ?>
+                                    <div id="sameThematicAxis">
+                                    </div>
+                                    <div id="photoLicences">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +253,9 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Photo courante
+                                        <span
+                                            id="typeCurrentPhoto">Photo</span> <?= $nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] ?>
+                                        <span id="idCurrentPhoto"></span>
                                     </a>
                                 </h4>
                             </div>
@@ -255,8 +280,10 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                                  aria-labelledby="headingOne">
                                 <div class="panel-body">
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_region']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_county']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_town']) ?>
+                                    <?= drupal_render($nodeToDisplay['field_popp_serie_address']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_set']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_unit']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_per']) ?>
@@ -281,12 +308,20 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
             <div class="well">
                 <div id="thumbnailsViewPlaceHolder">
                     <?php
-                    $testimonies = views_get_view('popp_search_result_view');
-                    $testimonies->set_display('block_1');
-                    $testimonies->set_arguments([$nodeToDisplay['#node']->nid]);
-                    $testimonies->pre_execute();
-                    $testimonies->execute('block_1');
-                    print $testimonies->render();
+                    // Render firstly reference document
+                    $refdocView = views_get_view('popp_refdoc_display');
+                    $refdocView->set_display('block');
+                    $refdocView->set_arguments([$nodeToDisplay['#node']->nid]);
+                    $refdocView->pre_execute();
+                    $refdocView->execute('block');
+                    print $refdocView->render();
+                    // And then photo thumbnails
+                    $thumbs = views_get_view('popp_search_result_view');
+                    $thumbs->set_display('block_1');
+                    $thumbs->set_arguments([$nodeToDisplay['#node']->nid]);
+                    $thumbs->pre_execute();
+                    $thumbs->execute('block_1');
+                    print $thumbs->render();
                     ?>
                 </div>
             </div>
@@ -306,13 +341,21 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                                data-toggle="tab">Commentaires (<?= $commentsCount ?>)</a></li>
                     <li role="presentation"><a href="#sons" aria-controls="sons" role="tab"
                                                data-toggle="tab">Sons</a>
+                        <?php if ($docsView->total_rows > 0): ?>
+                    <li role="presentation"><a href="#documentation" aria-controls="sons" role="tab"
+                                               data-toggle="tab">Documentation</a> <?php endif; ?>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active highlight" id="descriptions">
-                        <?= drupal_render($nodeToDisplay['field_popp_serie_author_intent']) ?>
-                        <?= drupal_render($nodeToDisplay['field_popp_serie_first_desc']) ?>
+                        <div id="ifNotRefDoc">
+                            <?= drupal_render($nodeToDisplay['field_popp_serie_author_intent']) ?>
+                            <?= drupal_render($nodeToDisplay['field_popp_serie_first_desc']) ?>
+                            <?= $dateDescr ?>
+                        </div>
+                        <div style="padding-top:20px;margin-top:20px;border-top:1px solid #333;"
+                             id="descriptionsTable"></div>
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="sons">
                         <?php
@@ -337,6 +380,9 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         <div id="tabThesaurus"></div>
                         <h4>Changements intervenus sur la durée de la série</h4>
                         <?= getChangesTable($node) ?>
+                    </div>
+                    <div role="tabpanel" class="tab-pane highlight" id="documentation">
+                        <?= $docsView->render() ?>
                     </div>
                 </div>
             </div>

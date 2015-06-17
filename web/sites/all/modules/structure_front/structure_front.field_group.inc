@@ -24,7 +24,6 @@ function structure_front_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_popp_serie_next_resp',
-      1 => 'field_popp_serie_init_resp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -51,14 +50,15 @@ function structure_front_field_group_info() {
     'label' => 'Coverage',
     'weight' => '8',
     'children' => array(
-      0 => 'field_popp_serie_country',
-      1 => 'field_popp_serie_town',
-      2 => 'field_popp_serie_county',
-      3 => 'field_popp_serie_place',
-      4 => 'field_popp_serie_district',
-      5 => 'field_popp_serie_landscape_set',
-      6 => 'field_popp_serie_landscape_unit',
+      0 => 'field_popp_serie_town',
+      1 => 'field_popp_serie_landscape_unit',
+      2 => 'field_popp_serie_district',
+      3 => 'field_popp_serie_landscape_set',
+      4 => 'field_popp_serie_county',
+      5 => 'field_popp_serie_country',
+      6 => 'field_popp_serie_place',
       7 => 'field_popp_serie_per',
+      8 => 'field_popp_serie_address',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -141,6 +141,7 @@ function structure_front_field_group_info() {
     'children' => array(
       0 => 'field_popp_serie_author_intent',
       1 => 'field_popp_serie_first_desc',
+      2 => 'field_popp_serie_first_desc_date',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -168,6 +169,7 @@ function structure_front_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_popp_photo_description',
+      1 => 'field_popp_photo_descr_date',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -305,8 +307,8 @@ function structure_front_field_group_info() {
     'label' => 'Identifier',
     'weight' => '5',
     'children' => array(
-      0 => 'field_popp_serie_int_identifier',
-      1 => 'field_popp_serie_identifier',
+      0 => 'field_popp_serie_identifier',
+      1 => 'field_popp_serie_int_identifier',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -387,18 +389,18 @@ function structure_front_field_group_info() {
     'label' => 'Métadonnées hors OAI-PMH',
     'weight' => '9',
     'children' => array(
-      0 => 'field_popp_photo_aperture',
-      1 => 'field_popp_photo_camera_type',
-      2 => 'field_popp_photo_hour',
-      3 => 'field_popp_photo_film_type',
-      4 => 'field_popp_photo_iso',
-      5 => 'field_popp_photo_focal',
-      6 => 'field_popp_photo_orientation',
-      7 => 'field_popp_photo_original_weight',
-      8 => 'field_popp_photo_camera_inclinat',
-      9 => 'field_popp_photo_tripod_height',
+      0 => 'field_popp_photo_hour',
+      1 => 'field_popp_photo_film_type',
+      2 => 'field_popp_photo_camera_inclinat',
+      3 => 'field_popp_photo_iso',
+      4 => 'field_popp_photo_tidal_coeff',
+      5 => 'field_popp_photo_tripod_height',
+      6 => 'field_popp_photo_aperture',
+      7 => 'field_popp_photo_camera_type',
+      8 => 'field_popp_photo_orientation',
+      9 => 'field_popp_photo_focal',
       10 => 'field_popp_photo_altitude',
-      11 => 'field_popp_photo_tidal_coeff',
+      11 => 'field_popp_photo_original_weight',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -442,6 +444,38 @@ function structure_front_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_record_field|node|popp_photo_serie|form';
+  $field_group->group_name = 'group_record_field';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'popp_photo_serie';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Fiche terrain',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_popp_serie_sketch',
+      1 => 'field_popp_serie_aerial',
+      2 => 'field_popp_serie_tripod',
+      3 => 'field_popp_serie_ign',
+      4 => 'field_popp_serie_observ',
+      5 => 'field_popp_serie_context_photo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-record-field field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_record_field|node|popp_photo_serie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_rights|node|popp_photo|form';
   $field_group->group_name = 'group_rights';
   $field_group->entity_type = 'node';
@@ -453,6 +487,7 @@ function structure_front_field_group_info() {
     'weight' => '7',
     'children' => array(
       0 => 'field_popp_photo_copyrights',
+      1 => 'field_popp_photo_sheet_rights',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -482,6 +517,7 @@ function structure_front_field_group_info() {
       0 => 'field_popp_serie_thematic_axis',
       1 => 'field_popp_serie_landscape_typo',
       2 => 'field_popp_serie_opp',
+      3 => 'field_popp_serie_loc_axes',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

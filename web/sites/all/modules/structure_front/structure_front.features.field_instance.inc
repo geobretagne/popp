@@ -666,7 +666,7 @@ function structure_front_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_popp_photo_author',
     'label' => 'Auteur de la reconduction',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -852,6 +852,59 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_descr_date'
+  $field_instances['node-popp_photo-field_popp_photo_descr_date'] = array(
+    'bundle' => 'popp_photo',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_photo_descr_date',
+    'label' => 'Date de la description',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-popp_photo-field_popp_photo_description'
   $field_instances['node-popp_photo-field_popp_photo_description'] = array(
     'bundle' => 'popp_photo',
@@ -876,7 +929,7 @@ function structure_front_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_popp_photo_description',
     'label' => 'Description des éléments / des changements',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -1265,7 +1318,7 @@ function structure_front_field_default_field_instances() {
     'label' => 'Orientation de la prise de vue',
     'required' => 0,
     'settings' => array(
-      'max' => 360,
+      'max' => 359,
       'min' => 0,
       'prefix' => '',
       'suffix' => '°',
@@ -1323,6 +1376,43 @@ function structure_front_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_sheet_rights'
+  $field_instances['node-popp_photo-field_popp_photo_sheet_rights'] = array(
+    'bundle' => 'popp_photo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_photo_sheet_rights',
+    'label' => 'Licence de la fiche photo',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
     ),
   );
 
@@ -1520,6 +1610,113 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_address'
+  $field_instances['node-popp_photo_serie-field_popp_serie_address'] = array(
+    'bundle' => 'popp_photo_serie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_address',
+    'label' => 'Adresse/lieu de la prise de vue',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_aerial'
+  $field_instances['node-popp_photo_serie-field_popp_serie_aerial'] = array(
+    'bundle' => 'popp_photo_serie',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 36,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 36,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_aerial',
+    'label' => 'Photographie aérienne',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-popp_photo_serie-field_popp_serie_author_intent'
   $field_instances['node-popp_photo_serie-field_popp_serie_author_intent'] = array(
@@ -1529,6 +1726,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1561,6 +1765,67 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-popp_photo_serie-field_popp_serie_context_photo'
+  $field_instances['node-popp_photo_serie-field_popp_serie_context_photo'] = array(
+    'bundle' => 'popp_photo_serie',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 37,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_context_photo',
+    'label' => 'Photo contextuelle',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_country'
   $field_instances['node-popp_photo_serie-field_popp_serie_country'] = array(
     'bundle' => 'popp_photo_serie',
@@ -1573,6 +1838,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 10,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -1610,6 +1882,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 12,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -1657,6 +1936,13 @@ function structure_front_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 11,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 11,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1696,6 +1982,15 @@ function structure_front_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 24,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 24,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1725,7 +2020,7 @@ function structure_front_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 16,
+      'weight' => 12,
     ),
   );
 
@@ -1738,6 +2033,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1766,7 +2068,7 @@ function structure_front_field_default_field_instances() {
         'size' => 100,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 13,
     ),
   );
 
@@ -1779,6 +2081,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1811,6 +2120,73 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-popp_photo_serie-field_popp_serie_first_desc_date'
+  $field_instances['node-popp_photo_serie-field_popp_serie_first_desc_date'] = array(
+    'bundle' => 'popp_photo_serie',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 30,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_first_desc_date',
+    'label' => 'Date',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_format'
   $field_instances['node-popp_photo_serie-field_popp_serie_format'] = array(
     'bundle' => 'popp_photo_serie',
@@ -1823,6 +2199,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 21,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -1858,9 +2241,16 @@ function structure_front_field_default_field_instances() {
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Généré automatiquement au premier enregistrement',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 27,
+      ),
+      'print' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -1893,21 +2283,31 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_init_resp'
-  $field_instances['node-popp_photo_serie-field_popp_serie_init_resp'] = array(
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_ign'
+  $field_instances['node-popp_photo_serie-field_popp_serie_ign'] = array(
     'bundle' => 'popp_photo_serie',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
+        'module' => 'image',
         'settings' => array(
-          'link' => FALSE,
+          'image_link' => '',
+          'image_style' => '',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
+        'type' => 'image',
+        'weight' => 35,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1917,18 +2317,29 @@ function structure_front_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_popp_serie_init_resp',
-    'label' => 'Gestionnaire initial',
-    'required' => 1,
+    'field_name' => 'field_popp_serie_ign',
+    'label' => 'Carte IGN',
+    'required' => 0,
     'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 6,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 30,
     ),
   );
 
@@ -1941,6 +2352,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
@@ -1988,6 +2406,13 @@ function structure_front_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 15,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 15,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2007,7 +2432,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -2026,6 +2451,13 @@ function structure_front_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 23,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 23,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2036,7 +2468,7 @@ function structure_front_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_landscape_typo',
     'label' => 'Typologie de paysage',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2045,7 +2477,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -2058,6 +2490,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 16,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -2083,7 +2522,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -2099,6 +2538,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 9,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -2128,6 +2574,50 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_loc_axes'
+  $field_instances['node-popp_photo_serie-field_popp_serie_loc_axes'] = array(
+    'bundle' => 'popp_photo_serie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Appuyez sur CTRL + clic pour sélectionner plusieurs éléments',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 29,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_loc_axes',
+    'label' => 'Axe thématique local',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 23,
+    ),
+  );
+
   // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_next_resp'
   $field_instances['node-popp_photo_serie-field_popp_serie_next_resp'] = array(
     'bundle' => 'popp_photo_serie',
@@ -2136,6 +2626,15 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 7,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -2167,6 +2666,53 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_observ'
+  $field_instances['node-popp_photo_serie-field_popp_serie_observ'] = array(
+    'bundle' => 'popp_photo_serie',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_observ',
+    'label' => 'Observations pour la re-photographie',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 27,
+    ),
+  );
+
   // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_opp'
   $field_instances['node-popp_photo_serie-field_popp_serie_opp'] = array(
     'bundle' => 'popp_photo_serie',
@@ -2175,6 +2721,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 28,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -2191,11 +2744,12 @@ function structure_front_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_opp',
     'label' => 'OPP',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
@@ -2211,6 +2765,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'interval',
+        'settings' => array(),
+        'type' => 'interval_default',
+        'weight' => 22,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'interval',
         'settings' => array(),
@@ -2247,7 +2808,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'interval',
       'settings' => array(),
       'type' => 'interval_default',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -2259,6 +2820,15 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 17,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
@@ -2313,6 +2883,13 @@ function structure_front_field_default_field_instances() {
         'type' => 'wkt',
         'weight' => 14,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'postgis',
+        'settings' => array(),
+        'type' => 'wkt',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2354,6 +2931,15 @@ function structure_front_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 18,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 18,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2364,18 +2950,86 @@ function structure_front_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_refdoc',
     'label' => 'Document référence',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'inline_entity_form',
       'settings' => array(
         'fields' => array(),
-        'type_settings' => array(),
+        'type_settings' => array(
+          'allow_existing' => 0,
+          'delete_references' => 0,
+          'label_plural' => 'nœuds',
+          'label_singular' => 'nœud',
+          'match_operator' => 'CONTAINS',
+          'override_labels' => 0,
+        ),
       ),
       'type' => 'inline_entity_form',
       'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_sketch'
+  $field_instances['node-popp_photo_serie-field_popp_serie_sketch'] = array(
+    'bundle' => 'popp_photo_serie',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 33,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_sketch',
+    'label' => 'Croquis',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 28,
     ),
   );
 
@@ -2396,6 +3050,15 @@ function structure_front_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 5,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2405,7 +3068,7 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_supp_struct',
-    'label' => 'Structure porteuse OPP',
+    'label' => 'Porteur OPP',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2435,6 +3098,15 @@ function structure_front_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 19,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 19,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2444,7 +3116,7 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_testimonies',
-    'label' => 'Témoignages',
+    'label' => 'Sons',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2456,7 +3128,7 @@ function structure_front_field_default_field_instances() {
         'fields' => array(),
         'type_settings' => array(
           'allow_existing' => 0,
-          'delete_references' => 0,
+          'delete_references' => 1,
           'label_plural' => 'nœuds',
           'label_singular' => 'nœud',
           'match_operator' => 'CONTAINS',
@@ -2474,9 +3146,16 @@ function structure_front_field_default_field_instances() {
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Appuyez sur CTRL + clic pour sélectionner plusieurs éléments',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 2,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -2492,8 +3171,8 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_thematic_axis',
-    'label' => 'Axe thématique',
-    'required' => 1,
+    'label' => 'Axe(s) thématique(s)',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2514,6 +3193,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 13,
+      ),
+      'print' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
         'settings' => array(),
@@ -2546,6 +3232,66 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_tripod'
+  $field_instances['node-popp_photo_serie-field_popp_serie_tripod'] = array(
+    'bundle' => 'popp_photo_serie',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 34,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_serie_tripod',
+    'label' => 'Photo du trépied',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 29,
+    ),
+  );
+
   // Exported field_instance: 'node-popp_photo_serie-og_group_ref'
   $field_instances['node-popp_photo_serie-og_group_ref'] = array(
     'bundle' => 'popp_photo_serie',
@@ -2554,6 +3300,13 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(),
+        'type' => 'og_list_default',
+        'weight' => 26,
+      ),
+      'print' => array(
         'label' => 'above',
         'module' => 'og_ui',
         'settings' => array(),
@@ -2603,7 +3356,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 18,
+      'weight' => 14,
     ),
   );
 
@@ -2650,7 +3403,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -2732,7 +3485,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -2878,7 +3631,7 @@ function structure_front_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -2919,7 +3672,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -3003,7 +3756,49 @@ function structure_front_field_default_field_instances() {
       'module' => 'hms_field',
       'settings' => array(),
       'type' => 'hms_default_widget',
-      'weight' => 12,
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-popp_reference_document-field_popp_refdoc_language'
+  $field_instances['node-popp_reference_document-field_popp_refdoc_language'] = array(
+    'bundle' => 'popp_reference_document',
+    'default_value' => array(
+      0 => array(
+        'tid' => 15,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_refdoc_language',
+    'label' => 'Langue',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
     ),
   );
 
@@ -3041,7 +3836,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -3082,7 +3877,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -3164,7 +3959,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -3205,7 +4000,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -3246,7 +4041,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -3328,7 +4123,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -3369,7 +4164,7 @@ function structure_front_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -3416,7 +4211,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -3513,7 +4308,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -3620,7 +4415,7 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_tty_descr',
-    'label' => 'Description auditive et visuelle du lieu d\'enregistrement',
+    'label' => 'Présentation du son',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -3647,10 +4442,15 @@ function structure_front_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3662,19 +4462,20 @@ function structure_front_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_popp_tty_duration',
     'label' => 'Durée',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => 'mn',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 5,
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 16,
     ),
   );
 
@@ -3764,7 +4565,11 @@ function structure_front_field_default_field_instances() {
   // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_format'
   $field_instances['node-popp_testimony_sheet-field_popp_tty_format'] = array(
     'bundle' => 'popp_testimony_sheet',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'audio',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -3905,7 +4710,7 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_tty_landscape_rel',
-    'label' => 'Lien avec le paysage',
+    'label' => 'Lien avec le paysage pour la personne interviewée ou pour le preneur de l’ambiance sonore',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -3919,6 +4724,135 @@ function structure_front_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => -1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-popp_testimony_sheet-field_popp_tty_language'
+  $field_instances['node-popp_testimony_sheet-field_popp_tty_language'] = array(
+    'bundle' => 'popp_testimony_sheet',
+    'default_value' => array(
+      0 => array(
+        'tid' => 15,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_tty_language',
+    'label' => 'Langue',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-popp_testimony_sheet-field_popp_tty_photo_number'
+  $field_instances['node-popp_testimony_sheet-field_popp_tty_photo_number'] = array(
+    'bundle' => 'popp_testimony_sheet',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Numéro de la photo concernée par le son',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_tty_photo_number',
+    'label' => 'Numéro de la photo dans la série',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_place'
+  $field_instances['node-popp_testimony_sheet-field_popp_tty_place'] = array(
+    'bundle' => 'popp_testimony_sheet',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_tty_place',
+    'label' => 'Lieu de la prise de son',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 14,
     ),
   );
 
@@ -4054,6 +4988,43 @@ function structure_front_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_rights'
+  $field_instances['node-popp_testimony_sheet-field_popp_tty_rights'] = array(
+    'bundle' => 'popp_testimony_sheet',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_tty_rights',
+    'label' => 'Licence du son',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 15,
     ),
   );
 
@@ -4382,14 +5353,18 @@ function structure_front_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Adresse/lieu de la prise de vue');
   t('Altitude');
   t('Altitude (prise de vue aérienne)');
+  t('Appuyez sur CTRL + clic pour sélectionner plusieurs éléments');
   t('Audience de groupes');
   t('Auteur / Photographe');
   t('Auteur / Preneur de son');
   t('Auteur de la reconduction');
-  t('Axe thématique');
+  t('Axe thématique local');
+  t('Axe(s) thématique(s)');
   t('Body');
+  t('Carte IGN');
   t('Code INSEE');
   t('Coefficient de marée');
   t('Commentaire lié à la date');
@@ -4398,10 +5373,11 @@ function structure_front_field_default_field_instances() {
   t('Contenu');
   t('Contexte de l\'enregistrement');
   t('Cote du document');
+  t('Croquis');
   t('Date');
   t('Date d\'enregistrement');
+  t('Date de la description');
   t('Date de la prise de vue');
-  t('Description auditive et visuelle du lieu d\'enregistrement');
   t('Description courte');
   t('Description des éléments / des changements');
   t('Description fine des éléments de paysage à la premiere prise de vue');
@@ -4421,9 +5397,9 @@ function structure_front_field_default_field_instances() {
   t('Format');
   t('Format h:mm');
   t('Fréquence de reconduction prévue');
-  t('Gestionnaire initial');
   t('Gestionnaires suivants');
   t('Groupe');
+  t('Généré automatiquement au premier enregistrement');
   t('Géolocalisation');
   t('Hauteur du trépied (cm)');
   t('Heure');
@@ -4433,33 +5409,44 @@ function structure_front_field_default_field_instances() {
   t('Inclinaison de l\'appareil (haut-bas)');
   t('Intention du photographe');
   t('Langue');
+  t('Licence de la fiche photo');
   t('Licence de la photo');
   t('Licence du document');
-  t('Lien avec le paysage');
+  t('Licence du son');
+  t('Lien avec le paysage pour la personne interviewée ou pour le preneur de l’ambiance sonore');
   t('Liens externes en lien avec la série');
   t('Lieu de conservation');
+  t('Lieu de la prise de son');
   t('Logo partenaire');
   t('Logo structure porteuse');
   t('Légende');
   t('Moment de la prise de vue');
   t('Nom du fichier');
+  t('Numéro de la photo concernée par le son');
+  t('Numéro de la photo dans la série');
   t('OPP');
+  t('Observations pour la re-photographie');
   t('Ordre d\'affichage');
   t('Orientation de la prise de vue');
   t('Ouverture du diaphragme');
   t('Pays');
+  t('Photo contextuelle');
+  t('Photo du trépied');
   t('Photographie');
+  t('Photographie aérienne');
   t('Photographies');
   t('Poids du fichier d\'origine');
+  t('Porteur OPP');
   t('Protocole / Méthode d\'enregistrement');
+  t('Présentation du son');
   t('Période / Saison de la photographie');
   t('Période, estimation au cas où la date est approximative');
   t('Région');
   t('Sensibilité ISO');
   t('Site de la prise de vue');
+  t('Sons');
   t('Source du document');
   t('Sous-titre');
-  t('Structure porteuse OPP');
   t('Structure responsable de la création du contenu');
   t('Thésaurus');
   t('Thésaurus facultatif');
@@ -4469,7 +5456,6 @@ function structure_front_field_default_field_instances() {
   t('Type de film');
   t('Type de matériel');
   t('Typologie de paysage');
-  t('Témoignages');
   t('Unité de paysage');
   t('Élément');
   t('Évolution');
