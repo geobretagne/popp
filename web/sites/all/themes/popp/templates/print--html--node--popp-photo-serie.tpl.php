@@ -1,22 +1,8 @@
 <?php
 
-global $user;
+  global $user;
+  $photoN=count($node->field_popp_serie_photo_list["und"])-1;
 
-//var_dump($node->field_popp_serie_refdoc["und"][0]["entity"]->field_popp_refdoc_file["und"][0]["uri"]);
-//var_dump($node->field_popp_serie_photo_list[LANGUAGE_NONE][0]['entity']);
-//var_dump($node->field_popp_serie_photo_list);
-
-$obj  = new PostgisGeometrySet("GEOMETRYCOLLECTION", "4326", 1);
-$tab = $node->field_popp_serie_place["und"][0];
-
-$toto = $obj->fromGeometry($tab);
-var_dump($toto);
-
-//var_dump ($obj->transform("2154")); //Lambert93
-$obj->getText(); //WKT
-$photoN=count($node->field_popp_serie_photo_list["und"])-1;
-
-//var_dump($node->field_popp_serie_photo_list["und"][$photoN]);
 
 ?>
 
@@ -96,7 +82,7 @@ $photoN=count($node->field_popp_serie_photo_list["und"])-1;
   <head>
     <?php print $head; ?>
     <base href='<?php print $url ?>' />
-    <title><?php //print $print_title; ?></title>
+    <title><?php print $print_title; ?></title>
     <?php print $scripts; ?>
     <?php if (isset($sendtoprinter)) print $sendtoprinter; ?>
     <?php print $robots_meta; ?>
@@ -106,18 +92,11 @@ $photoN=count($node->field_popp_serie_photo_list["und"])-1;
     <?php print $css; ?>
   </head>
   <body>
-    <?php if (!empty($message)): ?>
-      <div class="print-message"><?php print $message; ?></div><p />
-    <?php endif; ?>
     <?php if ($print_logo): ?>
       <div class="print-logo"><?php print $print_logo; ?>   Plateforme des Observatoires Photographiques du Paysage de Bretagne</div>
     <?php endif; ?>
-    <div class="print-site_name"><?php //print theme('print_published'); ?></div>
-    <p />
-    <div class="print-breadcrumb"><?php //print //theme('print_breadcrumb', array('node' => $node)); ?></div>
-    <hr class="print-hr" />
- 
-      <h1 class="print-title"> Fiche terrain</h1>
+
+      <h1 class="print-title">Fiche terrain</h1>
       
               <h2>Série: <?php print $node->title;?></h2>
               <table width=100% border=1>
@@ -144,11 +123,35 @@ $photoN=count($node->field_popp_serie_photo_list["und"])-1;
                         <td colspan=2>Adresse / lieu de la prise de vue: <?php print $node->field_popp_serie_address["und"][0]["value"]; ?>  </td>
                       </tr> 
                       <tr>
-                        <td colspan=2>Coordonnées GPS: <?php  ?> </td>
+                        <td colspan=2>Coordonnées GPS: 
+                        <?php 
+                          $obj  = new PostgisGeometrySet("GEOMETRYCOLLECTION", "4326");
+                          $tab = $node->field_popp_serie_place["und"];
+                          $obj->fromGeometry($tab);
+                          //$obj->transform("4326");
+                          //var_dump ($obj->transform("2154")); //Lambert93
+                          $gsp=$obj->getText(); //WKT
+                          print(str_replace("))","", (str_replace("GEOMETRYCOLLECTION(POINT(","",$gsp)))); 
+                        ?> 
+                        </td>
                       </tr>
                       <tr>
                         <td width=50%>WGS 84:  </td>
-                        <td width=50%>Lambert93:  </td>
+                        <td width=50%>Lambert93:  
+
+                        <?php 
+                            $obj2  = new PostgisGeometrySet("GEOMETRYCOLLECTION", "2154");
+                            $tab2 = $node->field_popp_serie_place["und"];
+                            $obj2->fromGeometry($tab2);
+                            //$obj->transform("4326");
+                            //var_dump ($obj->transform("2154")); //Lambert93
+                            $lamb=$obj2->getText(); //WKT
+                            //print ($lamb);
+                            print(str_replace("))","", (str_replace("GEOMETRYCOLLECTION(POINT(","",$lamb)))); 
+                        ?> 
+
+
+                        </td>
                       </tr>
                       <tr>
                         <td colspan=2>Observations pour la re-photographie: <?php print $node->field_popp_serie_observ["und"][0]["value"]; ?>  </td>
@@ -251,7 +254,6 @@ $photoN=count($node->field_popp_serie_photo_list["und"])-1;
 
                           <?php 
                           $hour = $node->field_popp_serie_photo_list["und"][$photoN]["entity"]->field_popp_photo_hour["und"][0]["value"];
-                          //$hour = $hour -> format('H/i/s') ; 
                           $hour=date("H:i:s", $hour);
                           print $hour;
                           ?>
@@ -264,11 +266,9 @@ $photoN=count($node->field_popp_serie_photo_list["und"])-1;
                           <td width=25%>Date </td>
                           <td width=25%>
                             <?php  
-
                             $lastShot = new DateTime($node->field_popp_serie_photo_list["und"][$photoN]["entity"]->field_popp_photo_date["und"][0]["value"]);
                             $lastShot = $lastShot->format('d/m/Y');
                             print $lastShot;
-
                             ?> 
                           </td>
                           <td width=25%>Date </td>
@@ -276,7 +276,19 @@ $photoN=count($node->field_popp_serie_photo_list["und"])-1;
                         </tr>
                         <tr> 
                           <td width=25%>Coordonnées GPS </td>
-                          <td width=25%>Todo </td>
+                          <td width=25%>
+                          <?php 
+                            $obj  = new PostgisGeometrySet("GEOMETRYCOLLECTION", "4326");
+                            $tab = $node->field_popp_serie_place["und"];
+                            $obj->fromGeometry($tab);
+                            //$obj->transform("4326");
+                            //var_dump ($obj->transform("2154")); //Lambert93
+                            $gsp=$obj->getText(); //WKT
+                            print(str_replace("))","", (str_replace("GEOMETRYCOLLECTION(POINT(","",$gsp)))); 
+                          ?> 
+
+
+                          </td>
                           <td width=25%>Coordonnées GPS  </td>
                           <td width=25%> </td>
                         </tr>

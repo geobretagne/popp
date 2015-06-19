@@ -144,10 +144,9 @@ input[type="file"] {
 }
 
 #topMenu ul:first-child {
-    left: 165px;
     margin-bottom: 20px;
     margin-top: 35px;
-    position: relative;
+    padding-left: 165px;
 }
 
 #topMenu section > div.noRadius > ul > li {
@@ -218,6 +217,12 @@ a, a:hover, a:focus, .panel-title > a {
 
 #navbar {
     background: #323232;
+    width:100%;
+    min-width:1024px;
+}
+
+footer{
+    min-width:1024px;
 }
 
 footer.container > .row {

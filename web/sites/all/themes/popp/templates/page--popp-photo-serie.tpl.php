@@ -375,7 +375,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         <?= render($form) ?>
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="changements">
-                        <h4>Changements par rapport à la photo précédente</h4>
+                        <h4 style="line-height:2;">Changements par rapport à la photo précédente<a id="thesExport" href="" class="btn btn-default pull-right">Exporter</a></h4>
 
                         <div id="tabThesaurus"></div>
                         <h4>Changements intervenus sur la durée de la série</h4>

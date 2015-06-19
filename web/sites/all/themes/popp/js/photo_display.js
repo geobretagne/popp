@@ -58,12 +58,14 @@
                 actualUnd = i;
                 jQuery('#typeCurrentPhoto').text('Photo ');
                 jQuery("#idCurrentPhoto").text(pad(parseInt(i) + 1, 2));
+                $("#thesExport").attr('href', '/serie/'+Drupal.arg(1)+'/'+actualUnd+'/export');
                 found = true;
                 break;
             }
         }
         if (!found) {
             actualUnd = false;
+            $("#thesExport").attr('href', '/serie/'+Drupal.arg(1)+'/-1/export');
             jQuery('#typeCurrentPhoto').text('Document référence ');
             jQuery("#idCurrentPhoto").text('00');
         }

@@ -6,29 +6,35 @@ require_once(drupal_get_path('module', 'popp_utilities') . '/includes/helper_fun
 function popp_utilities_menu()
 {
     return [
-        'utilities/ajax/%/%'            => [
+        'utilities/ajax/%/%'              => [
             'page callback'    => 'getChangesSinceLastPhotoTable',
             'page arguments'   => [2, 3],
             'access arguments' => ['access content'],
             'type'             => MENU_CALLBACK,
         ],
-        'utilities/ajax_table_desc/%/%' => [
+        'utilities/ajax_table_desc/%/%'   => [
             'page callback'    => 'getPhotoDescTable',
             'page arguments'   => [2, 3],
             'access arguments' => ['access content'],
             'type'             => MENU_CALLBACK,
         ],
-        'utilities/ajax_them_axes/%'    => [
+        'utilities/ajax_them_axes/%'      => [
             'page callback'    => 'getSameThematicSeries',
             'page arguments'   => [2],
             'access arguments' => ['access content'],
             'type'             => MENU_CALLBACK,
         ],
         'utilities/ajax_photo_licences/%' => [
-            'page callback' => 'getPhotoLicences',
-            'page arguments' => [2],
+            'page callback'    => 'getPhotoLicences',
+            'page arguments'   => [2],
             'access arguments' => ['access content'],
-            'type' => MENU_CALLBACK,
+            'type'             => MENU_CALLBACK,
+        ],
+        'serie/%/%/export'                => [
+            'page callback'    => 'popp_thesaurus_excel_export',
+            'page arguments'   => [1, 2],
+            'access arguments' => ['access content'],
+            'type'             => MENU_CALLBACK,
         ]
     ];
 }
@@ -390,13 +396,14 @@ function getPhotoDescTable($serieNid, $photoOrder)
 {
     $serie       = node_load($serieNid);
     $otherPhotos = '';
-    $result = '';
-    $result      .= '<table class="table table-striped"><thead><tr><th>Photo</th><th>Description des éléments / des changements</th></tr></thead><tbody>';
+    $result      = '';
+    $result .= '<table class="table table-striped"><thead><tr><th>Photo</th><th>Description des éléments / des changements</th></tr></thead><tbody>';
     if (isset($serie->field_popp_serie_refdoc[LANGUAGE_NONE][0]['target_id'])) {
         $refdoc = node_load($serie->field_popp_serie_refdoc[LANGUAGE_NONE][0]['target_id']);
-        if($photoOrder == "-1"){
-            print '<div class="field field-type-interval field-label-above"><div class="field-label">Lieu de conservation:</div>'.$refdoc->	field_popp_refdoc_storage_place[LANGUAGE_NONE][0]['value'].'</div>
-        <div class="field field-type-interval field-label-above"><div class="field-label">Description précise du document:</div>'.$refdoc->field_popp_refdoc_precise_desc['und'][0]['value'].'</div>';
+        if ($photoOrder == "-1") {
+            print '<div class="field field-type-interval field-label-above"><div class="field-label">Lieu de conservation:</div>' . $refdoc->field_popp_refdoc_storage_place[LANGUAGE_NONE][0]['value'] . '</div>
+        <div class="field field-type-interval field-label-above"><div class="field-label">Description précise du document:</div>' . $refdoc->field_popp_refdoc_precise_desc['und'][0]['value'] . '</div>';
+
             return;
         }
         $otherPhotos .= '<tr><td>Document référence</td><td>' . $refdoc->field_popp_refdoc_precise_desc[LANGUAGE_NONE][0]['value'] . '</td></tr>';
@@ -473,11 +480,157 @@ function getPhotoLicences($nid)
     if (isset($serie->field_popp_serie_photo_list[LANGUAGE_NONE][0])) {
         foreach ($serie->field_popp_serie_photo_list[LANGUAGE_NONE] as $photo) {
             $photography = node_load($photo['target_id']);
-            if(isset($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0])){
-                $taxo = taxonomy_term_load($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0]['tid']);
+            if (isset($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0])) {
+                $taxo                    = taxonomy_term_load($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0]['tid']);
                 $resultTable[$taxo->tid] = $taxo->name;
             }
         }
     }
-    print('<div class="field field-type-interval field-label-above"><div class="field-label">Licence(s) des photos de la série:</div>'.implode(', ', $resultTable).'</div>');
+    print('<div class="field field-type-interval field-label-above"><div class="field-label">Licence(s) des photos de la série:</div>' . implode(', ', $resultTable) . '</div>');
+}
+
+function popp_thesaurus_excel_export($nid, $photoUnd)
+{
+    require_once('sites/all/libraries/PHPExcel/Classes/PHPExcel.php');
+    $node        = node_load($nid);
+    $globalTable = getChangesArray($node);
+    $serieInfos  = prepareSerieInfosExcel($node, $photoUnd);
+    $serieInfos  = prepareTableForExcelExport($serieInfos);
+
+    $changesSinceLastPhoto = preparePhotoTableForExcelExport($node, $photoUnd);
+
+    $excel = new PHPExcel();
+    $excel->getActiveSheet()->fromArray($serieInfos, null, 'A2');
+    $index = 9 + count($changesSinceLastPhoto);
+    $excel->getActiveSheet()->fromArray($changesSinceLastPhoto, null, 'A9');
+    $excel->getActiveSheet()->setCellValue('A1', 'Identification')->setCellValue('C1', 'Localisation')->mergeCells('A8:D8')->setCellValue('A8', 'Changements par rapport à la photo précédente')->mergeCells('A' . ($index + 1) . ':D' . ($index + 1))->setCellValue('A' . ($index + 1), 'Changements intervenus sur la durée de la série
+');
+    $excel->getActiveSheet()
+        ->fromArray(
+            $globalTable,
+            null,
+            'A' . ($index + 2)
+        );
+    $style       = [
+        'font' => [
+            'bold' => true
+        ]
+    ];
+    $globalStyle = [
+        'font' => [
+            'name' => 'Arial'
+        ]
+    ];
+
+    $detailsStyle = [
+        'alignment' => [
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        ]
+    ];
+    
+    $excel->getActiveSheet()->getStyle("A1:G550")->applyFromArray($globalStyle);
+    $excel->getActiveSheet()->getStyle("B10:G" . (9 + count($changesSinceLastPhoto)))->applyFromArray($detailsStyle);
+    $excel->getActiveSheet()->getStyle("A1:D1")->applyFromArray($style);
+    $excel->getActiveSheet()->getStyle("A8:G9")->applyFromArray($style);
+    $excel->getActiveSheet()->getStyle('A' . ($index + 1) . ':' . 'G' . ($index + 2))->applyFromArray($style);
+    $excel->getActiveSheet()->getStyle('B' . ($index + 3) . ':' . 'G' . (($index + 3) + count($globalTable)))->applyFromArray($detailsStyle);
+    foreach (range('A', $excel->getActiveSheet()->getHighestDataColumn()) as $col) {
+        $excel->getActiveSheet()
+            ->getColumnDimension($col)
+            ->setAutoSize(true);
+    }
+    header('Content-Type: application/vnd.ms-excel');
+    header('Content-Disposition: attachment;filename="export_thesaurus.xls"');
+    header('Cache-Control: max-age=0');
+
+    $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel5');
+    $writer->save('php://output');
+}
+
+function prepareSerieInfosExcel($node, $photoUnd)
+{
+    $result = [];
+    if (! isset($node->field_popp_serie_district[LANGUAGE_NONE][0]['tid'])) {
+        $result['region'] = 'N/R';
+    } else {
+        $tmpTaxo          = taxonomy_term_load($node->field_popp_serie_district[LANGUAGE_NONE][0]['tid']);
+        $result['region'] = $tmpTaxo->name;
+    }
+    if (! isset($node->field_popp_serie_county[LANGUAGE_NONE][0]['tid'])) {
+        $result['departement'] = '';
+    } else {
+        $tmpTaxo               = taxonomy_term_load($node->field_popp_serie_county[LANGUAGE_NONE][0]['tid']);
+        $result['departement'] = $tmpTaxo->name;
+    }
+    if (! isset($node->field_popp_serie_town[LANGUAGE_NONE][0]['tid'])) {
+        $result['town'] = 'N/R';
+    } else {
+        $tmpTaxo        = taxonomy_term_load($node->field_popp_serie_town[LANGUAGE_NONE][0]['tid']);
+        $result['town'] = $tmpTaxo->name;
+    }
+    if (! isset($node->field_popp_serie_opp[LANGUAGE_NONE][0]['tid'])) {
+        $result['opp'] = 'N/R';
+    } else {
+        $tmpTaxo       = taxonomy_term_load($node->field_popp_serie_opp[LANGUAGE_NONE][0]['tid']);
+        $result['opp'] = $tmpTaxo->name;
+    }
+    $result['serie_id'] = $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
+    if ($photoUnd == -1) {
+        $result['photo'] = 'N/R';
+    } else {
+        $result['photo'] = $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] . ' ' . sprintf('%02d', ($photoUnd + 1));
+    }
+    if (isset($node->field_popp_serie_supp_struct[LANGUAGE_NONE][0])) {
+        $supp_struct           = node_load($node->field_popp_serie_supp_struct[LANGUAGE_NONE][0]['target_id']);
+        $result['supp_struct'] = $supp_struct->title;
+    } else {
+        $result['supp_struct'] = 'N/R';
+    }
+    if (isset($node->field_popp_serie_address[LANGUAGE_NONE][0])) {
+        $result['address'] = $node->field_popp_serie_address[LANGUAGE_NONE][0]['value'];
+    } else {
+        $result['address'] = 'N/R';
+    }
+
+    $pgs = new PostgisGeometrySet('GEOMETRYCOLLECTION', 4326);
+    $pgs->fromGeometry($node->field_popp_serie_place[LANGUAGE_NONE]);
+    $result['gps']        = str_replace('))', '', str_replace('GEOMETRYCOLLECTION(POINT(', '', $pgs->getText()));
+    $result['identifier'] = $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
+    $result['title']      = $node->title;
+
+    return $result;
+}
+
+function preparePhotoTableForExcelExport($node, $actualUnd)
+{
+    $changes      = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
+    $tableContent = getChangesSincePreviousAsArray($node, $changes, null, $actualUnd);
+    $result       = [['Éléments', 'Stabilité', 'Apparition', 'Disparition', 'Augmentation', 'Diminution', 'Changement d\'apparence']];
+    if (false === $tableContent) {
+        return ['NA'];
+    }
+    foreach ($tableContent as $line) {
+        $tmp = [$line['name']];
+        foreach ($changes as $change) {
+            $tmp[] = (count($line['changes'][$change]) > 0 ? 'X' : '');
+        }
+        $result[] = $tmp;
+    }
+    if (empty($tableContent)) {
+        $result = ['Aucun changement'];
+    }
+
+    return $result;
+}
+
+function prepareTableForExcelExport($baseTable)
+{
+    $result   = [];
+    $result[] = ['Serie', $baseTable['title'], 'Région', $baseTable['region']];
+    $result[] = ['Identifiant', $baseTable['identifier'], 'Département', $baseTable['departement']];
+    $result[] = ['Porteur OPP', $baseTable['supp_struct'], 'Commune', $baseTable['town']];
+    $result[] = ['OPP', $baseTable['opp'], 'Adresse/Lieu de la prise de vue', $baseTable['address']];
+    $result[] = ['Photo', $baseTable['photo'], 'Coordonnées GPS', $baseTable['gps']];
+
+    return $result;
 }

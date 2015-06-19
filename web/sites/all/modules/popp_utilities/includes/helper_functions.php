@@ -273,12 +273,26 @@ function getChangesTable($node)
     foreach ($tableContent as $line) {
         $result .= '<tr><td>' . $line['name'] . '</td>';
         foreach ($changes as $change) {
-            $result .= '<td>' . (isset($line['changes'][$change]) ? count($line['changes'][$change]) : 0 ). '</td>';
+            $result .= '<td>' . (isset($line['changes'][$change]) && count($line['changes'][$change]) > 0 ? count($line['changes'][$change]) : "0" ). '</td>';
         }
         $result .= '</tr>';
     }
 
     return $result .= '</tbody></table>';
+}
+
+function getChangesArray($node){
+    $changes = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
+    $result = [['Éléments', 'Stabilité', 'Apparition', 'Disparition', 'Augmentation', 'Diminution', 'Changement d\'apparence']];
+    $tableContent = getChangesAsArray($node, $changes);
+    foreach ($tableContent as $line) {
+        $newLine = [$line['name']];
+        foreach ($changes as $change) {
+            $newLine[] = (isset($line['changes'][$change]) && count($line['changes'][$change]) > 0 ? count($line['changes'][$change]) : "0" );
+        }
+        $result[] = $newLine;
+    }
+    return $result;
 }
 
 function getChangesSinceLastPhotoTable($serieNid, $actualNid)
@@ -291,8 +305,11 @@ function getChangesSinceLastPhotoTable($serieNid, $actualNid)
                             <th style="text-align:center;">' . t('Éléments') . '</th>
                             <th style="text-align:center;">' . t('Stabilité') . '</th>
                             <th style="text-align:center;">' . t('Apparition') . '</th>
-                            <th style="text-align:center;">' . t('Disparition') . '</th>
-                            <th style="text-align:center;">' . t('Augmentation') . '</th>
+                            <th style="text-align:center;">' . t('Disparition') . <<<'TAG'
+</th>
+                            <th style="text-align:center;">
+TAG
+ . t('Augmentation') . '</th>
                             <th style="text-align:center;">' . t('Diminution') . '</th>
                             <th style="text-align:center;">' . t('Chgt d\'apparence') . '</th>
                         </tr>
@@ -360,12 +377,12 @@ function getChangesAsArray($node, $changes)
     return $set;
 }
 
-function getChangesSincePreviousAsArray($node, $changes, $target)
+function getChangesSincePreviousAsArray($node, $changes, $target = null, $targetUnd = null)
 {
     $set   = [];
     $first = true;
-    foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $photoNid) {
-        if ($photoNid['target_id'] != $target) {
+    foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $und => $photoNid) {
+        if ((null !== $target && $photoNid['target_id'] != $target) || (null !== $targetUnd && $und != $targetUnd)) {
             if ($first) {
                 $first = false;
             }
@@ -407,7 +424,6 @@ function getChangesSincePreviousAsArray($node, $changes, $target)
             }
         }
     }
-
     return $set;
 }
 
