@@ -4,7 +4,6 @@ core = 7.x
 package = POPP
 version = 7.x-1.0-beta9
 project = admin_structure
-dependencies[] = admin_menu
 dependencies[] = contact
 dependencies[] = fe_block
 dependencies[] = features

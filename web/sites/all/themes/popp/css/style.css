@@ -8,11 +8,6 @@ body {
     background: #f9f9f9;
 }
 
-/* No padding when admin menu is enabled */
-body.toolbar-drawer {
-    padding-top: 0 !important;
-}
-
 .btn-info {
     background-color: #666666;
     border: 1px solid transparent;
@@ -79,6 +74,10 @@ input[type="file"] {
     padding: 5px 0;
 }
 
+body.toolbar {
+
+}
+
 /*
     Installation
 */
@@ -123,10 +122,6 @@ input[type="file"] {
 .navbar-default {
     background: none;
     border: none;
-}
-
-.toolbar-menu {
-    display: none;
 }
 
 #landscape {

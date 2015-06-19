@@ -19,7 +19,6 @@ dependencies[] = field_ui
 dependencies[] = carto
 dependencies[] = term_taxonomy
 dependencies[] = backup_migrate
-dependencies[] = admin_menu
 dependencies[] = addressfield
 dependencies[] = date
 dependencies[] = entityreference

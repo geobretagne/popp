@@ -5,7 +5,6 @@ package = POPP
 version = 7.x-1.0-beta24
 project = structure_front
 dependencies[] = addressfield
-dependencies[] = admin_menu
 dependencies[] = admin_structure
 dependencies[] = backup_migrate
 dependencies[] = block
