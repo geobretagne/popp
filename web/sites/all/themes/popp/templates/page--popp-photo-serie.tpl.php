@@ -5,6 +5,7 @@
  * Date: 20/11/2014
  * Time: 14:51
  */
+
 global $user;
 $nodeToDisplay = array_shift($page['content']['system_main']['nodes']);
 $node          = node_load($nodeToDisplay['#node']->nid);
@@ -14,7 +15,7 @@ foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $photo) {
 }
 $listePhotos = json_encode($listePhotos);
 $output      = '';
-$town        = $node->field_popp_serie_town['und'][0]['tid'];
+$town        = $node->field_popp_serie_town[LANGUAGE_NONE][0]['tid'];
 $town        = taxonomy_term_load($town);
 $town        = $town ? $town->name : '';
 $firstShot   = new DateTime($node->field_popp_serie_photo_list[LANGUAGE_NONE][0]['entity']->field_popp_photo_date[LANGUAGE_NONE][0]['value']);
@@ -33,14 +34,17 @@ if (false !== $opp) {
         $isPa = true;
     }
 }
+$pgs = new PostgisGeometrySet('GEOMETRYCOLLECTION', 4326);
+$pgs->fromGeometry($node->field_popp_serie_place[LANGUAGE_NONE]);
+$geom = 'Long : ' . str_replace(' ', '<br/>Lat : ', str_replace('))', '', str_replace('GEOMETRYCOLLECTION(POINT(', '', $pgs->getText())));
 
 $commentsCount = isset($nodeToDisplay['comments']['comments']) ? count($nodeToDisplay['comments']['comments']) - 2 : 0;
 if ($commentsCount < 0) {
     $commentsCount = 0;
 }
-if (isset($node->field_popp_serie_supp_struct['und'])) {
-    $image  = field_get_items('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo');
-    $output = field_view_value('node', $node->field_popp_serie_supp_struct['und'][0]['entity'], 'field_popp_supp_struct_logo', $image[0], [
+if (isset($node->field_popp_serie_supp_struct[LANGUAGE_NONE][0])) {
+    $image  = field_get_items('node', $node->field_popp_serie_supp_struct[LANGUAGE_NONE][0]['entity'], 'field_popp_supp_struct_logo');
+    $output = field_view_value('node', $node->field_popp_serie_supp_struct[LANGUAGE_NONE][0]['entity'], 'field_popp_supp_struct_logo', $image[0], [
         'type'     => 'image',
         'settings' => [
             'image_style' => 'sidebar_image',
@@ -54,6 +58,17 @@ $docsView->set_display('block');
 $docsView->set_arguments([$nodeToDisplay['#node']->nid]);
 $docsView->pre_execute();
 $docsView->execute('block');
+
+$serieLinks = '';
+if(!empty($node->field_popp_serie_external_links[LANGUAGE_NONE])){
+    foreach($node->field_popp_serie_external_links[LANGUAGE_NONE] as $link){
+        $serieLinks .= '<div class="field-item even"><a target="_blank" href="'.$link['value'].'">'.$link['value'].'</a></div>';
+    }
+}
+if($serieLinks !== ''){
+    $serieLinks = '<div class="field field-name-field-popp-serie-external-links field-type-text field-label-above"><div class="field-label">'.t('Liens externes en lien avec la série').':&nbsp;</div></div>'.$serieLinks;
+}
+
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -146,11 +161,14 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                 <section>
                     <div class="noRadius">
                         <?= render($page['navigation']) ?>
+
                     </div>
+
                 </section>
             </nav>
         </div>
-    </div>
+
+
 </header>
 
 <div class="main-container container no-landscape">
@@ -161,6 +179,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
         <?php endif; ?>
 
         <?php print render($page['header']); ?>
+
     </header>
     <!-- /#page-header -->
     <a id="main-content"></a>
@@ -185,7 +204,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         class="badge pull-right <?= $isPa ? 'badgePa' : 'badgeClassic' ?>"><?= $isPa ? 'OPP Participatif' : 'OPP' ?></span>
                 </p>
                 <a class="showInBox" id="showInBox" rel="lightbox" data-title="" data-toggle="lightbox"
-                   href=""">
+                   href="">
                 <span title="Plein écran" class="glyphicon glyphicon-fullscreen topRight"></span>
                 </a>
 
@@ -201,15 +220,17 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                             <div class="pull-right dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                         data-toggle="dropdown" aria-expanded="true">
-                                    Exporter
+                                    Actions
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                               href="<?php print "/printpdf/node/" . $node->nid ?>">Fiche
-                                            terrain</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Format 2</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">...</a></li>
+                                   <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                               href="<?php print "/printpdf/node/" . $node->nid ?>">Télécharger la fiche terrain</a></li>
+                                    <li role="presentation"><a class="confirmLicences" role="menuitem" tabindex="-1"
+                                                               href="/serie/pdfexport/<?=$node->nid?>">Exporter la série</a></li>
+
+                                    <li role="presentation"><?= flag_create_link('add_serie_caddy', $node->nid) ?></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -241,6 +262,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_per']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_thematic_axis']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_loc_axes']) ?>
+                                    <?= $serieLinks ?>
                                     <div id="sameThematicAxis">
                                     </div>
                                     <div id="photoLicences">
@@ -287,7 +309,11 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_set']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_unit']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_landscape_per']) ?>
-                                    <?= str_replace('))', '', str_replace('GEOMETRYCOLLECTION(POINT(', '', drupal_render($nodeToDisplay['field_popp_serie_place']))) ?>
+                                    <div
+                                        class="field field-name-field-popp-serie-landscape-unit field-type-taxonomy-term-reference field-label-above">
+                                        <div class="field-label">Emplacement de la série:&nbsp;</div>
+                                        <div class="field-item even"><?= $geom ?></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -296,12 +322,6 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
             </div>
         </aside>
         <!-- /#sidebar-second -->
-
-    </div>
-    <div class="row">
-        <div class="col-xs-12 noPadding">
-
-        </div>
     </div>
     <div class="row" style="margin:0 -30px;">
         <div class="col-xs-12">
@@ -372,10 +392,11 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         <?php
                         $form = comment_node_page_additions($node);
                         ?>
-                        <?= render($form) ?>
+                        <?= drupal_render($form) ?>
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="changements">
-                        <h4 style="line-height:2;">Changements par rapport à la photo précédente<a id="thesExport" href="" class="btn btn-default pull-right">Exporter</a></h4>
+                        <a class="btn btn-default pull-right" href="/serie/338/-1/export" id="thesExport">Exporter</a>
+                        <h4>Changements par rapport à la photo précédente</h4>
 
                         <div id="tabThesaurus"></div>
                         <h4>Changements intervenus sur la durée de la série</h4>
@@ -396,10 +417,10 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
     <div class="row">
         <div class="col-xs-2">
         </div>
-        <div class="col-xs-7">
+        <div class="col-xs-8">
             <?php print render($page['footer_bottom']); ?>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
             <img src="/<?php print path_to_theme(); ?>/img/facebook.jpg" class="socialLogo"
                  alt="Retrouvez-nous sur Facebook" title="Retrouvez-nous sur Facebook"/>
             <img src="/<?php print path_to_theme(); ?>/img/twitter.jpg" class="socialLogo"

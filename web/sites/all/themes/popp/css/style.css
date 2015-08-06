@@ -24,7 +24,7 @@ body {
 }
 
 .btn-info.active, .btn-info:hover, .btn-info:focus {
-    background-color: #666666;
+    background-color: #fe7108;
     border: 1px solid #fe7108;
 }
 
@@ -214,6 +214,7 @@ a, a:hover, a:focus, .panel-title > a {
     background: #323232;
     width:100%;
     min-width:1024px;
+    border-radius:0;
 }
 
 footer{
@@ -241,6 +242,7 @@ footer.container > .row {
 
 .dropdown-menu {
     margin-top: 0;
+    padding:0;
 }
 
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, #topMenu .dropdown-menu > .active > a, #topMenu .dropdown-menu > .active > a:hover, #topMenu .dropdown-menu > .active > a:focus {
@@ -327,7 +329,7 @@ footer img {
 
 #block-menu-menu-menu-footer li a {
     color: #cfcfcf;
-    padding: 10px 12px;
+    padding: 10px 6px;
 }
 
 #block-menu-menu-menu-footer li a:hover, #block-menu-menu-menu-footer li a:focus {
@@ -357,8 +359,8 @@ footer .well {
 
 .socialLogo {
     height: 40px;
+    margin-right: 4px;
     margin-top: 37px;
-    margin-right: 5px;
 }
 
 footer .col-xs-3 {
@@ -659,4 +661,78 @@ div.jp-audio div.jp-type-playlist div.jp-volume-bar {
 #showInBox{
     position:relative;
     float: right;
+}
+
+.flag-add-serie-caddy a{
+    padding: 3px 20px;
+    display:block;
+}
+
+.flag-throbber{
+    display:none;
+}
+
+.node-type-popp-photo-serie .tab-content .field-label, .node-type-popp-photo-serie .tab-content h3{
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight:normal;
+    line-height:1;
+}
+
+#sons{
+    padding-top:20px;
+}
+
+#documentation{
+    padding-top:20px;
+}
+
+#profile-identification-field-popp-year-add-more-wrapper .fieldset-legend, #profile-identification-field-popp-year-add-more-wrapper .panel-heading { 
+    display:none;
+}
+
+#profile-identification-field-popp-year-add-more-wrapper .panel {
+    margin-bottom: 0px;
+    background-color: #FFF;
+    border: 0px;
+    padding: 0px;
+}
+
+.presentChanges{
+    border-bottom:1px dotted #838383;
+}
+
+.openlayers-popup .flag{
+    padding:0;
+}
+
+#profile-identification-field-popp-year-add-more-wrapper .panel-body , #profile-identification-field-popp-year-add-more-wrapper .date-padding{
+    padding:0px;
+}
+
+#descriptionsTable table tr > th:first-child{
+    min-width:15%;
+}
+
+.view-popp-view-page-structures table h3{
+    margin-top:0;
+}
+
+.view-popp-view-page-structures table tr td, .view-popp-view-page-structures table tr th{
+    border:none;
+    padding-bottom:15px;
+}
+
+li.comment-reply{
+    display:none;
+}
+
+.paddingHeaderTable {
+    padding: 0 0 20px;
+}
+
+.field-name-field-popp-supp-struct-ref-conta > div{
+    text-align:right;
+    float:none !important;
 }

@@ -5,12 +5,9 @@ $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
- *
  * The doctype, html, head and body tags are not in this template. Instead they
  * can be found in the html.tpl.php template in this directory.
- *
  * Available variables:
- *
  * General utility variables:
  * - $base_path: The base URL path of the Drupal installation. At the very
  *   least, this will always default to /.
@@ -19,7 +16,6 @@ $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
  * - $is_front: TRUE if the current page is the front page.
  * - $logged_in: TRUE if the user is registered and signed in.
  * - $is_admin: TRUE if the user has permission to access administration pages.
- *
  * Site identity:
  * - $front_page: The URL of the front page. Use this instead of $base_path,
  *   when linking to the front page. This includes the language domain or
@@ -29,14 +25,12 @@ $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
  *   in theme settings.
  * - $site_slogan: The slogan of the site, empty when display has been disabled
  *   in theme settings.
- *
  * Navigation:
  * - $main_menu (array): An array containing the Main menu links for the
  *   site, if they have been configured.
  * - $secondary_menu (array): An array containing the Secondary menu links for
  *   the site, if they have been configured.
  * - $breadcrumb: The breadcrumb trail for the current page.
- *
  * Page content (in order of occurrence in the default page.tpl.php):
  * - $title_prefix (array): An array containing additional output populated by
  *   modules, intended to be displayed in front of the main title tag that
@@ -56,7 +50,6 @@ $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
  *   associated with the page, and the node ID is the second argument
  *   in the page's path (e.g. node/12345 and node/12345/revisions, but not
  *   comment/reply/12345).
- *
  * Regions:
  * - $page['help']: Dynamic help text, mostly for admin pages.
  * - $page['highlighted']: Items for the highlighted content region.
@@ -65,23 +58,35 @@ $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
  * - $page['sidebar_second']: Items for the second sidebar.
  * - $page['header']: Items for the header region.
  * - $page['footer']: Items for the footer region.
- *
- * @see bootstrap_preprocess_page()
- * @see template_preprocess()
- * @see template_preprocess_page()
- * @see bootstrap_process_page()
- * @see template_process()
- * @see html.tpl.php
- *
+ * @see     bootstrap_preprocess_page()
+ * @see     template_preprocess()
+ * @see     template_preprocess_page()
+ * @see     bootstrap_process_page()
+ * @see     template_process()
+ * @see     html.tpl.php
  * @ingroup themeable
  */
 $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
-if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done') !== true && current_path() != "admin/popp-installation"){
+if (in_array('administrator', $user->roles) && variable_get('is_popp_install_done') !== true && current_path() != "admin/popp-installation") {
     ?>
     <div id="greyBackground">
     </div>
     <div class="well" id="installAlert">
-        <p><?=t('Attention ! Pour terminer l\'installation de POPP, merci de cliquer sur ')?><a id="removeInstallModal" href="#overlay=admin/popp-installation"><?=t('ce lien !')?></a></p>
+        <?php
+        $request = drupal_http_request($GLOBALS['base_url'] . '/admin/config/search/clean-urls/check');
+        // If the request returns HTTP 200, clean URLs are available.
+        if (isset($request->code) && $request->code == 200) {
+            $available = true;
+            // If the user started the clean URL test, provide explicit feedback. ?>
+            <p><?= t('Warning ! In order to finish POPP installation, please activate Apache URL rewriting') ?></a></p> <?php
+        } else {
+            ?>
+            <p><?= t('Warning ! In order to finish POPP installation, please click on') ?> <a
+                    id="removeInstallModal" href="#overlay=admin/popp-installation"><?= t('this link !') ?></a></p>
+        <?php
+        }
+
+        ?>
     </div>
 <?php
 }
@@ -90,8 +95,9 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
     <div class="container">
         <div class="navbar-header">
             <?php if ($logo): ?>
-                <a id="mainLogo" class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-                    <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                <a id="mainLogo" class="logo navbar-btn pull-left" href="<?php print $front_page; ?>"
+                   title="<?php print t('Home'); ?>">
+                    <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
                 </a>
             <?php endif; ?>
 
@@ -108,8 +114,10 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
             <nav id="topMenu" role="navigation">
                 <section>
                     <div class="noRadius">
-                        <?= render($page['navigation'])?>
+                        <?= render($page['navigation']) ?>
+
                     </div>
+
                 </section>
             </nav>
         </div>
@@ -119,49 +127,50 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
 <div class="main-container container">
 
     <header role="banner" id="page-header">
-        <?php if (!empty($site_slogan)): ?>
+        <?php if (! empty($site_slogan)): ?>
             <p class="lead"><?php print $site_slogan; ?></p>
         <?php endif; ?>
 
         <?php print render($page['header']); ?>
-    </header> <!-- /#page-header -->
+    </header>
+    <!-- /#page-header -->
 
     <div class="row">
 
-        <?php if (!empty($page['sidebar_first'])): ?>
+        <?php if (! empty($page['sidebar_first'])): ?>
             <aside class="col-sm-3" role="complementary">
                 <?php print render($page['sidebar_first']); ?>
             </aside>  <!-- /#sidebar-first -->
         <?php endif; ?>
 
         <section<?php print $content_column_class; ?>>
-            <?php if (!empty($page['highlighted'])): ?>
+            <?php if (! empty($page['highlighted'])): ?>
                 <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
             <?php endif; ?>
-            <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+            <?php if (! empty($breadcrumb)): print $breadcrumb; endif; ?>
             <a id="main-content"></a>
             <?php print render($title_prefix); ?>
-            <?php if (!empty($title)): ?>
+            <?php if (! empty($title)): ?>
                 <h1 class="page-header"><?php print $title; ?></h1>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
             <?php print $messages; ?>
-            <?php if (!empty($tabs)): ?>
+            <?php if (! empty($tabs)): ?>
                 <?php print render($tabs); ?>
             <?php endif; ?>
-            <?php if (!empty($page['help'])): ?>
+            <?php if (! empty($page['help'])): ?>
                 <?php print render($page['help']); ?>
             <?php endif; ?>
-            <?php if (!empty($action_links)): ?>
+            <?php if (! empty($action_links)): ?>
                 <ul class="action-links"><?php print render($action_links); ?></ul>
             <?php endif; ?>
             <div class="well">
-              <?php print render($page['content']); ?>
+                <?php print render($page['content']); ?>
 
             </div>
         </section>
 
-        <?php if (!empty($page['sidebar_second'])): ?>
+        <?php if (! empty($page['sidebar_second'])): ?>
             <aside class="col-sm-3" role="complementary">
                 <?php print render($page['sidebar_second']); ?>
             </aside>  <!-- /#sidebar-second -->
@@ -176,20 +185,25 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
     <div class="row">
         <div class="col-xs-2">
         </div>
-        <div class="col-xs-7">
+        <div class="col-xs-8">
             <?php print render($page['footer_bottom']); ?>
         </div>
-        <div class="col-xs-3">
-            <img src="/<?php print path_to_theme(); ?>/img/facebook.jpg" class="socialLogo" alt="Retrouvez-nous sur Facebook" title="Retrouvez-nous sur Facebook"/>
-            <img src="/<?php print path_to_theme(); ?>/img/twitter.jpg" class="socialLogo" alt="Retrouvez-nous sur Twitter" title="Retrouvez-nous sur Twitter"/>
-            <img src="/<?php print path_to_theme(); ?>/img/contact.jpg" class="socialLogo" alt="Contactez-nous" title="Contactez-nous"/>
+        <div class="col-xs-2">
+            <img src="/<?php print path_to_theme(); ?>/img/facebook.jpg" class="socialLogo"
+                 alt="Retrouvez-nous sur Facebook" title="Retrouvez-nous sur Facebook"/>
+            <img src="/<?php print path_to_theme(); ?>/img/twitter.jpg" class="socialLogo"
+                 alt="Retrouvez-nous sur Twitter" title="Retrouvez-nous sur Twitter"/>
+            <img src="/<?php print path_to_theme(); ?>/img/contact.jpg" class="socialLogo" alt="Contactez-nous"
+                 title="Contactez-nous"/>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <?php print render($page['partners_footer']); ?>
             <p id="europeFooter">
-                <img height="50px" src="/<?=path_to_theme()?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img height="50px" src="/<?=path_to_theme()?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée par l'Union européenne.
+                <img height="50px" src="/<?= path_to_theme() ?>/img/Logo-UE.jpg" alt="Union Européenne"/> <img
+                    height="50px" src="/<?= path_to_theme() ?>/img/feder.jpg" alt="FEDER"/>La POPP Breizh est cofinancée
+                par l'Union européenne.
             </p>
         </div>
     </div>

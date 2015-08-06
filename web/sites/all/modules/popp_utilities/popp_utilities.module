@@ -1,7 +1,7 @@
 <?php
 
 require_once(drupal_get_path('module', 'popp_utilities') . '/includes/helper_functions.php');
-
+require_once(libraries_get_path('dompdf') . '/dompdf_config.inc.php');
 
 function popp_utilities_menu()
 {
@@ -30,11 +30,29 @@ function popp_utilities_menu()
             'access arguments' => ['access content'],
             'type'             => MENU_CALLBACK,
         ],
+        'caddy/export'                    => [
+            'page callback'    => 'exportFromCaddy',
+            'access arguments' => ['access content'],
+            'page arguments'   => [2],
+            'type'             => MENU_NORMAL_ITEM,
+        ],
+        'caddy/zipexport'                 => [
+            'page callback'    => 'zipExportFromCaddy',
+            'access arguments' => ['access content'],
+            'page arguments'   => [2],
+            'type'             => MENU_NORMAL_ITEM,
+        ],
         'serie/%/%/export'                => [
             'page callback'    => 'popp_thesaurus_excel_export',
             'page arguments'   => [1, 2],
             'access arguments' => ['access content'],
             'type'             => MENU_CALLBACK,
+        ],
+        'serie/pdfexport/%'               => [
+            'page callback'    => 'exportSerieAsPdf',
+            'page arguments'   => [2],
+            'access arguments' => ['access content'],
+            'type'             => MENU_NORMAL_ITEM,
         ]
     ];
 }
@@ -70,14 +88,11 @@ function popp_utilities_block_view($delta = '')
 
     switch ($delta) {
         case 'popp_search_block':
-            drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
             $block['subject'] = t('Recherche');
             $data             = getInfosFromSeries();
             $block['content'] = generateInputs($data);
             break;
         case 'popp_advanced_search_block':
-            drupal_add_js(drupal_get_path('module', 'popp_utilities') . '/js/search.js');
-            drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
             $block['subject'] = t('Recherche avancée');
             $data             = getThesaurusFromSeries();
             $block['content'] = generateThesaurusForm($data);
@@ -89,6 +104,8 @@ function popp_utilities_block_view($delta = '')
 
 function generateThesaurusForm($data)
 {
+    drupal_add_js(drupal_get_path('module', 'popp_utilities') . '/js/search.js');
+    drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
     if (false == $result = cache_get('popp_thessearch')) {
         $result = '<div id="advancedSearchModal" class="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">
                     <button aria-label="Fermer" data-dismiss="modal" class="close" type="button"><span>×</span></button>
@@ -116,6 +133,7 @@ function generateThesaurusForm($data)
  */
 function generateInputs($dataSet)
 {
+    drupal_add_css(drupal_get_path('module', 'popp_utilities') . '/css/search_block.css');
     $result = cache_get('popp_search');
     if (! $result) {
         $result = '<div id="popp_search_block"><form id="poppSearchForm" autocomplete="off"><div id="accordion">';
@@ -257,6 +275,9 @@ function popp_utilities_entity_form_validate(&$entity_form, &$form_state)
 function popp_utilities_node_presave($node)
 {
     if ($node->type == 'popp_photo_serie') {
+        if (false !== variable_get('import_in_progress')) {
+            return;
+        }
         $region                                                       = taxonomy_term_load($node->field_popp_serie_district[LANGUAGE_NONE][0]['tid']);
         $supportingStruct                                             = $node->field_popp_serie_supp_struct[LANGUAGE_NONE][0]['target_id'];
         $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] = $region->field_regional_code[LANGUAGE_NONE][0]['value'] . ' ' . sprintf('%02d', $supportingStruct) . ' ' . sprintf('%04d', $node->nid);
@@ -270,7 +291,6 @@ function popp_utilities_node_insert($node)
 
 function seekThesaurusAmount($elements, $key)
 {
-    print_r($elements);
     $count = 0;
     foreach ($elements as $element) {
         if (! is_array($element)) {
@@ -392,7 +412,7 @@ function clearCacheSearch($node)
     }
 }
 
-function getPhotoDescTable($serieNid, $photoOrder)
+function getPhotoDescTable($serieNid, $photoOrder, $print = true)
 {
     $serie       = node_load($serieNid);
     $otherPhotos = '';
@@ -401,10 +421,15 @@ function getPhotoDescTable($serieNid, $photoOrder)
     if (isset($serie->field_popp_serie_refdoc[LANGUAGE_NONE][0]['target_id'])) {
         $refdoc = node_load($serie->field_popp_serie_refdoc[LANGUAGE_NONE][0]['target_id']);
         if ($photoOrder == "-1") {
-            print '<div class="field field-type-interval field-label-above"><div class="field-label">Lieu de conservation:</div>' . $refdoc->field_popp_refdoc_storage_place[LANGUAGE_NONE][0]['value'] . '</div>
+            if ($print) {
+                print '<div class="field field-type-interval field-label-above"><div class="field-label">Lieu de conservation:</div>' . $refdoc->field_popp_refdoc_storage_place[LANGUAGE_NONE][0]['value'] . '</div>
         <div class="field field-type-interval field-label-above"><div class="field-label">Description précise du document:</div>' . $refdoc->field_popp_refdoc_precise_desc['und'][0]['value'] . '</div>';
 
-            return;
+                return;
+            }
+
+            return '<div class="field field-type-interval field-label-above"><div class="field-label">Lieu de conservation:</div>' . $refdoc->field_popp_refdoc_storage_place[LANGUAGE_NONE][0]['value'] . '</div>
+        <div class="field field-type-interval field-label-above"><div class="field-label">Description précise du document:</div>' . $refdoc->field_popp_refdoc_precise_desc['und'][0]['value'] . '</div>';
         }
         $otherPhotos .= '<tr><td>Document référence</td><td>' . $refdoc->field_popp_refdoc_precise_desc[LANGUAGE_NONE][0]['value'] . '</td></tr>';
     }
@@ -426,17 +451,25 @@ function getPhotoDescTable($serieNid, $photoOrder)
     }
     $result .= $otherPhotos;
     $result .= '</tbody></table>';
-
-    print $result;
+    if ($print) {
+        print $result;
+    } else {
+        return $result;
+    }
 }
 
-function getSameThematicSeries($nid)
+function getSameThematicSeries($nid, $return = false)
 {
     $serie       = node_load($nid);
     $result      = "";
     $resultTable = [];
     if (! isset($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]) && ! isset($serie->field_popp_serie_loc_axes[LANGUAGE_NONE][0])) {
-        return "";
+        if(!$return){
+            print '';
+            drupal_exit();
+        }else{
+            return "";
+        }
     }
     if (isset($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE][0])) {
         foreach ($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE] as $thematicAxis) {
@@ -461,21 +494,52 @@ AND n.nid != :nid", [':tid' => $thematicAxis['tid'],
         }
     }
 
-    foreach ($resultTable as $nid => $title) {
-        $result .= '<a href="/node/' . $nid . '">' . $title . '</a><br/>';
+    foreach ($resultTable as $actualNid => $title) {
+        if ($actualNid == $nid) {
+            continue;
+        }
+        $result .= '<a href="/node/' . $actualNid . '">' . $title . '</a><br/>';
     }
     if ($result != "") {
         $result = '<div class="field-label">Série(s) du même axe thématique:&nbsp;</div>' . $result;
     }
-    print '<div class="field field-type-interval field-label-above">' . $result . '</div>';
+    if (! $return) {
+        print '<div class="field field-type-interval field-label-above">' . $result . '</div>';
+        drupal_exit();
+    }
+
+    return '<div class="field field-type-interval field-label-above">' . $result . '</div>';
 }
 
-function getPhotoLicences($nid)
+function getThematicSeries($tid)
+{
+    $result = '';
+    $resultTable = [];
+    $query       = db_query("SELECT nid, title
+FROM {node} n
+,{field_data_field_popp_serie_thematic_axis} ta
+WHERE n.nid = ta.entity_id
+AND ta.field_popp_serie_thematic_axis_tid = :tid", [':tid' => $tid]);
+    $resultTable = array_replace($query->fetchAllKeyed(), $resultTable);
+
+
+    foreach ($resultTable as $actualNid => $title) {
+        $result .= '<a href="/node/' . $actualNid . '">' . $title . '</a><br/>';
+    }
+
+    return '<div class="field field-type-interval field-label-above">' . $result . '</div>';
+}
+
+function getPhotoLicences($nid, $return = false)
 {
     $serie       = node_load($nid);
     $resultTable = [];
     if (! isset($serie->field_popp_serie_thematic_axis[LANGUAGE_NONE][0]) && ! isset($serie->field_popp_serie_loc_axes[LANGUAGE_NONE][0])) {
-        return "";
+        if (! $return) {
+            print '';
+        }else{
+            return "";
+        }
     }
     if (isset($serie->field_popp_serie_photo_list[LANGUAGE_NONE][0])) {
         foreach ($serie->field_popp_serie_photo_list[LANGUAGE_NONE] as $photo) {
@@ -486,7 +550,12 @@ function getPhotoLicences($nid)
             }
         }
     }
-    print('<div class="field field-type-interval field-label-above"><div class="field-label">Licence(s) des photos de la série:</div>' . implode(', ', $resultTable) . '</div>');
+    if (! $return) {
+        print('<div class="field field-type-interval field-label-above"><div class="field-label">Licence(s) des photos de la série:</div>' . implode(', ', $resultTable) . '</div>');
+        drupal_exit();
+    }
+
+    return ('<div class="field field-type-interval field-label-above"><div class="field-label">Licence(s) des photos de la série:</div>' . implode(', ', $resultTable) . '</div>');
 }
 
 function popp_thesaurus_excel_export($nid, $photoUnd)
@@ -527,7 +596,6 @@ function popp_thesaurus_excel_export($nid, $photoUnd)
             'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
         ]
     ];
-    
     $excel->getActiveSheet()->getStyle("A1:G550")->applyFromArray($globalStyle);
     $excel->getActiveSheet()->getStyle("B10:G" . (9 + count($changesSinceLastPhoto)))->applyFromArray($detailsStyle);
     $excel->getActiveSheet()->getStyle("A1:D1")->applyFromArray($style);
@@ -539,8 +607,9 @@ function popp_thesaurus_excel_export($nid, $photoUnd)
             ->getColumnDimension($col)
             ->setAutoSize(true);
     }
+    $serieCode = isset($node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value']) ? $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] : $node->nid;
     header('Content-Type: application/vnd.ms-excel');
-    header('Content-Disposition: attachment;filename="export_thesaurus.xls"');
+    header('Content-Disposition: attachment;filename="' . $serieCode . '_thesaurus.xls"');
     header('Cache-Control: max-age=0');
 
     $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel5');
@@ -603,7 +672,7 @@ function prepareSerieInfosExcel($node, $photoUnd)
 
 function preparePhotoTableForExcelExport($node, $actualUnd)
 {
-    $changes      = ['stability', 'appreared', 'disappeared', 'increase', 'decrease', 'appearance_change'];
+    $changes      = getChanges();
     $tableContent = getChangesSincePreviousAsArray($node, $changes, null, $actualUnd);
     $result       = [['Éléments', 'Stabilité', 'Apparition', 'Disparition', 'Augmentation', 'Diminution', 'Changement d\'apparence']];
     if (false === $tableContent) {
@@ -633,4 +702,344 @@ function prepareTableForExcelExport($baseTable)
     $result[] = ['Photo', $baseTable['photo'], 'Coordonnées GPS', $baseTable['gps']];
 
     return $result;
+}
+
+function exportSerieAsPdf($nid)
+{
+    $node     = node_load($nid);
+    $rightTab = [];
+    if (! $node) {
+        drupal_set_message("Identifiant de la série invalide", "error");
+        drupal_exit();
+    }
+    // TODO : check en dessous
+
+    $head = '<head>
+        <style type="text/css">
+        body{
+            font-family:sans-serif;
+            font-size:12px;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        table tr th{
+            background:#cfcfcf;
+        }
+        table tr td, table tr th{
+            border:1px solid black;
+        }
+        .field .field-label {
+          font-weight: bold;
+        }
+        h3 {
+          background: #e9e9e9 none repeat scroll 0 0;
+          margin-top:5px;
+          margin-bottom:10px;
+        }
+        </style>
+    </head>';
+
+    $rightTab = generateSerieTab($node);
+
+    $dompdf        = new DOMPDF();
+    $generatedHtml = '';
+    $total         = count($node->field_popp_serie_photo_list[LANGUAGE_NONE]) - 1;
+    $refdoc        = '';
+    if (isset($node->field_popp_serie_refdoc[LANGUAGE_NONE])) {
+        $refdocnode        = $node->field_popp_serie_refdoc[LANGUAGE_NONE][0];
+        $rightTab['photo'] = getRefDocInfos($node);
+        $image             = getPhotoAsImage($refdocnode, 2);
+        $image             = preg_replace('/(width="\d+")/', 'width="100%"', $image);
+        $image             = preg_replace('/(height="\d+")/', '', $image);
+        $generatedHtml .= '<div style="page-break-after:always;">
+            <div style="font-size:13px; font-style:italic;"><img alt="logo" src="' . theme_get_setting('logo') . '" height="50px"/>
+                <span style="position:absolute;top:16px;left:70px;">Plateforme des Observatoires Photographiques du Paysage de Bretagne</span>
+            </div>
+            <div style="width:69%;margin-right:1%;display:inline-block;">  <h2>' . $node->title . '</h2><div>' . $image . '</div>' . getDescription($node, -1) . '
+            <h4>Changements intervenus sur la durée de la série</h4>
+                    ' . getChangesTable($node) . '</div>
+            <div style="width:29%;display:inline-block;vertical-align:top;">' . implode('', $rightTab) . '</div>
+        </div>';
+    }
+    foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $und => $photo) {
+        $rightTab['photo'] = getPhotosInfos($node, $und, $photo);
+        $image             = getPhotoAsImage($photo);
+        $image             = preg_replace('/(width="\d+")/', 'width="100%"', $image);
+        $image             = preg_replace('/(height="\d+")/', '', $image);
+        $generatedHtml .= '<div style="page-break-after:' . ($total == $und ? 'auto' : 'always') . ';">
+            <div style="font-size:13px; font-style:italic;"><img alt="logo" src="' . theme_get_setting('logo') . '" height="50px"/>
+                <span style="position:absolute;top:16px;left:70px;">Plateforme des Observatoires Photographiques du Paysage de Bretagne</span>
+            </div>
+            <div style="width:69%;margin-right:1%;display:inline-block;">  <h2>' . $node->title . '</h2><div>' . $image . '</div>' . getDescription($node, $und) . '<h4>Changements par rapport à la photo précédente</h4>
+            ' . getChangesSinceLastPhotoTable($node->nid, $photo['target_id'], false) . '
+            <h4>Changements intervenus sur la durée de la série</h4>
+                    ' . getChangesTable($node) . '</div>
+            <div style="width:29%;display:inline-block;vertical-align:top;">' . implode('', $rightTab) . '</div>
+        </div>';
+    }
+    $dompdf->load_html('<html>' . $head .
+        '<body>' . $generatedHtml . '
+            </body></html>');
+    $dompdf->render();
+
+    $exts  = getImageExts();
+
+    $output = $dompdf->output();
+    if(file_exists(drupal_realpath('temporary://') . '/export_serie_'.$node->nid.'.pdf')){
+        unlink(drupal_realpath('temporary://') . '/export_serie_'.$node->nid.'.pdf');
+    }
+    file_put_contents(drupal_realpath('temporary://') . '/export_serie_'.$node->nid.'.pdf', $output);
+    $zip         = new ZipArchive();
+    $archive_uri = 'temporary://export_serie_'.$node->nid.'.zip';
+    if ($zip->open(drupal_realpath($archive_uri), (file_exists(drupal_realpath($archive_uri))?ZipArchive::OVERWRITE:ZipArchive::CREATE)) === true) {
+        $serieName = $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
+        $rep       = $serieName . ' ' . $node->title;
+        $zip->addEmptyDir($rep);
+        $zip->addFile(drupal_realpath('temporary://') . '/export_serie_'.$node->nid.'.pdf', $rep . '/export_serie_'.$node->nid.'.pdf');
+        foreach ($node->field_popp_serie_photo_list[LANGUAGE_NONE] as $und => $photoNid) {
+            $photo = node_load($photoNid['target_id']);
+            if (! isset($exts[$photo->field_popp_photo_file[LANGUAGE_NONE][0]['filemime']])) {
+                continue;
+            }
+            $ext = $exts[$photo->field_popp_photo_file[LANGUAGE_NONE][0]['filemime']];
+            $zip->addFile(drupal_realpath($photo->field_popp_photo_file[LANGUAGE_NONE][0]['uri']), $rep . '/' . $serieName . '_' . ($und + 1) . '.' . $ext);
+        }
+        $zip->close();
+    }else{
+        drupal_set_message("L'export de la série a échoué. Merci de réessayer plus tard","warning");
+        drupal_goto('/node/'.$node->nid);
+        drupal_exit();
+    }
+
+    header('Content-Type: application/zip');
+    header('Content-Disposition: attachment; filename=' . urlencode('export_serie_'.$node->nid.'.zip'));
+    header('Content-Transfer-Encoding: binary');
+    readfile(drupal_realpath($archive_uri));
+    unlink(drupal_realpath($archive_uri));
+    drupal_exit();
+}
+
+function getPhotoAsImage($photo, $block_id = 2)
+{
+    $photoView = views_get_view('popp_search_result_view');
+    $photoView->set_display('block_' . $block_id);
+    $photoView->set_arguments([$photo['target_id']]);
+    $photoView->pre_execute();
+    $photoView->execute('block_' . $block_id);
+
+    return $photoView->render();
+}
+
+function getPhotosInfos($node, $und, $photo)
+{
+    $photoView = views_get_view('popp_search_result_view');
+    $photoView->set_display('block_3');
+    $photoView->set_arguments([$node->nid, $photo['target_id']]);
+    $photoView->pre_execute();
+    $photoView->execute('block_3');
+    $return = '<h3>Photo ' . $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] . ' ' . ($und + 1) . '</h3>';
+    $rf     = field_view_field('node', $node, 'field_popp_serie_landscape_per');
+    $return .= render($rf);
+    $return .= $photoView->render();
+
+    return $return;
+}
+
+function getRefDocInfos($node)
+{
+    $photoView = views_get_view('popp_refdoc_display');
+    $photoView->set_display('block_1');
+    $photoView->set_arguments([$node->nid]);
+    $photoView->pre_execute();
+    $photoView->execute('block_1');
+    $return = '<h3>Document référence ' . $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] . ' 0</h3>';
+    $rf     = field_view_field('node', $node, 'field_popp_serie_landscape_per');
+    $return .= render($rf);
+    $return .= $photoView->render();
+
+    return $return;
+}
+
+function generateSerieTab($node)
+{
+    $pgs = new PostgisGeometrySet('GEOMETRYCOLLECTION', 4326);
+    $pgs->fromGeometry($node->field_popp_serie_place[LANGUAGE_NONE]);
+    $geom             = 'Long : ' . str_replace(' ', '<br/>Lat : ', str_replace('))', '', str_replace('GEOMETRYCOLLECTION(POINT(', '', $pgs->getText())));
+    $structureLogo    = "";
+    $oppBackingStruct = "";
+
+    if (isset($node->field_popp_serie_supp_struct[LANGUAGE_NONE])) {
+        $suppStruct       = node_load($node->field_popp_serie_supp_struct[LANGUAGE_NONE][0]['target_id']);
+        $image            = field_get_items('node', $suppStruct, 'field_popp_supp_struct_logo');
+        if(isset($image[0])){
+            $structureLogo    = field_view_value('node', $suppStruct, 'field_popp_supp_struct_logo', $image[0], [
+                'type'     => 'image',
+                'settings' => [
+                    'image_style' => 'sidebar_image',
+                    'image_link'  => '',
+                ],
+            ]);
+        }else{
+            $structureLogo    = '';
+        }
+        $ss               = field_view_field('node', $node, 'field_popp_serie_supp_struct');
+        $oppBackingStruct = render($ss);
+    }
+    $serieCode              = $node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
+    $rightTab['suppStruct'] = drupal_render($structureLogo);
+    $rightTab['suppStruct'] .= $oppBackingStruct;
+    $rightTab['serie'] = '<h3>Série ' . $serieCode . '</h3>';
+    $per               = field_view_field('node', $node, 'field_popp_serie_per');
+    $rightTab['serie'] .= render($per);
+    $ta = field_view_field('node', $node, 'field_popp_serie_thematic_axis');
+    $rightTab['serie'] .= render($ta);
+    $la = field_view_field('node', $node, 'field_popp_serie_loc_axes');
+    $rightTab['serie'] .= render($la);
+    $rightTab['serie'] .= getSameThematicSeries($node->nid, true);
+    $rightTab['serie'] .= getPhotoLicences($node->nid, true);
+
+    $rightTab['photo'] = [];
+
+    $rightTab['coverage'] = '<h3>Territoire</h3>';
+    $re                   = field_view_field('node', $node, 'field_popp_serie_region');
+    $rightTab['coverage'] .= render($re);
+    $cy = field_view_field('node', $node, 'field_popp_serie_county');
+    $rightTab['coverage'] .= render($cy);
+    $twn = field_view_field('node', $node, 'field_popp_serie_town');
+    $rightTab['coverage'] .= render($twn);
+    $add = field_view_field('node', $node, 'field_popp_serie_address');
+    $rightTab['coverage'] .= render($add);
+    $ls = field_view_field('node', $node, 'field_popp_serie_landscape_set');
+    $rightTab['coverage'] .= render($ls);
+    $lu = field_view_field('node', $node, 'field_popp_serie_landscape_unit');
+    $rightTab['coverage'] .= render($lu);
+    $lp = field_view_field('node', $node, 'field_popp_serie_landscape_per');
+    $rightTab['coverage'] .= render($lp);
+    $rightTab['coverage'] .= '<div class="field">
+                                        <div class="field-label">Emplacement de la série:&nbsp;</div>
+                                        <div class="field-item even">' . $geom . '</div>
+                                    </div>';
+
+    return $rightTab;
+}
+
+function getDescription($node, $und)
+{
+    $return    = '';
+    $dateDescr = '';
+    if (isset($node->field_popp_serie_first_desc_date[LANGUAGE_NONE][0]['value'])) {
+        $tmp       = new DateTime($node->field_popp_serie_first_desc_date[LANGUAGE_NONE][0]['value']);
+        $dateDescr = '<p><i>Le ' . $tmp->format('d/m/Y') . '</i></p>';
+    }
+    $ai = field_view_field('node', $node, 'field_popp_serie_author_intent');
+    $return .= render($ai);
+    $fd = field_view_field('node', $node, 'field_popp_serie_first_desc');
+    $return .= render($fd);
+    $return .= $dateDescr;
+    $return .= getPhotoDescTable($node->nid, $und, false);
+
+    return $return;
+}
+
+function zipExportFromCaddy($nodes)
+{
+    if ($nodes == '') {
+        drupal_set_message('Vous devez choisir au moins une série à exporter', 'error');
+        drupal_goto('mon-panier');
+        drupal_exit();
+    }
+    $exts  = getImageExts();
+    $nodes = explode(',', $nodes);
+    $nodes = array_slice($nodes, 0, 4);
+    $caddy = views_get_view('caddy');
+    $caddy->set_display('page');
+    $caddy->pre_execute();
+    $caddy->execute('page');
+    $zip         = new ZipArchive();
+    $archive_uri = 'temporary://export_panier.zip';
+    if(file_exists(drupal_realpath($archive_uri))){
+        unlink(drupal_realpath($archive_uri));
+    }
+    $photosLoupees = 0;
+    $photosTotal = 0;
+    if ($zip->open(drupal_realpath($archive_uri), ZipArchive::CREATE) === true) {
+        foreach ($caddy->result as $serie) {
+            if (! in_array($serie->nid, $nodes)) {
+                continue;
+            }
+            $serieName = $serie->_field_data['nid']['entity']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
+            $rep       = $serieName . ' ' . $serie->_field_data['nid']['entity']->title;
+            $zip->addEmptyDir($rep);
+            foreach ($serie->_field_data['nid']['entity']->field_popp_serie_photo_list[LANGUAGE_NONE] as $und => $photoNid) {
+                $photo = node_load($photoNid['target_id']);
+                $photosTotal++;
+                if (! isset($exts[$photo->field_popp_photo_file[LANGUAGE_NONE][0]['filemime']])) {
+                    $photosLoupees++;
+                    continue;
+                }
+                $ext = $exts[$photo->field_popp_photo_file[LANGUAGE_NONE][0]['filemime']];
+                $zip->addFile(drupal_realpath($photo->field_popp_photo_file[LANGUAGE_NONE][0]['uri']), $rep . '/' . $serieName . '_' . ($und + 1) . '.' . $ext);
+            }
+        }
+        $zip->close();
+        if($photosLoupees == $photosTotal){
+            drupal_set_message("Les photos n'ont pas pu être exportées suite à une erreur.", "error");
+            drupal_goto('mon-panier');
+            drupal_exit();
+        }
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . urlencode('export_panier.zip'));
+        header('Content-Transfer-Encoding: binary');
+
+        readfile(drupal_realpath($archive_uri));
+        drupal_exit();
+    } else {
+        drupal_set_message("Une erreur est survenue à la création de l'archive", "error");
+        drupal_goto('mon-panier');
+        drupal_exit();
+    }
+}
+
+function getImageExts(){
+    return ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/jpg' => 'jpg', 'image/gif' => 'gif'];
+}
+
+/**
+ * Implements hook_views_pre_render(), in  order to remove duplicates due to relationship with Organic Group.
+ */
+function popp_utilities_views_pre_render(&$view)
+{
+    //update any popp_photo_serie content
+    //update own popp_photo_serie content
+
+    if($view->name == 'popp_views_home_layer'){
+        $presentNids = [];
+        foreach($view->result as $key => $result){
+            if(!in_array($result->nid, $presentNids)){
+                $presentNids[] = $result->nid;
+            }else{
+                unset($view->result[$key]);
+            }
+        }
+    }
+    if($view->name == 'popp_series_management_opp' && $view->current_display == "page"){
+        global $user;
+        foreach($view->result as $key => $result){
+            $node = node_load($result->nid);
+            if(!og_user_access_entity('update own popp_photo_serie content', 'popp_photo_serie', $node, $user) && !og_user_access_entity('update any popp_photo_serie content', 'node', $node, $user)){
+                unset($view->result[$key]);
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_print_pdf_filename_alter().
+ */
+function popp_utilities_print_pdf_filename_alter(&$pdf_filename, &$path)
+{
+    $nid = explode('/', $path)[1];
+    $node = node_load($nid);
+    $pdf_filename = $pdf_filename.'-'.$node->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
 }

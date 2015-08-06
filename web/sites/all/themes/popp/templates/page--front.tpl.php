@@ -1,16 +1,33 @@
 <?php //POPP
 $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
-if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done') !== true && current_path() != "admin/popp-installation"){
+global $user;
+if(null === og_get_groups_by_user($user)){
+    print '<div style="display:none;" id="cacherMenu"></div>';
+}
+if (in_array('administrator', $user->roles) && variable_get('is_popp_install_done') !== true && current_path() != "admin/popp-installation") {
     ?>
     <div id="greyBackground">
     </div>
     <div class="well" id="installAlert">
-        <p><?=t('Attention ! Pour terminer l\'installation de POPP, merci de cliquer sur ')?><a id="removeInstallModal" href="#overlay=admin/popp-installation"><?=t('ce lien !')?></a></p>
+        <?php
+        $request = drupal_http_request($GLOBALS['base_url'] . '/admin/config/search/clean-urls/check');
+        // If the request returns HTTP 200, clean URLs are available.
+        if (isset($request->code) && $request->code == 200) {
+            $available = true;
+            // If the user started the clean URL test, provide explicit feedback. ?>
+            <p><?= t('Warning ! In order to finish POPP installation, please activate Apache URL rewriting') ?></a></p> <?php
+        } else {
+            ?>
+            <p><?= t('Warning ! In order to finish POPP installation, please click on') ?> <a
+                    id="removeInstallModal" href="#overlay=admin/popp-installation"><?= t('this link !') ?></a></p>
+        <?php
+        }
+
+        ?>
     </div>
-    <?php
+<?php
 }
 ?>
-
 <header id="navbar" role="banner" class="navbar navbar-default border-bottom">
     <div class="container">
         <div class="navbar-header">
@@ -32,9 +49,11 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
             <p id="textLogo">Plateforme des Observatoires Photographiques du Paysage de Bretagne</p>
             <nav id="topMenu" role="navigation">
                     <section>
-                        <div class="noRadius">
-                            <?= render($block['content'])?>
-                        </div>
+             
+                   <div class="noRadius">
+                        <?= render($block['content'])?>
+                                   
+                    </div>
                     </section>
             </nav>
         </div>
@@ -68,6 +87,7 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
                 <?php print render($tabs); ?>
             <?php endif; ?>
             <div id="mapDiv" class="well relativePos">
+                <?php print $messages; ?>
                 <?php print render($page['content']); ?>
             </div>
         </section>
@@ -87,10 +107,10 @@ if(in_array('administrator',$user->roles) && variable_get('is_popp_install_done'
     <div class="row">
         <div class="col-xs-2">
         </div>
-        <div class="col-xs-7">
+        <div class="col-xs-8">
             <?php print render($page['footer_bottom']); ?>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
             <img src="/<?php print path_to_theme(); ?>/img/facebook.jpg" class="socialLogo" alt="Retrouvez-nous sur Facebook" title="Retrouvez-nous sur Facebook"/>
             <img src="/<?php print path_to_theme(); ?>/img/twitter.jpg" class="socialLogo" alt="Retrouvez-nous sur Twitter" title="Retrouvez-nous sur Twitter"/>
             <img src="/<?php print path_to_theme(); ?>/img/contact.jpg" class="socialLogo" alt="Contactez-nous" title="Contactez-nous"/>

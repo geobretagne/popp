@@ -126,6 +126,10 @@
     }
 
     function updateLayers(e) {
+        if(data.openlayers.popups[0] !== undefined){
+            data.openlayers.removePopup(data.openlayers.popups[0]);
+        }
+
         var spatialSearch = $("#spatialSearch").hasClass('active');
         if (spatialSearch) {
             doCenter = false;
