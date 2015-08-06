@@ -27,12 +27,13 @@ function structure_front_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Contributor',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-contributor field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-contributor field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_contributor|node|popp_photo_serie|form'] = $field_group;
@@ -53,21 +54,22 @@ function structure_front_field_group_info() {
       0 => 'field_popp_serie_town',
       1 => 'field_popp_serie_landscape_unit',
       2 => 'field_popp_serie_district',
-      3 => 'field_popp_serie_landscape_set',
-      4 => 'field_popp_serie_county',
-      5 => 'field_popp_serie_country',
-      6 => 'field_popp_serie_place',
-      7 => 'field_popp_serie_per',
-      8 => 'field_popp_serie_address',
+      3 => 'field_popp_serie_county',
+      4 => 'field_popp_serie_country',
+      5 => 'field_popp_serie_landscape_set',
+      6 => 'field_popp_serie_per',
+      7 => 'field_popp_serie_address',
+      8 => 'field_popp_serie_loc_axes',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Coverage',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-coverage field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-coverage field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_coverage|node|popp_photo_serie|form'] = $field_group;
@@ -145,12 +147,13 @@ function structure_front_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Description',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-description field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-description field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_description|node|popp_photo_serie|form'] = $field_group;
@@ -257,12 +260,13 @@ function structure_front_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Format',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-format field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-format field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_format|node|popp_photo_serie|form'] = $field_group;
@@ -312,12 +316,13 @@ function structure_front_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Identifier',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-identifier field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-identifier field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_identifier|node|popp_photo_serie|form'] = $field_group;
@@ -366,12 +371,13 @@ function structure_front_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Language',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-language field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-language field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_language|node|popp_photo_serie|form'] = $field_group;
@@ -391,16 +397,16 @@ function structure_front_field_group_info() {
     'children' => array(
       0 => 'field_popp_photo_hour',
       1 => 'field_popp_photo_film_type',
-      2 => 'field_popp_photo_camera_inclinat',
-      3 => 'field_popp_photo_iso',
-      4 => 'field_popp_photo_tidal_coeff',
-      5 => 'field_popp_photo_tripod_height',
-      6 => 'field_popp_photo_aperture',
-      7 => 'field_popp_photo_camera_type',
+      2 => 'field_popp_photo_tripod_height',
+      3 => 'field_popp_photo_aperture',
+      4 => 'field_popp_photo_camera_type',
+      5 => 'field_popp_photo_camera_inclinat',
+      6 => 'field_popp_photo_iso',
+      7 => 'field_popp_photo_tidal_coeff',
       8 => 'field_popp_photo_orientation',
       9 => 'field_popp_photo_focal',
       10 => 'field_popp_photo_altitude',
-      11 => 'field_popp_photo_original_weight',
+      11 => 'field_popp_photo_original_',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -431,12 +437,13 @@ function structure_front_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Publisher',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-publisher field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-publisher field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_publisher|node|popp_photo_serie|form'] = $field_group;
@@ -452,23 +459,24 @@ function structure_front_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Fiche terrain',
-    'weight' => '15',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_popp_serie_sketch',
-      1 => 'field_popp_serie_aerial',
-      2 => 'field_popp_serie_tripod',
-      3 => 'field_popp_serie_ign',
-      4 => 'field_popp_serie_observ',
-      5 => 'field_popp_serie_context_photo',
+      0 => 'field_popp_serie_aerial',
+      1 => 'field_popp_serie_sketch',
+      2 => 'field_popp_serie_context_photo',
+      3 => 'field_popp_serie_observ',
+      4 => 'field_popp_serie_tripod',
+      5 => 'field_popp_serie_ign',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Fiche terrain',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-record-field field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-record-field field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_record_field|node|popp_photo_serie|form'] = $field_group;
@@ -517,16 +525,17 @@ function structure_front_field_group_info() {
       0 => 'field_popp_serie_thematic_axis',
       1 => 'field_popp_serie_landscape_typo',
       2 => 'field_popp_serie_opp',
-      3 => 'field_popp_serie_loc_axes',
+      3 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Subject',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-subject field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-subject field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_subject|node|popp_photo_serie|form'] = $field_group;
