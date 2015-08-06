@@ -10,12 +10,6 @@
 function admin_structure_user_default_roles() {
   $roles = array();
 
-  // Exported role: Administrateur.
-  $roles['Administrateur'] = array(
-    'name' => 'Administrateur',
-    'weight' => 3,
-  );
-
   // Exported role: Import de masse.
   $roles['Import de masse'] = array(
     'name' => 'Import de masse',
@@ -26,6 +20,12 @@ function admin_structure_user_default_roles() {
   $roles['Root'] = array(
     'name' => 'Root',
     'weight' => 4,
+  );
+
+  // Exported role: administrator.
+  $roles['administrator'] = array(
+    'name' => 'administrator',
+    'weight' => 3,
   );
 
   return $roles;
