@@ -134,7 +134,7 @@ function installStepTwo($form, &$form_state)
     ];
     $form['demo_photo_series']       = [
         '#type'  => 'checkbox',
-        '#title' => t('Importer des séries photos de démonstration ?'),
+        '#title' => t('Importer des contenus de démonstration (logos, fiches porteurs) ?'),
     ];
     $form['advanced']                = [
         '#type'        => 'fieldset',

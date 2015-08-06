@@ -14,13 +14,13 @@ if (in_array('administrator', $user->roles) && variable_get('is_popp_install_don
         // If the request returns HTTP 200, clean URLs are available.
         if (isset($request->code) && $request->code == 200) {
             $available = true;
-            // If the user started the clean URL test, provide explicit feedback. ?>
-            <p><?= t('Warning ! In order to finish POPP installation, please activate Apache URL rewriting') ?></a></p> <?php
-        } else {
             ?>
             <p><?= t('Warning ! In order to finish POPP installation, please click on') ?> <a
                     id="removeInstallModal" href="#overlay=admin/popp-installation"><?= t('this link !') ?></a></p>
-        <?php
+            <?php
+        } else {
+            // If the user started the clean URL test, provide explicit feedback. ?>
+            <p><?= t('Warning ! In order to finish POPP installation, please activate Apache URL rewriting') ?></a></p> <?php
         }
 
         ?>

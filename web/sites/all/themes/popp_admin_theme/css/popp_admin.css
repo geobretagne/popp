@@ -35,3 +35,15 @@ input[readonly]{
 fieldset.ief-form, .ief-row-form{
     background: #efefef;
 }
+
+ul.term-reference-tree-level {
+  white-space:pre-wrap;
+}
+
+#field-popp-photo-nonreq-thes-values div.term-reference-tree > .term-reference-tree-level .form-radio{
+    display:inline !important;
+}
+#field-popp-photo-nonreq-thes-values div.term-reference-tree > .term-reference-tree-level li{
+    display:inline-block;
+    margin-left:10px;
+}
