@@ -22,15 +22,6 @@ function structure_front_user_default_permissions() {
     'module' => 'print_pdf',
   );
 
-  // Exported permission: 'access administration menu'.
-  $permissions['access administration menu'] = array(
-    'name' => 'access administration menu',
-    'roles' => array(
-      'Root' => 'Root',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: 'access administration pages'.
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
@@ -345,6 +336,17 @@ function structure_front_user_default_permissions() {
       'Root' => 'Root',
     ),
     'module' => 'image',
+  );
+
+  // Exported permission: 'administer import'.
+  $permissions['administer import'] = array(
+    'name' => 'administer import',
+    'roles' => array(
+      'Administrateur' => 'Administrateur',
+      'Import de masse' => 'Import de masse',
+      'Root' => 'Root',
+    ),
+    'module' => 'popp_mass_import',
   );
 
   // Exported permission: 'administer languages'.
@@ -683,6 +685,13 @@ function structure_front_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'create popp_licence_pages content'.
+  $permissions['create popp_licence_pages content'] = array(
+    'name' => 'create popp_licence_pages content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create popp_page content'.
   $permissions['create popp_page content'] = array(
     'name' => 'create popp_page content',
@@ -812,6 +821,13 @@ function structure_front_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any popp_licence_pages content'.
+  $permissions['delete any popp_licence_pages content'] = array(
+    'name' => 'delete any popp_licence_pages content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any popp_page content'.
   $permissions['delete any popp_page content'] = array(
     'name' => 'delete any popp_page content',
@@ -928,6 +944,13 @@ function structure_front_user_default_permissions() {
   // Exported permission: 'delete own popp_documentation content'.
   $permissions['delete own popp_documentation content'] = array(
     'name' => 'delete own popp_documentation content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own popp_licence_pages content'.
+  $permissions['delete own popp_licence_pages content'] = array(
+    'name' => 'delete own popp_licence_pages content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -1145,15 +1168,6 @@ function structure_front_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'display drupal links'.
-  $permissions['display drupal links'] = array(
-    'name' => 'display drupal links',
-    'roles' => array(
-      'Root' => 'Root',
-    ),
-    'module' => 'admin_menu',
-  );
-
   // Exported permission: 'download original image'.
   $permissions['download original image'] = array(
     'name' => 'download original image',
@@ -1193,15 +1207,6 @@ function structure_front_user_default_permissions() {
   $permissions['edit any identification profile'] = array(
     'name' => 'edit any identification profile',
     'roles' => array(),
-    'module' => 'profile2',
-  );
-
-  // Exported permission: 'edit any main profile'.
-  $permissions['edit any main profile'] = array(
-    'name' => 'edit any main profile',
-    'roles' => array(
-      'Root' => 'Root',
-    ),
     'module' => 'profile2',
   );
 
@@ -1245,6 +1250,13 @@ function structure_front_user_default_permissions() {
   // Exported permission: 'edit any popp_documentation content'.
   $permissions['edit any popp_documentation content'] = array(
     'name' => 'edit any popp_documentation content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any popp_licence_pages content'.
+  $permissions['edit any popp_licence_pages content'] = array(
+    'name' => 'edit any popp_licence_pages content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -1368,16 +1380,6 @@ function structure_front_user_default_permissions() {
     'module' => 'profile2',
   );
 
-  // Exported permission: 'edit own main profile'.
-  $permissions['edit own main profile'] = array(
-    'name' => 'edit own main profile',
-    'roles' => array(
-      'Root' => 'Root',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'profile2',
-  );
-
   // Exported permission: 'edit own my_commitments profile'.
   $permissions['edit own my_commitments profile'] = array(
     'name' => 'edit own my_commitments profile',
@@ -1418,6 +1420,13 @@ function structure_front_user_default_permissions() {
   // Exported permission: 'edit own popp_documentation content'.
   $permissions['edit own popp_documentation content'] = array(
     'name' => 'edit own popp_documentation content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own popp_licence_pages content'.
+  $permissions['edit own popp_licence_pages content'] = array(
+    'name' => 'edit own popp_licence_pages content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -1645,6 +1654,15 @@ function structure_front_user_default_permissions() {
     'module' => 'devel',
   );
 
+  // Exported permission: 'execute unlink files'.
+  $permissions['execute unlink files'] = array(
+    'name' => 'execute unlink files',
+    'roles' => array(
+      'Root' => 'Root',
+    ),
+    'module' => 'ftools',
+  );
+
   // Exported permission: 'export nodes'.
   $permissions['export nodes'] = array(
     'name' => 'export nodes',
@@ -1681,15 +1699,6 @@ function structure_front_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'flag',
-  );
-
-  // Exported permission: 'flush caches'.
-  $permissions['flush caches'] = array(
-    'name' => 'flush caches',
-    'roles' => array(
-      'Root' => 'Root',
-    ),
-    'module' => 'admin_menu',
   );
 
   // Exported permission: 'generate features'.
@@ -1840,6 +1849,15 @@ function structure_front_user_default_permissions() {
     'module' => 'flag',
   );
 
+  // Exported permission: 'use PHP for settings'.
+  $permissions['use PHP for settings'] = array(
+    'name' => 'use PHP for settings',
+    'roles' => array(
+      'Root' => 'Root',
+    ),
+    'module' => 'php',
+  );
+
   // Exported permission: 'use PHP to import nodes'.
   $permissions['use PHP to import nodes'] = array(
     'name' => 'use PHP to import nodes',
@@ -1856,6 +1874,15 @@ function structure_front_user_default_permissions() {
       'Root' => 'Root',
     ),
     'module' => 'search',
+  );
+
+  // Exported permission: 'use bulk exporter'.
+  $permissions['use bulk exporter'] = array(
+    'name' => 'use bulk exporter',
+    'roles' => array(
+      'Root' => 'Root',
+    ),
+    'module' => 'bulk_export',
   );
 
   // Exported permission: 'use ctools import'.
@@ -1879,7 +1906,11 @@ function structure_front_user_default_permissions() {
   // Exported permission: 'use text format editeur'.
   $permissions['use text format editeur'] = array(
     'name' => 'use text format editeur',
-    'roles' => array(),
+    'roles' => array(
+      'Administrateur' => 'Administrateur',
+      'Root' => 'Root',
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'filter',
   );
 
@@ -1903,6 +1934,13 @@ function structure_front_user_default_permissions() {
     'module' => 'filter',
   );
 
+  // Exported permission: 'use text format php_code'.
+  $permissions['use text format php_code'] = array(
+    'name' => 'use text format php_code',
+    'roles' => array(),
+    'module' => 'filter',
+  );
+
   // Exported permission: 'view any contact_information profile'.
   $permissions['view any contact_information profile'] = array(
     'name' => 'view any contact_information profile',
@@ -1914,15 +1952,6 @@ function structure_front_user_default_permissions() {
   $permissions['view any identification profile'] = array(
     'name' => 'view any identification profile',
     'roles' => array(),
-    'module' => 'profile2',
-  );
-
-  // Exported permission: 'view any main profile'.
-  $permissions['view any main profile'] = array(
-    'name' => 'view any main profile',
-    'roles' => array(
-      'Root' => 'Root',
-    ),
     'module' => 'profile2',
   );
 
@@ -1976,16 +2005,6 @@ function structure_front_user_default_permissions() {
   $permissions['view own identification profile'] = array(
     'name' => 'view own identification profile',
     'roles' => array(),
-    'module' => 'profile2',
-  );
-
-  // Exported permission: 'view own main profile'.
-  $permissions['view own main profile'] = array(
-    'name' => 'view own main profile',
-    'roles' => array(
-      'Root' => 'Root',
-      'authenticated user' => 'authenticated user',
-    ),
     'module' => 'profile2',
   );
 

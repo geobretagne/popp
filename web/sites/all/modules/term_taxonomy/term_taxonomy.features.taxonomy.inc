@@ -289,7 +289,7 @@ function term_taxonomy_taxonomy_default_vocabularies() {
       'name' => 'Thésaurus',
       'machine_name' => 'popp_tax_thesaurus',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(

@@ -21,13 +21,14 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart
@@ -41,13 +42,14 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-un-opp-standard:node/add/opp
@@ -61,13 +63,14 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-un-opp-standard:node/add/opp',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-une-faq:node/add/faq
@@ -81,33 +84,14 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-une-faq:node/add/faq',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie
-  $menu_links['menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie'] = array(
-    'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/popp-photo-serie',
-    'router_path' => 'node/add/popp-photo-serie',
-    'link_title' => 'Ajouter une série',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure
@@ -121,13 +105,119 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -46,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_gestion-des-lments-de-taxonomie:admin/structure/taxonomy
+  $menu_links['menu-administration-contenu_gestion-des-lments-de-taxonomie:admin/structure/taxonomy'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'admin/structure/taxonomy',
+    'router_path' => 'admin/structure/taxonomy',
+    'link_title' => 'Gestion des éléments de taxonomie',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-administration-contenu_gestion-des-lments-de-taxonomie:admin/structure/taxonomy',
+      'alter' => TRUE,
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -41,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_gestion-des-pages:gestion-des-contenus
+  $menu_links['menu-administration-contenu_gestion-des-pages:gestion-des-contenus'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'gestion-des-contenus',
+    'router_path' => 'gestion-des-contenus',
+    'link_title' => 'Gestion des pages',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_gestion-des-pages:gestion-des-contenus',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_gestion-des-porteurs-opp-pa:gestion-des-porteurs-opp-pa
+  $menu_links['menu-administration-contenu_gestion-des-porteurs-opp-pa:gestion-des-porteurs-opp-pa'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'gestion-des-porteurs-opp-pa',
+    'router_path' => 'gestion-des-porteurs-opp-pa',
+    'link_title' => 'Gestion des porteurs OPP PA',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_gestion-des-porteurs-opp-pa:gestion-des-porteurs-opp-pa',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -37,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_gestion-des-porteurs-opp:gestion-des-porteurs-opp
+  $menu_links['menu-administration-contenu_gestion-des-porteurs-opp:gestion-des-porteurs-opp'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'gestion-des-porteurs-opp',
+    'router_path' => 'gestion-des-porteurs-opp',
+    'link_title' => 'Gestion des porteurs OPP',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_gestion-des-porteurs-opp:gestion-des-porteurs-opp',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_gestion-des-sries-opp-pa:gestion-des-series-pa
+  $menu_links['menu-administration-contenu_gestion-des-sries-opp-pa:gestion-des-series-pa'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'gestion-des-series-pa',
+    'router_path' => 'gestion-des-series-pa',
+    'link_title' => 'Gestion des séries OPP PA',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_gestion-des-sries-opp-pa:gestion-des-series-pa',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -42,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_gestion-des-utilisateurs:admin/people
@@ -141,53 +231,56 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_gestion-des-utilisateurs:admin/people',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -40,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_grer-les-sries:popp-view-all-serie
-  $menu_links['menu-administration-contenu_grer-les-sries:popp-view-all-serie'] = array(
+  // Exported menu link: menu-administration-contenu_gestion-du-thsaurus-facultatif:admin/structure/taxonomy/popp_nonreq_thesaurus
+  $menu_links['menu-administration-contenu_gestion-du-thsaurus-facultatif:admin/structure/taxonomy/popp_nonreq_thesaurus'] = array(
     'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'popp-view-all-serie',
-    'router_path' => 'popp-view-all-serie',
-    'link_title' => 'Gérer les séries',
+    'link_path' => 'admin/structure/taxonomy/popp_nonreq_thesaurus',
+    'router_path' => 'admin/structure/taxonomy/%',
+    'link_title' => 'Gestion du thésaurus facultatif',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-administration-contenu_grer-les-sries:popp-view-all-serie',
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_gestion-du-thsaurus-facultatif:admin/structure/taxonomy/popp_nonreq_thesaurus',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_grer-les-tags:admin/structure/taxonomy
-  $menu_links['menu-administration-contenu_grer-les-tags:admin/structure/taxonomy'] = array(
+  // Exported menu link: menu-administration-contenu_grer-les-sries-opp:gestion-des-series
+  $menu_links['menu-administration-contenu_grer-les-sries-opp:gestion-des-series'] = array(
     'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'admin/structure/taxonomy',
-    'router_path' => 'admin/structure/taxonomy',
-    'link_title' => 'Gérer les TAGS',
+    'link_path' => 'gestion-des-series',
+    'router_path' => 'gestion-des-series',
+    'link_title' => 'Gérer les séries OPP',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-administration-contenu_grer-les-tags:admin/structure/taxonomy',
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_grer-les-sries-opp:gestion-des-series',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -43,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_import-de-masse:popp/import
@@ -201,13 +294,35 @@ function structure_front_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_import-de-masse:popp/import',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -39,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-administration-contenu_modration-des-publications:admin/content/comment
+  $menu_links['menu-administration-contenu_modration-des-publications:admin/content/comment'] = array(
+    'menu_name' => 'menu-administration-contenu',
+    'link_path' => 'admin/content/comment',
+    'router_path' => 'admin/content/comment',
+    'link_title' => 'Modération des publications',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-administration-contenu_modration-des-publications:admin/content/comment',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -38,
     'customized' => 1,
   );
   // Exported menu link: menu-menu-footer_conditions-dutilisation:popp-cgu
@@ -358,16 +473,19 @@ function structure_front_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_participez:popp-participez
-  $menu_links['menu-popp-principal_participez:popp-participez'] = array(
+  // Exported menu link: menu-popp-principal_participez:user/register
+  $menu_links['menu-popp-principal_participez:user/register'] = array(
     'menu_name' => 'menu-popp-principal',
-    'link_path' => 'popp-participez',
-    'router_path' => 'popp-participez',
+    'link_path' => 'user/register',
+    'router_path' => 'user/register',
     'link_title' => 'Participez',
     'options' => array(
-      'identifier' => 'menu-popp-principal_participez:popp-participez',
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-popp-principal_participez:user/register',
     ),
-    'module' => 'system',
+    'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
@@ -395,6 +513,26 @@ function structure_front_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
+  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-folder-openspan:mon-panier
+  $menu_links['menu-popp-principal_span-classglyphicon-glyphicon-folder-openspan:mon-panier'] = array(
+    'menu_name' => 'menu-popp-principal',
+    'link_path' => 'mon-panier',
+    'router_path' => 'mon-panier',
+    'link_title' => '<span class="glyphicon glyphicon-folder-open"></span>',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-popp-principal_span-classglyphicon-glyphicon-folder-openspan:mon-panier',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -44,
+    'customized' => 1,
+  );
   // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-log-inspan:user/login
   $menu_links['menu-popp-principal_span-classglyphicon-glyphicon-log-inspan:user/login'] = array(
     'menu_name' => 'menu-popp-principal',
@@ -415,9 +553,33 @@ function structure_front_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 1,
   );
+  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-log-outspan:user/logout
+  $menu_links['menu-popp-principal_span-classglyphicon-glyphicon-log-outspan:user/logout'] = array(
+    'menu_name' => 'menu-popp-principal',
+    'link_path' => 'user/logout',
+    'router_path' => 'user/logout',
+    'link_title' => '<span class="glyphicon glyphicon-log-out"></span>',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'identifier' => 'menu-popp-principal_span-classglyphicon-glyphicon-log-outspan:user/logout',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('<span class="glyphicon glyphicon-folder-open"></span>');
   t('<span class="glyphicon glyphicon-log-in"></span>');
+  t('<span class="glyphicon glyphicon-log-out"></span>');
   t('A propos');
   t('Accueil');
   t('Ajouter un OPP Participatif');
@@ -425,20 +587,24 @@ function structure_front_menu_default_menu_links() {
   t('Ajouter un logo partenaire');
   t('Ajouter une FAQ');
   t('Ajouter une structure porteuse');
-  t('Ajouter une série');
   t('Conditions d\'utilisation');
   t('Contact');
   t('Déconnexion');
   t('FAQ');
+  t('Gestion des pages');
+  t('Gestion des porteurs OPP');
+  t('Gestion des porteurs OPP PA');
+  t('Gestion des séries OPP PA');
   t('Gestion des utilisateurs');
-  t('Gérer les TAGS');
-  t('Gérer les séries');
+  t('Gestion des éléments de taxonomie');
+  t('Gestion du thésaurus facultatif');
+  t('Gérer les séries OPP');
   t('Import de masse');
   t('Mentions légales');
+  t('Modération des publications');
   t('Participez');
   t('Plan du site');
   t('Porteurs OPP');
-
 
   return $menu_links;
 }

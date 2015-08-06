@@ -21,13 +21,14 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart
@@ -41,13 +42,14 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-un-opp-standard:node/add/opp
@@ -61,13 +63,14 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-un-opp-standard:node/add/opp',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-une-faq:node/add/faq
@@ -81,33 +84,14 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-une-faq:node/add/faq',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie
-  $menu_links['menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie'] = array(
-    'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'node/add/popp-photo-serie',
-    'router_path' => 'node/add/popp-photo-serie',
-    'link_title' => 'Ajouter une série',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-administration-contenu_ajouter-une-srie:node/add/popp-photo-serie',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure
@@ -121,13 +105,14 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_gestion-des-utilisateurs:admin/people
@@ -141,53 +126,14 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_gestion-des-utilisateurs:admin/people',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-administration-contenu_grer-les-sries:popp-view-all-serie
-  $menu_links['menu-administration-contenu_grer-les-sries:popp-view-all-serie'] = array(
-    'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'popp-view-all-serie',
-    'router_path' => 'popp-view-all-serie',
-    'link_title' => 'Gérer les séries',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-administration-contenu_grer-les-sries:popp-view-all-serie',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-administration-contenu_grer-les-tags:admin/structure/taxonomy
-  $menu_links['menu-administration-contenu_grer-les-tags:admin/structure/taxonomy'] = array(
-    'menu_name' => 'menu-administration-contenu',
-    'link_path' => 'admin/structure/taxonomy',
-    'router_path' => 'admin/structure/taxonomy',
-    'link_title' => 'Gérer les TAGS',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-administration-contenu_grer-les-tags:admin/structure/taxonomy',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
+    'weight' => -40,
     'customized' => 1,
   );
   // Exported menu link: menu-administration-contenu_import-de-masse:popp/import
@@ -201,15 +147,17 @@ function admin_structure_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-administration-contenu_import-de-masse:popp/import',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -39,
     'customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Ajouter un OPP Participatif');
@@ -217,12 +165,8 @@ function admin_structure_menu_default_menu_links() {
   t('Ajouter un logo partenaire');
   t('Ajouter une FAQ');
   t('Ajouter une structure porteuse');
-  t('Ajouter une série');
   t('Gestion des utilisateurs');
-  t('Gérer les TAGS');
-  t('Gérer les séries');
   t('Import de masse');
-
 
   return $menu_links;
 }

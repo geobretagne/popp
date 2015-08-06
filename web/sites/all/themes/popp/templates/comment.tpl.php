@@ -52,6 +52,7 @@
  * @see     theme_comment()
  * @ingroup themeable
  */
+global $user;
 ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
     <?php print $picture ?>
@@ -80,6 +81,6 @@
         <?php endif; ?>
     </div>
     <?php print render($title_prefix); ?>
-    <?php print render($content['links']) ?>
+    <?php if($user->uid) print render($content['links']) ?>
     <div class="pull-right"><?php print $submitted; ?></div>
 </div>

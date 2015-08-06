@@ -128,7 +128,7 @@ function structure_front_taxonomy_default_vocabularies() {
       'name' => 'Thésaurus facultatif',
       'machine_name' => 'popp_nonreq_thesaurus',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(
@@ -266,7 +266,7 @@ function structure_front_taxonomy_default_vocabularies() {
       'name' => 'Thésaurus',
       'machine_name' => 'popp_tax_thesaurus',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(
@@ -309,7 +309,7 @@ function structure_front_taxonomy_default_vocabularies() {
       ),
     ),
     'popp_thematic_local_axes' => array(
-      'name' => 'Axes thématiques locaux',
+      'name' => 'Unité de paysage locale',
       'machine_name' => 'popp_thematic_local_axes',
       'description' => '',
       'hierarchy' => 0,

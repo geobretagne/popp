@@ -8,6 +8,11 @@
     var photos = {};
     var first = true;
     $(document).ready(function () {
+        $(".confirmLicences").click(function(e){
+            if(!confirm('En cliquant sur OK, vous vous engagez à respecter les licences d\'utilisation inhérentes aux fichiers téléchargés')){
+                return false;
+            }
+        });
         $("#sons table").addClass('table-bordered');
         photos = JSON.parse(jQuery("#photoList").attr('data'));
         prepareComments();
@@ -58,12 +63,14 @@
                 actualUnd = i;
                 jQuery('#typeCurrentPhoto').text('Photo ');
                 jQuery("#idCurrentPhoto").text(pad(parseInt(i) + 1, 2));
+                $("#thesExport").attr('href', '/serie/'+Drupal.arg(1)+'/'+actualUnd+'/export');
                 found = true;
                 break;
             }
         }
         if (!found) {
             actualUnd = false;
+            $("#thesExport").attr('href', '/serie/'+Drupal.arg(1)+'/-1/export');
             jQuery('#typeCurrentPhoto').text('Document référence ');
             jQuery("#idCurrentPhoto").text('00');
         }
@@ -117,10 +124,12 @@
         $.get(Drupal.settings.basePath + 'utilities/ajax_table_desc/' + nid + '/' + (actualUnd === false ? -1 : actualUnd), function (data) {
                 if(actualUnd === false){
                     $("#ifNotRefDoc").hide();
+                    $("#descriptionsTable").css('margin-top','0px');
                     $("#descriptionsTable").css('padding-top','0px');
                     $("#descriptionsTable").css('border-color','transparent');
                 }else{
                     $("#descriptionsTable").css('border-color','#333');
+                    $("#descriptionsTable").css('margin-top','20px');
                     $("#descriptionsTable").css('padding-top','20px');
                     $("#ifNotRefDoc").show();
                 }

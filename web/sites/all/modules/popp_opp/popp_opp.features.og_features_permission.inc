@@ -44,11 +44,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:approve comment_node_popp_photo'
-  $permissions['node:opp:approve comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:approve comment_node_popp_photo_serie'
   $permissions['node:opp:approve comment_node_popp_photo_serie'] = array(
     'roles' => array(
@@ -60,24 +55,6 @@ function popp_opp_og_features_default_permissions() {
   // Exported og permission: 'node:opp:approve comment_node_popp_reference_document'
   $permissions['node:opp:approve comment_node_popp_reference_document'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:approve comment_node_popp_testimony_sheet'
-  $permissions['node:opp:approve comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:approve comment_node_supporting_structure'
-  $permissions['node:opp:approve comment_node_supporting_structure'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:create popp_photo content'
-  $permissions['node:opp:create popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
   );
 
   // Exported og permission: 'node:opp:create popp_photo_serie content'
@@ -97,27 +74,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:create popp_testimony_sheet content'
-  $permissions['node:opp:create popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-      'member' => 'member',
-    ),
-  );
-
-  // Exported og permission: 'node:opp:create supporting_structure content'
-  $permissions['node:opp:create supporting_structure content'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:delete any popp_photo content'
-  $permissions['node:opp:delete any popp_photo content'] = array(
-    'roles' => array(
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
   // Exported og permission: 'node:opp:delete any popp_photo_serie content'
   $permissions['node:opp:delete any popp_photo_serie content'] = array(
     'roles' => array(
@@ -130,18 +86,6 @@ function popp_opp_og_features_default_permissions() {
     'roles' => array(
       'Gestionnaire' => 'Gestionnaire',
     ),
-  );
-
-  // Exported og permission: 'node:opp:delete any popp_testimony_sheet content'
-  $permissions['node:opp:delete any popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp:delete any supporting_structure content'
-  $permissions['node:opp:delete any supporting_structure content'] = array(
-    'roles' => array(),
   );
 
   // Exported og permission: 'node:opp:delete comment_node_opp'
@@ -157,11 +101,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:delete comment_node_popp_photo'
-  $permissions['node:opp:delete comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:delete comment_node_popp_photo_serie'
   $permissions['node:opp:delete comment_node_popp_photo_serie'] = array(
     'roles' => array(
@@ -173,24 +112,6 @@ function popp_opp_og_features_default_permissions() {
   // Exported og permission: 'node:opp:delete comment_node_popp_reference_document'
   $permissions['node:opp:delete comment_node_popp_reference_document'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:delete comment_node_popp_testimony_sheet'
-  $permissions['node:opp:delete comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:delete comment_node_supporting_structure'
-  $permissions['node:opp:delete comment_node_supporting_structure'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:delete own popp_photo content'
-  $permissions['node:opp:delete own popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
   );
 
   // Exported og permission: 'node:opp:delete own popp_photo_serie content'
@@ -209,19 +130,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:delete own popp_testimony_sheet content'
-  $permissions['node:opp:delete own popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp:delete own supporting_structure content'
-  $permissions['node:opp:delete own supporting_structure content'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:edit comment_node_opp'
   $permissions['node:opp:edit comment_node_opp'] = array(
     'roles' => array(),
@@ -235,11 +143,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:edit comment_node_popp_photo'
-  $permissions['node:opp:edit comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:edit comment_node_popp_photo_serie'
   $permissions['node:opp:edit comment_node_popp_photo_serie'] = array(
     'roles' => array(
@@ -250,16 +153,6 @@ function popp_opp_og_features_default_permissions() {
 
   // Exported og permission: 'node:opp:edit comment_node_popp_reference_document'
   $permissions['node:opp:edit comment_node_popp_reference_document'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:edit comment_node_popp_testimony_sheet'
-  $permissions['node:opp:edit comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:edit comment_node_supporting_structure'
-  $permissions['node:opp:edit comment_node_supporting_structure'] = array(
     'roles' => array(),
   );
 
@@ -277,32 +170,18 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:edit own comment_node_popp_photo'
-  $permissions['node:opp:edit own comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:edit own comment_node_popp_photo_serie'
   $permissions['node:opp:edit own comment_node_popp_photo_serie'] = array(
     'roles' => array(
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
   // Exported og permission: 'node:opp:edit own comment_node_popp_reference_document'
   $permissions['node:opp:edit own comment_node_popp_reference_document'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:edit own comment_node_popp_testimony_sheet'
-  $permissions['node:opp:edit own comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:edit own comment_node_supporting_structure'
-  $permissions['node:opp:edit own comment_node_supporting_structure'] = array(
     'roles' => array(),
   );
 
@@ -337,32 +216,18 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:post comment_node_popp_photo'
-  $permissions['node:opp:post comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:post comment_node_popp_photo_serie'
   $permissions['node:opp:post comment_node_popp_photo_serie'] = array(
     'roles' => array(
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
   // Exported og permission: 'node:opp:post comment_node_popp_reference_document'
   $permissions['node:opp:post comment_node_popp_reference_document'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:post comment_node_popp_testimony_sheet'
-  $permissions['node:opp:post comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:post comment_node_supporting_structure'
-  $permissions['node:opp:post comment_node_supporting_structure'] = array(
     'roles' => array(),
   );
 
@@ -386,13 +251,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:update any popp_photo content'
-  $permissions['node:opp:update any popp_photo content'] = array(
-    'roles' => array(
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
   // Exported og permission: 'node:opp:update any popp_photo_serie content'
   $permissions['node:opp:update any popp_photo_serie content'] = array(
     'roles' => array(
@@ -407,29 +265,9 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp:update any popp_testimony_sheet content'
-  $permissions['node:opp:update any popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp:update any supporting_structure content'
-  $permissions['node:opp:update any supporting_structure content'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp:update group'
   $permissions['node:opp:update group'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp:update own popp_photo content'
-  $permissions['node:opp:update own popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
   );
 
   // Exported og permission: 'node:opp:update own popp_photo_serie content'
@@ -447,20 +285,6 @@ function popp_opp_og_features_default_permissions() {
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
     ),
-  );
-
-  // Exported og permission: 'node:opp:update own popp_testimony_sheet content'
-  $permissions['node:opp:update own popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-      'member' => 'member',
-    ),
-  );
-
-  // Exported og permission: 'node:opp:update own supporting_structure content'
-  $permissions['node:opp:update own supporting_structure content'] = array(
-    'roles' => array(),
   );
 
   // Exported og permission: 'node:opp_takepart:add user'
@@ -500,11 +324,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:approve comment_node_popp_photo'
-  $permissions['node:opp_takepart:approve comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:approve comment_node_popp_photo_serie'
   $permissions['node:opp_takepart:approve comment_node_popp_photo_serie'] = array(
     'roles' => array(
@@ -516,25 +335,6 @@ function popp_opp_og_features_default_permissions() {
   // Exported og permission: 'node:opp_takepart:approve comment_node_popp_reference_document'
   $permissions['node:opp_takepart:approve comment_node_popp_reference_document'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:approve comment_node_popp_testimony_sheet'
-  $permissions['node:opp_takepart:approve comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:approve comment_node_supporting_structure'
-  $permissions['node:opp_takepart:approve comment_node_supporting_structure'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:create popp_photo content'
-  $permissions['node:opp_takepart:create popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-      'member' => 'member',
-    ),
   );
 
   // Exported og permission: 'node:opp_takepart:create popp_photo_serie content'
@@ -555,31 +355,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:create popp_testimony_sheet content'
-  $permissions['node:opp_takepart:create popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-      'member' => 'member',
-    ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:create supporting_structure content'
-  $permissions['node:opp_takepart:create supporting_structure content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete any popp_photo content'
-  $permissions['node:opp_takepart:delete any popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
   // Exported og permission: 'node:opp_takepart:delete any popp_photo_serie content'
   $permissions['node:opp_takepart:delete any popp_photo_serie content'] = array(
     'roles' => array(
@@ -594,19 +369,6 @@ function popp_opp_og_features_default_permissions() {
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
     ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete any popp_testimony_sheet content'
-  $permissions['node:opp_takepart:delete any popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete any supporting_structure content'
-  $permissions['node:opp_takepart:delete any supporting_structure content'] = array(
-    'roles' => array(),
   );
 
   // Exported og permission: 'node:opp_takepart:delete comment_node_opp'
@@ -625,11 +387,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:delete comment_node_popp_photo'
-  $permissions['node:opp_takepart:delete comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:delete comment_node_popp_photo_serie'
   $permissions['node:opp_takepart:delete comment_node_popp_photo_serie'] = array(
     'roles' => array(
@@ -641,24 +398,6 @@ function popp_opp_og_features_default_permissions() {
   // Exported og permission: 'node:opp_takepart:delete comment_node_popp_reference_document'
   $permissions['node:opp_takepart:delete comment_node_popp_reference_document'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete comment_node_popp_testimony_sheet'
-  $permissions['node:opp_takepart:delete comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete comment_node_supporting_structure'
-  $permissions['node:opp_takepart:delete comment_node_supporting_structure'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete own popp_photo content'
-  $permissions['node:opp_takepart:delete own popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
   );
 
   // Exported og permission: 'node:opp_takepart:delete own popp_photo_serie content'
@@ -677,19 +416,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:delete own popp_testimony_sheet content'
-  $permissions['node:opp_takepart:delete own popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:delete own supporting_structure content'
-  $permissions['node:opp_takepart:delete own supporting_structure content'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:edit comment_node_opp'
   $permissions['node:opp_takepart:edit comment_node_opp'] = array(
     'roles' => array(
@@ -706,11 +432,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:edit comment_node_popp_photo'
-  $permissions['node:opp_takepart:edit comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:edit comment_node_popp_photo_serie'
   $permissions['node:opp_takepart:edit comment_node_popp_photo_serie'] = array(
     'roles' => array(
@@ -721,16 +442,6 @@ function popp_opp_og_features_default_permissions() {
 
   // Exported og permission: 'node:opp_takepart:edit comment_node_popp_reference_document'
   $permissions['node:opp_takepart:edit comment_node_popp_reference_document'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:edit comment_node_popp_testimony_sheet'
-  $permissions['node:opp_takepart:edit comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:edit comment_node_supporting_structure'
-  $permissions['node:opp_takepart:edit comment_node_supporting_structure'] = array(
     'roles' => array(),
   );
 
@@ -752,32 +463,18 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:edit own comment_node_popp_photo'
-  $permissions['node:opp_takepart:edit own comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:edit own comment_node_popp_photo_serie'
   $permissions['node:opp_takepart:edit own comment_node_popp_photo_serie'] = array(
     'roles' => array(
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
   // Exported og permission: 'node:opp_takepart:edit own comment_node_popp_reference_document'
   $permissions['node:opp_takepart:edit own comment_node_popp_reference_document'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:edit own comment_node_popp_testimony_sheet'
-  $permissions['node:opp_takepart:edit own comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:edit own comment_node_supporting_structure'
-  $permissions['node:opp_takepart:edit own comment_node_supporting_structure'] = array(
     'roles' => array(),
   );
 
@@ -816,36 +513,19 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:post comment_node_popp_photo'
-  $permissions['node:opp_takepart:post comment_node_popp_photo'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:post comment_node_popp_photo_serie'
   $permissions['node:opp_takepart:post comment_node_popp_photo_serie'] = array(
     'roles' => array(
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
+      'non-member' => 'non-member',
     ),
   );
 
   // Exported og permission: 'node:opp_takepart:post comment_node_popp_reference_document'
   $permissions['node:opp_takepart:post comment_node_popp_reference_document'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:post comment_node_popp_testimony_sheet'
-  $permissions['node:opp_takepart:post comment_node_popp_testimony_sheet'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:post comment_node_supporting_structure'
-  $permissions['node:opp_takepart:post comment_node_supporting_structure'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
   );
 
   // Exported og permission: 'node:opp_takepart:subscribe'
@@ -868,14 +548,6 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:update any popp_photo content'
-  $permissions['node:opp_takepart:update any popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
   // Exported og permission: 'node:opp_takepart:update any popp_photo_serie content'
   $permissions['node:opp_takepart:update any popp_photo_serie content'] = array(
     'roles' => array(
@@ -892,31 +564,9 @@ function popp_opp_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:opp_takepart:update any popp_testimony_sheet content'
-  $permissions['node:opp_takepart:update any popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-    ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:update any supporting_structure content'
-  $permissions['node:opp_takepart:update any supporting_structure content'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:opp_takepart:update group'
   $permissions['node:opp_takepart:update group'] = array(
     'roles' => array(),
-  );
-
-  // Exported og permission: 'node:opp_takepart:update own popp_photo content'
-  $permissions['node:opp_takepart:update own popp_photo content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-      'member' => 'member',
-    ),
   );
 
   // Exported og permission: 'node:opp_takepart:update own popp_photo_serie content'
@@ -935,20 +585,6 @@ function popp_opp_og_features_default_permissions() {
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
     ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:update own popp_testimony_sheet content'
-  $permissions['node:opp_takepart:update own popp_testimony_sheet content'] = array(
-    'roles' => array(
-      'Fournisseur' => 'Fournisseur',
-      'Gestionnaire' => 'Gestionnaire',
-      'member' => 'member',
-    ),
-  );
-
-  // Exported og permission: 'node:opp_takepart:update own supporting_structure content'
-  $permissions['node:opp_takepart:update own supporting_structure content'] = array(
-    'roles' => array(),
   );
 
   return $permissions;

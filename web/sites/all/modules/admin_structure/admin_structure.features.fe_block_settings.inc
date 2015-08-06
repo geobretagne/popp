@@ -19,7 +19,12 @@ function admin_structure_default_fe_block_settings() {
     'module' => 'menu',
     'node_types' => array(),
     'pages' => '',
-    'roles' => array(),
+    'roles' => array(
+      'Administrateur' => 4,
+      'Import de masse' => 9,
+      'Root' => 3,
+      'utilisateur authentifié' => 2,
+    ),
     'themes' => array(
       'bartik' => array(
         'region' => '',

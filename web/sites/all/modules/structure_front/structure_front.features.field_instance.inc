@@ -841,7 +841,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
-        'input_format' => 'Y-m-d H:i:s',
+        'input_format' => 'd/m/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
         'text_parts' => array(),
@@ -1333,8 +1333,8 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_original_weight'
-  $field_instances['node-popp_photo-field_popp_photo_original_weight'] = array(
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_original_'
+  $field_instances['node-popp_photo-field_popp_photo_original_'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1342,15 +1342,10 @@ function structure_front_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 2,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_decimal',
-        'weight' => 16,
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1360,21 +1355,20 @@ function structure_front_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_popp_photo_original_weight',
+    'field_name' => 'field_popp_photo_original_',
     'label' => 'Poids du fichier d\'origine',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 16,
     ),
   );
@@ -1548,65 +1542,6 @@ function structure_front_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'node-popp_photo-og_group_ref'
-  $field_instances['node-popp_photo-og_group_ref'] = array(
-    'bundle' => 'popp_photo',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 22,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Audience de groupes',
-    'required' => FALSE,
-    'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Complet',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Accroche',
-        'type' => 'og_list_default',
-      ),
-    ),
-    'widget' => array(
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 22,
     ),
   );
 
@@ -2012,15 +1947,16 @@ function structure_front_field_default_field_instances() {
         'fields' => array(),
         'type_settings' => array(
           'allow_existing' => 0,
+          'allow_new' => 1,
           'delete_references' => 1,
-          'label_plural' => 'nœuds',
-          'label_singular' => 'nœud',
+          'label_plural' => 'documentations',
+          'label_singular' => 'documentation',
           'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
+          'override_labels' => 1,
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -2030,7 +1966,7 @@ function structure_front_field_default_field_instances() {
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Avec http://',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2068,7 +2004,7 @@ function structure_front_field_default_field_instances() {
         'size' => 100,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
@@ -2477,7 +2413,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 24,
+      'weight' => 4,
     ),
   );
 
@@ -2585,7 +2521,7 @@ function structure_front_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 29,
       ),
       'print' => array(
@@ -2604,7 +2540,7 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_loc_axes',
-    'label' => 'Axe thématique local',
+    'label' => 'Unité de paysage locale',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -2614,7 +2550,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 23,
+      'weight' => 16,
     ),
   );
 
@@ -2753,7 +2689,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 21,
+      'weight' => 2,
     ),
   );
 
@@ -2808,7 +2744,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'interval',
       'settings' => array(),
       'type' => 'interval_default',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -2858,15 +2794,16 @@ function structure_front_field_default_field_instances() {
         'fields' => array(),
         'type_settings' => array(
           'allow_existing' => 0,
+          'allow_new' => 1,
           'delete_references' => 1,
-          'label_plural' => 'nœuds',
-          'label_singular' => 'nœud',
+          'label_plural' => 'photographies',
+          'label_singular' => 'photographie',
           'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
+          'override_labels' => 1,
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -2912,7 +2849,7 @@ function structure_front_field_default_field_instances() {
         'map' => 'popp_serie_edit_map',
       ),
       'type' => 'openlayers',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -2961,15 +2898,16 @@ function structure_front_field_default_field_instances() {
         'fields' => array(),
         'type_settings' => array(
           'allow_existing' => 0,
+          'allow_new' => 1,
           'delete_references' => 0,
-          'label_plural' => 'nœuds',
-          'label_singular' => 'nœud',
+          'label_plural' => 'documents référence',
+          'label_singular' => 'document référence',
           'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
+          'override_labels' => 1,
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -3128,15 +3066,16 @@ function structure_front_field_default_field_instances() {
         'fields' => array(),
         'type_settings' => array(
           'allow_existing' => 0,
+          'allow_new' => 1,
           'delete_references' => 1,
-          'label_plural' => 'nœuds',
-          'label_singular' => 'nœud',
+          'label_plural' => 'sons',
+          'label_singular' => 'son',
           'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
+          'override_labels' => 1,
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -3181,7 +3120,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 22,
+      'weight' => 3,
     ),
   );
 
@@ -3356,7 +3295,7 @@ function structure_front_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -5105,19 +5044,20 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-og_group_ref'
-  $field_instances['node-popp_testimony_sheet-og_group_ref'] = array(
-    'bundle' => 'popp_testimony_sheet',
+  // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struc_goal'
+  $field_instances['node-supporting_structure-field_popp_supp_struc_goal'] = array(
+    'bundle' => 'supporting_structure',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
+        'label' => 'inline',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 15,
+        'type' => 'text_default',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -5127,40 +5067,21 @@ function structure_front_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Audience de groupes',
-    'required' => FALSE,
+    'field_name' => 'field_popp_supp_struc_goal',
+    'label' => 'Préoccupations paysagères',
+    'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Complet',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Accroche',
-        'type' => 'og_list_default',
-      ),
-    ),
     'widget' => array(
-      'module' => 'og',
-      'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 11,
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 40,
     ),
   );
 
@@ -5173,7 +5094,7 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -5207,6 +5128,88 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struc_website'
+  $field_instances['node-supporting_structure-field_popp_supp_struc_website'] = array(
+    'bundle' => 'supporting_structure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Avec http://',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_supp_struc_website',
+    'label' => 'Site internet',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struct_address'
+  $field_instances['node-supporting_structure-field_popp_supp_struct_address'] = array(
+    'bundle' => 'supporting_structure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_supp_struct_address',
+    'label' => 'Adresse',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-supporting_structure-field_popp_supp_struct_logo'
   $field_instances['node-supporting_structure-field_popp_supp_struct_logo'] = array(
     'bundle' => 'supporting_structure',
@@ -5214,11 +5217,11 @@ function structure_front_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'affichage_fiche_porteur',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -5232,12 +5235,11 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_supp_struct_logo',
-    'label' => 'Logo structure porteuse',
+    'label' => 'Logo',
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'description_display' => 'after',
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -5258,19 +5260,20 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-supporting_structure-og_group_ref'
-  $field_instances['node-supporting_structure-og_group_ref'] = array(
+  // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struct_mail'
+  $field_instances['node-supporting_structure-field_popp_supp_struct_mail'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'og_ui',
+        'label' => 'inline',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 2,
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -5280,40 +5283,924 @@ function structure_front_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'og_group_ref',
-    'label' => 'Audience de groupes',
-    'required' => FALSE,
+    'field_name' => 'field_popp_supp_struct_mail',
+    'label' => 'Email',
+    'required' => 0,
     'settings' => array(
-      'behaviors' => array(
-        'og_widget' => array(
-          'admin' => array(
-            'widget_type' => 'entityreference_autocomplete',
-          ),
-          'default' => array(
-            'widget_type' => 'options_select',
-          ),
-          'status' => TRUE,
-        ),
-      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Complet',
-        'type' => 'og_list_default',
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struct_phone'
+  $field_instances['node-supporting_structure-field_popp_supp_struct_phone'] = array(
+    'bundle' => 'supporting_structure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
       ),
       'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Accroche',
-        'type' => 'og_list_default',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_supp_struct_phone',
+    'label' => 'Téléphone',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
     'widget' => array(
-      'module' => 'og',
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struct_ref_conta'
+  $field_instances['node-supporting_structure-field_popp_supp_struct_ref_conta'] = array(
+    'bundle' => 'supporting_structure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_supp_struct_ref_conta',
+    'label' => 'Contact référent',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-supporting_structure-field_popp_supp_struct_tech_desc'
+  $field_instances['node-supporting_structure-field_popp_supp_struct_tech_desc'] = array(
+    'bundle' => 'supporting_structure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popp_supp_struct_tech_desc',
+    'label' => 'Description technique',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 36,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-contact_information-field_popp_adress'
+  $field_instances['profile2-contact_information-field_popp_adress'] = array(
+    'bundle' => 'contact_information',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_adress',
+    'label' => 'Adresse',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-contact_information-field_popp_phone'
+  $field_instances['profile2-contact_information-field_popp_phone'] = array(
+    'bundle' => 'contact_information',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_phone',
+    'label' => 'Téléphone',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-contact_information-field_popp_postal'
+  $field_instances['profile2-contact_information-field_popp_postal'] = array(
+    'bundle' => 'contact_information',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_postal',
+    'label' => 'Code postal',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
       'settings' => array(),
-      'type' => 'og_complex',
-      'weight' => 33,
+      'type' => 'number',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-contact_information-field_popp_town'
+  $field_instances['profile2-contact_information-field_popp_town'] = array(
+    'bundle' => 'contact_information',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_town',
+    'label' => 'Ville',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-identification-field_popp_cat_sociopro'
+  $field_instances['profile2-identification-field_popp_cat_sociopro'] = array(
+    'bundle' => 'identification',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_cat_sociopro',
+    'label' => 'Catégorie socioprofessionnelle',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-identification-field_popp_name'
+  $field_instances['profile2-identification-field_popp_name'] = array(
+    'bundle' => 'identification',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_name',
+    'label' => 'Nom',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-identification-field_popp_nickname'
+  $field_instances['profile2-identification-field_popp_nickname'] = array(
+    'bundle' => 'identification',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_nickname',
+    'label' => 'Prénom',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-identification-field_popp_sexe'
+  $field_instances['profile2-identification-field_popp_sexe'] = array(
+    'bundle' => 'identification',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_sexe',
+    'label' => 'Sexe',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-identification-field_popp_struc_family'
+  $field_instances['profile2-identification-field_popp_struc_family'] = array(
+    'bundle' => 'identification',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_struc_family',
+    'label' => 'Structure familiale',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-identification-field_popp_year'
+  $field_instances['profile2-identification-field_popp_year'] = array(
+    'bundle' => 'identification',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_year',
+    'label' => 'Année de naissance',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'strtotime',
+      'default_value2' => 'same',
+      'default_value_code' => '- 35 years',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-120:+0',
+      ),
+      'type' => 'date_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-my_commitments-field_popp_cgu'
+  $field_instances['profile2-my_commitments-field_popp_cgu'] = array(
+    'bundle' => 'my_commitments',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec sem sollicitudin, dignissim velit vitae, egestas felis. Curabitur in nibh maximus, bibendum tortor tincidunt, ultrices ante. Suspendisse sit amet ligula id felis luctus imperdiet. Ut convallis consectetur diam, nec tempor nulla condimentum non. Integer volutpat nec tellus in pulvinar. Vivamus eu rutrum tellus. Maecenas sit amet leo at arcu posuere vulputate vitae sed ligula. Suspendisse lacinia maximus accumsan.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_cgu',
+    'label' => 'CGU',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-my_commitments-field_popp_id'
+  $field_instances['profile2-my_commitments-field_popp_id'] = array(
+    'bundle' => 'my_commitments',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_id',
+    'label' => 'ID',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'profile2-my_commitments-field_popp_right'
+  $field_instances['profile2-my_commitments-field_popp_right'] = array(
+    'bundle' => 'my_commitments',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'profile2',
+    'field_name' => 'field_popp_right',
+    'label' => 'Right',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-landscape_set-field_regional_code'
+  $field_instances['taxonomy_term-landscape_set-field_regional_code'] = array(
+    'bundle' => 'landscape_set',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_regional_code',
+    'label' => 'field_regional_code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-landscape_typologies-field_regional_code'
+  $field_instances['taxonomy_term-landscape_typologies-field_regional_code'] = array(
+    'bundle' => 'landscape_typologies',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_regional_code',
+    'label' => 'field_regional_code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-landscape_units-field_regional_code'
+  $field_instances['taxonomy_term-landscape_units-field_regional_code'] = array(
+    'bundle' => 'landscape_units',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_regional_code',
+    'label' => 'field_regional_code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_area'
+  $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_area'] = array(
+    'bundle' => 'popp_tax_thepopp',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_popp_opp_area',
+    'label' => 'Niveau territorial concerné',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_creation_year'
+  $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_creation_year'] = array(
+    'bundle' => 'popp_tax_thepopp',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_popp_opp_creation_year',
+    'label' => 'Année de création',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_technicity'
+  $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_technicity'] = array(
+    'bundle' => 'popp_tax_thepopp',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_popp_opp_technicity',
+    'label' => 'Technicité de l\'observatoire',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_valuation'
+  $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_valuation'] = array(
+    'bundle' => 'popp_tax_thepopp',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_popp_opp_valuation',
+    'label' => 'Valorisation et diffusion',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-popp_tax_thepopp-field_regional_code'
+  $field_instances['taxonomy_term-popp_tax_thepopp-field_regional_code'] = array(
+    'bundle' => 'popp_tax_thepopp',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_regional_code',
+    'label' => 'field_regional_code',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-popp_towns-field_insee_code'
+  $field_instances['taxonomy_term-popp_towns-field_insee_code'] = array(
+    'bundle' => 'popp_towns',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_insee_code',
+    'label' => 'Code INSEE',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -5353,23 +6240,30 @@ function structure_front_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Adresse');
   t('Adresse/lieu de la prise de vue');
   t('Altitude');
   t('Altitude (prise de vue aérienne)');
+  t('Année de création');
+  t('Année de naissance');
   t('Appuyez sur CTRL + clic pour sélectionner plusieurs éléments');
   t('Audience de groupes');
   t('Auteur / Photographe');
   t('Auteur / Preneur de son');
   t('Auteur de la reconduction');
-  t('Axe thématique local');
+  t('Avec http://');
   t('Axe(s) thématique(s)');
   t('Body');
+  t('CGU');
   t('Carte IGN');
+  t('Catégorie socioprofessionnelle');
   t('Code INSEE');
+  t('Code postal');
   t('Coefficient de marée');
   t('Commentaire lié à la date');
   t('Commune');
   t('Conditions météorologiques');
+  t('Contact référent');
   t('Contenu');
   t('Contexte de l\'enregistrement');
   t('Cote du document');
@@ -5382,12 +6276,14 @@ function structure_front_field_default_field_instances() {
   t('Description des éléments / des changements');
   t('Description fine des éléments de paysage à la premiere prise de vue');
   t('Description précise du document');
+  t('Description technique');
   t('Document référence');
   t('Documentation');
   t('Durée');
   t('Département');
   t('Déterminer s\'il s\'agit d\'un groupe OG.');
   t('Element');
+  t('Email');
   t('Emplacement de la série');
   t('Ensemble paysager');
   t('Entrée Menu');
@@ -5403,6 +6299,7 @@ function structure_front_field_default_field_instances() {
   t('Géolocalisation');
   t('Hauteur du trépied (cm)');
   t('Heure');
+  t('ID');
   t('Identifiant de la photo OPP');
   t('Identifiant de la série');
   t('Identifiant interne OPP');
@@ -5417,10 +6314,13 @@ function structure_front_field_default_field_instances() {
   t('Liens externes en lien avec la série');
   t('Lieu de conservation');
   t('Lieu de la prise de son');
+  t('Logo');
   t('Logo partenaire');
-  t('Logo structure porteuse');
+  t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec sem sollicitudin, dignissim velit vitae, egestas felis. Curabitur in nibh maximus, bibendum tortor tincidunt, ultrices ante. Suspendisse sit amet ligula id felis luctus imperdiet. Ut convallis consectetur diam, nec tempor nulla condimentum non. Integer volutpat nec tellus in pulvinar. Vivamus eu rutrum tellus. Maecenas sit amet leo at arcu posuere vulputate vitae sed ligula. Suspendisse lacinia maximus accumsan.');
   t('Légende');
   t('Moment de la prise de vue');
+  t('Niveau territorial concerné');
+  t('Nom');
   t('Nom du fichier');
   t('Numéro de la photo concernée par le son');
   t('Numéro de la photo dans la série');
@@ -5438,16 +6338,23 @@ function structure_front_field_default_field_instances() {
   t('Poids du fichier d\'origine');
   t('Porteur OPP');
   t('Protocole / Méthode d\'enregistrement');
+  t('Prénom');
+  t('Préoccupations paysagères');
   t('Présentation du son');
   t('Période / Saison de la photographie');
   t('Période, estimation au cas où la date est approximative');
+  t('Right');
   t('Région');
   t('Sensibilité ISO');
+  t('Sexe');
   t('Site de la prise de vue');
+  t('Site internet');
   t('Sons');
   t('Source du document');
   t('Sous-titre');
+  t('Structure familiale');
   t('Structure responsable de la création du contenu');
+  t('Technicité de l\'observatoire');
   t('Thésaurus');
   t('Thésaurus facultatif');
   t('Traitement du fichier');
@@ -5456,7 +6363,12 @@ function structure_front_field_default_field_instances() {
   t('Type de film');
   t('Type de matériel');
   t('Typologie de paysage');
+  t('Téléphone');
   t('Unité de paysage');
+  t('Unité de paysage locale');
+  t('Valorisation et diffusion');
+  t('Ville');
+  t('field_regional_code');
   t('Élément');
   t('Évolution');
 
