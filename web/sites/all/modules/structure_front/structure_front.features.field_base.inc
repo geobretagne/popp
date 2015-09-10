@@ -275,6 +275,9 @@ function structure_front_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popp_entry_menu',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -284,10 +287,11 @@ function structure_front_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 'participez',
-        2 => 'propos',
-        3 => 'cgu',
-        4 => 'mentions',
+        1 => 'Participez',
+        2 => 'A propos',
+        3 => 'CGU',
+        4 => 'Mentions',
+        5 => 'Licences',
       ),
       'allowed_values_function' => '',
       'profile2_private' => FALSE,

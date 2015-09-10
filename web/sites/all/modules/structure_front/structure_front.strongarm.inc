@@ -321,6 +321,13 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_opp_serie';
+  $strongarm->value = '1';
+  $export['comment_preview_opp_serie'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_partner_logo';
   $strongarm->value = '1';
   $export['comment_preview_partner_logo'] = $strongarm;
@@ -373,6 +380,13 @@ function structure_front_strongarm() {
   $strongarm->name = 'comment_preview_supporting_structure';
   $strongarm->value = '1';
   $export['comment_preview_supporting_structure'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_opp_serie';
+  $strongarm->value = 1;
+  $export['comment_subject_field_opp_serie'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -436,6 +450,99 @@ function structure_front_strongarm() {
   $strongarm->name = 'comment_supporting_structure';
   $strongarm->value = '2';
   $export['comment_supporting_structure'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_long';
+  $strongarm->value = 'l, j F, Y - H:i';
+  $export['date_format_long'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_medium';
+  $strongarm->value = 'D, d/m/Y - H:i';
+  $export['date_format_medium'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_field_collection_item__field_popp_photo_nonreq_thes';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_field_collection_item__field_popp_photo_nonreq_thes'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_field_collection_item__field_popp_photo_thesaurus';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_field_collection_item__field_popp_photo_thesaurus'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__opp_serie';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'path' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__opp_serie'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__page';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '-5',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -645,6 +752,112 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_profile2__contact_information';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_profile2__contact_information'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_profile2__identification';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_profile2__identification'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_profile2__my_commitments';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_profile2__my_commitments'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_taxonomy_term__popp_refdoc_type';
+  $strongarm->value = array();
+  $export['field_bundle_settings_taxonomy_term__popp_refdoc_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_taxonomy_term__popp_tax_thepopp';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'name' => array(
+          'weight' => '-5',
+        ),
+        'description' => array(
+          'weight' => '0',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_taxonomy_term__popp_tax_thepopp'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_taxonomy_term__popp_towns';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'name' => array(
+          'weight' => '-5',
+        ),
+        'description' => array(
+          'weight' => '0',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_taxonomy_term__popp_towns'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_taxonomy_term__region';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'name' => array(
+          'weight' => '-5',
+        ),
+        'description' => array(
+          'weight' => '0',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_taxonomy_term__region'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_partner_logo';
   $strongarm->value = '0';
   $export['language_content_type_partner_logo'] = $strongarm;
@@ -704,6 +917,24 @@ function structure_front_strongarm() {
   $strongarm->name = 'language_content_type_supporting_structure';
   $strongarm->value = '0';
   $export['language_content_type_supporting_structure'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_opp_photo';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_opp_photo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_opp_serie';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_opp_serie'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -785,6 +1016,20 @@ function structure_front_strongarm() {
     0 => 'main-menu',
   );
   $export['menu_options_supporting_structure'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_opp_photo';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_opp_photo'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_opp_serie';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_opp_serie'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -901,16 +1146,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_popp_licence_pages';
-  $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
-  );
-  $export['node_options_popp_licence_pages'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_popp_page';
   $strongarm->value = array(
     0 => 'status',
@@ -1002,13 +1237,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_popp_licence_pages';
-  $strongarm->value = '1';
-  $export['node_preview_popp_licence_pages'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_popp_page';
   $strongarm->value = '1';
   $export['node_preview_popp_page'] = $strongarm;
@@ -1086,13 +1314,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_popp_licence_pages';
-  $strongarm->value = 1;
-  $export['node_submitted_popp_licence_pages'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_popp_page';
   $strongarm->value = 0;
   $export['node_submitted_popp_page'] = $strongarm;
@@ -1142,9 +1363,11 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_html_display_comment_popp_licence_pages';
-  $strongarm->value = 0;
-  $export['print_html_display_comment_popp_licence_pages'] = $strongarm;
+  $strongarm->name = 'node_type_faq';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_type_faq'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1163,13 +1386,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_html_display_popp_licence_pages';
-  $strongarm->value = 1;
-  $export['print_html_display_popp_licence_pages'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_html_display_popp_record_field';
   $strongarm->value = 1;
   $export['print_html_display_popp_record_field'] = $strongarm;
@@ -1180,13 +1396,6 @@ function structure_front_strongarm() {
   $strongarm->name = 'print_html_display_supporting_structure';
   $strongarm->value = 1;
   $export['print_html_display_supporting_structure'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_html_display_urllist_popp_licence_pages';
-  $strongarm->value = 1;
-  $export['print_html_display_urllist_popp_licence_pages'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1233,13 +1442,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_display_comment_popp_licence_pages';
-  $strongarm->value = 0;
-  $export['print_pdf_display_comment_popp_licence_pages'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_display_comment_popp_record_field';
   $strongarm->value = 0;
   $export['print_pdf_display_comment_popp_record_field'] = $strongarm;
@@ -1250,13 +1452,6 @@ function structure_front_strongarm() {
   $strongarm->name = 'print_pdf_display_comment_supporting_structure';
   $strongarm->value = 0;
   $export['print_pdf_display_comment_supporting_structure'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_display_popp_licence_pages';
-  $strongarm->value = 1;
-  $export['print_pdf_display_popp_licence_pages'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1278,13 +1473,6 @@ function structure_front_strongarm() {
   $strongarm->name = 'print_pdf_display_sys_urllist';
   $strongarm->value = 0;
   $export['print_pdf_display_sys_urllist'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_display_urllist_popp_licence_pages';
-  $strongarm->value = 1;
-  $export['print_pdf_display_urllist_popp_licence_pages'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1345,13 +1533,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_orientation_popp_licence_pages';
-  $strongarm->value = '';
-  $export['print_pdf_orientation_popp_licence_pages'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_orientation_popp_record_field';
   $strongarm->value = '';
   $export['print_pdf_orientation_popp_record_field'] = $strongarm;
@@ -1383,13 +1564,6 @@ function structure_front_strongarm() {
   $strongarm->name = 'print_pdf_pdf_tool';
   $strongarm->value = 'print_pdf_dompdf|sites/all/libraries/dompdf/dompdf_config.inc.php';
   $export['print_pdf_pdf_tool'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'print_pdf_size_popp_licence_pages';
-  $strongarm->value = '';
-  $export['print_pdf_size_popp_licence_pages'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1517,35 +1691,6 @@ function structure_front_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'uuid_features_entity_taxonomy_term';
-  $strongarm->value = array(
-    'popp_thematic_local_axes' => 0,
-    'popp_tax_content_type' => 0,
-    'popp_tax_family_struc' => 0,
-    'popp_tax_sociopro' => 0,
-    'popp_tax_tags' => 0,
-    'tags' => 0,
-    'county' => 0,
-    'landscape_set' => 0,
-    'landscape_typologies' => 0,
-    'landscape_units' => 0,
-    'popp_countries' => 0,
-    'popp_nonreq_thesaurus' => 0,
-    'popp_refdoc_type' => 0,
-    'popp_tax_format' => 0,
-    'popp_tax_language' => 0,
-    'popp_tax_right' => 0,
-    'popp_tax_thepopp' => 0,
-    'popp_tax_thesaurus' => 0,
-    'popp_thematic_axes' => 0,
-    'popp_towns' => 0,
-    'region' => 0,
-  );
-  $export['uuid_features_entity_taxonomy_term'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'uuid_features_file_assets_path';
   $strongarm->value = '';
   $export['uuid_features_file_assets_path'] = $strongarm;
@@ -1595,7 +1740,6 @@ function structure_front_strongarm() {
     'popp_tax_content_type' => 0,
     'popp_tax_family_struc' => 0,
     'popp_tax_sociopro' => 0,
-    'popp_tax_tags' => 0,
     'tags' => 0,
     'county' => 0,
     'landscape_set' => 0,
@@ -1614,13 +1758,6 @@ function structure_front_strongarm() {
     'region' => 0,
   );
   $export['uuid_features_file_taxonomy_term'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'uuid_features_vocabulary_terms';
-  $strongarm->value = 1;
-  $export['uuid_features_vocabulary_terms'] = $strongarm;
 
   return $export;
 }

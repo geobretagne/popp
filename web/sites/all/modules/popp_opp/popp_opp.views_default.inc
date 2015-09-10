@@ -36,32 +36,32 @@ function popp_opp_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Contenu */
+  /* Champ: Contenu : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Content: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Contenu : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -87,7 +87,6 @@ function popp_opp_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Page'),
-    t('more'),
   );
   $export['clone_de_popp_view_page_participez'] = $view;
 
@@ -169,40 +168,40 @@ function popp_opp_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Relationship: OG membership: OG membership from Node */
+  /* Relation: Adhésion OG : Adhésion OG à partir de Nœud */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Relationship: Content: Author */
+  /* Relation: Contenu : Auteur */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Nom de l\'OPP';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Body */
+  /* Champ: Contenu : Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'Description';
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '300';
   $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
-  /* Field: User: Name */
+  /* Champ: Utilisateur : Nom */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Manager';
-  /* Field: Content: Post date */
+  /* Champ: Contenu : Date de publication */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Créé(e)';
   $handler->display->display_options['fields']['created']['date_format'] = 'time ago';
-  /* Field: Content: Groupe */
+  /* Champ: Contenu : Groupe */
   $handler->display->display_options['fields']['group_group']['id'] = 'group_group';
   $handler->display->display_options['fields']['group_group']['table'] = 'field_data_group_group';
   $handler->display->display_options['fields']['group_group']['field'] = 'group_group';
@@ -212,19 +211,19 @@ function popp_opp_views_default_views() {
   $handler->display->display_options['fields']['group_group']['settings'] = array(
     'field_name' => '0',
   );
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -257,15 +256,14 @@ function popp_opp_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
-    t('OG membership from node'),
-    t('author'),
+    t('Adhésion OG à partir de node'),
+    t('auteur'),
     t('Nom de l\'OPP'),
     t('Description'),
     t('Manager'),
     t('Créé(e)'),
     t('Adhésion'),
     t('Page'),
-    t('more'),
   );
   $export['popp_views_opp_take_liste'] = $view;
 

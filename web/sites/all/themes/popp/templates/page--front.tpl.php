@@ -1,7 +1,7 @@
 <?php //POPP
 $block = module_invoke('menu', 'block_view', 'menu-popp-principal');
 global $user;
-if(null === og_get_groups_by_user($user) && !in_array('Root', $user->roles) && !in_array('administrator', $user->roles) && !in_array('Import de masse', $user->roles)){
+if(null === og_get_groups_by_user($user) && !in_array('administrator', $user->roles) && !in_array('Import de masse', $user->roles)){
     print '<div style="display:none;" id="cacherMenu"></div>';
 }
 if (in_array('administrator', $user->roles) && variable_get('is_popp_install_done') !== true && current_path() != "admin/popp-installation") {

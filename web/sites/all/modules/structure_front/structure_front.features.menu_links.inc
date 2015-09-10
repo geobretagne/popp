@@ -333,14 +333,13 @@ function structure_front_menu_default_menu_links() {
     'link_title' => 'Conditions d\'utilisation',
     'options' => array(
       'identifier' => 'menu-menu-footer_conditions-dutilisation:popp-cgu',
-      'alter' => TRUE,
     ),
     'module' => 'system',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: menu-menu-footer_contact:contact
@@ -361,7 +360,7 @@ function structure_front_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: menu-menu-footer_dconnexion:user/logout
@@ -382,7 +381,27 @@ function structure_front_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -48,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-menu-footer_licences:licences
+  $menu_links['menu-menu-footer_licences:licences'] = array(
+    'menu_name' => 'menu-menu-footer',
+    'link_path' => 'licences',
+    'router_path' => 'licences',
+    'link_title' => 'Licences',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-menu-footer_licences:licences',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-menu-footer_mentions-lgales:popp-mentions-legales
@@ -393,14 +412,13 @@ function structure_front_menu_default_menu_links() {
     'link_title' => 'Mentions légales',
     'options' => array(
       'identifier' => 'menu-menu-footer_mentions-lgales:popp-mentions-legales',
-      'alter' => TRUE,
     ),
     'module' => 'system',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: menu-menu-footer_plan-du-site:sitemap
@@ -586,7 +604,6 @@ function structure_front_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('<span class="glyphicon glyphicon-folder-open"></span>');
@@ -612,11 +629,13 @@ function structure_front_menu_default_menu_links() {
   t('Gestion du thésaurus facultatif');
   t('Gérer les séries OPP');
   t('Import de masse');
+  t('Licences');
   t('Mentions légales');
   t('Modération des publications');
   t('Participez');
   t('Plan du site');
   t('Porteurs OPP');
+
 
   return $menu_links;
 }

@@ -14,8 +14,7 @@ function structure_front_user_default_permissions() {
   $permissions['access PDF version'] = array(
     'name' => 'access PDF version',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -26,7 +25,7 @@ function structure_front_user_default_permissions() {
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -35,7 +34,7 @@ function structure_front_user_default_permissions() {
   $permissions['access all views'] = array(
     'name' => 'access all views',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'views',
   );
@@ -44,7 +43,7 @@ function structure_front_user_default_permissions() {
   $permissions['access backup and migrate'] = array(
     'name' => 'access backup and migrate',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
   );
@@ -53,7 +52,7 @@ function structure_front_user_default_permissions() {
   $permissions['access backup files'] = array(
     'name' => 'access backup files',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
   );
@@ -62,7 +61,7 @@ function structure_front_user_default_permissions() {
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -73,7 +72,7 @@ function structure_front_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -84,8 +83,7 @@ function structure_front_user_default_permissions() {
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -94,7 +92,7 @@ function structure_front_user_default_permissions() {
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'contextual',
   );
@@ -103,7 +101,7 @@ function structure_front_user_default_permissions() {
   $permissions['access dashboard'] = array(
     'name' => 'access dashboard',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'dashboard',
   );
@@ -112,7 +110,7 @@ function structure_front_user_default_permissions() {
   $permissions['access devel information'] = array(
     'name' => 'access devel information',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'devel',
   );
@@ -121,7 +119,7 @@ function structure_front_user_default_permissions() {
   $permissions['access overlay'] = array(
     'name' => 'access overlay',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'overlay',
   );
@@ -130,7 +128,7 @@ function structure_front_user_default_permissions() {
   $permissions['access print'] = array(
     'name' => 'access print',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -141,7 +139,7 @@ function structure_front_user_default_permissions() {
   $permissions['access private fields'] = array(
     'name' => 'access private fields',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -150,7 +148,7 @@ function structure_front_user_default_permissions() {
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -159,7 +157,7 @@ function structure_front_user_default_permissions() {
   $permissions['access site reports'] = array(
     'name' => 'access site reports',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -168,7 +166,7 @@ function structure_front_user_default_permissions() {
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'toolbar',
   );
@@ -177,7 +175,7 @@ function structure_front_user_default_permissions() {
   $permissions['access user contact forms'] = array(
     'name' => 'access user contact forms',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'contact',
   );
@@ -186,8 +184,7 @@ function structure_front_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'user',
   );
@@ -196,7 +193,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -205,7 +202,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer backup and migrate'] = array(
     'name' => 'administer backup and migrate',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
   );
@@ -214,7 +211,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer blocks'] = array(
     'name' => 'administer blocks',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'block',
   );
@@ -223,8 +220,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'comment',
   );
@@ -233,7 +229,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer contact forms'] = array(
     'name' => 'administer contact forms',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'contact',
   );
@@ -242,7 +238,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer content types'] = array(
     'name' => 'administer content types',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -251,8 +247,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer faq'] = array(
     'name' => 'administer faq',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'faq',
   );
@@ -261,7 +256,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer faq order'] = array(
     'name' => 'administer faq order',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'faq',
   );
@@ -270,7 +265,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer features'] = array(
     'name' => 'administer features',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'features',
   );
@@ -279,7 +274,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer field collections'] = array(
     'name' => 'administer field collections',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_collection',
   );
@@ -288,7 +283,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer field permissions'] = array(
     'name' => 'administer field permissions',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -297,7 +292,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer fieldgroups'] = array(
     'name' => 'administer fieldgroups',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_group',
   );
@@ -306,7 +301,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'filter',
   );
@@ -315,7 +310,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer flags'] = array(
     'name' => 'administer flags',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'flag',
   );
@@ -324,7 +319,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer group'] = array(
     'name' => 'administer group',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'og',
   );
@@ -333,7 +328,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer image styles'] = array(
     'name' => 'administer image styles',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'image',
   );
@@ -343,8 +338,7 @@ function structure_front_user_default_permissions() {
     'name' => 'administer import',
     'roles' => array(
       'Import de masse' => 'Import de masse',
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'popp_mass_import',
   );
@@ -353,7 +347,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer languages'] = array(
     'name' => 'administer languages',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'locale',
   );
@@ -362,7 +356,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer lightbox2'] = array(
     'name' => 'administer lightbox2',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'lightbox2',
   );
@@ -371,7 +365,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'menu',
   );
@@ -380,7 +374,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'module_filter',
   );
@@ -389,7 +383,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer modules'] = array(
     'name' => 'administer modules',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -398,8 +392,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -408,7 +401,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer openlayers'] = array(
     'name' => 'administer openlayers',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'openlayers_ui',
   );
@@ -417,7 +410,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'user',
   );
@@ -426,7 +419,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer print'] = array(
     'name' => 'administer print',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'print',
   );
@@ -435,7 +428,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer profile types'] = array(
     'name' => 'administer profile types',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'profile2',
   );
@@ -444,7 +437,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer profiles'] = array(
     'name' => 'administer profiles',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'profile2',
   );
@@ -453,7 +446,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer search'] = array(
     'name' => 'administer search',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'search',
   );
@@ -462,7 +455,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'shortcut',
   );
@@ -471,7 +464,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -480,7 +473,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer software updates'] = array(
     'name' => 'administer software updates',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -489,7 +482,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -498,7 +491,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer theme assignments'] = array(
     'name' => 'administer theme assignments',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'themekey',
   );
@@ -507,7 +500,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer themekey settings'] = array(
     'name' => 'administer themekey settings',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'themekey',
   );
@@ -516,7 +509,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -525,7 +518,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer url aliases'] = array(
     'name' => 'administer url aliases',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'path',
   );
@@ -534,8 +527,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'user',
   );
@@ -544,7 +536,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer uuid'] = array(
     'name' => 'administer uuid',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'uuid',
   );
@@ -553,7 +545,7 @@ function structure_front_user_default_permissions() {
   $permissions['administer views'] = array(
     'name' => 'administer views',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'views',
   );
@@ -562,7 +554,7 @@ function structure_front_user_default_permissions() {
   $permissions['assign node themes'] = array(
     'name' => 'assign node themes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'themekey_ui',
   );
@@ -571,7 +563,7 @@ function structure_front_user_default_permissions() {
   $permissions['assign path alias themes'] = array(
     'name' => 'assign path alias themes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'themekey_ui',
   );
@@ -580,7 +572,7 @@ function structure_front_user_default_permissions() {
   $permissions['assign theme to own nodes'] = array(
     'name' => 'assign theme to own nodes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'themekey_ui',
   );
@@ -589,7 +581,7 @@ function structure_front_user_default_permissions() {
   $permissions['block IP addresses'] = array(
     'name' => 'block IP addresses',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'system',
   );
@@ -598,7 +590,7 @@ function structure_front_user_default_permissions() {
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -607,7 +599,7 @@ function structure_front_user_default_permissions() {
   $permissions['cancel account'] = array(
     'name' => 'cancel account',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'user',
   );
@@ -616,8 +608,7 @@ function structure_front_user_default_permissions() {
   $permissions['change own username'] = array(
     'name' => 'change own username',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'user',
   );
@@ -626,7 +617,7 @@ function structure_front_user_default_permissions() {
   $permissions['create article content'] = array(
     'name' => 'create article content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -635,8 +626,7 @@ function structure_front_user_default_permissions() {
   $permissions['create faq content'] = array(
     'name' => 'create faq content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -666,7 +656,7 @@ function structure_front_user_default_permissions() {
   $permissions['create page content'] = array(
     'name' => 'create page content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -696,8 +686,7 @@ function structure_front_user_default_permissions() {
   $permissions['create popp_page content'] = array(
     'name' => 'create popp_page content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -734,8 +723,7 @@ function structure_front_user_default_permissions() {
   $permissions['create popp_testimony_sheet content'] = array(
     'name' => 'create popp_testimony_sheet content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -751,7 +739,7 @@ function structure_front_user_default_permissions() {
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'path',
   );
@@ -760,7 +748,7 @@ function structure_front_user_default_permissions() {
   $permissions['customize shortcut links'] = array(
     'name' => 'customize shortcut links',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'shortcut',
   );
@@ -769,7 +757,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete any article content'] = array(
     'name' => 'delete any article content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -778,8 +766,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete any faq content'] = array(
     'name' => 'delete any faq content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -802,7 +789,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -832,8 +819,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete any popp_page content'] = array(
     'name' => 'delete any popp_page content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -870,8 +856,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete any popp_testimony_sheet content'] = array(
     'name' => 'delete any popp_testimony_sheet content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -887,7 +872,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete backup files'] = array(
     'name' => 'delete backup files',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
   );
@@ -896,7 +881,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete own article content'] = array(
     'name' => 'delete own article content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -905,8 +890,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete own faq content'] = array(
     'name' => 'delete own faq content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -929,7 +913,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -959,8 +943,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete own popp_page content'] = array(
     'name' => 'delete own popp_page content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -997,8 +980,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete own popp_testimony_sheet content'] = array(
     'name' => 'delete own popp_testimony_sheet content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1014,7 +996,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1110,13 +1092,6 @@ function structure_front_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'delete terms in popp_tax_tags'.
-  $permissions['delete terms in popp_tax_tags'] = array(
-    'name' => 'delete terms in popp_tax_tags',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in popp_tax_thepopp'.
   $permissions['delete terms in popp_tax_thepopp'] = array(
     'name' => 'delete terms in popp_tax_thepopp',
@@ -1163,7 +1138,7 @@ function structure_front_user_default_permissions() {
   $permissions['delete terms in tags'] = array(
     'name' => 'delete terms in tags',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -1172,7 +1147,7 @@ function structure_front_user_default_permissions() {
   $permissions['download original image'] = array(
     'name' => 'download original image',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'lightbox2',
   );
@@ -1181,7 +1156,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit any article content'] = array(
     'name' => 'edit any article content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1197,8 +1172,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit any faq content'] = array(
     'name' => 'edit any faq content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1235,7 +1209,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1265,8 +1239,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit any popp_page content'] = array(
     'name' => 'edit any popp_page content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1283,13 +1256,6 @@ function structure_front_user_default_permissions() {
     'name' => 'edit any popp_photo_serie content',
     'roles' => array(),
     'module' => 'node',
-  );
-
-  // Exported permission: 'edit any popp_profile_participative profile'.
-  $permissions['edit any popp_profile_participative profile'] = array(
-    'name' => 'edit any popp_profile_participative profile',
-    'roles' => array(),
-    'module' => 'profile2',
   );
 
   // Exported permission: 'edit any popp_record_field content'.
@@ -1310,8 +1276,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit any popp_testimony_sheet content'] = array(
     'name' => 'edit any popp_testimony_sheet content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1334,7 +1299,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own article content'] = array(
     'name' => 'edit own article content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1343,8 +1308,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'comment',
   );
@@ -1360,8 +1324,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own faq content'] = array(
     'name' => 'edit own faq content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1405,7 +1368,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1435,8 +1398,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own popp_page content'] = array(
     'name' => 'edit own popp_page content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1455,13 +1417,6 @@ function structure_front_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: 'edit own popp_profile_participative profile'.
-  $permissions['edit own popp_profile_participative profile'] = array(
-    'name' => 'edit own popp_profile_participative profile',
-    'roles' => array(),
-    'module' => 'profile2',
-  );
-
   // Exported permission: 'edit own popp_record_field content'.
   $permissions['edit own popp_record_field content'] = array(
     'name' => 'edit own popp_record_field content',
@@ -1473,8 +1428,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own popp_reference_document content'] = array(
     'name' => 'edit own popp_reference_document content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1483,8 +1437,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit own popp_testimony_sheet content'] = array(
     'name' => 'edit own popp_testimony_sheet content',
     'roles' => array(
-      'Root' => 'Root',
-      'administrator' => 'administrator',
+'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1587,13 +1540,6 @@ function structure_front_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'edit terms in popp_tax_tags'.
-  $permissions['edit terms in popp_tax_tags'] = array(
-    'name' => 'edit terms in popp_tax_tags',
-    'roles' => array(),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'edit terms in popp_tax_thepopp'.
   $permissions['edit terms in popp_tax_thepopp'] = array(
     'name' => 'edit terms in popp_tax_thepopp',
@@ -1640,7 +1586,7 @@ function structure_front_user_default_permissions() {
   $permissions['edit terms in tags'] = array(
     'name' => 'edit terms in tags',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -1649,7 +1595,7 @@ function structure_front_user_default_permissions() {
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'devel',
   );
@@ -1658,7 +1604,7 @@ function structure_front_user_default_permissions() {
   $permissions['execute unlink files'] = array(
     'name' => 'execute unlink files',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'ftools',
   );
@@ -1667,7 +1613,7 @@ function structure_front_user_default_permissions() {
   $permissions['export nodes'] = array(
     'name' => 'export nodes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node_export',
   );
@@ -1676,7 +1622,7 @@ function structure_front_user_default_permissions() {
   $permissions['export own nodes'] = array(
     'name' => 'export own nodes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node_export',
   );
@@ -1685,7 +1631,7 @@ function structure_front_user_default_permissions() {
   $permissions['export taxonomy by csv'] = array(
     'name' => 'export taxonomy by csv',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy_csv',
   );
@@ -1694,7 +1640,6 @@ function structure_front_user_default_permissions() {
   $permissions['flag add_serie_caddy'] = array(
     'name' => 'flag add_serie_caddy',
     'roles' => array(
-      'Root' => 'Root',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -1705,7 +1650,7 @@ function structure_front_user_default_permissions() {
   $permissions['generate features'] = array(
     'name' => 'generate features',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'features',
   );
@@ -1714,7 +1659,7 @@ function structure_front_user_default_permissions() {
   $permissions['import taxonomy by csv'] = array(
     'name' => 'import taxonomy by csv',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy_csv',
   );
@@ -1723,7 +1668,7 @@ function structure_front_user_default_permissions() {
   $permissions['manage features'] = array(
     'name' => 'manage features',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'features',
   );
@@ -1732,7 +1677,7 @@ function structure_front_user_default_permissions() {
   $permissions['node-specific print configuration'] = array(
     'name' => 'node-specific print configuration',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'print_ui',
   );
@@ -1741,7 +1686,7 @@ function structure_front_user_default_permissions() {
   $permissions['perform backup'] = array(
     'name' => 'perform backup',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
   );
@@ -1750,7 +1695,7 @@ function structure_front_user_default_permissions() {
   $permissions['post comments'] = array(
     'name' => 'post comments',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
@@ -1760,7 +1705,7 @@ function structure_front_user_default_permissions() {
   $permissions['rename features'] = array(
     'name' => 'rename features',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'features',
   );
@@ -1769,7 +1714,7 @@ function structure_front_user_default_permissions() {
   $permissions['restore from backup'] = array(
     'name' => 'restore from backup',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'backup_migrate',
   );
@@ -1778,7 +1723,7 @@ function structure_front_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -1787,7 +1732,7 @@ function structure_front_user_default_permissions() {
   $permissions['search content'] = array(
     'name' => 'search content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'search',
   );
@@ -1796,7 +1741,7 @@ function structure_front_user_default_permissions() {
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'user',
   );
@@ -1805,7 +1750,6 @@ function structure_front_user_default_permissions() {
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
     'roles' => array(
-      'Root' => 'Root',
       'administrator' => 'administrator',
     ),
     'module' => 'comment',
@@ -1815,7 +1759,7 @@ function structure_front_user_default_permissions() {
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'shortcut',
   );
@@ -1824,7 +1768,7 @@ function structure_front_user_default_permissions() {
   $permissions['switch users'] = array(
     'name' => 'switch users',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'devel',
   );
@@ -1833,7 +1777,7 @@ function structure_front_user_default_permissions() {
   $permissions['translate interface'] = array(
     'name' => 'translate interface',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'locale',
   );
@@ -1842,7 +1786,6 @@ function structure_front_user_default_permissions() {
   $permissions['unflag add_serie_caddy'] = array(
     'name' => 'unflag add_serie_caddy',
     'roles' => array(
-      'Root' => 'Root',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -1853,7 +1796,7 @@ function structure_front_user_default_permissions() {
   $permissions['use PHP for settings'] = array(
     'name' => 'use PHP for settings',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'php',
   );
@@ -1862,7 +1805,7 @@ function structure_front_user_default_permissions() {
   $permissions['use PHP to import nodes'] = array(
     'name' => 'use PHP to import nodes',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node_export',
   );
@@ -1871,7 +1814,7 @@ function structure_front_user_default_permissions() {
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'search',
   );
@@ -1880,7 +1823,7 @@ function structure_front_user_default_permissions() {
   $permissions['use bulk exporter'] = array(
     'name' => 'use bulk exporter',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'bulk_export',
   );
@@ -1889,7 +1832,7 @@ function structure_front_user_default_permissions() {
   $permissions['use ctools import'] = array(
     'name' => 'use ctools import',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'ctools',
   );
@@ -1898,7 +1841,7 @@ function structure_front_user_default_permissions() {
   $permissions['use flag import'] = array(
     'name' => 'use flag import',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'flag',
   );
@@ -1907,7 +1850,6 @@ function structure_front_user_default_permissions() {
   $permissions['use text format editeur'] = array(
     'name' => 'use text format editeur',
     'roles' => array(
-      'Root' => 'Root',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
@@ -1918,7 +1860,7 @@ function structure_front_user_default_permissions() {
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -1929,7 +1871,7 @@ function structure_front_user_default_permissions() {
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'filter',
   );
@@ -1962,18 +1904,11 @@ function structure_front_user_default_permissions() {
     'module' => 'profile2',
   );
 
-  // Exported permission: 'view any popp_profile_participative profile'.
-  $permissions['view any popp_profile_participative profile'] = array(
-    'name' => 'view any popp_profile_participative profile',
-    'roles' => array(),
-    'module' => 'profile2',
-  );
-
   // Exported permission: 'view faq page'.
   $permissions['view faq page'] = array(
     'name' => 'view faq page',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -2015,18 +1950,11 @@ function structure_front_user_default_permissions() {
     'module' => 'profile2',
   );
 
-  // Exported permission: 'view own popp_profile_participative profile'.
-  $permissions['view own popp_profile_participative profile'] = array(
-    'name' => 'view own popp_profile_participative profile',
-    'roles' => array(),
-    'module' => 'profile2',
-  );
-
   // Exported permission: 'view own unpublished content'.
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -2035,7 +1963,7 @@ function structure_front_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -2044,7 +1972,7 @@ function structure_front_user_default_permissions() {
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(
-      'Root' => 'Root',
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'system',

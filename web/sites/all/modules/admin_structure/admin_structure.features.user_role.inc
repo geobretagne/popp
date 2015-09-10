@@ -16,12 +16,6 @@ function admin_structure_user_default_roles() {
     'weight' => 2,
   );
 
-  // Exported role: Root.
-  $roles['Root'] = array(
-    'name' => 'Root',
-    'weight' => 4,
-  );
-
   // Exported role: administrator.
   $roles['administrator'] = array(
     'name' => 'administrator',

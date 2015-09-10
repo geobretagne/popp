@@ -190,7 +190,7 @@ function installStepTwo_validate($form, &$form_state)
         if ($result['success'] == true) {
             drupal_set_message(t('Contenu de base importé avec succès'));
         } else {
-            drupal_set_message(t(''));
+            drupal_set_message(t('Impossible d\'importer le contenu de démonstration'));
         }
     }
     $feature    = features_get_features('carto');
@@ -206,19 +206,4 @@ function installStepTwo_validate($form, &$form_state)
         drupal_set_message(t("Aucune traduction à mettre à jour"));
     }
     drupal_set_message(t('Contenu importé avec succès'));
-}
-
-
-// Helpful function that updates an entity collectioin
-function updateFieldCollection($node, $file)
-{
-    module_load_include('inc', 'entity', 'includes/entity.controller');
-    // Setup the values in the structure expected by the field_collection entity.
-    $entity = entity_create('field_collection_item', ['field_name' => 'field_popp_collection_photo']);
-    $entity->setHostEntity('node', $node);
-    $entity->field_popp_photo_collection_file['und'][]           = (array) $file;
-    $entity->field_popp_photo_collection_date['und'][0]['value'] = date('Y-m-d', strtotime('09 June 1991'));
-    $entity->field_popp_photo_collection_ri['und'][0]['value']   = 'Test RI';
-    $entity->save();
-    node_save($node);
 }

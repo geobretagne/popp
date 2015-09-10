@@ -147,29 +147,6 @@ function structure_front_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'popp_refdoc_type' => array(
-      'name' => 'Type de doc. référence',
-      'machine_name' => 'popp_refdoc_type',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'popp_tax_format' => array(
       'name' => 'Format',
       'machine_name' => 'popp_tax_format',

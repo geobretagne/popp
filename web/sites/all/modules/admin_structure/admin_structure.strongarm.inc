@@ -31,5 +31,39 @@ function admin_structure_strongarm() {
   $strongarm->value = '0';
   $export['error_level'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_admin_role';
+  $strongarm->value = '3';
+  $export['user_admin_role'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_mail_register_no_approval_required_body';
+  $strongarm->value = '[user:name],
+
+Merci de vous être enregistré sur [site:name]. Vous pouvez désormais vous identifier en cliquant sur ce lien ou en le copiant dans votre navigateur :
+
+[user:one-time-login-url]
+
+Ce lien ne peut être utilisé pour s\'identifier qu\'une seule fois et il vous conduira à une page où vous pourrez paramétrer votre mot de passe.
+
+Après avoir paramétré votre mot de passe, vous pourrez vous identifier à l\'adresse [site:login-url] lors de vos prochaines connexions :
+
+identifiant : [user:name]
+mot de passe : Le mot de passe que vous allez définir à la prochaine étape de l\'inscription
+
+--  L\'équipe [site:name]';
+  $export['user_mail_register_no_approval_required_body'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'user_register';
+  $strongarm->value = '1';
+  $export['user_register'] = $strongarm;
+
   return $export;
 }

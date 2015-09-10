@@ -24,6 +24,7 @@ function structure_front_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Mon Panier';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     4 => '4',
@@ -33,8 +34,18 @@ function structure_front_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Éléments par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« premier';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ précédent';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -87,95 +98,90 @@ function structure_front_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Header: Global: Unfiltered text */
+  /* Entête: Global : Texte non filtré */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['content'] = '<p><i>Cochez les séries que vous souhaitez exporter, puis cliquez sur l\'export de votre choix.<br/><br/><strong>Attention</strong>, concernant l\'export thésaurus, il n\'est possible d\'exporter que des séries du même pas de reconduction (exemple : série 1 reconduite tous les 2 mois et série 2 reconduite tous les 3 mois)</i></p>';
-  /* No results behavior: Global: Text area */
+  /* Comportement en l'absence de résultats: Global : Zone de texte */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Votre sélection de photos est vide.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Relationship: Flags: add_serie_caddy */
+  /* Relation: Flags : add_serie_caddy */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
   $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['label'] = 'marqueur';
   $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'add_serie_caddy';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Nom';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Identifiant de la série */
+  /* Champ: Node : Identifiant de la série */
   $handler->display->display_options['fields']['field_popp_serie_identifier']['id'] = 'field_popp_serie_identifier';
   $handler->display->display_options['fields']['field_popp_serie_identifier']['table'] = 'field_data_field_popp_serie_identifier';
   $handler->display->display_options['fields']['field_popp_serie_identifier']['field'] = 'field_popp_serie_identifier';
   $handler->display->display_options['fields']['field_popp_serie_identifier']['label'] = 'Identifiant';
-  /* Field: Content: Département */
+  /* Champ: Node : Département */
   $handler->display->display_options['fields']['field_popp_serie_county']['id'] = 'field_popp_serie_county';
   $handler->display->display_options['fields']['field_popp_serie_county']['table'] = 'field_data_field_popp_serie_county';
   $handler->display->display_options['fields']['field_popp_serie_county']['field'] = 'field_popp_serie_county';
   $handler->display->display_options['fields']['field_popp_serie_county']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Fréquence de reconduction prévue */
+  /* Champ: Node : Fréquence de reconduction prévue */
   $handler->display->display_options['fields']['field_popp_serie_per']['id'] = 'field_popp_serie_per';
   $handler->display->display_options['fields']['field_popp_serie_per']['table'] = 'field_data_field_popp_serie_per';
   $handler->display->display_options['fields']['field_popp_serie_per']['field'] = 'field_popp_serie_per';
   $handler->display->display_options['fields']['field_popp_serie_per']['label'] = 'Fréquence reconduction';
   $handler->display->display_options['fields']['field_popp_serie_per']['click_sort_column'] = 'interval';
-  /* Field: Content: Porteur OPP */
+  /* Champ: Node : Porteur OPP */
   $handler->display->display_options['fields']['field_popp_serie_supp_struct']['id'] = 'field_popp_serie_supp_struct';
   $handler->display->display_options['fields']['field_popp_serie_supp_struct']['table'] = 'field_data_field_popp_serie_supp_struct';
   $handler->display->display_options['fields']['field_popp_serie_supp_struct']['field'] = 'field_popp_serie_supp_struct';
   $handler->display->display_options['fields']['field_popp_serie_supp_struct']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: Link */
+  /* Champ: Contenu : Lien */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = 'Action';
-  /* Field: Flags: Flag link */
+  /* Champ: Flags : Lien du flag */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
   $handler->display->display_options['fields']['ops']['table'] = 'flagging';
   $handler->display->display_options['fields']['ops']['field'] = 'ops';
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = 'Ajout/Suppression';
   $handler->display->display_options['fields']['ops']['link_type'] = 'toggle';
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Global: PHP */
+  /* Champ: Gestionnaire défectueux/manquant */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = 'Exporter';
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<input type="checkbox" name="export[]" value="<?=$row->nid?>"/>';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -189,19 +195,19 @@ function structure_front_views_default_views() {
   $translatables['caddy'] = array(
     t('Master'),
     t('Mon Panier'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
+    t('Éléments par page'),
+    t('- Tout -'),
+    t('Décalage'),
+    t('« premier'),
+    t('‹ précédent'),
+    t('suivant ›'),
+    t('dernier »'),
     t('<p><i>Cochez les séries que vous souhaitez exporter, puis cliquez sur l\'export de votre choix.<br/><br/><strong>Attention</strong>, concernant l\'export thésaurus, il n\'est possible d\'exporter que des séries du même pas de reconduction (exemple : série 1 reconduite tous les 2 mois et série 2 reconduite tous les 3 mois)</i></p>'),
     t('Votre sélection de photos est vide.'),
     t('marqueur'),
@@ -231,39 +237,50 @@ function structure_front_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Licences';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Champ: Node : Contenu */
+  $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
+  $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
+  $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
+  $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'popp_licence_pages' => 'popp_licence_pages',
+    'popp_page' => 'popp_page',
+  );
+  /* Critère de filtrage: Node : Entrée Menu (field_popp_entry_menu) */
+  $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
+  $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
+  $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
+  $handler->display->display_options['filters']['field_popp_entry_menu_value']['value'] = array(
+    5 => '5',
   );
 
   /* Display: Page */
@@ -272,10 +289,10 @@ function structure_front_views_default_views() {
   $translatables['licences'] = array(
     t('Master'),
     t('Licences'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
     t('Page'),
@@ -353,26 +370,31 @@ function structure_front_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Field: Content: Title */
+  /* Entête: Global : Texte non filtré */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="paddingHeaderTable">&nbsp;<a class="btn btn-primary pull-right" href="/node/add/popp-page">Ajouter une page</a></div>';
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Entrée Menu */
+  /* Champ: Node : Entrée Menu */
   $handler->display->display_options['fields']['field_popp_entry_menu']['id'] = 'field_popp_entry_menu';
   $handler->display->display_options['fields']['field_popp_entry_menu']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['fields']['field_popp_entry_menu']['field'] = 'field_popp_entry_menu';
   $handler->display->display_options['fields']['field_popp_entry_menu']['label'] = 'Type';
   $handler->display->display_options['fields']['field_popp_entry_menu']['empty'] = 'FAQ';
-  /* Field: Content: Delete link */
+  /* Champ: Contenu : Lien de suppression */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Edit link */
+  /* Champ: Contenu : Lien de modification */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -380,30 +402,30 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['alter']['text'] = '[delete_node] - [edit_node]';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
+  /* Champ: Global : Texte personnalisé */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Actions';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[edit_node] - [delete_node]';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Sort criterion: Content: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de tri: Node : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['sorts']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['sorts']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['sorts']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['sorts']['field_popp_entry_menu_value']['expose']['label'] = 'Type';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -431,14 +453,14 @@ function structure_front_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
-    t('Title'),
+    t('<div class="paddingHeaderTable">&nbsp;<a class="btn btn-primary pull-right" href="/node/add/popp-page">Ajouter une page</a></div>'),
+    t('Titre'),
     t('Type'),
     t('FAQ'),
     t('[delete_node] - [edit_node]'),
     t('Actions'),
     t('[edit_node] - [delete_node]'),
     t('Page'),
-    t('more'),
   );
   $export['popp_content_management'] = $view;
 
@@ -473,17 +495,18 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Taxonomy vocabulary: Name */
+  /* Champ: Vocabulaire de taxonomie : Nom */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
   $handler->display->display_options['fields']['name_1']['label'] = 'Type de champs';
-  /* Field: Taxonomy term: Term ID */
+  /* Champ: Terme de taxonomie : Identifiant (ID) du terme */
   $handler->display->display_options['fields']['tid']['id'] = 'tid';
   $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['tid']['field'] = 'tid';
   $handler->display->display_options['fields']['tid']['label'] = 'ID à reporter sur le fichier d\'import';
-  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Champ: Terme de taxonomie : Nom */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
@@ -491,25 +514,26 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Sort criterion: Taxonomy vocabulary: Vocabulary ID */
+  /* Critère de tri: Vocabulaire de taxonomie : Identifiant (ID) de vocabulaire */
   $handler->display->display_options['sorts']['vid']['id'] = 'vid';
   $handler->display->display_options['sorts']['vid']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['sorts']['vid']['field'] = 'vid';
-  /* Filter criterion: Taxonomy term: Vocabulary */
+  /* Critère de filtrage: Terme de taxonomie : Vocabulaire */
   $handler->display->display_options['filters']['vid']['id'] = 'vid';
   $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['filters']['vid']['field'] = 'vid';
   $handler->display->display_options['filters']['vid']['value'] = array(
-    15 => '15',
-    16 => '16',
+    18 => '18',
+    20 => '20',
     2 => '2',
-    10 => '10',
-    3 => '3',
-    8 => '8',
     13 => '13',
-    19 => '19',
-    4 => '4',
+    3 => '3',
+    16 => '16',
+    6 => '6',
     21 => '21',
+    10 => '10',
+    4 => '4',
+    5 => '5',
   );
 
   /* Display: Data export */
@@ -545,10 +569,8 @@ function structure_front_views_default_views() {
     t('Type de champs'),
     t('ID à reporter sur le fichier d\'import'),
     t('.'),
-    t(','),
     t('Libellé'),
     t('Data export'),
-    t('more'),
   );
   $export['popp_export_preparation'] = $view;
 
@@ -587,50 +609,50 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Header: Global: Unfiltered text */
+  /* Entête: Global : Texte non filtré */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="paddingHeaderTable"><a href="node/add/opp-takepart" class="btn btn-primary pull-right">Ajouter un OPP participatif</a></div>';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Delete link */
+  /* Champ: Contenu : Lien de suppression */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
+  /* Champ: Global : Texte personnalisé */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Actions';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/node/[nid]/group">Gérer</a> - [delete_node]';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -658,11 +680,10 @@ function structure_front_views_default_views() {
     t('suivant ›'),
     t('dernier »'),
     t('<div class="paddingHeaderTable"><a href="node/add/opp-takepart" class="btn btn-primary pull-right">Ajouter un OPP participatif</a></div>'),
-    t('Title'),
+    t('Titre'),
     t('Actions'),
     t('<a href="/node/[nid]/group">Gérer</a> - [delete_node]'),
     t('Page'),
-    t('more'),
   );
   $export['popp_participative_opp_mgt'] = $view;
 
@@ -742,7 +763,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Logo */
+  /* Champ: Node : Logo */
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['id'] = 'field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['table'] = 'field_data_field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['field'] = 'field_popp_supp_struct_logo';
@@ -753,11 +774,11 @@ function structure_front_views_default_views() {
     'image_style' => 'logos_footer',
     'image_link' => '',
   );
-  /* Sort criterion: Global: Random */
+  /* Critère de tri: Global : Au hasard */
   $handler->display->display_options['sorts']['random']['id'] = 'random';
   $handler->display->display_options['sorts']['random']['table'] = 'views';
   $handler->display->display_options['sorts']['random']['field'] = 'random';
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -774,7 +795,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Logos partenaires';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Logo partenaire */
+  /* Champ: Node : Logo partenaire */
   $handler->display->display_options['fields']['field_popp_partner_logo']['id'] = 'field_popp_partner_logo';
   $handler->display->display_options['fields']['field_popp_partner_logo']['table'] = 'field_data_field_popp_partner_logo';
   $handler->display->display_options['fields']['field_popp_partner_logo']['field'] = 'field_popp_partner_logo';
@@ -786,13 +807,13 @@ function structure_front_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Ordre d&#039;affichage (field_popp_partner_display_order) */
+  /* Critère de tri: Node : Ordre d&#039;affichage (field_popp_partner_display_order) */
   $handler->display->display_options['sorts']['field_popp_partner_display_order_value']['id'] = 'field_popp_partner_display_order_value';
   $handler->display->display_options['sorts']['field_popp_partner_display_order_value']['table'] = 'field_data_field_popp_partner_display_order';
   $handler->display->display_options['sorts']['field_popp_partner_display_order_value']['field'] = 'field_popp_partner_display_order_value';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -810,7 +831,6 @@ function structure_front_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Block'),
-    t('more'),
     t('Logos partenaires'),
   );
   $export['popp_partners_logos'] = $view;
@@ -829,28 +849,31 @@ function structure_front_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'POPP - Affichage document référence';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relation: Entity Reference : Entité référante */
   $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['id'] = 'reverse_field_popp_serie_refdoc_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['field'] = 'reverse_field_popp_serie_refdoc_node';
-  $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['label'] = 'Contenu référençant Contenu depuis field_popp_serie_refdoc';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_refdoc_node']['required'] = TRUE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
@@ -858,7 +881,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Fichier */
+  /* Champ: Node : Fichier */
   $handler->display->display_options['fields']['field_popp_refdoc_file']['id'] = 'field_popp_refdoc_file';
   $handler->display->display_options['fields']['field_popp_refdoc_file']['table'] = 'field_data_field_popp_refdoc_file';
   $handler->display->display_options['fields']['field_popp_refdoc_file']['field'] = 'field_popp_refdoc_file';
@@ -871,7 +894,7 @@ function structure_front_views_default_views() {
     'image_style' => 'miniature_serie_photo',
     'image_link' => '',
   );
-  /* Field: Content: Date */
+  /* Champ: Node : Date */
   $handler->display->display_options['fields']['field_popp_refdoc_date']['id'] = 'field_popp_refdoc_date';
   $handler->display->display_options['fields']['field_popp_refdoc_date']['table'] = 'field_data_field_popp_refdoc_date';
   $handler->display->display_options['fields']['field_popp_refdoc_date']['field'] = 'field_popp_refdoc_date';
@@ -886,12 +909,12 @@ function structure_front_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -902,14 +925,14 @@ function structure_front_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -923,14 +946,14 @@ function structure_front_views_default_views() {
   /* Display: Bloc */
   $handler = $view->new_display('block', 'Bloc', 'block_1');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
@@ -938,14 +961,14 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Commentaire lié à la date */
+  /* Champ: Node : Commentaire lié à la date */
   $handler->display->display_options['fields']['field_popp_refdoc_date_comment']['id'] = 'field_popp_refdoc_date_comment';
   $handler->display->display_options['fields']['field_popp_refdoc_date_comment']['table'] = 'field_data_field_popp_refdoc_date_comment';
   $handler->display->display_options['fields']['field_popp_refdoc_date_comment']['field'] = 'field_popp_refdoc_date_comment';
   $handler->display->display_options['fields']['field_popp_refdoc_date_comment']['label'] = '';
   $handler->display->display_options['fields']['field_popp_refdoc_date_comment']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_popp_refdoc_date_comment']['element_label_colon'] = FALSE;
-  /* Field: Content: Date */
+  /* Champ: Node : Date */
   $handler->display->display_options['fields']['field_popp_refdoc_date_1']['id'] = 'field_popp_refdoc_date_1';
   $handler->display->display_options['fields']['field_popp_refdoc_date_1']['table'] = 'field_data_field_popp_refdoc_date';
   $handler->display->display_options['fields']['field_popp_refdoc_date_1']['field'] = 'field_popp_refdoc_date';
@@ -959,13 +982,13 @@ function structure_front_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Auteur / Photographe */
+  /* Champ: Node : Auteur / Photographe */
   $handler->display->display_options['fields']['field_popp_refdoc_author']['id'] = 'field_popp_refdoc_author';
   $handler->display->display_options['fields']['field_popp_refdoc_author']['table'] = 'field_data_field_popp_refdoc_author';
   $handler->display->display_options['fields']['field_popp_refdoc_author']['field'] = 'field_popp_refdoc_author';
   $handler->display->display_options['fields']['field_popp_refdoc_author']['label'] = 'Auteur';
   $handler->display->display_options['fields']['field_popp_refdoc_author']['empty'] = 'Inconnu(e)';
-  /* Field: Content: Licence du document */
+  /* Champ: Node : Licence du document */
   $handler->display->display_options['fields']['field_popp_refdoc_licence']['id'] = 'field_popp_refdoc_licence';
   $handler->display->display_options['fields']['field_popp_refdoc_licence']['table'] = 'field_data_field_popp_refdoc_licence';
   $handler->display->display_options['fields']['field_popp_refdoc_licence']['field'] = 'field_popp_refdoc_licence';
@@ -974,13 +997,13 @@ function structure_front_views_default_views() {
   $translatables['popp_refdoc_display'] = array(
     t('Master'),
     t('POPP - Affichage document référence'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Contenu référençant Contenu depuis field_popp_serie_refdoc'),
+    t('Node référençant Node depuis field_popp_serie_refdoc'),
     t('<a class="toZoom" href="/node/[nid_1]/[nid]" linkedphoto="[nid]" referencedoc="true">[field_popp_refdoc_file]</a>'),
     t('Ref - [field_popp_refdoc_date]'),
     t('Tout'),
@@ -1009,39 +1032,49 @@ function structure_front_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'POPP - Affichage documentation';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Éléments par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« premier';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ précédent';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relation: Entity Reference : Entité référante */
   $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['id'] = 'reverse_field_popp_serie_documentation_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['field'] = 'reverse_field_popp_serie_documentation_node';
-  $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['label'] = 'Contenu référençant Contenu depuis field_popp_serie_documentation';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_documentation_node']['required'] = TRUE;
-  /* Field: Content: Documentation */
+  /* Champ: Node : Documentation */
   $handler->display->display_options['fields']['field_popp_documentation_file']['id'] = 'field_popp_documentation_file';
   $handler->display->display_options['fields']['field_popp_documentation_file']['table'] = 'field_data_field_popp_documentation_file';
   $handler->display->display_options['fields']['field_popp_documentation_file']['field'] = 'field_popp_documentation_file';
   $handler->display->display_options['fields']['field_popp_documentation_file']['label'] = '';
   $handler->display->display_options['fields']['field_popp_documentation_file']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_popp_documentation_file']['click_sort_column'] = 'fid';
-  /* Field: Content: Légende */
+  /* Champ: Node : Légende */
   $handler->display->display_options['fields']['field_popp_documentation_legend']['id'] = 'field_popp_documentation_legend';
   $handler->display->display_options['fields']['field_popp_documentation_legend']['table'] = 'field_data_field_popp_documentation_legend';
   $handler->display->display_options['fields']['field_popp_documentation_legend']['field'] = 'field_popp_documentation_legend';
   $handler->display->display_options['fields']['field_popp_documentation_legend']['label'] = '';
   $handler->display->display_options['fields']['field_popp_documentation_legend']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -1052,14 +1085,14 @@ function structure_front_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1069,25 +1102,66 @@ function structure_front_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Champ: Node : Liens externes en lien avec la série */
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['id'] = 'field_popp_serie_external_links';
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['table'] = 'field_data_field_popp_serie_external_links';
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['field'] = 'field_popp_serie_external_links';
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['label'] = '';
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['alter']['text'] = '<a href="[field_popp_serie_external_links]" target="_blank" title="Ouvrir le lien">[field_popp_serie_external_links]</a>';
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_popp_serie_external_links']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Filtre contextuel: Contenu : Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Tout';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Critère de filtrage: Contenu : Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   $translatables['popp_serie_documentation_display'] = array(
     t('Master'),
     t('POPP - Affichage documentation'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Contenu référençant Contenu depuis field_popp_serie_documentation'),
+    t('Éléments par page'),
+    t('- Tout -'),
+    t('Décalage'),
+    t('« premier'),
+    t('‹ précédent'),
+    t('suivant ›'),
+    t('dernier »'),
+    t('Node référençant Node depuis field_popp_serie_documentation'),
     t('Tout'),
     t('Block'),
+    t('<a href="[field_popp_serie_external_links]" target="_blank" title="Ouvrir le lien">[field_popp_serie_external_links]</a>'),
   );
   $export['popp_serie_documentation_display'] = $view;
 
@@ -1129,52 +1203,53 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Header: Global: Unfiltered text */
+  /* Entête: Global : Texte non filtré */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="paddingHeaderTable">&nbsp;<a class="btn btn-primary pull-right" href="/node/add/popp-photo-serie">Ajouter une série</a></div>';
-  /* Relationship: OG membership: Group Node from OG membership */
+  /* Relation: Adhésion OG : Groupe Node de l'adhésion OG */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
-  /* Relationship: OG membership: Type */
+  /* Relation: OG membership : Type */
   $handler->display->display_options['relationships']['type']['id'] = 'type';
   $handler->display->display_options['relationships']['type']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['type']['field'] = 'type';
-  /* Field: Content: Title */
+  $handler->display->display_options['relationships']['type']['label'] = 'Type d\'adhésion OG';
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Published */
+  /* Champ: Contenu : Publié */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Edit link */
+  /* Champ: Contenu : Lien de modification */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Delete link */
+  /* Champ: Contenu : Lien de suppression */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
+  /* Champ: Global : Texte personnalisé */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Actions';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[edit_node] - [delete_node]';
-  /* Field: OG membership: Type */
+  /* Champ: OG membership : Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'og_membership';
   $handler->display->display_options['fields']['type']['field'] = 'type';
@@ -1182,19 +1257,19 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_photo_serie' => 'popp_photo_serie',
   );
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
   $handler->display->display_options['filters']['type_1']['table'] = 'node';
   $handler->display->display_options['filters']['type_1']['field'] = 'type';
@@ -1203,7 +1278,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['filters']['type_1']['value'] = array(
     'opp_takepart' => 'opp_takepart',
   );
-  /* Filter criterion: Content access: Access */
+  /* Critère de filtrage: Accès au contenu : Accès */
   $handler->display->display_options['filters']['nid']['id'] = 'nid';
   $handler->display->display_options['filters']['nid']['table'] = 'node_access';
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
@@ -1212,14 +1287,14 @@ function structure_front_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_photo_serie' => 'popp_photo_serie',
   );
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
   $handler->display->display_options['filters']['type_1']['table'] = 'node';
   $handler->display->display_options['filters']['type_1']['field'] = 'type';
@@ -1228,7 +1303,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['filters']['type_1']['value'] = array(
     'opp' => 'opp',
   );
-  /* Filter criterion: Content access: Access */
+  /* Critère de filtrage: Accès au contenu : Accès */
   $handler->display->display_options['filters']['nid']['id'] = 'nid';
   $handler->display->display_options['filters']['nid']['table'] = 'node_access';
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
@@ -1254,14 +1329,13 @@ function structure_front_views_default_views() {
     t('suivant ›'),
     t('dernier »'),
     t('<div class="paddingHeaderTable">&nbsp;<a class="btn btn-primary pull-right" href="/node/add/popp-photo-serie">Ajouter une série</a></div>'),
-    t('Group node from OG membership'),
-    t('OG membership type'),
-    t('Title'),
-    t('Published'),
+    t('Groupe node de l\'adhésion OG'),
+    t('Type d\'adhésion OG'),
+    t('Titre'),
+    t('Publié'),
     t('Actions'),
     t('[edit_node] - [delete_node]'),
     t('Page'),
-    t('more'),
   );
   $export['popp_series_management_opp'] = $view;
 
@@ -1302,45 +1376,45 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Header: Global: Unfiltered text */
+  /* Entête: Global : Texte non filtré */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="paddingHeaderTable">&nbsp;<a class="btn btn-primary pull-right" href="/node/add/popp-photo-serie">Ajouter une série</a></div>';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Published */
+  /* Champ: Contenu : Publié */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Edit link */
+  /* Champ: Contenu : Lien de modification */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = 'Modifier';
-  /* Field: Content: Delete link */
+  /* Champ: Contenu : Lien de suppression */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = 'Supprimer';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1368,12 +1442,11 @@ function structure_front_views_default_views() {
     t('suivant ›'),
     t('dernier »'),
     t('<div class="paddingHeaderTable">&nbsp;<a class="btn btn-primary pull-right" href="/node/add/popp-photo-serie">Ajouter une série</a></div>'),
-    t('Title'),
-    t('Published'),
+    t('Titre'),
+    t('Publié'),
     t('Modifier'),
     t('Supprimer'),
     t('Page'),
-    t('more'),
   );
   $export['popp_series_overview'] = $view;
 
@@ -1408,23 +1481,23 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relation: Entity Reference : Entité référante */
   $handler->display->display_options['relationships']['reverse_field_popp_serie_supp_struct_node']['id'] = 'reverse_field_popp_serie_supp_struct_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_supp_struct_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_supp_struct_node']['field'] = 'reverse_field_popp_serie_supp_struct_node';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'reverse_field_popp_serie_supp_struct_node';
-  /* Field: Content: Audience de groupes */
+  /* Champ: Node : Audience de groupes */
   $handler->display->display_options['fields']['og_group_ref']['id'] = 'og_group_ref';
   $handler->display->display_options['fields']['og_group_ref']['table'] = 'og_membership';
   $handler->display->display_options['fields']['og_group_ref']['field'] = 'og_group_ref';
@@ -1434,7 +1507,7 @@ function structure_front_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['og_group_ref']['delta_offset'] = '0';
-  /* Field: Content: Axe(s) thématique(s) */
+  /* Champ: Node : Axe(s) thématique(s) */
   $handler->display->display_options['fields']['field_popp_serie_thematic_axis']['id'] = 'field_popp_serie_thematic_axis';
   $handler->display->display_options['fields']['field_popp_serie_thematic_axis']['table'] = 'field_data_field_popp_serie_thematic_axis';
   $handler->display->display_options['fields']['field_popp_serie_thematic_axis']['field'] = 'field_popp_serie_thematic_axis';
@@ -1443,7 +1516,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['field_popp_serie_thematic_axis']['alter']['text'] = '[field_popp_serie_thematic_axis-tid]';
   $handler->display->display_options['fields']['field_popp_serie_thematic_axis']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_popp_serie_thematic_axis']['delta_offset'] = '0';
-  /* Field: Content: OPP */
+  /* Champ: Node : OPP */
   $handler->display->display_options['fields']['field_popp_serie_opp']['id'] = 'field_popp_serie_opp';
   $handler->display->display_options['fields']['field_popp_serie_opp']['table'] = 'field_data_field_popp_serie_opp';
   $handler->display->display_options['fields']['field_popp_serie_opp']['field'] = 'field_popp_serie_opp';
@@ -1451,12 +1524,12 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['field_popp_serie_opp']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_popp_serie_opp']['alter']['text'] = '[field_popp_serie_opp-tid]';
   $handler->display->display_options['fields']['field_popp_serie_opp']['type'] = 'taxonomy_term_reference_plain';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -1466,7 +1539,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1488,8 +1561,8 @@ function structure_front_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
-    t('Content referencing Content from field_popp_serie_supp_struct'),
-    t('Title'),
+    t('Node référençant Node depuis field_popp_serie_supp_struct'),
+    t('Titre'),
     t('Audience de groupes'),
     t('Axe(s) thématique(s)'),
     t('[field_popp_serie_thematic_axis-tid]'),
@@ -1535,49 +1608,49 @@ function structure_front_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Edit link */
+  /* Champ: Contenu : Lien de modification */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Delete link */
+  /* Champ: Contenu : Lien de suppression */
   $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   $handler->display->display_options['fields']['delete_node']['label'] = '';
   $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Type */
+  /* Champ: Contenu : Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Field: Global: Custom text */
+  /* Champ: Global : Texte personnalisé */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Actions';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[edit_node] - [delete_node]';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1596,14 +1669,14 @@ function structure_front_views_default_views() {
   $handler->display->display_options['title'] = 'Gestion des logos des financeurs';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1627,12 +1700,11 @@ function structure_front_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
-    t('Title'),
+    t('Titre'),
     t('Type'),
     t('Actions'),
     t('[edit_node] - [delete_node]'),
     t('Page'),
-    t('more'),
     t('Gestion des logos des financeurs'),
   );
   $export['popp_supp_struct_management'] = $view;
@@ -1649,12 +1721,16 @@ function structure_front_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = '<none>';
+  $handler->display->display_options['title'] = '--aucun--';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Réinitialiser';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
@@ -1679,26 +1755,24 @@ function structure_front_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* No results behavior: Global: Text area */
+  /* Comportement en l'absence de résultats: Global : Zone de texte */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<h3>Aucun son pour le moment</h3>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relation: Entity Reference : Entité référante */
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['id'] = 'reverse_field_popp_serie_testimonies_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['field'] = 'reverse_field_popp_serie_testimonies_node';
-  $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['label'] = 'Contenu référençant Contenu depuis field_popp_serie_testimonies';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_testimonies_node']['required'] = TRUE;
-  /* Relationship: Content: Author */
+  /* Relation: Contenu : Auteur */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['label'] = 'auteur';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Relationship: User: Profile */
+  /* Relation: Utilisateur : Profile */
   $handler->display->display_options['relationships']['profile']['id'] = 'profile';
   $handler->display->display_options['relationships']['profile']['table'] = 'users';
   $handler->display->display_options['relationships']['profile']['field'] = 'profile';
@@ -1707,7 +1781,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['relationships']['profile']['bundle_types'] = array(
     'identification' => 'identification',
   );
-  /* Field: Content: Licence du son */
+  /* Champ: Node : Licence du son */
   $handler->display->display_options['fields']['field_popp_tty_rights']['id'] = 'field_popp_tty_rights';
   $handler->display->display_options['fields']['field_popp_tty_rights']['table'] = 'field_data_field_popp_tty_rights';
   $handler->display->display_options['fields']['field_popp_tty_rights']['field'] = 'field_popp_tty_rights';
@@ -1715,7 +1789,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['field_popp_tty_rights']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_popp_tty_rights']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_popp_tty_rights']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Date d'enregistrement */
+  /* Champ: Node : Date d'enregistrement */
   $handler->display->display_options['fields']['field_popp_tty_recording_date']['id'] = 'field_popp_tty_recording_date';
   $handler->display->display_options['fields']['field_popp_tty_recording_date']['table'] = 'field_data_field_popp_tty_recording_date';
   $handler->display->display_options['fields']['field_popp_tty_recording_date']['field'] = 'field_popp_tty_recording_date';
@@ -1729,7 +1803,7 @@ function structure_front_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Durée */
+  /* Champ: Node : Durée */
   $handler->display->display_options['fields']['field_popp_tty_duration']['id'] = 'field_popp_tty_duration';
   $handler->display->display_options['fields']['field_popp_tty_duration']['table'] = 'field_data_field_popp_tty_duration';
   $handler->display->display_options['fields']['field_popp_tty_duration']['field'] = 'field_popp_tty_duration';
@@ -1741,21 +1815,21 @@ function structure_front_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: Présentation du son */
+  /* Champ: Node : Présentation du son */
   $handler->display->display_options['fields']['field_popp_tty_descr']['id'] = 'field_popp_tty_descr';
   $handler->display->display_options['fields']['field_popp_tty_descr']['table'] = 'field_data_field_popp_tty_descr';
   $handler->display->display_options['fields']['field_popp_tty_descr']['field'] = 'field_popp_tty_descr';
   $handler->display->display_options['fields']['field_popp_tty_descr']['label'] = '';
   $handler->display->display_options['fields']['field_popp_tty_descr']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_popp_tty_descr']['element_label_colon'] = FALSE;
-  /* Field: Content: Type */
+  /* Champ: Node : Type */
   $handler->display->display_options['fields']['field_popp_tty_type']['id'] = 'field_popp_tty_type';
   $handler->display->display_options['fields']['field_popp_tty_type']['table'] = 'field_data_field_popp_tty_type';
   $handler->display->display_options['fields']['field_popp_tty_type']['field'] = 'field_popp_tty_type';
   $handler->display->display_options['fields']['field_popp_tty_type']['label'] = '';
   $handler->display->display_options['fields']['field_popp_tty_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_popp_tty_type']['element_label_colon'] = FALSE;
-  /* Field: Profile: Nom */
+  /* Champ: Profile : Nom */
   $handler->display->display_options['fields']['field_popp_name']['id'] = 'field_popp_name';
   $handler->display->display_options['fields']['field_popp_name']['table'] = 'field_data_field_popp_name';
   $handler->display->display_options['fields']['field_popp_name']['field'] = 'field_popp_name';
@@ -1763,7 +1837,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['field_popp_name']['label'] = '';
   $handler->display->display_options['fields']['field_popp_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_popp_name']['element_label_colon'] = FALSE;
-  /* Field: Profile: Prénom */
+  /* Champ: Profile : Prénom */
   $handler->display->display_options['fields']['field_popp_nickname']['id'] = 'field_popp_nickname';
   $handler->display->display_options['fields']['field_popp_nickname']['table'] = 'field_data_field_popp_nickname';
   $handler->display->display_options['fields']['field_popp_nickname']['field'] = 'field_popp_nickname';
@@ -1771,7 +1845,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['field_popp_nickname']['label'] = '';
   $handler->display->display_options['fields']['field_popp_nickname']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_popp_nickname']['element_label_colon'] = FALSE;
-  /* Field: Content: Structure responsable de la création du contenu */
+  /* Champ: Node : Structure responsable de la création du contenu */
   $handler->display->display_options['fields']['field_popp_tty_resp_structure']['id'] = 'field_popp_tty_resp_structure';
   $handler->display->display_options['fields']['field_popp_tty_resp_structure']['table'] = 'field_data_field_popp_tty_resp_structure';
   $handler->display->display_options['fields']['field_popp_tty_resp_structure']['field'] = 'field_popp_tty_resp_structure';
@@ -1781,7 +1855,7 @@ function structure_front_views_default_views() {
   $handler->display->display_options['fields']['field_popp_tty_resp_structure']['settings'] = array(
     'link' => 0,
   );
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -1794,7 +1868,7 @@ Présentation : [field_popp_tty_descr]';
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Auteur / Preneur de son */
+  /* Champ: Node : Auteur / Preneur de son */
   $handler->display->display_options['fields']['field_popp_tty_author']['id'] = 'field_popp_tty_author';
   $handler->display->display_options['fields']['field_popp_tty_author']['table'] = 'field_data_field_popp_tty_author';
   $handler->display->display_options['fields']['field_popp_tty_author']['field'] = 'field_popp_tty_author';
@@ -1804,7 +1878,7 @@ Présentation : [field_popp_tty_descr]';
 Contributeur : [field_popp_nickname] [field_popp_name]<br/>
 Strcuture responsable de la création du contenu : [field_popp_tty_resp_structure]<br/>';
   $handler->display->display_options['fields']['field_popp_tty_author']['element_label_colon'] = FALSE;
-  /* Field: Content: Fichier */
+  /* Champ: Node : Fichier */
   $handler->display->display_options['fields']['field_popp_tty_file']['id'] = 'field_popp_tty_file';
   $handler->display->display_options['fields']['field_popp_tty_file']['table'] = 'field_data_field_popp_tty_file';
   $handler->display->display_options['fields']['field_popp_tty_file']['field'] = 'field_popp_tty_file';
@@ -1829,12 +1903,12 @@ Licence : [field_popp_tty_rights]<br/>
     'repeat' => 'none',
     'backgroundColor' => '000000',
   );
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -1845,14 +1919,14 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1864,15 +1938,15 @@ Licence : [field_popp_tty_rights]<br/>
   $handler = $view->new_display('block', 'Block', 'block');
   $translatables['popp_testimonies_display'] = array(
     t('Master'),
-    t('<none>'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
+    t('--aucun--'),
+    t('plus'),
+    t('Appliquer'),
+    t('Réinitialiser'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
     t('<h3>Aucun son pour le moment</h3>'),
-    t('Contenu référençant Contenu depuis field_popp_serie_testimonies'),
+    t('Node référençant Node depuis field_popp_serie_testimonies'),
     t('auteur'),
     t('Profil'),
     t('[field_popp_tty_duration] mn'),
@@ -1944,18 +2018,18 @@ Licence : [field_popp_tty_rights]<br/>
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Footer: Global: Unfiltered text */
+  /* Pied de page: Global : Texte non filtré */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div id="photoResult"></div>';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Géolocalisation */
+  /* Champ: Node : Géolocalisation */
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['id'] = 'field_popp_serie_geolocation';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['table'] = 'field_data_field_popp_serie_geolocation';
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['field'] = 'field_popp_serie_geolocation';
@@ -1964,19 +2038,19 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['fields']['field_popp_serie_geolocation']['settings'] = array(
     'map' => 'popp_home_map',
   );
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2018,7 +2092,6 @@ Licence : [field_popp_tty_rights]<br/>
     t('dernier »'),
     t('<div id="photoResult"></div>'),
     t('Page'),
-    t('more'),
   );
   $export['popp_view_home'] = $view;
 
@@ -2048,32 +2121,32 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Contenu */
+  /* Champ: Node : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Content: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Node : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -2100,7 +2173,6 @@ Licence : [field_popp_tty_rights]<br/>
     t('Asc'),
     t('Desc'),
     t('Page'),
-    t('more'),
   );
   $export['popp_view_page_cgu'] = $view;
 
@@ -2130,32 +2202,32 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Contenu */
+  /* Champ: Node : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Content: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Node : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -2182,7 +2254,6 @@ Licence : [field_popp_tty_rights]<br/>
     t('Asc'),
     t('Desc'),
     t('Page'),
-    t('more'),
   );
   $export['popp_view_page_mentions'] = $view;
 
@@ -2211,29 +2282,29 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Relationship: OG membership: OG membership from Node */
+  /* Relation: Adhésion OG : Adhésion OG à partir de Node */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Nom de l\'OPP';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2259,10 +2330,9 @@ Licence : [field_popp_tty_rights]<br/>
     t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('OG membership from node'),
+    t('Adhésion OG à partir de node'),
     t('Nom de l\'OPP'),
     t('Page'),
-    t('more'),
   );
   $export['popp_view_page_participez'] = $view;
 
@@ -2292,32 +2362,32 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Contenu */
+  /* Champ: Node : Contenu */
   $handler->display->display_options['fields']['field_popp_page_content']['id'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['table'] = 'field_data_field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['field'] = 'field_popp_page_content';
   $handler->display->display_options['fields']['field_popp_page_content']['label'] = '';
   $handler->display->display_options['fields']['field_popp_page_content']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_page' => 'popp_page',
   );
-  /* Filter criterion: Content: Entrée Menu (field_popp_entry_menu) */
+  /* Critère de filtrage: Node : Entrée Menu (field_popp_entry_menu) */
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['id'] = 'field_popp_entry_menu_value';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['table'] = 'field_data_field_popp_entry_menu';
   $handler->display->display_options['filters']['field_popp_entry_menu_value']['field'] = 'field_popp_entry_menu_value';
@@ -2344,7 +2414,6 @@ Licence : [field_popp_tty_rights]<br/>
     t('Asc'),
     t('Desc'),
     t('Page'),
-    t('more'),
   );
   $export['popp_view_page_propos'] = $view;
 
@@ -2403,14 +2472,14 @@ Licence : [field_popp_tty_rights]<br/>
       'empty_column' => 0,
     ),
   );
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Logo */
+  /* Champ: Node : Logo */
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['id'] = 'field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['table'] = 'field_data_field_popp_supp_struct_logo';
   $handler->display->display_options['fields']['field_popp_supp_struct_logo']['field'] = 'field_popp_supp_struct_logo';
@@ -2421,7 +2490,7 @@ Licence : [field_popp_tty_rights]<br/>
     'image_style' => 'thumbnail',
     'image_link' => '',
   );
-  /* Field: Content: Description courte */
+  /* Champ: Node : Description courte */
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['id'] = 'field_popp_supp_struc_shortdesc';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['table'] = 'field_data_field_popp_supp_struc_shortdesc';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['field'] = 'field_popp_supp_struc_shortdesc';
@@ -2430,19 +2499,19 @@ Licence : [field_popp_tty_rights]<br/>
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['alter']['text'] = '<h3>[title]</h3>
 [field_popp_supp_struc_shortdesc] ';
   $handler->display->display_options['fields']['field_popp_supp_struc_shortdesc']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Title */
+  /* Critère de tri: Contenu : Titre */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -2478,7 +2547,6 @@ Licence : [field_popp_tty_rights]<br/>
     t('<h3>[title]</h3>
 [field_popp_supp_struc_shortdesc] '),
     t('Page'),
-    t('more'),
   );
   $export['popp_view_page_structures'] = $view;
 

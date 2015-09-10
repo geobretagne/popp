@@ -55,6 +55,29 @@ function term_taxonomy_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'landscape_typologies' => array(
+      'name' => 'Typologies de paysages',
+      'machine_name' => 'landscape_typologies',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'landscape_units' => array(
       'name' => 'Unité de paysage',
       'machine_name' => 'landscape_units',
@@ -81,6 +104,52 @@ function term_taxonomy_taxonomy_default_vocabularies() {
     'popp_countries' => array(
       'name' => 'Pays',
       'machine_name' => 'popp_countries',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'popp_nonreq_thesaurus' => array(
+      'name' => 'Thésaurus facultatif',
+      'machine_name' => 'popp_nonreq_thesaurus',
+      'description' => '',
+      'hierarchy' => 1,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'popp_refdoc_type' => array(
+      'name' => 'Type de doc. référence',
+      'machine_name' => 'popp_refdoc_type',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
@@ -239,29 +308,6 @@ function term_taxonomy_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'popp_tax_tags' => array(
-      'name' => 'Tags',
-      'machine_name' => 'popp_tax_tags',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'popp_tax_thepopp' => array(
       'name' => 'Les OPP',
       'machine_name' => 'popp_tax_thepopp',
@@ -289,7 +335,7 @@ function term_taxonomy_taxonomy_default_vocabularies() {
       'name' => 'Thésaurus',
       'machine_name' => 'popp_tax_thesaurus',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(
@@ -311,6 +357,29 @@ function term_taxonomy_taxonomy_default_vocabularies() {
     'popp_thematic_axes' => array(
       'name' => 'Axes thématiques',
       'machine_name' => 'popp_thematic_axes',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'popp_thematic_local_axes' => array(
+      'name' => 'Axes thématiques locaux',
+      'machine_name' => 'popp_thematic_local_axes',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
@@ -358,29 +427,6 @@ function term_taxonomy_taxonomy_default_vocabularies() {
       'name' => 'Région',
       'machine_name' => 'region',
       'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'tags' => array(
-      'name' => 'Tags',
-      'machine_name' => 'tags',
-      'description' => 'Use tags to group articles on similar topics into categories.',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,

@@ -311,22 +311,24 @@ function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$fo
         $entity_form['#title'] = 'Ajouter une photo';
     }
     if ($entity_form['#entity']->type == 'popp_photo' && (isset($entity_form['#entity']->is_new) && $entity_form['#entity']->is_new)) {
-        $parentNid         = $form_state['build_info']['args'][0]->nid;
-        $existingThesaurus = getExistingThesaurus($parentNid);
-        $existingNonOaiPmh = getNotOaiPmhData($parentNid);
-        $index             = 0;
-        foreach ($existingThesaurus as $thesElement) {
-            if (! ifThesaurusOk($thesElement)) {
-                continue;
+        if(isset($form_state['build_info']['args'][0]->nid)){
+            $parentNid         = $form_state['build_info']['args'][0]->nid;
+            $existingThesaurus = getExistingThesaurus($parentNid);
+            $existingNonOaiPmh = getNotOaiPmhData($parentNid);
+            $index             = 0;
+            foreach ($existingThesaurus as $thesElement) {
+                if (! ifThesaurusOk($thesElement)) {
+                    continue;
+                }
+                $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]                                                          = $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][0];
+                $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['#parents'][5]                                           = $index;
+                $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_elt'][LANGUAGE_NONE]['#default_value']  = [$thesElement['thes_elements'][LANGUAGE_NONE][0]['tid'] => 1];
+                $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_evol'][LANGUAGE_NONE]['#default_value'] = [0 => 'stability'];
+                $index++;
             }
-            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]                                                          = $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][0];
-            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['#parents'][5]                                           = $index;
-            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_elt'][LANGUAGE_NONE]['#default_value']  = [$thesElement['thes_elements'][LANGUAGE_NONE][0]['tid'] => 1];
-            $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_evol'][LANGUAGE_NONE]['#default_value'] = [0 => 'stability'];
-            $index++;
-        }
-        foreach ($existingNonOaiPmh as $key => $data) {
-            $entity_form[$key][LANGUAGE_NONE][0]['value']['#default_value'] = $data;
+            foreach ($existingNonOaiPmh as $key => $data) {
+                $entity_form[$key][LANGUAGE_NONE][0]['value']['#default_value'] = $data;
+            }
         }
     }
 
@@ -546,7 +548,7 @@ function getPhotoLicences($nid, $return = false)
             $photography = node_load($photo['target_id']);
             if (isset($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0])) {
                 $taxo                    = taxonomy_term_load($photography->field_popp_photo_copyrights[LANGUAGE_NONE][0]['tid']);
-                $resultTable[$taxo->tid] = $taxo->name;
+                $resultTable[$taxo->tid] = '<a href="/licences" title="Voir les licences">'.$taxo->name.'</a>';
             }
         }
     }

@@ -65,9 +65,6 @@ if(!empty($node->field_popp_serie_external_links[LANGUAGE_NONE])){
         $serieLinks .= '<div class="field-item even"><a target="_blank" href="'.$link['value'].'">'.$link['value'].'</a></div>';
     }
 }
-if($serieLinks !== ''){
-    $serieLinks = '<div class="field field-name-field-popp-serie-external-links field-type-text field-label-above"><div class="field-label">'.t('Liens externes en lien avec la série').':&nbsp;</div></div>'.$serieLinks;
-}
 
 /**
  * @file
@@ -262,7 +259,6 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_per']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_thematic_axis']) ?>
                                     <?= drupal_render($nodeToDisplay['field_popp_serie_loc_axes']) ?>
-                                    <?= $serieLinks ?>
                                     <div id="sameThematicAxis">
                                     </div>
                                     <div id="photoLicences">
@@ -361,9 +357,9 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                                data-toggle="tab">Commentaires (<?= $commentsCount ?>)</a></li>
                     <li role="presentation"><a href="#sons" aria-controls="sons" role="tab"
                                                data-toggle="tab">Sons</a>
-                        <?php if ($docsView->total_rows > 0): ?>
+                        <?php if ($docsView->total_rows > 0 || $serieLinks != ''): ?>
                     <li role="presentation"><a href="#documentation" aria-controls="sons" role="tab"
-                                               data-toggle="tab">Documentation</a> <?php endif; ?>
+                                               data-toggle="tab">Documentations</a> <?php endif; ?>
                 </ul>
 
                 <!-- Tab panes -->
@@ -403,7 +399,15 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                         <?= getChangesTable($node) ?>
                     </div>
                     <div role="tabpanel" class="tab-pane highlight" id="documentation">
+                     <?php if ($docsView->total_rows > 0): ?>
+                     <h4>Documents associés à la série</h4>
                         <?= $docsView->render() ?>
+                        <br/>
+                         <?php endif; ?>
+                         <?php if ($serieLinks != ''): ?>
+                     <h4>Liens associés à la série</h4>
+                        <?= $serieLinks ?>
+                         <?php endif; ?>
                     </div>
                 </div>
             </div>

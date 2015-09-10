@@ -65,3 +65,85 @@ function admin_structure_flag_default_flags() {
   return $flags;
 
 }
+
+/**
+ * Implements hook_node_info().
+ */
+function admin_structure_node_info() {
+  $items = array(
+    'partner_logo' => array(
+      'name' => t('Logo partenaire'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
+      'help' => '',
+    ),
+    'popp_documentation' => array(
+      'name' => t('Documentation'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
+      'help' => '',
+    ),
+    'popp_page' => array(
+      'name' => t('Page POPP'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
+      'help' => '',
+    ),
+    'popp_photo' => array(
+      'name' => t('Photo'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
+      'help' => '',
+    ),
+    'popp_photo_serie' => array(
+      'name' => t('Série photo'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre de la série'),
+      'help' => '',
+    ),
+    'popp_record_field' => array(
+      'name' => t('Fiche terrain'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre'),
+      'help' => '',
+    ),
+    'popp_reference_document' => array(
+      'name' => t('Document référence'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Identifiant du document de référence'),
+      'help' => '',
+    ),
+    'popp_testimony_sheet' => array(
+      'name' => t('Son'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Titre du son'),
+      'help' => '',
+    ),
+    'supporting_structure' => array(
+      'name' => t('Fiche porteur OPP'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Nom'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
+}

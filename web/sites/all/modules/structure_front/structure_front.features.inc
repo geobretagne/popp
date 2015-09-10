@@ -24,52 +24,6 @@ function structure_front_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_flag_default_flags().
- */
-function structure_front_flag_default_flags() {
-  $flags = array();
-  // Exported flag: "Ajout de séries dans la panier".
-  $flags['add_serie_caddy'] = array(
-    'entity_type' => 'node',
-    'title' => 'Ajout de séries dans la panier',
-    'global' => 0,
-    'types' => array(
-      0 => 'popp_photo_serie',
-    ),
-    'flag_short' => 'Ajouter dans le panier',
-    'flag_long' => '',
-    'flag_message' => '',
-    'unflag_short' => 'Retirer du panier',
-    'unflag_long' => '',
-    'unflag_message' => '',
-    'unflag_denied_text' => '',
-    'link_type' => 'toggle',
-    'weight' => 0,
-    'show_in_links' => array(
-      'full' => 0,
-      'teaser' => 0,
-      'rss' => 0,
-      'search_index' => 0,
-      'search_result' => 0,
-      'print' => 0,
-      'token' => 0,
-    ),
-    'show_as_field' => 0,
-    'show_on_form' => 0,
-    'access_author' => '',
-    'show_contextual_link' => 0,
-    'i18n' => 0,
-    'module' => 'structure_front',
-    'locked' => array(
-      0 => 'name',
-    ),
-    'api_version' => 3,
-  );
-  return $flags;
-
-}
-
-/**
  * Implements hook_image_default_styles().
  */
 function structure_front_image_default_styles() {
@@ -118,7 +72,7 @@ function structure_front_image_default_styles() {
           'height' => 50,
           'upscale' => 1,
         ),
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
   );
@@ -134,7 +88,23 @@ function structure_front_image_default_styles() {
           'height' => 85,
           'upscale' => 0,
         ),
-        'weight' => 1,
+        'weight' => 3,
+      ),
+    ),
+  );
+
+  // Exported image style: photo_sheet_display.
+  $styles['photo_sheet_display'] = array(
+    'label' => 'Affichage fiche photo',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 725,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => 4,
       ),
     ),
   );
@@ -150,94 +120,12 @@ function structure_front_image_default_styles() {
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => 1,
+        'weight' => 5,
       ),
     ),
   );
 
   return $styles;
-}
-
-/**
- * Implements hook_node_info().
- */
-function structure_front_node_info() {
-  $items = array(
-    'partner_logo' => array(
-      'name' => t('Logo partenaire'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre'),
-      'help' => '',
-    ),
-    'popp_documentation' => array(
-      'name' => t('Documentation'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre'),
-      'help' => '',
-    ),
-    'popp_page' => array(
-      'name' => t('Page POPP'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre'),
-      'help' => '',
-    ),
-    'popp_photo' => array(
-      'name' => t('Photo'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre'),
-      'help' => '',
-    ),
-    'popp_photo_serie' => array(
-      'name' => t('Série photo'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre de la série'),
-      'help' => '',
-    ),
-    'popp_record_field' => array(
-      'name' => t('Fiche terrain'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre'),
-      'help' => '',
-    ),
-    'popp_reference_document' => array(
-      'name' => t('Document référence'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Identifiant du document de référence'),
-      'help' => '',
-    ),
-    'popp_testimony_sheet' => array(
-      'name' => t('Son'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre du son'),
-      'help' => '',
-    ),
-    'supporting_structure' => array(
-      'name' => t('Fiche porteur OPP'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Nom'),
-      'help' => '',
-    ),
-  );
-  drupal_alter('node_info', $items);
-  return $items;
 }
 
 /**
@@ -270,15 +158,6 @@ function structure_front_default_profile2_type() {
     "label" : "Mes engagements",
     "weight" : "3",
     "data" : { "registration" : 1 },
-    "rdf_mapping" : []
-  }');
-  $items['popp_profile_participative'] = entity_import('profile2_type', '{
-    "userCategory" : true,
-    "userView" : true,
-    "type" : "popp_profile_participative",
-    "label" : "Volet participatif",
-    "weight" : "0",
-    "data" : { "registration" : 0 },
     "rdf_mapping" : []
   }');
   return $items;

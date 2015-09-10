@@ -38,12 +38,12 @@ function carto_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entity Reference: Referencing entity */
+  /* Relation: Entity Reference : Entité référante */
   $handler->display->display_options['relationships']['reverse_field_popp_serie_photo_list_node']['id'] = 'reverse_field_popp_serie_photo_list_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_photo_list_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_photo_list_node']['field'] = 'reverse_field_popp_serie_photo_list_node';
   $handler->display->display_options['relationships']['reverse_field_popp_serie_photo_list_node']['required'] = TRUE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -51,14 +51,14 @@ function carto_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Photographie */
+  /* Champ: Node : Photographie */
   $handler->display->display_options['fields']['field_popp_photo_file']['id'] = 'field_popp_photo_file';
   $handler->display->display_options['fields']['field_popp_photo_file']['table'] = 'field_data_field_popp_photo_file';
   $handler->display->display_options['fields']['field_popp_photo_file']['field'] = 'field_popp_photo_file';
@@ -71,7 +71,7 @@ function carto_views_default_views() {
     'image_style' => 'miniature_serie_photo',
     'image_link' => '',
   );
-  /* Field: Content: Date de la prise de vue */
+  /* Champ: Node : Date de la prise de vue */
   $handler->display->display_options['fields']['field_popp_photo_date']['id'] = 'field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['table'] = 'field_data_field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['field'] = 'field_popp_photo_date';
@@ -84,12 +84,12 @@ function carto_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['relationship'] = 'reverse_field_popp_serie_photo_list_node';
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -100,7 +100,7 @@ function carto_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['arguments']['nid_1']['table'] = 'node';
   $handler->display->display_options['arguments']['nid_1']['field'] = 'nid';
@@ -110,14 +110,14 @@ function carto_views_default_views() {
   $handler->display->display_options['arguments']['nid_1']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid_1']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid_1']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -129,7 +129,7 @@ function carto_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -159,7 +159,7 @@ function carto_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'suivant ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'dernier »';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -167,14 +167,14 @@ function carto_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['fields']['nid_1']['table'] = 'node';
   $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Photographie */
+  /* Champ: Node : Photographie */
   $handler->display->display_options['fields']['field_popp_photo_file']['id'] = 'field_popp_photo_file';
   $handler->display->display_options['fields']['field_popp_photo_file']['table'] = 'field_data_field_popp_photo_file';
   $handler->display->display_options['fields']['field_popp_photo_file']['field'] = 'field_popp_photo_file';
@@ -187,7 +187,7 @@ function carto_views_default_views() {
     'image_style' => 'miniature_serie_photo',
     'image_link' => '',
   );
-  /* Field: Global: View result counter */
+  /* Champ: Global : Voir le compteur de résultats */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
   $handler->display->display_options['fields']['counter']['field'] = 'counter';
@@ -196,7 +196,7 @@ function carto_views_default_views() {
   $handler->display->display_options['fields']['counter']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['counter']['counter_start'] = '1';
   $handler->display->display_options['fields']['counter']['reverse'] = 0;
-  /* Field: Content: Date de la prise de vue */
+  /* Champ: Node : Date de la prise de vue */
   $handler->display->display_options['fields']['field_popp_photo_date']['id'] = 'field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['table'] = 'field_data_field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['field'] = 'field_popp_photo_date';
@@ -212,7 +212,7 @@ function carto_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -230,7 +230,7 @@ function carto_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Photographie */
+  /* Champ: Node : Photographie */
   $handler->display->display_options['fields']['field_popp_photo_file']['id'] = 'field_popp_photo_file';
   $handler->display->display_options['fields']['field_popp_photo_file']['table'] = 'field_data_field_popp_photo_file';
   $handler->display->display_options['fields']['field_popp_photo_file']['field'] = 'field_popp_photo_file';
@@ -242,7 +242,7 @@ function carto_views_default_views() {
     'image_style' => 'photo_sheet_display',
     'image_link' => '',
   );
-  /* Field: Content: Fichier */
+  /* Champ: Node : Fichier */
   $handler->display->display_options['fields']['field_popp_refdoc_file']['id'] = 'field_popp_refdoc_file';
   $handler->display->display_options['fields']['field_popp_refdoc_file']['table'] = 'field_data_field_popp_refdoc_file';
   $handler->display->display_options['fields']['field_popp_refdoc_file']['field'] = 'field_popp_refdoc_file';
@@ -254,7 +254,7 @@ function carto_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Nid */
+  /* Filtre contextuel: Contenu : Nid */
   $handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
   $handler->display->display_options['arguments']['nid_1']['table'] = 'node';
   $handler->display->display_options['arguments']['nid_1']['field'] = 'nid';
@@ -271,7 +271,7 @@ function carto_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Heure */
+  /* Champ: Node : Heure */
   $handler->display->display_options['fields']['field_popp_photo_hour']['id'] = 'field_popp_photo_hour';
   $handler->display->display_options['fields']['field_popp_photo_hour']['table'] = 'field_data_field_popp_photo_hour';
   $handler->display->display_options['fields']['field_popp_photo_hour']['field'] = 'field_popp_photo_hour';
@@ -282,11 +282,11 @@ function carto_views_default_views() {
     'format' => 'h:mm',
     'leading_zero' => 1,
   );
-  /* Field: Content: Auteur de la reconduction */
+  /* Champ: Node : Auteur de la reconduction */
   $handler->display->display_options['fields']['field_popp_photo_author']['id'] = 'field_popp_photo_author';
   $handler->display->display_options['fields']['field_popp_photo_author']['table'] = 'field_data_field_popp_photo_author';
   $handler->display->display_options['fields']['field_popp_photo_author']['field'] = 'field_popp_photo_author';
-  /* Field: Content: Date de la prise de vue */
+  /* Champ: Node : Date de la prise de vue */
   $handler->display->display_options['fields']['field_popp_photo_date']['id'] = 'field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['table'] = 'field_data_field_popp_photo_date';
   $handler->display->display_options['fields']['field_popp_photo_date']['field'] = 'field_popp_photo_date';
@@ -300,10 +300,12 @@ function carto_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Licence de la photo */
+  /* Champ: Node : Licence de la photo */
   $handler->display->display_options['fields']['field_popp_photo_copyrights']['id'] = 'field_popp_photo_copyrights';
   $handler->display->display_options['fields']['field_popp_photo_copyrights']['table'] = 'field_data_field_popp_photo_copyrights';
   $handler->display->display_options['fields']['field_popp_photo_copyrights']['field'] = 'field_popp_photo_copyrights';
+  $handler->display->display_options['fields']['field_popp_photo_copyrights']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_popp_photo_copyrights']['alter']['text'] = '<a href="/licences" title="Afficher les licences">[field_popp_photo_copyrights]</a>';
   $handler->display->display_options['fields']['field_popp_photo_copyrights']['type'] = 'taxonomy_term_reference_plain';
   $translatables['popp_search_result_view'] = array(
     t('Master'),
@@ -314,11 +316,10 @@ function carto_views_default_views() {
     t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Content referencing Content from field_popp_serie_photo_list'),
+    t('Node référençant Node depuis field_popp_serie_photo_list'),
     t('<a href="/node/[nid]/[nid_1]">[field_popp_photo_file]</a>'),
     t('Tout'),
     t('Block'),
-    t('more'),
     t('Bloc'),
     t('Éléments par page'),
     t('- Tout -'),
@@ -335,6 +336,7 @@ function carto_views_default_views() {
     t('Date et heure'),
     t('[field_popp_photo_date] - [field_popp_photo_hour]'),
     t('Licence de la photo'),
+    t('<a href="/licences" title="Afficher les licences">[field_popp_photo_copyrights]</a>'),
   );
   $export['popp_search_result_view'] = $view;
 
@@ -377,41 +379,37 @@ function carto_views_default_views() {
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Relationship: OG membership: Group Node from OG membership */
+  /* Relation: Adhésion OG : Groupe Node de l'adhésion OG */
   $handler->display->display_options['relationships']['og_membership_related_node_group']['id'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['required'] = TRUE;
-  /* Relationship: OG membership: Type */
+  /* Relation: OG membership : Type */
   $handler->display->display_options['relationships']['type']['id'] = 'type';
   $handler->display->display_options['relationships']['type']['table'] = 'og_membership';
   $handler->display->display_options['relationships']['type']['field'] = 'type';
+  $handler->display->display_options['relationships']['type']['label'] = 'Type d\'adhésion OG';
   $handler->display->display_options['relationships']['type']['required'] = TRUE;
-  /* Field: Content: Nid */
+  /* Champ: Contenu : Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Global: PHP */
+  /* Champ: Gestionnaire défectueux/manquant */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
   $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_setup'] = 'print("BAYZAY");';
-  $handler->display->display_options['fields']['php']['php_output'] = '<div style="margin-bottom:5px;"><?=flag_create_link(\'add_serie_caddy\', $row->nid);?></div>';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Emplacement de la série */
+  /* Champ: Node : Emplacement de la série */
   $handler->display->display_options['fields']['field_popp_serie_place']['id'] = 'field_popp_serie_place';
   $handler->display->display_options['fields']['field_popp_serie_place']['table'] = 'field_data_field_popp_serie_place';
   $handler->display->display_options['fields']['field_popp_serie_place']['field'] = 'field_popp_serie_place';
@@ -421,18 +419,18 @@ function carto_views_default_views() {
   $handler->display->display_options['fields']['field_popp_serie_place']['settings'] = array(
     'map' => 'default',
   );
-  /* Field: Content: Title */
+  /* Champ: Contenu : Titre */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
   $handler->display->display_options['fields']['title_1']['label'] = 'Titre OG';
-  /* Field: Content: Type */
+  /* Champ: Contenu : Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['relationship'] = 'og_membership_related_node_group';
-  /* Field: Content: Commune */
+  /* Champ: Node : Commune */
   $handler->display->display_options['fields']['field_popp_serie_town']['id'] = 'field_popp_serie_town';
   $handler->display->display_options['fields']['field_popp_serie_town']['table'] = 'field_data_field_popp_serie_town';
   $handler->display->display_options['fields']['field_popp_serie_town']['field'] = 'field_popp_serie_town';
@@ -442,26 +440,26 @@ function carto_views_default_views() {
 [php]';
   $handler->display->display_options['fields']['field_popp_serie_town']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_popp_serie_town']['type'] = 'taxonomy_term_reference_plain';
-  /* Sort criterion: Content: Post date */
+  /* Critère de tri: Contenu : Date de publication */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_photo_serie' => 'popp_photo_serie',
   );
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
   $handler->display->display_options['filters']['type_1']['table'] = 'node';
   $handler->display->display_options['filters']['type_1']['field'] = 'type';
@@ -484,21 +482,21 @@ function carto_views_default_views() {
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Critère de filtrage: Contenu : Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'popp_photo_serie' => 'popp_photo_serie',
   );
-  /* Filter criterion: Content: Type */
+  /* Critère de filtrage: Contenu : Type */
   $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
   $handler->display->display_options['filters']['type_1']['table'] = 'node';
   $handler->display->display_options['filters']['type_1']['field'] = 'type';
@@ -514,14 +512,13 @@ function carto_views_default_views() {
     t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Group node from OG membership'),
-    t('OG membership type'),
+    t('Groupe node de l\'adhésion OG'),
+    t('Type d\'adhésion OG'),
     t('Titre OG'),
     t('Type'),
     t('[field_popp_serie_town]<br/>
 [php]'),
     t('Layer Home'),
-    t('more'),
     t('Layer Home PA'),
   );
   $export['popp_views_home_layer'] = $view;

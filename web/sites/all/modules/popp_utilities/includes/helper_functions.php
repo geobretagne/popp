@@ -240,6 +240,9 @@ function fetchPhotoYears(&$resultArray, $label, $nid, $items)
     }
     foreach ($items as $item) {
         $photo                                                                             = node_load($item['target_id']);
+        if(!$photo){
+            continue;
+        }
         $dateTime                                                                          = new DateTime($photo->field_popp_photo_date['und'][0]['value']);
         $resultArray[$label]['dates']['values'][$dateTime->format('Y')]['label']           = $dateTime->format('Y');
         $resultArray[$label]['dates']['values'][$dateTime->format('Y')]['presentOnNode'][] = $nid;

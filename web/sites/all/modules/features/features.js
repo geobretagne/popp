@@ -128,12 +128,10 @@ jQuery.fn.sortElements = (function(){
             if (!$(this).hasClass('features-checkall')) {
               var key = $(this).attr('name');
               var matches = key.match(/^([^\[]+)(\[.+\])?\[(.+)\]\[(.+)\]$/);
-              if (matches != null) {
-                var component = matches[1];
-                var item = matches[4];
-                if ((component in moduleConflicts) && (moduleConflicts[component].indexOf(item) != -1)) {
-                  $(this).parent().addClass('features-conflict');
-                }
+              var component = matches[1];
+              var item = matches[4];
+              if ((component in moduleConflicts) && (moduleConflicts[component].indexOf(item) != -1)) {
+                $(this).parent().addClass('features-conflict');
               }
             }
           });
@@ -292,7 +290,7 @@ jQuery.fn.sortElements = (function(){
       }
 
       // Handle component selection UI
-      $('#features-export-wrapper input[type=checkbox]:not(.processed)', context).addClass('processed').click(function() {
+      $('#features-export-wrapper input[type=checkbox]', context).click(function() {
         _resetTimeout();
         if ($(this).hasClass('component-select')) {
           moveCheckbox(this, 'added', true);

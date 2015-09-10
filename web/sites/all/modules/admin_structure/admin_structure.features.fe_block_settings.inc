@@ -20,10 +20,8 @@ function admin_structure_default_fe_block_settings() {
     'node_types' => array(),
     'pages' => '',
     'roles' => array(
-      'administrator' => 4,
-      'Import de masse' => 9,
-      'Root' => 3,
-      'utilisateur authentifié' => 2,
+      'administrator' => 3,
+      'Import de masse' => 4,
     ),
     'themes' => array(
       'bartik' => array(

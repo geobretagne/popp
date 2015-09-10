@@ -157,7 +157,6 @@ function admin_structure_menu_default_menu_links() {
     'weight' => -39,
     'customized' => 1,
   );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Ajouter un OPP Participatif');
@@ -167,6 +166,7 @@ function admin_structure_menu_default_menu_links() {
   t('Ajouter une structure porteuse');
   t('Gestion des utilisateurs');
   t('Import de masse');
+
 
   return $menu_links;
 }

@@ -94,15 +94,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '048ced27-a38e-4fa9-ad54-5a76ae7f6342',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 94,
-          'format' => NULL,
-          'safe_value' => 94,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'bassin lacustre',
@@ -131,15 +123,23 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '0584bd97-5abf-42d5-9076-5d52b03288fe',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 91,
-          'format' => NULL,
-          'safe_value' => 91,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'phénomène',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 7,
+    'uuid' => '05960e43-16f0-4bd6-b157-a6bbb2df39e8',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'Le Trégormorlaisien (UP10)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '06068c06-0081-4f0c-8d99-63480c9c4b2d',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'bassin de retenue',
@@ -159,6 +159,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '08849c41-9b94-4a8a-8dff-e069041510f6',
     'vocabulary_machine_name' => 'popp_thematic_axes',
+  );
+  $terms[] = array(
+    'name' => 'traitée',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 5,
+    'uuid' => '095257ec-9e72-41c2-9eaf-c757b1795aeb',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'Vallée de l\'Oust',
@@ -240,6 +248,15 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Paysage de plaine, de plateau',
+    'description' => '',
+    'format' => 'filtered_html',
+    'weight' => 0,
+    'uuid' => '0d39c203-2e91-4d41-a32e-2223b55834da',
+    'vocabulary_machine_name' => 'landscape_typologies',
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
     'name' => 'Côte des Mégalithes',
     'description' => '',
     'format' => 'plain_text',
@@ -260,6 +277,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'friches',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 13,
+    'uuid' => '0e44590d-957d-4556-bf4e-20f1ded4e456',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'Artificialisation du trait de côte',
     'description' => '',
     'format' => 'plain_text',
@@ -268,8 +293,8 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
-    'name' => 'Cartes postales et photos anciennes',
-    'description' => '',
+    'name' => 'Érosion littorale sur le Pays de St Brieuc',
+    'description' => 'Érosion littorale sur le Pays de St Brieuc',
     'format' => 'filtered_html',
     'weight' => 0,
     'uuid' => '0f28c515-6e00-4bd8-85f8-df5a84e922cb',
@@ -305,6 +330,23 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '7eb22f0c-8fc7-4ffa-a825-4b10ebc82b89',
     ),
+  );
+  $terms[] = array(
+    'name' => 'La presquîle de Crozon - Secteurs de Saint Nic et de
+Telgruc-sur-mer (UP 2 / 2C)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '1043004b-f142-441c-bc51-e5eb39d64236',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
+    'name' => 'Côte et arrière-pays de Penthièvre',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '112fd7ad-4f8e-4de8-89eb-45e831bc6ae2',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'piste cyclable',
@@ -346,15 +388,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '12c71358-a7d4-4cd9-b71c-993cb7d293ab',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 43,
-          'format' => NULL,
-          'safe_value' => 43,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'mine',
@@ -366,6 +400,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '4d011b82-45b1-401e-9829-a4cb52caed95',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Les Monts d’Arrée - La cuvette de Brennilis (UP8 -8C)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '13eeb969-a2e3-4490-a57a-52b407f1aa0b',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Hauteurs des Marches de Bretagne',
@@ -386,6 +428,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'c5740d46-255e-4727-b8c4-97068d8cf2e7',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Les Monts d’Arrée - Le versant sud des monts d’Arrée (UP8 -8F)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '1658aa5b-1c61-42fb-80d4-571464b80d88',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'faune',
@@ -422,15 +472,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '17b85c47-611e-4138-ad06-1ff0dd4d25a1',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 82,
-          'format' => NULL,
-          'safe_value' => 82,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Saint-Malo et le Clos-Poulet',
@@ -497,6 +539,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'La rivière de Noyalo',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '1c48646b-f578-4cc3-a8a5-6ad698d6f4c3',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'étang',
     'description' => '',
     'format' => 'plain_text',
@@ -515,6 +565,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'uuid' => '1d6b5e5e-0a25-4802-a12b-a7c636cde648',
     'vocabulary_machine_name' => 'landscape_set',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'Les Monts d’Arrée - Le plateau de Menez Meur (UP8 -8A)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '1dbc28b0-83d4-437b-a846-84e6d789ec4b',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Vallée de la Vilaine de Rennes à Langon',
@@ -543,6 +601,22 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '1ee973c2-dc5b-4a6e-b438-3ecca4458a88',
     'vocabulary_machine_name' => 'popp_thematic_axes',
+  );
+  $terms[] = array(
+    'name' => 'lisière / limites',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 12,
+    'uuid' => '1f089521-1229-45b6-9f55-b9e809e2771d',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'climat',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 6,
+    'uuid' => '1f332291-8ea9-4181-898b-638f58e324c1',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'Quiberon',
@@ -623,6 +697,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'uuid' => '247f6c32-3df0-4e14-a905-0df72ff7836c',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'exploitation agricole',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 18,
+    'uuid' => '24eb6d33-5dbf-49d6-b97a-f0dd4ef5b259',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'jachère',
@@ -806,13 +888,37 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'Coeur de la Cornouaille',
+    'name' => 'Plateau de Guéméné',
     'description' => '',
     'format' => 'filtered_html',
-    'weight' => 3,
+    'weight' => 0,
     'uuid' => '31bb0d82-1579-4b56-9262-2d40d710b331',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'Entrée du golfe',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '31c64b54-c2fa-495c-bc3c-bdcea449e86a',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
+    'name' => 'édifice',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 19,
+    'uuid' => '3232e3e8-64b5-403b-a2ce-910da4663f26',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'Les pôles urbains',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '328a8d2c-760b-4be5-99d7-3ec38284369b',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Plaine de Pluvigner',
@@ -861,15 +967,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '33fa827f-1481-4839-896d-d98723686023',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 41,
-          'format' => NULL,
-          'safe_value' => 41,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'décharge',
@@ -912,6 +1010,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'uuid' => '34b4841a-c153-480a-b4c2-9f94ffc50314',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'ornementale',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 11,
+    'uuid' => '34fa0d70-cc94-46af-b94d-ebd785239d42',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'lampadaire',
@@ -976,13 +1082,30 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'Baie d\'Audierne et littoral Bigouden',
+    'name' => 'Test typo paysage',
+    'description' => '',
+    'format' => 'filtered_html',
+    'weight' => 0,
+    'uuid' => '379f8627-e6eb-4b02-b684-7287515d322e',
+    'vocabulary_machine_name' => 'landscape_typologies',
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'La presqu\'île de Rhuys',
     'description' => '',
     'format' => 'filtered_html',
     'weight' => 0,
     'uuid' => '37dc3fef-5045-4536-8c19-f489d0772b19',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'entreprise',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 17,
+    'uuid' => '38b8465d-a9ac-46ea-aff2-a5f3a4d305fd',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'Quimper',
@@ -1049,15 +1172,15 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '3c25cf58-9fb8-429d-b4d2-0d47e9eea776',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 42,
-          'format' => NULL,
-          'safe_value' => 42,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'sujet',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 29,
+    'uuid' => '3c364474-cfef-4986-9b42-3b0d1696205d',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'anglais',
@@ -1066,6 +1189,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '3cce4ed0-503e-4738-8911-84fcc7807ed1',
     'vocabulary_machine_name' => 'popp_tax_language',
+  );
+  $terms[] = array(
+    'name' => 'Paysage littoral de la Baie de Saint-Brieuc',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '3f451e00-42ca-4a04-ae87-f2dd8a06cae9',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Plateau de Guéméné',
@@ -1093,6 +1224,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'uuid' => '4099a47e-84f4-48b7-a202-e639f889015f',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'La rivière d\'Auray',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '411c7430-dcb4-491b-87eb-8c984135c89e',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Presqu\'île de Rhuys',
@@ -1189,6 +1328,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
+    'name' => 'mobilier urbain',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 20,
+    'uuid' => '4640a0f1-5bc6-48b2-ad43-f80b15f00d99',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'Bassin de Pleine-Fougères',
     'description' => '',
     'format' => 'plain_text',
@@ -1249,6 +1396,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
+    'name' => 'Côte et arrière-pays du Goëlo',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '4be2c63b-6aa7-4fd8-a681-d5de13e6e456',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'entreprise',
     'description' => '',
     'format' => 'plain_text',
@@ -1287,6 +1442,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'réseau hertzien',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 25,
+    'uuid' => '4e4b4714-b4d9-47e5-93e5-fa78ff198c46',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'prairie complantée',
     'description' => '',
     'format' => 'plain_text',
@@ -1322,15 +1485,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '4f81ee68-3f8f-4608-b694-4d0850097a94',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 73,
-          'format' => NULL,
-          'safe_value' => 73,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Agriculteurs',
@@ -1368,6 +1523,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'uuid' => '511fd2ff-bb3f-422b-95fc-ca99647af15e',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'Le Menez Hom (UP4)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '525dbef4-d395-4bc6-a00e-8a79643713b8',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'place',
@@ -1433,6 +1596,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
+    'name' => 'Les marches de l’Arrée (UP9)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '5710b6e1-1651-4262-b573-25fc97cc8c42',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'Zones humides - cours d\'eau - plans d\'eau',
     'description' => '',
     'format' => 'plain_text',
@@ -1460,6 +1631,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
+    'name' => 'Les Monts d’Arrée - Les chaos et la forêt de Huelgoat (UP8 -8G)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '58a13acb-b5fb-4f38-9847-a9dc74df80d9',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'réseau hertzien',
     'description' => '',
     'format' => 'plain_text',
@@ -1479,6 +1658,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_tax_sociopro',
   );
   $terms[] = array(
+    'name' => 'stagnante',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 4,
+    'uuid' => '5a70e908-a436-48b6-b127-e726339343cc',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'loisir / tourisme',
     'description' => '',
     'format' => 'plain_text',
@@ -1490,6 +1677,23 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Paysage urbain, périurbain, centre ville',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '5b8ce81b-b11d-4178-9bf6-612b3e3236f7',
+    'vocabulary_machine_name' => 'landscape_typologies',
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'La vallée de l’Aulne - L’Aulne maritime (UP5 - 5B)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '5c3198c6-729b-4e37-a23f-9dd5a7913acd',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'Périurbain et bourg',
     'description' => '',
     'format' => 'plain_text',
@@ -1497,6 +1701,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'uuid' => '5c87e9e9-7308-465b-88b9-6b8fed4d0e5a',
     'vocabulary_machine_name' => 'landscape_set',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'La campagne des rus',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '5cd5f4a6-097a-4e10-9299-4dc9a97313f5',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Envasement des estuaires',
@@ -1609,15 +1821,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '63c91fe5-bd7c-4f77-adc6-046bf7cead12',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 52,
-          'format' => NULL,
-          'safe_value' => 52,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Guyane',
@@ -1626,15 +1830,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '64a1950b-92c6-4ad1-9a8f-ace0ac093d32',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => '03',
-          'format' => NULL,
-          'safe_value' => '03',
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'barrage',
@@ -1646,6 +1842,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '580c92bd-c3a7-495a-ab9e-d37f6fd1ad31',
     ),
+  );
+  $terms[] = array(
+    'name' => 'patrimonial',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 15,
+    'uuid' => '65359b47-1238-48d1-99ea-17c0f02b3b38',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'Mer et estran du Mont Saint-Michel',
@@ -1663,15 +1867,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '66f6d0c2-94de-4356-8dc2-53aa8f39db8c',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => '02',
-          'format' => NULL,
-          'safe_value' => '02',
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Crêtes de Saint Nolff',
@@ -1791,6 +1987,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_tax_sociopro',
   );
   $terms[] = array(
+    'name' => 'humain',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 30,
+    'uuid' => '706ba978-4175-4f48-82d4-4bb357a14215',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'Célibataire sans enfant',
     'description' => '',
     'format' => 'filtered_html',
@@ -1836,6 +2040,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
+    'name' => 'Arrière-pays bocager',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '739de564-010d-40bc-a4ab-2cee4b14ea36',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'Centre-bourg',
     'description' => '',
     'format' => 'plain_text',
@@ -1853,6 +2065,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '6c5241b2-fb5f-444e-a0a4-982e4ce2fbc3',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Pôle de Lamballe',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '747707b8-580f-4ab4-ae30-d44050d78f6d',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Urbain dense',
@@ -1889,15 +2109,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '75a59bd1-d8b4-4dc7-9c59-bfbe15950c9b',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 11,
-          'format' => NULL,
-          'safe_value' => 11,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'ripisylve',
@@ -1933,6 +2145,15 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Paysage rural, naturel, de forêt',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '77bf7e85-26bd-4c06-b950-84286ef6ac03',
+    'vocabulary_machine_name' => 'landscape_typologies',
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
     'name' => 'prairie',
     'description' => '',
     'format' => 'plain_text',
@@ -1950,15 +2171,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '79e78b4a-642f-4d83-b5f6-e3763a0168c8',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 21,
-          'format' => NULL,
-          'safe_value' => 21,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Bassin de Châteaulin',
@@ -1988,6 +2201,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '599370f8-124c-40c6-92d3-2e95405528dd',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Dessin',
+    'description' => '',
+    'format' => 'editeur',
+    'weight' => 0,
+    'uuid' => '7bbc67f7-eba9-46d6-b3dd-b2be44e0d0d2',
+    'vocabulary_machine_name' => 'popp_refdoc_type',
   );
   $terms[] = array(
     'name' => 'Marais d\'eau douce et zones humides',
@@ -2036,15 +2257,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '80df4fba-eb0c-4a35-97e5-8b8e2e3fee15',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 24,
-          'format' => NULL,
-          'safe_value' => 24,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Couple sans enfant',
@@ -2089,8 +2302,8 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '830ab708-b653-43c0-b0b6-67c08f21e8e5',
     'vocabulary_machine_name' => 'popp_tax_thepopp',
-    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_area' => array(),
+    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_valuation' => array(),
     'field_popp_opp_technicity' => array(),
     'field_regional_code' => array(),
@@ -2142,15 +2355,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '84c62ca4-6a83-4212-b718-1b2c780d823b',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 93,
-          'format' => NULL,
-          'safe_value' => 93,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'édifice religieux',
@@ -2164,6 +2369,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Photo',
+    'description' => '',
+    'format' => 'editeur',
+    'weight' => 0,
+    'uuid' => '854601dd-0de8-4a19-807b-ec67c70401a8',
+    'vocabulary_machine_name' => 'popp_refdoc_type',
+  );
+  $terms[] = array(
     'name' => 'ornementale',
     'description' => '',
     'format' => 'plain_text',
@@ -2175,6 +2388,30 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Les Monts d’Arrée - Les plateaux de la Feuillée et de Berrien (UP8 -8E)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '863f453a-f698-4fc7-949e-f6654b80faf8',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
+    'name' => 'Le bassin central du Golfe',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '869317ed-141b-411d-948a-f30c80d27700',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
+    'name' => 'Carte postale ancienne',
+    'description' => '',
+    'format' => 'editeur',
+    'weight' => 0,
+    'uuid' => '869cdb8f-8006-43ac-bcab-2aea9b034557',
+    'vocabulary_machine_name' => 'popp_refdoc_type',
+  );
+  $terms[] = array(
     'name' => 'maison individuelle',
     'description' => '',
     'format' => 'plain_text',
@@ -2184,6 +2421,15 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'e355e1fd-a135-4272-a947-c5857306dff2',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Paysage de montagne',
+    'description' => '',
+    'format' => 'filtered_html',
+    'weight' => 0,
+    'uuid' => '87ae90e5-6d89-4e8d-8cd9-b472eafca0f8',
+    'vocabulary_machine_name' => 'landscape_typologies',
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Photo',
@@ -2209,15 +2455,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '893adbd6-f182-43b0-bad1-931b70c57ba4',
     'vocabulary_machine_name' => 'popp_towns',
-    'field_insee_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 'QQ35',
-          'format' => NULL,
-          'safe_value' => 'QQ35',
-        ),
-      ),
-    ),
+    'field_insee_code' => array(),
   );
   $terms[] = array(
     'name' => 'pont',
@@ -2229,6 +2467,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '5644a468-78cd-4f11-a5cf-ab028d4ae7a9',
     ),
+  );
+  $terms[] = array(
+    'name' => 'infrastructures aériennes',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 24,
+    'uuid' => '8a245115-b062-451f-815e-d9c6c9637637',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'Famille monoparentale',
@@ -2348,6 +2594,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
+    'name' => 'étendue',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 2,
+    'uuid' => '9220bc39-b270-46e8-8ed6-260824d4bfb4',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'tourbière',
     'description' => '',
     'format' => 'plain_text',
@@ -2443,7 +2697,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
-    'name' => 'Constructions',
+    'name' => 'LGV Grand Ouest',
     'description' => '',
     'format' => 'filtered_html',
     'weight' => 0,
@@ -2468,15 +2722,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => '98ef8f6a-c811-4e9d-9971-b02319ef2a3f',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 25,
-          'format' => NULL,
-          'safe_value' => 25,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Standard',
@@ -2505,6 +2751,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
+    'name' => 'habitat',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 16,
+    'uuid' => '9bf9c1b9-6ea9-4d88-85c1-18e351bbeddb',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'fosse à lisier',
     'description' => '',
     'format' => 'plain_text',
@@ -2525,6 +2779,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'b10e5f28-1d95-4263-91f4-13b03b0268a9',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Les estuaires de la rade de Brest - Secteur de l’Hôpital Camfrout',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'a086555d-bbf7-44da-92bc-f05872c74b6a',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'cimetière',
@@ -2552,15 +2814,16 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'a2309e90-a6ad-41a2-8d2e-050755ee6d4a',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 72,
-          'format' => NULL,
-          'safe_value' => 72,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'Paysage de littoral, paysages d’îles',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'a24aa85e-7aee-486d-af21-60d5e2bc1c69',
+    'vocabulary_machine_name' => 'landscape_typologies',
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'lande rase',
@@ -2594,21 +2857,29 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
+    'name' => 'eau continentale',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 1,
+    'uuid' => 'a37d5f5b-1d95-49cd-ac31-c429c0acf992',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'faune',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 31,
+    'uuid' => 'a3d64892-357b-4650-970b-c7e0038abd98',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'Poitou-Charentes',
     'description' => '',
     'format' => 'plain_text',
     'weight' => 0,
     'uuid' => 'a468f590-2073-442f-818f-5aa78f0116f9',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 54,
-          'format' => NULL,
-          'safe_value' => 54,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'fontaine',
@@ -2622,55 +2893,17 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'Trame Verte et Bleue en Bretagne',
-    'description' => '<p>Test</p>',
+    'name' => 'Trame verte',
+    'description' => '',
     'format' => 'filtered_html',
     'weight' => 0,
     'uuid' => 'a4ba8afc-949e-4c3e-9d08-2463b1535a42',
     'vocabulary_machine_name' => 'popp_tax_thepopp',
-    'field_popp_opp_creation_year' => array(
-      'und' => array(
-        0 => array(
-          'value' => 1992,
-        ),
-      ),
-    ),
-    'field_popp_opp_area' => array(
-      'und' => array(
-        0 => array(
-          'value' => 'Test terr',
-          'format' => NULL,
-          'safe_value' => 'Test terr',
-        ),
-      ),
-    ),
-    'field_popp_opp_valuation' => array(
-      'und' => array(
-        0 => array(
-          'value' => 'Test valo',
-          'format' => NULL,
-          'safe_value' => 'Test valo',
-        ),
-      ),
-    ),
-    'field_popp_opp_technicity' => array(
-      'und' => array(
-        0 => array(
-          'value' => 'Technicité',
-          'format' => NULL,
-          'safe_value' => 'Technicité',
-        ),
-      ),
-    ),
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 53,
-          'format' => NULL,
-          'safe_value' => 53,
-        ),
-      ),
-    ),
+    'field_popp_opp_area' => array(),
+    'field_popp_opp_creation_year' => array(),
+    'field_popp_opp_valuation' => array(),
+    'field_popp_opp_technicity' => array(),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'magasin',
@@ -2682,6 +2915,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '4d011b82-45b1-401e-9829-a4cb52caed95',
     ),
+  );
+  $terms[] = array(
+    'name' => 'culture',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 10,
+    'uuid' => 'a7091aea-7bf7-4bc8-a9bd-1b7dfb49ad44',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'exploitation agricole',
@@ -2737,6 +2978,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Les balcons du golfe',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'ab1f21c6-bbbb-47c6-820f-d507e9c2f904',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'Typologie et évolution du bocage',
     'description' => '',
     'format' => 'plain_text',
@@ -2745,8 +2994,16 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
-    'name' => 'Enjeux touristiques',
+    'name' => 'infrastructures et réseaux',
     'description' => '',
+    'format' => 'plain_text',
+    'weight' => 22,
+    'uuid' => 'ad2529bc-facf-42bc-ad4b-665e283be98d',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'Marées en finistère',
+    'description' => 'Observation des marées sur le littoral finistérien',
     'format' => 'filtered_html',
     'weight' => 0,
     'uuid' => 'adbce564-2a48-4d17-bac2-709635a97401',
@@ -2759,15 +3016,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'ade9065a-c3b4-430b-a07b-b2fd0303628a',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => '06',
-          'format' => NULL,
-          'safe_value' => '06',
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Pratiques agricoles',
@@ -2809,6 +3058,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Le Faou (UP3 / 3B)"',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'b00a0818-edab-41f0-bf34-e8baf529be8a',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'Cornouaille Fouesnantaise',
     'description' => '',
     'format' => 'plain_text',
@@ -2824,8 +3081,8 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'b10845e2-8712-4a65-aad2-dc5b8a4cdf3c',
     'vocabulary_machine_name' => 'popp_tax_thepopp',
-    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_area' => array(),
+    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_valuation' => array(),
     'field_popp_opp_technicity' => array(),
     'field_regional_code' => array(),
@@ -2889,6 +3146,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'a7909a54-3145-47cd-85e6-6cd1c1f8c2bc',
     ),
+  );
+  $terms[] = array(
+    'name' => 'énergie',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 23,
+    'uuid' => 'b52d0e3c-ff72-47f2-bce1-6355509bed91',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'bois',
@@ -2994,10 +3259,10 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
-    'name' => 'Cornouaille interieure - Plateau de Gourin',
+    'name' => 'Sillon de l\'Arz',
     'description' => '',
     'format' => 'filtered_html',
-    'weight' => 4,
+    'weight' => 0,
     'uuid' => 'bbd24c3c-9357-4fb1-a3da-e69863bd07df',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
@@ -3029,15 +3294,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'be0b5532-920b-48b3-87fa-50a21761f1cc',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => '04',
-          'format' => NULL,
-          'safe_value' => '04',
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Cultures de légumes sur plateaux',
@@ -3058,7 +3315,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
-    'name' => 'Bocage à maillle élargie',
+    'name' => 'Paysage boisé et de bosquets',
     'description' => '',
     'format' => 'filtered_html',
     'weight' => 0,
@@ -3078,6 +3335,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Les estuaires de la rade de Brest - Secteur de Logonna Daoulas (UP3 / 3A)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'c120a1d0-cb9a-45d6-a5db-810b3af9b9bd',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'moulin',
     'description' => '',
     'format' => 'plain_text',
@@ -3095,8 +3360,8 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'c2f87fbd-2eec-4ab3-a81f-94a145bd2256',
     'vocabulary_machine_name' => 'popp_tax_thepopp',
-    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_area' => array(),
+    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_valuation' => array(),
     'field_popp_opp_technicity' => array(),
     'field_regional_code' => array(),
@@ -3168,12 +3433,28 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'chemins',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 28,
+    'uuid' => 'c4a84f3a-8536-43a7-97f1-1d7fdfcd51f1',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'Le patrimoine',
     'description' => '',
     'format' => 'plain_text',
     'weight' => 0,
     'uuid' => 'c4f2cff2-08a8-4b13-a9be-4b442a56cb93',
     'vocabulary_machine_name' => 'popp_thematic_axes',
+  );
+  $terms[] = array(
+    'name' => 'La vallée de l’Aulne - Les collines de l’Aulne (UP5 - 5A)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'c5040dc8-2d32-4c5e-bb39-86ab388d9f0d',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'édifice',
@@ -3227,6 +3508,22 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Les Monts d’Arrée - Le toul de Saint Rivoal (UP8 -8B)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'c7921757-58fd-4760-bf8c-bf5a19de2278',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
+    'name' => 'La campagne des transitions',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'c906c527-7b10-4929-8d88-6fed14a9c718',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'parabole',
     'description' => '',
     'format' => 'plain_text',
@@ -3272,18 +3569,10 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'ca7ecb27-eec9-429c-930b-92fa15b5edf0',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => '01',
-          'format' => NULL,
-          'safe_value' => '01',
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
-    'name' => 'Bocage dense et pairies sur collines',
+    'name' => 'Paysage associé à la présence de l\'eau',
     'description' => '',
     'format' => 'filtered_html',
     'weight' => 0,
@@ -3311,6 +3600,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_thematic_axes',
   );
   $terms[] = array(
+    'name' => 'cours d’eau',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 3,
+    'uuid' => 'cd40755f-388d-4b88-ab6d-749f3ad8a1b5',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'mare',
     'description' => '',
     'format' => 'plain_text',
@@ -3320,6 +3617,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'd27c13e0-0701-477c-a2af-19c192a6b7d7',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Agglomération de Saint-Brieuc',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'cf2b67ef-0fdd-4cea-9530-205a19d46ac7',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'habitat urbain',
@@ -3339,15 +3644,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'd02ce1b1-3289-4962-9d72-d98be76d03cd',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 83,
-          'format' => NULL,
-          'safe_value' => 83,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Massif de Saint-Broladre',
@@ -3359,10 +3656,10 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
-    'name' => 'Iles et îlots du Finistère',
+    'name' => 'Golfe du Morbihan',
     'description' => '',
     'format' => 'filtered_html',
-    'weight' => 1,
+    'weight' => 0,
     'uuid' => 'd1356cfe-bb45-469c-94d3-6c7594cfa344',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
@@ -3390,8 +3687,8 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'd2785d85-b947-43c4-8e69-9fe4eb0b0844',
     'vocabulary_machine_name' => 'popp_tax_thepopp',
-    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_area' => array(),
+    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_valuation' => array(),
     'field_popp_opp_technicity' => array(),
     'field_regional_code' => array(),
@@ -3419,6 +3716,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Le bassin de Châteaulin - Les méandres de l’Aulne (UP6 - 6B)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'd44a2cae-e212-451d-b0e1-5521f6e4c0e2',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'Bassin de Lieuron Pipriac',
     'description' => '',
     'format' => 'plain_text',
@@ -3443,15 +3748,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'd887d4ef-d09d-4a10-8eec-eb0202b09b85',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 22,
-          'format' => NULL,
-          'safe_value' => 22,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Dynamique des zones humides',
@@ -3460,6 +3757,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'd9c2da84-2037-4655-8a98-921a09c329a0',
     'vocabulary_machine_name' => 'popp_thematic_axes',
+  );
+  $terms[] = array(
+    'name' => 'Les îles d’iroise (UP 1)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'da2e741b-a5bb-41bb-bacd-6555ee830de7',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Plateau léonard',
@@ -3488,6 +3793,30 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
+    'name' => 'loisir / tourisme',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 21,
+    'uuid' => 'da8e57fc-fc89-459c-b2e5-1f485b7fc124',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'Les Monts d’Arrée - Les sommets des monts d’Arrée (UP8 -8D)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'dafb540f-3e96-49ac-8d9f-f46c4795a0bf',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
+    'name' => 'La rivière de Pénerf',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'db0172b8-72da-4084-8181-a3aec6232e7d',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => 'œuvre d’art public',
     'description' => '',
     'format' => 'plain_text',
@@ -3499,13 +3828,21 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'Paysages mixtes avec bosquets',
+    'name' => 'Paysage littoral urbanisé',
     'description' => '',
     'format' => 'filtered_html',
     'weight' => 0,
     'uuid' => 'db97de5f-0018-4c6a-8a51-00eb47992697',
     'vocabulary_machine_name' => 'landscape_set',
     'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'végétation',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 8,
+    'uuid' => 'dbc69fae-afef-41cf-8db6-af8ba04ec2eb',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'gravière',
@@ -3578,6 +3915,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'popp_tax_thesaurus',
   );
   $terms[] = array(
+    'name' => 'forêt',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 9,
+    'uuid' => 'dff7e866-c48a-434f-9416-2f39ac10581b',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
     'name' => 'Ouest Cornouaille',
     'description' => '',
     'format' => 'plain_text',
@@ -3615,15 +3960,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'e0eeca6c-f733-494a-890f-940be9413cc9',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 74,
-          'format' => NULL,
-          'safe_value' => 74,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'séisme',
@@ -3635,6 +3972,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'fb29885c-5420-4a7d-b096-59c6c2403b54',
     ),
+  );
+  $terms[] = array(
+    'name' => 'réseaux ferroviaire et aérien',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 26,
+    'uuid' => 'e23ade81-f8e5-4db3-ad20-e83df696d0de',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
   );
   $terms[] = array(
     'name' => 'habitat',
@@ -3679,6 +4024,14 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Le fond du Golfe',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'e5c76c83-1fb3-4243-83bc-5063489cb362',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
+  );
+  $terms[] = array(
     'name' => '35 - Ille et Vilaine',
     'description' => '',
     'format' => 'filtered_html',
@@ -3694,6 +4047,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'e68d7bdb-2b30-4079-9698-f7c20fc3fb18',
     'vocabulary_machine_name' => 'popp_tax_family_struc',
+  );
+  $terms[] = array(
+    'name' => 'Le bassin de Châteaulin - Le secteur de Pleyben (UP6 - 6A)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'e715b393-e3b7-4cd5-9b8e-ead698545b6b',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'prairie humide',
@@ -3766,8 +4127,8 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'eba670ea-980e-4c7c-ae61-092a055fbcb3',
     'vocabulary_machine_name' => 'popp_tax_thepopp',
-    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_area' => array(),
+    'field_popp_opp_creation_year' => array(),
     'field_popp_opp_valuation' => array(),
     'field_popp_opp_technicity' => array(),
     'field_regional_code' => array(),
@@ -3784,21 +4145,21 @@ function term_taxonomy_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
+    'name' => 'Tableau',
+    'description' => '',
+    'format' => 'editeur',
+    'weight' => 0,
+    'uuid' => 'ebb29670-1aa9-4090-ba4d-d57b3051cdfc',
+    'vocabulary_machine_name' => 'popp_refdoc_type',
+  );
+  $terms[] = array(
     'name' => 'Bourgogne',
     'description' => '',
     'format' => 'plain_text',
     'weight' => 0,
     'uuid' => 'ec182f44-ba3d-4ba7-917c-7053c53d267c',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 26,
-          'format' => NULL,
-          'safe_value' => 26,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Haute-Normandie',
@@ -3807,15 +4168,15 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'ec5ac23a-42e0-4aa9-b731-ea6896bcf36e',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 23,
-          'format' => NULL,
-          'safe_value' => 23,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'La presquîle de Crozon - L’ouest de la presqu’île (UP 2 / 2A)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'ec681b61-a60f-4717-b493-16a6b326cdf3',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Côte et rade de Lorient',
@@ -3836,6 +4197,14 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => '5644a468-78cd-4f11-a5cf-ab028d4ae7a9',
     ),
+  );
+  $terms[] = array(
+    'name' => 'Le littoral atlantique',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'ede38dc1-2848-447b-85aa-1b85ffbad920',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => '4 voies',
@@ -3869,6 +4238,22 @@ function term_taxonomy_uuid_features_default_terms() {
     'parent' => array(
       0 => 'f642e3ae-ced5-4dee-87b6-73a50cb2c62a',
     ),
+  );
+  $terms[] = array(
+    'name' => 'réseau routier',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 27,
+    'uuid' => 'eece7d42-7afb-46ac-87d8-4167a45d2e8f',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'La presquîle de Crozon - Secteur de Lanvéoc Poulmic (UP 2 / 2B)',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'eed22596-c872-42b2-ac8d-85a4cf9c645b',
+    'vocabulary_machine_name' => 'popp_thematic_local_axes',
   );
   $terms[] = array(
     'name' => 'Montagnes Noires',
@@ -3909,10 +4294,10 @@ function term_taxonomy_uuid_features_default_terms() {
     'field_regional_code' => array(),
   );
   $terms[] = array(
-    'name' => 'Portes intérieures de Cornouaille',
+    'name' => 'Plateau de Gourin',
     'description' => '',
     'format' => 'filtered_html',
-    'weight' => 2,
+    'weight' => 0,
     'uuid' => 'efb28fb9-a555-4473-8c1c-97136708521a',
     'vocabulary_machine_name' => 'landscape_units',
     'field_regional_code' => array(),
@@ -3952,6 +4337,23 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'f33d5537-c3a4-48cd-a10b-71bb4f6162ab',
     'vocabulary_machine_name' => 'landscape_units',
+    'field_regional_code' => array(),
+  );
+  $terms[] = array(
+    'name' => 'bâti',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 14,
+    'uuid' => 'f3bdd58b-fe5f-4e7c-872f-d354eca7596c',
+    'vocabulary_machine_name' => 'popp_nonreq_thesaurus',
+  );
+  $terms[] = array(
+    'name' => 'Paysage de vallée',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'f3ffa0ee-edc1-4c95-959d-18dfdd8ef2a5',
+    'vocabulary_machine_name' => 'landscape_typologies',
     'field_regional_code' => array(),
   );
   $terms[] = array(
@@ -4002,15 +4404,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'f96a73a0-4aca-427d-a7e9-4ab103db60bb',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 53,
-          'format' => NULL,
-          'safe_value' => 53,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'phénomène',
@@ -4069,15 +4463,7 @@ function term_taxonomy_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'fdeab5a8-bef6-461b-b474-44b89a45f503',
     'vocabulary_machine_name' => 'region',
-    'field_regional_code' => array(
-      'und' => array(
-        0 => array(
-          'value' => 31,
-          'format' => NULL,
-          'safe_value' => 31,
-        ),
-      ),
-    ),
+    'field_regional_code' => array(),
   );
   $terms[] = array(
     'name' => 'Collines de Guichen',

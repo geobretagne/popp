@@ -41,14 +41,6 @@ function popp_opp_node_info() {
       'title_label' => t('Titre'),
       'help' => '',
     ),
-    'popp_licence_pages' => array(
-      'name' => t('Page licences'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Titre'),
-      'help' => '',
-    ),
   );
   drupal_alter('node_info', $items);
   return $items;

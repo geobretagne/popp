@@ -176,7 +176,6 @@ function popp_opp_og_features_default_permissions() {
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
-      'non-member' => 'non-member',
     ),
   );
 
@@ -222,7 +221,6 @@ function popp_opp_og_features_default_permissions() {
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
-      'non-member' => 'non-member',
     ),
   );
 
@@ -469,7 +467,6 @@ function popp_opp_og_features_default_permissions() {
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
-      'non-member' => 'non-member',
     ),
   );
 
@@ -519,7 +516,6 @@ function popp_opp_og_features_default_permissions() {
       'Fournisseur' => 'Fournisseur',
       'Gestionnaire' => 'Gestionnaire',
       'member' => 'member',
-      'non-member' => 'non-member',
     ),
   );
 

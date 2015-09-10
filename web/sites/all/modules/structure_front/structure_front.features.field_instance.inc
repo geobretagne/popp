@@ -158,6 +158,105 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-faq-field_detailed_question'
+  $field_instances['node-faq-field_detailed_question'] = array(
+    'bundle' => 'faq',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Enter the detailed question text',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_detailed_question',
+    'label' => 'Detailed question',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-opp-group_group'
+  $field_instances['node-opp-group_group'] = array(
+    'bundle' => 'opp',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Déterminer s\'il s\'agit d\'un groupe OG.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'og_ui',
+        'settings' => array(
+          'field_name' => FALSE,
+        ),
+        'type' => 'og_group_subscribe',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => 1,
+    'entity_type' => 'node',
+    'field_name' => 'group_group',
+    'label' => 'Groupe',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'custom settings' => FALSE,
+        'label' => 'Complet',
+        'type' => 'og_group_subscribe',
+      ),
+      'teaser' => array(
+        'custom settings' => FALSE,
+        'label' => 'Accroche',
+        'type' => 'og_group_subscribe',
+      ),
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+        'og_hide' => TRUE,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'node-opp_serie-field_popp_serie_geolocation'
   $field_instances['node-opp_serie-field_popp_serie_geolocation'] = array(
     'bundle' => 'opp_serie',
@@ -5424,6 +5523,40 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'og_membership-og_membership_type_default-og_membership_request'
+  $field_instances['og_membership-og_membership_type_default-og_membership_request'] = array(
+    'bundle' => 'og_membership_type_default',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This is the text a user may send to the group administrators.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'og_membership',
+    'field_name' => 'og_membership_request',
+    'label' => 'Request message',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'profile2-contact_information-field_popp_adress'
   $field_instances['profile2-contact_information-field_popp_adress'] = array(
     'bundle' => 'contact_information',
@@ -5961,6 +6094,7 @@ function structure_front_field_default_field_instances() {
   t('Description fine des éléments de paysage à la premiere prise de vue');
   t('Description précise du document');
   t('Description technique');
+  t('Detailed question');
   t('Document référence');
   t('Documentation');
   t('Durée');
@@ -5970,6 +6104,7 @@ function structure_front_field_default_field_instances() {
   t('Email');
   t('Emplacement de la série');
   t('Ensemble paysager');
+  t('Enter the detailed question text');
   t('Entrée Menu');
   t('Evolution');
   t('Fichier');
@@ -6026,6 +6161,7 @@ function structure_front_field_default_field_instances() {
   t('Présentation du son');
   t('Période / Saison de la photographie');
   t('Période, estimation au cas où la date est approximative');
+  t('Request message');
   t('Right');
   t('Région');
   t('Sensibilité ISO');
@@ -6037,6 +6173,7 @@ function structure_front_field_default_field_instances() {
   t('Sous-titre');
   t('Structure familiale');
   t('Structure responsable de la création du contenu');
+  t('This is the text a user may send to the group administrators.');
   t('Thésaurus');
   t('Thésaurus facultatif');
   t('Traitement du fichier');
