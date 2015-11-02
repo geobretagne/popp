@@ -10,7 +10,7 @@
 function structure_front_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo
+  // Exported menu link: menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo.
   $menu_links['menu-administration-contenu_ajouter-un-logo-partenaire:node/add/partner-logo'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'node/add/partner-logo',
@@ -31,7 +31,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart
+  // Exported menu link: menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart.
   $menu_links['menu-administration-contenu_ajouter-un-opp-participatif:node/add/opp-takepart'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'node/add/opp-takepart',
@@ -52,7 +52,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-un-opp-standard:node/add/opp
+  // Exported menu link: menu-administration-contenu_ajouter-un-opp-standard:node/add/opp.
   $menu_links['menu-administration-contenu_ajouter-un-opp-standard:node/add/opp'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'node/add/opp',
@@ -73,7 +73,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-une-faq:node/add/faq
+  // Exported menu link: menu-administration-contenu_ajouter-une-faq:node/add/faq.
   $menu_links['menu-administration-contenu_ajouter-une-faq:node/add/faq'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'node/add/faq',
@@ -94,7 +94,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure
+  // Exported menu link: menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure.
   $menu_links['menu-administration-contenu_ajouter-une-structure-porteuse:node/add/supporting-structure'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'node/add/supporting-structure',
@@ -115,7 +115,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-des-lments-de-taxonomie:admin/structure/taxonomy
+  // Exported menu link: menu-administration-contenu_gestion-des-lments-de-taxonomie:admin/structure/taxonomy.
   $menu_links['menu-administration-contenu_gestion-des-lments-de-taxonomie:admin/structure/taxonomy'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'admin/structure/taxonomy',
@@ -136,7 +136,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -41,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-des-pages:gestion-des-contenus
+  // Exported menu link: menu-administration-contenu_gestion-des-pages:gestion-des-contenus.
   $menu_links['menu-administration-contenu_gestion-des-pages:gestion-des-contenus'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'gestion-des-contenus',
@@ -157,7 +157,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-des-porteurs-opp-pa:gestion-des-porteurs-opp-pa
+  // Exported menu link: menu-administration-contenu_gestion-des-porteurs-opp-pa:gestion-des-porteurs-opp-pa.
   $menu_links['menu-administration-contenu_gestion-des-porteurs-opp-pa:gestion-des-porteurs-opp-pa'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'gestion-des-porteurs-opp-pa',
@@ -178,7 +178,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -37,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-des-porteurs-opp:gestion-des-porteurs-opp
+  // Exported menu link: menu-administration-contenu_gestion-des-porteurs-opp:gestion-des-porteurs-opp.
   $menu_links['menu-administration-contenu_gestion-des-porteurs-opp:gestion-des-porteurs-opp'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'gestion-des-porteurs-opp',
@@ -199,7 +199,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-des-sries-opp-pa:gestion-des-series-pa
+  // Exported menu link: menu-administration-contenu_gestion-des-sries-opp-pa:gestion-des-series-pa.
   $menu_links['menu-administration-contenu_gestion-des-sries-opp-pa:gestion-des-series-pa'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'gestion-des-series-pa',
@@ -220,7 +220,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -42,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-des-utilisateurs:admin/people
+  // Exported menu link: menu-administration-contenu_gestion-des-utilisateurs:admin/people.
   $menu_links['menu-administration-contenu_gestion-des-utilisateurs:admin/people'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'admin/people',
@@ -241,7 +241,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -40,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_gestion-du-thsaurus-facultatif:admin/structure/taxonomy/popp_nonreq_thesaurus
+  // Exported menu link: menu-administration-contenu_gestion-du-thsaurus-facultatif:admin/structure/taxonomy/popp_nonreq_thesaurus.
   $menu_links['menu-administration-contenu_gestion-du-thsaurus-facultatif:admin/structure/taxonomy/popp_nonreq_thesaurus'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'admin/structure/taxonomy/popp_nonreq_thesaurus',
@@ -262,7 +262,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_grer-les-sries-opp:gestion-des-series
+  // Exported menu link: menu-administration-contenu_grer-les-sries-opp:gestion-des-series.
   $menu_links['menu-administration-contenu_grer-les-sries-opp:gestion-des-series'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'gestion-des-series',
@@ -283,7 +283,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -43,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_import-de-masse:popp/import
+  // Exported menu link: menu-administration-contenu_import-de-masse:popp/import.
   $menu_links['menu-administration-contenu_import-de-masse:popp/import'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'popp/import',
@@ -304,7 +304,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -39,
     'customized' => 1,
   );
-  // Exported menu link: menu-administration-contenu_modration-des-publications:admin/content/comment
+  // Exported menu link: menu-administration-contenu_modration-des-publications:admin/content/comment.
   $menu_links['menu-administration-contenu_modration-des-publications:admin/content/comment'] = array(
     'menu_name' => 'menu-administration-contenu',
     'link_path' => 'admin/content/comment',
@@ -325,7 +325,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -38,
     'customized' => 1,
   );
-  // Exported menu link: menu-menu-footer_conditions-dutilisation:popp-cgu
+  // Exported menu link: menu-menu-footer_conditions-dutilisation:popp-cgu.
   $menu_links['menu-menu-footer_conditions-dutilisation:popp-cgu'] = array(
     'menu_name' => 'menu-menu-footer',
     'link_path' => 'popp-cgu',
@@ -342,7 +342,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-menu-footer_contact:contact
+  // Exported menu link: menu-menu-footer_contact:contact.
   $menu_links['menu-menu-footer_contact:contact'] = array(
     'menu_name' => 'menu-menu-footer',
     'link_path' => 'contact',
@@ -363,7 +363,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-menu-footer_dconnexion:user/logout
+  // Exported menu link: menu-menu-footer_dconnexion:user/logout.
   $menu_links['menu-menu-footer_dconnexion:user/logout'] = array(
     'menu_name' => 'menu-menu-footer',
     'link_path' => 'user/logout',
@@ -384,7 +384,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-menu-footer_licences:licences
+  // Exported menu link: menu-menu-footer_licences:licences.
   $menu_links['menu-menu-footer_licences:licences'] = array(
     'menu_name' => 'menu-menu-footer',
     'link_path' => 'licences',
@@ -404,7 +404,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 1,
   );
-  // Exported menu link: menu-menu-footer_mentions-lgales:popp-mentions-legales
+  // Exported menu link: menu-menu-footer_mentions-lgales:popp-mentions-legales.
   $menu_links['menu-menu-footer_mentions-lgales:popp-mentions-legales'] = array(
     'menu_name' => 'menu-menu-footer',
     'link_path' => 'popp-mentions-legales',
@@ -421,7 +421,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-menu-footer_plan-du-site:sitemap
+  // Exported menu link: menu-menu-footer_plan-du-site:sitemap.
   $menu_links['menu-menu-footer_plan-du-site:sitemap'] = array(
     'menu_name' => 'menu-menu-footer',
     'link_path' => 'sitemap',
@@ -442,7 +442,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_a-propos:popp-apropos
+  // Exported menu link: menu-popp-principal_a-propos:popp-apropos.
   $menu_links['menu-popp-principal_a-propos:popp-apropos'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'popp-apropos',
@@ -460,7 +460,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_accueil:accueil
+  // Exported menu link: menu-popp-principal_accueil:accueil.
   $menu_links['menu-popp-principal_accueil:accueil'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'accueil',
@@ -478,7 +478,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_faq:faq-page
+  // Exported menu link: menu-popp-principal_faq:faq-page.
   $menu_links['menu-popp-principal_faq:faq-page'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'faq-page',
@@ -499,7 +499,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_participez:user/register
+  // Exported menu link: menu-popp-principal_participez:user/register.
   $menu_links['menu-popp-principal_participez:user/register'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'user/register',
@@ -520,7 +520,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_porteurs-opp:popp-structure
+  // Exported menu link: menu-popp-principal_porteurs-opp:popp-structure.
   $menu_links['menu-popp-principal_porteurs-opp:popp-structure'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'popp-structure',
@@ -541,7 +541,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-folder-openspan:mon-panier
+  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-folder-openspan:mon-panier.
   $menu_links['menu-popp-principal_span-classglyphicon-glyphicon-folder-openspan:mon-panier'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'mon-panier',
@@ -562,7 +562,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-log-inspan:user/login
+  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-log-inspan:user/login.
   $menu_links['menu-popp-principal_span-classglyphicon-glyphicon-log-inspan:user/login'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'user/login',
@@ -583,7 +583,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => -45,
     'customized' => 1,
   );
-  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-log-outspan:user/logout
+  // Exported menu link: menu-popp-principal_span-classglyphicon-glyphicon-log-outspan:user/logout.
   $menu_links['menu-popp-principal_span-classglyphicon-glyphicon-log-outspan:user/logout'] = array(
     'menu_name' => 'menu-popp-principal',
     'link_path' => 'user/logout',
@@ -604,6 +604,7 @@ function structure_front_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('<span class="glyphicon glyphicon-folder-open"></span>');
@@ -635,7 +636,6 @@ function structure_front_menu_default_menu_links() {
   t('Participez');
   t('Plan du site');
   t('Porteurs OPP');
-
 
   return $menu_links;
 }

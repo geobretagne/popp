@@ -11,7 +11,7 @@ function structure_front_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'field_collection_item-field_popp_photo_nonreq_thes-field_field_popp_nonreqthes_evol'
+  // 'field_collection_item-field_popp_photo_nonreq_thes-field_field_popp_nonreqthes_evol'.
   $field_instances['field_collection_item-field_popp_photo_nonreq_thes-field_field_popp_nonreqthes_evol'] = array(
     'bundle' => 'field_popp_photo_nonreq_thes',
     'default_value' => NULL,
@@ -43,7 +43,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_popp_photo_nonreq_thes-field_popp_nonreqthes_elt'
+  // 'field_collection_item-field_popp_photo_nonreq_thes-field_popp_nonreqthes_elt'.
   $field_instances['field_collection_item-field_popp_photo_nonreq_thes-field_popp_nonreqthes_elt'] = array(
     'bundle' => 'field_popp_photo_nonreq_thes',
     'default_value' => NULL,
@@ -85,7 +85,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_popp_photo_thesaurus-field_popp_thes_elt'
+  // 'field_collection_item-field_popp_photo_thesaurus-field_popp_thes_elt'.
   $field_instances['field_collection_item-field_popp_photo_thesaurus-field_popp_thes_elt'] = array(
     'bundle' => 'field_popp_photo_thesaurus',
     'default_value' => NULL,
@@ -127,7 +127,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_popp_photo_thesaurus-field_popp_thes_evol'
+  // 'field_collection_item-field_popp_photo_thesaurus-field_popp_thes_evol'.
   $field_instances['field_collection_item-field_popp_photo_thesaurus-field_popp_thes_evol'] = array(
     'bundle' => 'field_popp_photo_thesaurus',
     'default_value' => NULL,
@@ -158,7 +158,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-faq-field_detailed_question'
+  // Exported field_instance: 'node-faq-field_detailed_question'.
   $field_instances['node-faq-field_detailed_question'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,
@@ -199,7 +199,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-opp-group_group'
+  // Exported field_instance: 'node-opp-group_group'.
   $field_instances['node-opp-group_group'] = array(
     'bundle' => 'opp',
     'default_value' => array(
@@ -257,7 +257,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-opp_serie-field_popp_serie_geolocation'
+  // Exported field_instance: 'node-opp_serie-field_popp_serie_geolocation'.
   $field_instances['node-opp_serie-field_popp_serie_geolocation'] = array(
     'bundle' => 'opp_serie',
     'default_value' => NULL,
@@ -300,7 +300,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-opp_takepart-body'
+  // Exported field_instance: 'node-opp_takepart-body'.
   $field_instances['node-opp_takepart-body'] = array(
     'bundle' => 'opp_takepart',
     'default_value' => NULL,
@@ -344,7 +344,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-opp_takepart-group_group'
+  // Exported field_instance: 'node-opp_takepart-group_group'.
   $field_instances['node-opp_takepart-group_group'] = array(
     'bundle' => 'opp_takepart',
     'default_value' => array(
@@ -403,7 +403,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-partner_logo-field_popp_partner_display_order'
+  // 'node-partner_logo-field_popp_partner_display_order'.
   $field_instances['node-partner_logo-field_popp_partner_display_order'] = array(
     'bundle' => 'partner_logo',
     'default_value' => NULL,
@@ -441,7 +441,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-partner_logo-field_popp_partner_logo'
+  // Exported field_instance: 'node-partner_logo-field_popp_partner_logo'.
   $field_instances['node-partner_logo-field_popp_partner_logo'] = array(
     'bundle' => 'partner_logo',
     'deleted' => 0,
@@ -493,7 +493,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_documentation-field_popp_documentation_file'
+  // 'node-popp_documentation-field_popp_documentation_file'.
   $field_instances['node-popp_documentation-field_popp_documentation_file'] = array(
     'bundle' => 'popp_documentation',
     'deleted' => 0,
@@ -536,7 +536,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_documentation-field_popp_documentation_legend'
+  // 'node-popp_documentation-field_popp_documentation_legend'.
   $field_instances['node-popp_documentation-field_popp_documentation_legend'] = array(
     'bundle' => 'popp_documentation',
     'default_value' => NULL,
@@ -576,7 +576,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_page-field_popp_entry_menu'
+  // Exported field_instance: 'node-popp_page-field_popp_entry_menu'.
   $field_instances['node-popp_page-field_popp_entry_menu'] = array(
     'bundle' => 'popp_page',
     'default_value' => NULL,
@@ -614,7 +614,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_page-field_popp_page_content'
+  // Exported field_instance: 'node-popp_page-field_popp_page_content'.
   $field_instances['node-popp_page-field_popp_page_content'] = array(
     'bundle' => 'popp_page',
     'default_value' => NULL,
@@ -655,7 +655,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_altitude'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_altitude'.
   $field_instances['node-popp_photo-field_popp_photo_altitude'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -701,7 +701,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_aperture'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_aperture'.
   $field_instances['node-popp_photo-field_popp_photo_aperture'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -741,7 +741,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_author'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_author'.
   $field_instances['node-popp_photo-field_popp_photo_author'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -781,7 +781,8 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_camera_inclinat'
+  // Exported field_instance:
+  // 'node-popp_photo-field_popp_photo_camera_inclinat'.
   $field_instances['node-popp_photo-field_popp_photo_camera_inclinat'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -821,7 +822,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_camera_type'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_camera_type'.
   $field_instances['node-popp_photo-field_popp_photo_camera_type'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -861,7 +862,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_copyrights'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_copyrights'.
   $field_instances['node-popp_photo-field_popp_photo_copyrights'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -898,7 +899,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_date'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_date'.
   $field_instances['node-popp_photo-field_popp_photo_date'] = array(
     'bundle' => 'popp_photo',
     'deleted' => 0,
@@ -913,6 +914,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 4,
@@ -951,7 +953,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_descr_date'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_descr_date'.
   $field_instances['node-popp_photo-field_popp_photo_descr_date'] = array(
     'bundle' => 'popp_photo',
     'deleted' => 0,
@@ -966,6 +968,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 23,
@@ -1004,7 +1007,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_description'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_description'.
   $field_instances['node-popp_photo-field_popp_photo_description'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1044,7 +1047,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_file'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_file'.
   $field_instances['node-popp_photo-field_popp_photo_file'] = array(
     'bundle' => 'popp_photo',
     'deleted' => 0,
@@ -1094,7 +1097,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_film_type'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_film_type'.
   $field_instances['node-popp_photo-field_popp_photo_film_type'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1134,7 +1137,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_focal'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_focal'.
   $field_instances['node-popp_photo-field_popp_photo_focal'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1180,12 +1183,12 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_format'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_format'.
   $field_instances['node-popp_photo-field_popp_photo_format'] = array(
     'bundle' => 'popp_photo',
     'default_value' => array(
       0 => array(
-        'tid' => 26,
+        'tid' => 287,
       ),
     ),
     'deleted' => 0,
@@ -1221,7 +1224,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_hour'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_hour'.
   $field_instances['node-popp_photo-field_popp_photo_hour'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1263,7 +1266,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_internal_id'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_internal_id'.
   $field_instances['node-popp_photo-field_popp_photo_internal_id'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1303,7 +1306,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_iso'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_iso'.
   $field_instances['node-popp_photo-field_popp_photo_iso'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1343,7 +1346,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_nonreq_thes'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_nonreq_thes'.
   $field_instances['node-popp_photo-field_popp_photo_nonreq_thes'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1386,7 +1389,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_orientation'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_orientation'.
   $field_instances['node-popp_photo-field_popp_photo_orientation'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1432,7 +1435,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_original_'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_original_'.
   $field_instances['node-popp_photo-field_popp_photo_original_'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1472,7 +1475,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_sheet_rights'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_sheet_rights'.
   $field_instances['node-popp_photo-field_popp_photo_sheet_rights'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1509,7 +1512,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_thesaurus'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_thesaurus'.
   $field_instances['node-popp_photo-field_popp_photo_thesaurus'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1552,7 +1555,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_tidal_coeff'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_tidal_coeff'.
   $field_instances['node-popp_photo-field_popp_photo_tidal_coeff'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1598,7 +1601,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo-field_popp_photo_tripod_height'
+  // Exported field_instance: 'node-popp_photo-field_popp_photo_tripod_height'.
   $field_instances['node-popp_photo-field_popp_photo_tripod_height'] = array(
     'bundle' => 'popp_photo',
     'default_value' => NULL,
@@ -1644,7 +1647,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_address'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_address'.
   $field_instances['node-popp_photo_serie-field_popp_serie_address'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -1691,7 +1694,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_aerial'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_aerial'.
   $field_instances['node-popp_photo_serie-field_popp_serie_aerial'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -1752,7 +1755,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_author_intent'
+  // 'node-popp_photo_serie-field_popp_serie_author_intent'.
   $field_instances['node-popp_photo_serie-field_popp_serie_author_intent'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -1800,7 +1803,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_context_photo'
+  // 'node-popp_photo_serie-field_popp_serie_context_photo'.
   $field_instances['node-popp_photo_serie-field_popp_serie_context_photo'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -1860,12 +1863,12 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_country'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_country'.
   $field_instances['node-popp_photo_serie-field_popp_serie_country'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => array(
       0 => array(
-        'tid' => 30,
+        'tid' => 339,
       ),
     ),
     'deleted' => 0,
@@ -1908,7 +1911,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_county'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_county'.
   $field_instances['node-popp_photo_serie-field_popp_serie_county'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -1952,12 +1955,12 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_district'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_district'.
   $field_instances['node-popp_photo_serie-field_popp_serie_district'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => array(
       0 => array(
-        'tid' => 97,
+        'tid' => 463,
       ),
     ),
     'deleted' => 0,
@@ -2001,7 +2004,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_documentation'
+  // 'node-popp_photo_serie-field_popp_serie_documentation'.
   $field_instances['node-popp_photo_serie-field_popp_serie_documentation'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -2060,7 +2063,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_external_links'
+  // 'node-popp_photo_serie-field_popp_serie_external_links'.
   $field_instances['node-popp_photo_serie-field_popp_serie_external_links'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2108,7 +2111,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_first_desc'
+  // 'node-popp_photo_serie-field_popp_serie_first_desc'.
   $field_instances['node-popp_photo_serie-field_popp_serie_first_desc'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2156,7 +2159,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_first_desc_date'
+  // 'node-popp_photo_serie-field_popp_serie_first_desc_date'.
   $field_instances['node-popp_photo_serie-field_popp_serie_first_desc_date'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -2171,6 +2174,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 30,
@@ -2184,6 +2188,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 30,
@@ -2222,12 +2227,12 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_format'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_format'.
   $field_instances['node-popp_photo_serie-field_popp_serie_format'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => array(
       0 => array(
-        'tid' => 26,
+        'tid' => 287,
       ),
     ),
     'deleted' => 0,
@@ -2271,7 +2276,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_identifier'
+  // 'node-popp_photo_serie-field_popp_serie_identifier'.
   $field_instances['node-popp_photo_serie-field_popp_serie_identifier'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2318,7 +2323,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_ign'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_ign'.
   $field_instances['node-popp_photo_serie-field_popp_serie_ign'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -2379,7 +2384,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_int_identifier'
+  // 'node-popp_photo_serie-field_popp_serie_int_identifier'.
   $field_instances['node-popp_photo_serie-field_popp_serie_int_identifier'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2427,7 +2432,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_landscape_set'
+  // 'node-popp_photo_serie-field_popp_serie_landscape_set'.
   $field_instances['node-popp_photo_serie-field_popp_serie_landscape_set'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2472,7 +2477,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_landscape_typo'
+  // 'node-popp_photo_serie-field_popp_serie_landscape_typo'.
   $field_instances['node-popp_photo_serie-field_popp_serie_landscape_typo'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2517,7 +2522,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_landscape_unit'
+  // 'node-popp_photo_serie-field_popp_serie_landscape_unit'.
   $field_instances['node-popp_photo_serie-field_popp_serie_landscape_unit'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2561,12 +2566,12 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_language'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_language'.
   $field_instances['node-popp_photo_serie-field_popp_serie_language'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => array(
       0 => array(
-        'tid' => 15,
+        'tid' => 165,
       ),
     ),
     'deleted' => 0,
@@ -2609,7 +2614,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_loc_axes'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_loc_axes'.
   $field_instances['node-popp_photo_serie-field_popp_serie_loc_axes'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2653,7 +2658,8 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_next_resp'
+  // Exported field_instance:
+  // 'node-popp_photo_serie-field_popp_serie_next_resp'.
   $field_instances['node-popp_photo_serie-field_popp_serie_next_resp'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2701,7 +2707,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_observ'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_observ'.
   $field_instances['node-popp_photo_serie-field_popp_serie_observ'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2748,7 +2754,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_opp'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_opp'.
   $field_instances['node-popp_photo_serie-field_popp_serie_opp'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2792,7 +2798,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_per'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_per'.
   $field_instances['node-popp_photo_serie-field_popp_serie_per'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -2848,7 +2854,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_photo_list'
+  // 'node-popp_photo_serie-field_popp_serie_photo_list'.
   $field_instances['node-popp_photo_serie-field_popp_serie_photo_list'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -2906,7 +2912,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_place'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_place'.
   $field_instances['node-popp_photo_serie-field_popp_serie_place'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -2952,7 +2958,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_refdoc'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_refdoc'.
   $field_instances['node-popp_photo_serie-field_popp_serie_refdoc'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -3010,7 +3016,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_sketch'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_sketch'.
   $field_instances['node-popp_photo_serie-field_popp_serie_sketch'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -3071,7 +3077,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_supp_struct'
+  // 'node-popp_photo_serie-field_popp_serie_supp_struct'.
   $field_instances['node-popp_photo_serie-field_popp_serie_supp_struct'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -3120,7 +3126,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_testimonies'
+  // 'node-popp_photo_serie-field_popp_serie_testimonies'.
   $field_instances['node-popp_photo_serie-field_popp_serie_testimonies'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -3179,7 +3185,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_photo_serie-field_popp_serie_thematic_axis'
+  // 'node-popp_photo_serie-field_popp_serie_thematic_axis'.
   $field_instances['node-popp_photo_serie-field_popp_serie_thematic_axis'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -3223,7 +3229,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_town'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_town'.
   $field_instances['node-popp_photo_serie-field_popp_serie_town'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -3270,7 +3276,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_tripod'
+  // Exported field_instance: 'node-popp_photo_serie-field_popp_serie_tripod'.
   $field_instances['node-popp_photo_serie-field_popp_serie_tripod'] = array(
     'bundle' => 'popp_photo_serie',
     'deleted' => 0,
@@ -3330,7 +3336,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_photo_serie-og_group_ref'
+  // Exported field_instance: 'node-popp_photo_serie-og_group_ref'.
   $field_instances['node-popp_photo_serie-og_group_ref'] = array(
     'bundle' => 'popp_photo_serie',
     'default_value' => NULL,
@@ -3399,7 +3405,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_altitude'
+  // 'node-popp_reference_document-field_popp_refdoc_altitude'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_altitude'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3446,7 +3452,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_author'
+  // 'node-popp_reference_document-field_popp_refdoc_author'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_author'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3487,7 +3493,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_bids'
+  // 'node-popp_reference_document-field_popp_refdoc_bids'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_bids'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3528,7 +3534,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_date'
+  // 'node-popp_reference_document-field_popp_refdoc_date'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_date'] = array(
     'bundle' => 'popp_reference_document',
     'deleted' => 0,
@@ -3543,6 +3549,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -3582,7 +3589,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_date_comment'
+  // 'node-popp_reference_document-field_popp_refdoc_date_comment'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_date_comment'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3623,7 +3630,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_file'
+  // 'node-popp_reference_document-field_popp_refdoc_file'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_file'] = array(
     'bundle' => 'popp_reference_document',
     'deleted' => 0,
@@ -3674,7 +3681,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_filename'
+  // 'node-popp_reference_document-field_popp_refdoc_filename'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_filename'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3715,7 +3722,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_format'
+  // 'node-popp_reference_document-field_popp_refdoc_format'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_format'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3756,7 +3763,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_hour'
+  // 'node-popp_reference_document-field_popp_refdoc_hour'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_hour'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3799,7 +3806,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_language'
+  // 'node-popp_reference_document-field_popp_refdoc_language'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_language'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => array(
@@ -3841,7 +3848,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_licence'
+  // 'node-popp_reference_document-field_popp_refdoc_licence'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_licence'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3879,7 +3886,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_moment'
+  // 'node-popp_reference_document-field_popp_refdoc_moment'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_moment'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3920,7 +3927,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_precise_desc'
+  // 'node-popp_reference_document-field_popp_refdoc_precise_desc'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_precise_desc'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -3961,7 +3968,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_season'
+  // 'node-popp_reference_document-field_popp_refdoc_season'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_season'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4002,7 +4009,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_shoot_orient'
+  // 'node-popp_reference_document-field_popp_refdoc_shoot_orient'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_shoot_orient'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4043,7 +4050,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_shot_address'
+  // 'node-popp_reference_document-field_popp_refdoc_shot_address'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_shot_address'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4084,7 +4091,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_source'
+  // 'node-popp_reference_document-field_popp_refdoc_source'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_source'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4125,7 +4132,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_storage_place'
+  // 'node-popp_reference_document-field_popp_refdoc_storage_place'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_storage_place'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4166,7 +4173,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_subtitle'
+  // 'node-popp_reference_document-field_popp_refdoc_subtitle'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_subtitle'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4207,7 +4214,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_tidal_coeff'
+  // 'node-popp_reference_document-field_popp_refdoc_tidal_coeff'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_tidal_coeff'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4254,7 +4261,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_reference_document-field_popp_refdoc_type'
+  // 'node-popp_reference_document-field_popp_refdoc_type'.
   $field_instances['node-popp_reference_document-field_popp_refdoc_type'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4291,7 +4298,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_reference_document-og_group_ref'
+  // Exported field_instance: 'node-popp_reference_document-og_group_ref'.
   $field_instances['node-popp_reference_document-og_group_ref'] = array(
     'bundle' => 'popp_reference_document',
     'default_value' => NULL,
@@ -4350,7 +4357,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_author'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_author'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_author'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4390,7 +4397,8 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_context'
+  // Exported field_instance:
+  // 'node-popp_testimony_sheet-field_popp_tty_context'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_context'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4430,7 +4438,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_descr'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_descr'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_descr'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4471,7 +4479,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_duration'
+  // 'node-popp_testimony_sheet-field_popp_tty_duration'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_duration'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4517,7 +4525,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_file'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_file'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_file'] = array(
     'bundle' => 'popp_testimony_sheet',
     'deleted' => 0,
@@ -4560,7 +4568,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_file_modification'
+  // 'node-popp_testimony_sheet-field_popp_tty_file_modification'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_file_modification'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4600,7 +4608,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_format'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_format'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_format'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => array(
@@ -4642,7 +4650,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_hardware_type'
+  // 'node-popp_testimony_sheet-field_popp_tty_hardware_type'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_hardware_type'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4682,7 +4690,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_hour'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_hour'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_hour'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4725,7 +4733,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_landscape_rel'
+  // 'node-popp_testimony_sheet-field_popp_tty_landscape_rel'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_landscape_rel'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4766,7 +4774,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_language'
+  // 'node-popp_testimony_sheet-field_popp_tty_language'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_language'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => array(
@@ -4808,7 +4816,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_photo_number'
+  // 'node-popp_testimony_sheet-field_popp_tty_photo_number'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_photo_number'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4854,7 +4862,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_place'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_place'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_place'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4895,7 +4903,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_recording_date'
+  // 'node-popp_testimony_sheet-field_popp_tty_recording_date'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_recording_date'] = array(
     'bundle' => 'popp_testimony_sheet',
     'deleted' => 0,
@@ -4910,6 +4918,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 4,
@@ -4949,7 +4958,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_recording_method'
+  // 'node-popp_testimony_sheet-field_popp_tty_recording_method'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_recording_method'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -4990,7 +4999,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-popp_testimony_sheet-field_popp_tty_resp_structure'
+  // 'node-popp_testimony_sheet-field_popp_tty_resp_structure'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_resp_structure'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -5029,7 +5038,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_rights'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_rights'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_rights'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -5066,7 +5075,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_type'
+  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_type'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_type'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -5103,7 +5112,8 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-popp_testimony_sheet-field_popp_tty_weather'
+  // Exported field_instance:
+  // 'node-popp_testimony_sheet-field_popp_tty_weather'.
   $field_instances['node-popp_testimony_sheet-field_popp_tty_weather'] = array(
     'bundle' => 'popp_testimony_sheet',
     'default_value' => NULL,
@@ -5144,7 +5154,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struc_goal'
+  // 'node-supporting_structure-field_popp_supp_struc_goal'.
   $field_instances['node-supporting_structure-field_popp_supp_struc_goal'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5185,7 +5195,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struc_shortdesc'
+  // 'node-supporting_structure-field_popp_supp_struc_shortdesc'.
   $field_instances['node-supporting_structure-field_popp_supp_struc_shortdesc'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5227,7 +5237,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struc_website'
+  // 'node-supporting_structure-field_popp_supp_struc_website'.
   $field_instances['node-supporting_structure-field_popp_supp_struc_website'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5268,7 +5278,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struct_address'
+  // 'node-supporting_structure-field_popp_supp_struct_address'.
   $field_instances['node-supporting_structure-field_popp_supp_struct_address'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5309,7 +5319,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struct_logo'
+  // 'node-supporting_structure-field_popp_supp_struct_logo'.
   $field_instances['node-supporting_structure-field_popp_supp_struct_logo'] = array(
     'bundle' => 'supporting_structure',
     'deleted' => 0,
@@ -5360,7 +5370,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struct_mail'
+  // 'node-supporting_structure-field_popp_supp_struct_mail'.
   $field_instances['node-supporting_structure-field_popp_supp_struct_mail'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5401,7 +5411,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struct_phone'
+  // 'node-supporting_structure-field_popp_supp_struct_phone'.
   $field_instances['node-supporting_structure-field_popp_supp_struct_phone'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5442,7 +5452,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struct_ref_conta'
+  // 'node-supporting_structure-field_popp_supp_struct_ref_conta'.
   $field_instances['node-supporting_structure-field_popp_supp_struct_ref_conta'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5483,7 +5493,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-supporting_structure-field_popp_supp_struct_tech_desc'
+  // 'node-supporting_structure-field_popp_supp_struct_tech_desc'.
   $field_instances['node-supporting_structure-field_popp_supp_struct_tech_desc'] = array(
     'bundle' => 'supporting_structure',
     'default_value' => NULL,
@@ -5524,7 +5534,7 @@ function structure_front_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'og_membership-og_membership_type_default-og_membership_request'
+  // 'og_membership-og_membership_type_default-og_membership_request'.
   $field_instances['og_membership-og_membership_type_default-og_membership_request'] = array(
     'bundle' => 'og_membership_type_default',
     'default_value' => NULL,
@@ -5557,7 +5567,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-contact_information-field_popp_adress'
+  // Exported field_instance: 'profile2-contact_information-field_popp_adress'.
   $field_instances['profile2-contact_information-field_popp_adress'] = array(
     'bundle' => 'contact_information',
     'default_value' => NULL,
@@ -5591,7 +5601,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-contact_information-field_popp_phone'
+  // Exported field_instance: 'profile2-contact_information-field_popp_phone'.
   $field_instances['profile2-contact_information-field_popp_phone'] = array(
     'bundle' => 'contact_information',
     'default_value' => NULL,
@@ -5625,7 +5635,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-contact_information-field_popp_postal'
+  // Exported field_instance: 'profile2-contact_information-field_popp_postal'.
   $field_instances['profile2-contact_information-field_popp_postal'] = array(
     'bundle' => 'contact_information',
     'default_value' => NULL,
@@ -5665,7 +5675,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-contact_information-field_popp_town'
+  // Exported field_instance: 'profile2-contact_information-field_popp_town'.
   $field_instances['profile2-contact_information-field_popp_town'] = array(
     'bundle' => 'contact_information',
     'default_value' => NULL,
@@ -5699,7 +5709,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-identification-field_popp_cat_sociopro'
+  // Exported field_instance: 'profile2-identification-field_popp_cat_sociopro'.
   $field_instances['profile2-identification-field_popp_cat_sociopro'] = array(
     'bundle' => 'identification',
     'default_value' => NULL,
@@ -5732,7 +5742,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-identification-field_popp_name'
+  // Exported field_instance: 'profile2-identification-field_popp_name'.
   $field_instances['profile2-identification-field_popp_name'] = array(
     'bundle' => 'identification',
     'default_value' => NULL,
@@ -5766,7 +5776,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-identification-field_popp_nickname'
+  // Exported field_instance: 'profile2-identification-field_popp_nickname'.
   $field_instances['profile2-identification-field_popp_nickname'] = array(
     'bundle' => 'identification',
     'default_value' => NULL,
@@ -5800,7 +5810,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-identification-field_popp_sexe'
+  // Exported field_instance: 'profile2-identification-field_popp_sexe'.
   $field_instances['profile2-identification-field_popp_sexe'] = array(
     'bundle' => 'identification',
     'default_value' => NULL,
@@ -5831,7 +5841,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-identification-field_popp_struc_family'
+  // Exported field_instance: 'profile2-identification-field_popp_struc_family'.
   $field_instances['profile2-identification-field_popp_struc_family'] = array(
     'bundle' => 'identification',
     'default_value' => NULL,
@@ -5864,7 +5874,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-identification-field_popp_year'
+  // Exported field_instance: 'profile2-identification-field_popp_year'.
   $field_instances['profile2-identification-field_popp_year'] = array(
     'bundle' => 'identification',
     'deleted' => 0,
@@ -5879,6 +5889,7 @@ function structure_front_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 3,
@@ -5911,7 +5922,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-my_commitments-field_popp_cgu'
+  // Exported field_instance: 'profile2-my_commitments-field_popp_cgu'.
   $field_instances['profile2-my_commitments-field_popp_cgu'] = array(
     'bundle' => 'my_commitments',
     'default_value' => array(
@@ -5948,7 +5959,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-my_commitments-field_popp_id'
+  // Exported field_instance: 'profile2-my_commitments-field_popp_id'.
   $field_instances['profile2-my_commitments-field_popp_id'] = array(
     'bundle' => 'my_commitments',
     'default_value' => array(
@@ -5985,7 +5996,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'profile2-my_commitments-field_popp_right'
+  // Exported field_instance: 'profile2-my_commitments-field_popp_right'.
   $field_instances['profile2-my_commitments-field_popp_right'] = array(
     'bundle' => 'my_commitments',
     'default_value' => array(
@@ -6022,7 +6033,7 @@ function structure_front_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-region-field_regional_code'
+  // Exported field_instance: 'taxonomy_term-region-field_regional_code'.
   $field_instances['taxonomy_term-region-field_regional_code'] = array(
     'bundle' => 'region',
     'default_value' => NULL,

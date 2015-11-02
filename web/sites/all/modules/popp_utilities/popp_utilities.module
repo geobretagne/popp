@@ -322,7 +322,7 @@ function popp_utilities_inline_entity_form_entity_form_alter(&$entity_form, &$fo
                 }
                 $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]                                                          = $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][0];
                 $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['#parents'][5]                                           = $index;
-                $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_elt'][LANGUAGE_NONE]['#default_value']  = [$thesElement['thes_elements'][LANGUAGE_NONE][0]['tid'] => 1];
+                $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_elt'][LANGUAGE_NONE]['#default_value']  = [$thesElement['thes_elements'][LANGUAGE_NONE][0]['tid'] => $thesElement['thes_elements'][LANGUAGE_NONE][0]['tid']];
                 $entity_form['field_popp_photo_thesaurus'][LANGUAGE_NONE][$index]['field_popp_thes_evol'][LANGUAGE_NONE]['#default_value'] = [0 => 'stability'];
                 $index++;
             }
@@ -384,7 +384,7 @@ function getExistingThesaurus($parentNid)
     $parentNode = node_load($parentNid);
     $result     = [];
     $index      = count($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE]);
-    $index--;
+    $index-=2;
     if (isset($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE][$index])) {
         $photo = node_load($parentNode->field_popp_serie_photo_list[LANGUAGE_NONE][$index]['target_id']);
         foreach ($photo->field_popp_photo_thesaurus[LANGUAGE_NONE] as $item) {
@@ -970,7 +970,7 @@ function zipExportFromCaddy($nodes)
             if (! in_array($serie->nid, $nodes)) {
                 continue;
             }
-            $serieName = $serie->_field_data['nid']['entity']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
+            $serieName = empty($serie->_field_data['nid']['entity']->field_popp_serie_identifier[LANGUAGE_NONE])?'':$serie->_field_data['nid']['entity']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'];
             $rep       = $serieName . ' ' . $serie->_field_data['nid']['entity']->title;
             $zip->addEmptyDir($rep);
             foreach ($serie->_field_data['nid']['entity']->field_popp_serie_photo_list[LANGUAGE_NONE] as $und => $photoNid) {

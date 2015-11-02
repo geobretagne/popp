@@ -3,6 +3,10 @@
     margin-left: 10px;
 }
 
+#field-popp-photo-nonreq-thes-values div.term-reference-tree > .term-reference-tree-level li{
+    display:block !important;
+}
+
 .no-term-reference-tree-button {
     display:none;
 }

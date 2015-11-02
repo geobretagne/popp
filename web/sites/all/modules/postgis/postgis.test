@@ -80,6 +80,29 @@ class PostgisValidationsTestCase extends DrupalUnitTestCase {
   }
 }
 
+class PostgisMultiGeometries extends DrupalUnitTestCase {
+
+  /**
+   * Info about available test cases.
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Multi Geometry Uses',
+      'description' => 'Verifies class for multi geometry can be used',
+      'group' => 'PostGIS'
+    );
+  }
+
+  /**
+   * Test empty geometries.
+   */
+  public function testEmptyGeometries() {
+    $set = new PostgisGeometrySet(POSTGIS_PRIMITIVE_GEOMETRYCOLLECTION, 4236);
+    $result = $set->getText();
+    $this->assertTrue($result === NULL, 'WKT is NULL unless set first');
+  }
+}
+
 class PostgisSingleGeometries extends DrupalUnitTestCase {
 
   /**

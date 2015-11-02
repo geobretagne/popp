@@ -34,6 +34,5 @@ function structure_front_menu_default_menu_custom() {
   t('Menu footer');
   t('popp-principal');
 
-
   return $menus;
 }

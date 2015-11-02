@@ -10,7 +10,7 @@
 function structure_front_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'comment_body'
+  // Exported field_base: 'comment_body'.
   $field_bases['comment_body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -57,7 +57,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_detailed_question'
+  // Exported field_base: 'field_detailed_question'.
   $field_bases['field_detailed_question'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -76,7 +76,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_field_popp_nonreqthes_evol'
+  // Exported field_base: 'field_field_popp_nonreqthes_evol'.
   $field_bases['field_field_popp_nonreqthes_evol'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -109,7 +109,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_image'
+  // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -131,7 +131,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_adress'
+  // Exported field_base: 'field_popp_adress'.
   $field_bases['field_popp_adress'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -155,7 +155,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_cat_sociopro'
+  // Exported field_base: 'field_popp_cat_sociopro'.
   $field_bases['field_popp_cat_sociopro'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -194,7 +194,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_cgu'
+  // Exported field_base: 'field_popp_cgu'.
   $field_bases['field_popp_cgu'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -223,7 +223,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_popp_documentation_file'
+  // Exported field_base: 'field_popp_documentation_file'.
   $field_bases['field_popp_documentation_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -247,7 +247,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_popp_documentation_legend'
+  // Exported field_base: 'field_popp_documentation_legend'.
   $field_bases['field_popp_documentation_legend'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -268,7 +268,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_entry_menu'
+  // Exported field_base: 'field_popp_entry_menu'.
   $field_bases['field_popp_entry_menu'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -300,7 +300,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_popp_id'
+  // Exported field_base: 'field_popp_id'.
   $field_bases['field_popp_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -329,7 +329,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_popp_name'
+  // Exported field_base: 'field_popp_name'.
   $field_bases['field_popp_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -354,7 +354,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_nickname'
+  // Exported field_base: 'field_popp_nickname'.
   $field_bases['field_popp_nickname'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -379,7 +379,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_nonreqthes_elt'
+  // Exported field_base: 'field_popp_nonreqthes_elt'.
   $field_bases['field_popp_nonreqthes_elt'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -406,7 +406,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_page_content'
+  // Exported field_base: 'field_popp_page_content'.
   $field_bases['field_popp_page_content'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -427,7 +427,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_partner_display_order'
+  // Exported field_base: 'field_popp_partner_display_order'.
   $field_bases['field_popp_partner_display_order'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -461,7 +461,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_popp_partner_logo'
+  // Exported field_base: 'field_popp_partner_logo'.
   $field_bases['field_popp_partner_logo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -484,7 +484,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_phone'
+  // Exported field_base: 'field_popp_phone'.
   $field_bases['field_popp_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -509,7 +509,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_altitude'
+  // Exported field_base: 'field_popp_photo_altitude'.
   $field_bases['field_popp_photo_altitude'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -526,7 +526,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_photo_aperture'
+  // Exported field_base: 'field_popp_photo_aperture'.
   $field_bases['field_popp_photo_aperture'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -548,7 +548,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_author'
+  // Exported field_base: 'field_popp_photo_author'.
   $field_bases['field_popp_photo_author'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -573,7 +573,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_camera_inclinat'
+  // Exported field_base: 'field_popp_photo_camera_inclinat'.
   $field_bases['field_popp_photo_camera_inclinat'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -595,7 +595,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_camera_type'
+  // Exported field_base: 'field_popp_photo_camera_type'.
   $field_bases['field_popp_photo_camera_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -617,7 +617,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_copyrights'
+  // Exported field_base: 'field_popp_photo_copyrights'.
   $field_bases['field_popp_photo_copyrights'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -644,7 +644,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_photo_date'
+  // Exported field_base: 'field_popp_photo_date'.
   $field_bases['field_popp_photo_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -677,7 +677,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_popp_photo_descr_date'
+  // Exported field_base: 'field_popp_photo_descr_date'.
   $field_bases['field_popp_photo_descr_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -710,7 +710,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_popp_photo_description'
+  // Exported field_base: 'field_popp_photo_description'.
   $field_bases['field_popp_photo_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -734,7 +734,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_photo_file'
+  // Exported field_base: 'field_popp_photo_file'.
   $field_bases['field_popp_photo_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -757,7 +757,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_photo_film_type'
+  // Exported field_base: 'field_popp_photo_film_type'.
   $field_bases['field_popp_photo_film_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -779,7 +779,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_focal'
+  // Exported field_base: 'field_popp_photo_focal'.
   $field_bases['field_popp_photo_focal'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -797,13 +797,16 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_float',
   );
 
-  // Exported field_base: 'field_popp_photo_format'
+  // Exported field_base: 'field_popp_photo_format'.
   $field_bases['field_popp_photo_format'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popp_photo_format',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -824,7 +827,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_photo_hour'
+  // Exported field_base: 'field_popp_photo_hour'.
   $field_bases['field_popp_photo_hour'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -841,7 +844,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'hms_field',
   );
 
-  // Exported field_base: 'field_popp_photo_internal_id'
+  // Exported field_base: 'field_popp_photo_internal_id'.
   $field_bases['field_popp_photo_internal_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -866,7 +869,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_iso'
+  // Exported field_base: 'field_popp_photo_iso'.
   $field_bases['field_popp_photo_iso'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -888,7 +891,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_nonreq_thes'
+  // Exported field_base: 'field_popp_photo_nonreq_thes'.
   $field_bases['field_popp_photo_nonreq_thes'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -911,7 +914,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_popp_photo_orientation'
+  // Exported field_base: 'field_popp_photo_orientation'.
   $field_bases['field_popp_photo_orientation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -932,7 +935,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_float',
   );
 
-  // Exported field_base: 'field_popp_photo_original_'
+  // Exported field_base: 'field_popp_photo_original_'.
   $field_bases['field_popp_photo_original_'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -957,7 +960,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_photo_sheet_rights'
+  // Exported field_base: 'field_popp_photo_sheet_rights'.
   $field_bases['field_popp_photo_sheet_rights'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -987,7 +990,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_photo_thesaurus'
+  // Exported field_base: 'field_popp_photo_thesaurus'.
   $field_bases['field_popp_photo_thesaurus'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1010,7 +1013,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_popp_photo_tidal_coeff'
+  // Exported field_base: 'field_popp_photo_tidal_coeff'.
   $field_bases['field_popp_photo_tidal_coeff'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1030,7 +1033,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_photo_tripod_height'
+  // Exported field_base: 'field_popp_photo_tripod_height'.
   $field_bases['field_popp_photo_tripod_height'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1048,7 +1051,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_float',
   );
 
-  // Exported field_base: 'field_popp_postal'
+  // Exported field_base: 'field_popp_postal'.
   $field_bases['field_popp_postal'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1068,7 +1071,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_refdoc_altitude'
+  // Exported field_base: 'field_popp_refdoc_altitude'.
   $field_bases['field_popp_refdoc_altitude'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1086,7 +1089,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_float',
   );
 
-  // Exported field_base: 'field_popp_refdoc_author'
+  // Exported field_base: 'field_popp_refdoc_author'.
   $field_bases['field_popp_refdoc_author'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1108,7 +1111,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_bids'
+  // Exported field_base: 'field_popp_refdoc_bids'.
   $field_bases['field_popp_refdoc_bids'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1130,7 +1133,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_date'
+  // Exported field_base: 'field_popp_refdoc_date'.
   $field_bases['field_popp_refdoc_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1160,7 +1163,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_popp_refdoc_date_comment'
+  // Exported field_base: 'field_popp_refdoc_date_comment'.
   $field_bases['field_popp_refdoc_date_comment'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1181,7 +1184,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_refdoc_file'
+  // Exported field_base: 'field_popp_refdoc_file'.
   $field_bases['field_popp_refdoc_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1204,7 +1207,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_refdoc_filename'
+  // Exported field_base: 'field_popp_refdoc_filename'.
   $field_bases['field_popp_refdoc_filename'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1226,7 +1229,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_format'
+  // Exported field_base: 'field_popp_refdoc_format'.
   $field_bases['field_popp_refdoc_format'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1248,7 +1251,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_hour'
+  // Exported field_base: 'field_popp_refdoc_hour'.
   $field_bases['field_popp_refdoc_hour'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1265,7 +1268,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'hms_field',
   );
 
-  // Exported field_base: 'field_popp_refdoc_language'
+  // Exported field_base: 'field_popp_refdoc_language'.
   $field_bases['field_popp_refdoc_language'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1295,7 +1298,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_refdoc_licence'
+  // Exported field_base: 'field_popp_refdoc_licence'.
   $field_bases['field_popp_refdoc_licence'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1322,7 +1325,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_refdoc_moment'
+  // Exported field_base: 'field_popp_refdoc_moment'.
   $field_bases['field_popp_refdoc_moment'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1344,7 +1347,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_precise_desc'
+  // Exported field_base: 'field_popp_refdoc_precise_desc'.
   $field_bases['field_popp_refdoc_precise_desc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1365,7 +1368,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_refdoc_season'
+  // Exported field_base: 'field_popp_refdoc_season'.
   $field_bases['field_popp_refdoc_season'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1387,7 +1390,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_shoot_orient'
+  // Exported field_base: 'field_popp_refdoc_shoot_orient'.
   $field_bases['field_popp_refdoc_shoot_orient'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1409,7 +1412,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_shot_address'
+  // Exported field_base: 'field_popp_refdoc_shot_address'.
   $field_bases['field_popp_refdoc_shot_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1431,7 +1434,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_source'
+  // Exported field_base: 'field_popp_refdoc_source'.
   $field_bases['field_popp_refdoc_source'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1453,7 +1456,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_storage_place'
+  // Exported field_base: 'field_popp_refdoc_storage_place'.
   $field_bases['field_popp_refdoc_storage_place'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1475,7 +1478,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_subtitle'
+  // Exported field_base: 'field_popp_refdoc_subtitle'.
   $field_bases['field_popp_refdoc_subtitle'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1497,7 +1500,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_refdoc_tidal_coeff'
+  // Exported field_base: 'field_popp_refdoc_tidal_coeff'.
   $field_bases['field_popp_refdoc_tidal_coeff'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1514,7 +1517,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_refdoc_type'
+  // Exported field_base: 'field_popp_refdoc_type'.
   $field_bases['field_popp_refdoc_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1542,7 +1545,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_popp_right'
+  // Exported field_base: 'field_popp_right'.
   $field_bases['field_popp_right'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1571,7 +1574,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_popp_serie_address'
+  // Exported field_base: 'field_popp_serie_address'.
   $field_bases['field_popp_serie_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1596,7 +1599,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_serie_aerial'
+  // Exported field_base: 'field_popp_serie_aerial'.
   $field_bases['field_popp_serie_aerial'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1622,7 +1625,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_serie_author_intent'
+  // Exported field_base: 'field_popp_serie_author_intent'.
   $field_bases['field_popp_serie_author_intent'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1643,7 +1646,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_serie_context_photo'
+  // Exported field_base: 'field_popp_serie_context_photo'.
   $field_bases['field_popp_serie_context_photo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1669,13 +1672,16 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_serie_country'
+  // Exported field_base: 'field_popp_serie_country'.
   $field_bases['field_popp_serie_country'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popp_serie_country',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -1696,7 +1702,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_county'
+  // Exported field_base: 'field_popp_serie_county'.
   $field_bases['field_popp_serie_county'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1723,7 +1729,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_district'
+  // Exported field_base: 'field_popp_serie_district'.
   $field_bases['field_popp_serie_district'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1753,7 +1759,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_documentation'
+  // Exported field_base: 'field_popp_serie_documentation'.
   $field_bases['field_popp_serie_documentation'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1792,7 +1798,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_serie_external_links'
+  // Exported field_base: 'field_popp_serie_external_links'.
   $field_bases['field_popp_serie_external_links'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1817,7 +1823,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_serie_first_desc'
+  // Exported field_base: 'field_popp_serie_first_desc'.
   $field_bases['field_popp_serie_first_desc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1838,7 +1844,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_serie_first_desc_date'
+  // Exported field_base: 'field_popp_serie_first_desc_date'.
   $field_bases['field_popp_serie_first_desc_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1871,13 +1877,16 @@ function structure_front_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_popp_serie_format'
+  // Exported field_base: 'field_popp_serie_format'.
   $field_bases['field_popp_serie_format'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popp_serie_format',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -1898,7 +1907,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_geolocation'
+  // Exported field_base: 'field_popp_serie_geolocation'.
   $field_bases['field_popp_serie_geolocation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1917,7 +1926,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'postgis',
   );
 
-  // Exported field_base: 'field_popp_serie_identifier'
+  // Exported field_base: 'field_popp_serie_identifier'.
   $field_bases['field_popp_serie_identifier'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1942,7 +1951,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_serie_ign'
+  // Exported field_base: 'field_popp_serie_ign'.
   $field_bases['field_popp_serie_ign'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1968,7 +1977,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_serie_int_identifier'
+  // Exported field_base: 'field_popp_serie_int_identifier'.
   $field_bases['field_popp_serie_int_identifier'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1990,7 +1999,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_serie_landscape_set'
+  // Exported field_base: 'field_popp_serie_landscape_set'.
   $field_bases['field_popp_serie_landscape_set'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2017,7 +2026,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_landscape_typo'
+  // Exported field_base: 'field_popp_serie_landscape_typo'.
   $field_bases['field_popp_serie_landscape_typo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2047,7 +2056,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_landscape_unit'
+  // Exported field_base: 'field_popp_serie_landscape_unit'.
   $field_bases['field_popp_serie_landscape_unit'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2074,13 +2083,16 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_language'
+  // Exported field_base: 'field_popp_serie_language'.
   $field_bases['field_popp_serie_language'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popp_serie_language',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -2101,7 +2113,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_loc_axes'
+  // Exported field_base: 'field_popp_serie_loc_axes'.
   $field_bases['field_popp_serie_loc_axes'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2131,7 +2143,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_next_resp'
+  // Exported field_base: 'field_popp_serie_next_resp'.
   $field_bases['field_popp_serie_next_resp'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2165,7 +2177,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_serie_observ'
+  // Exported field_base: 'field_popp_serie_observ'.
   $field_bases['field_popp_serie_observ'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2189,7 +2201,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_serie_opp'
+  // Exported field_base: 'field_popp_serie_opp'.
   $field_bases['field_popp_serie_opp'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2219,7 +2231,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_per'
+  // Exported field_base: 'field_popp_serie_per'.
   $field_bases['field_popp_serie_per'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2243,7 +2255,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'interval',
   );
 
-  // Exported field_base: 'field_popp_serie_photo_list'
+  // Exported field_base: 'field_popp_serie_photo_list'.
   $field_bases['field_popp_serie_photo_list'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2282,7 +2294,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_serie_place'
+  // Exported field_base: 'field_popp_serie_place'.
   $field_bases['field_popp_serie_place'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2304,7 +2316,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'postgis',
   );
 
-  // Exported field_base: 'field_popp_serie_refdoc'
+  // Exported field_base: 'field_popp_serie_refdoc'.
   $field_bases['field_popp_serie_refdoc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2343,7 +2355,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_serie_sketch'
+  // Exported field_base: 'field_popp_serie_sketch'.
   $field_bases['field_popp_serie_sketch'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2369,7 +2381,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_serie_supp_struct'
+  // Exported field_base: 'field_popp_serie_supp_struct'.
   $field_bases['field_popp_serie_supp_struct'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2408,7 +2420,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_serie_testimonies'
+  // Exported field_base: 'field_popp_serie_testimonies'.
   $field_bases['field_popp_serie_testimonies'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2447,7 +2459,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_serie_thematic_axis'
+  // Exported field_base: 'field_popp_serie_thematic_axis'.
   $field_bases['field_popp_serie_thematic_axis'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2477,7 +2489,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_town'
+  // Exported field_base: 'field_popp_serie_town'.
   $field_bases['field_popp_serie_town'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2504,7 +2516,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_serie_tripod'
+  // Exported field_base: 'field_popp_serie_tripod'.
   $field_bases['field_popp_serie_tripod'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2530,7 +2542,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_sexe'
+  // Exported field_base: 'field_popp_sexe'.
   $field_bases['field_popp_sexe'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2559,7 +2571,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_popp_struc_family'
+  // Exported field_base: 'field_popp_struc_family'.
   $field_bases['field_popp_struc_family'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2598,7 +2610,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_supp_struc_goal'
+  // Exported field_base: 'field_popp_supp_struc_goal'.
   $field_bases['field_popp_supp_struc_goal'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2622,7 +2634,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_supp_struc_shortdesc'
+  // Exported field_base: 'field_popp_supp_struc_shortdesc'.
   $field_bases['field_popp_supp_struc_shortdesc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2643,7 +2655,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_supp_struc_website'
+  // Exported field_base: 'field_popp_supp_struc_website'.
   $field_bases['field_popp_supp_struc_website'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2668,7 +2680,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_supp_struct_address'
+  // Exported field_base: 'field_popp_supp_struct_address'.
   $field_bases['field_popp_supp_struct_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2692,7 +2704,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_supp_struct_logo'
+  // Exported field_base: 'field_popp_supp_struct_logo'.
   $field_bases['field_popp_supp_struct_logo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2718,7 +2730,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_popp_supp_struct_mail'
+  // Exported field_base: 'field_popp_supp_struct_mail'.
   $field_bases['field_popp_supp_struct_mail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2743,7 +2755,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_supp_struct_phone'
+  // Exported field_base: 'field_popp_supp_struct_phone'.
   $field_bases['field_popp_supp_struct_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2768,7 +2780,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_supp_struct_ref_conta'
+  // Exported field_base: 'field_popp_supp_struct_ref_conta'.
   $field_bases['field_popp_supp_struct_ref_conta'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2792,7 +2804,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_supp_struct_tech_desc'
+  // Exported field_base: 'field_popp_supp_struct_tech_desc'.
   $field_bases['field_popp_supp_struct_tech_desc'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2816,7 +2828,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_thes_elt'
+  // Exported field_base: 'field_popp_thes_elt'.
   $field_bases['field_popp_thes_elt'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2843,7 +2855,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_thes_evol'
+  // Exported field_base: 'field_popp_thes_evol'.
   $field_bases['field_popp_thes_evol'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2876,7 +2888,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_popp_town'
+  // Exported field_base: 'field_popp_town'.
   $field_bases['field_popp_town'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2901,7 +2913,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_tty_author'
+  // Exported field_base: 'field_popp_tty_author'.
   $field_bases['field_popp_tty_author'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2923,7 +2935,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_tty_context'
+  // Exported field_base: 'field_popp_tty_context'.
   $field_bases['field_popp_tty_context'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2945,7 +2957,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_tty_descr'
+  // Exported field_base: 'field_popp_tty_descr'.
   $field_bases['field_popp_tty_descr'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2969,7 +2981,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_tty_duration'
+  // Exported field_base: 'field_popp_tty_duration'.
   $field_bases['field_popp_tty_duration'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2989,7 +3001,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_tty_file'
+  // Exported field_base: 'field_popp_tty_file'.
   $field_bases['field_popp_tty_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3013,7 +3025,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_popp_tty_file_modification'
+  // Exported field_base: 'field_popp_tty_file_modification'.
   $field_bases['field_popp_tty_file_modification'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3035,7 +3047,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_tty_format'
+  // Exported field_base: 'field_popp_tty_format'.
   $field_bases['field_popp_tty_format'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3064,7 +3076,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_popp_tty_hardware_type'
+  // Exported field_base: 'field_popp_tty_hardware_type'.
   $field_bases['field_popp_tty_hardware_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3086,7 +3098,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_tty_hour'
+  // Exported field_base: 'field_popp_tty_hour'.
   $field_bases['field_popp_tty_hour'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3103,7 +3115,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'hms_field',
   );
 
-  // Exported field_base: 'field_popp_tty_landscape_rel'
+  // Exported field_base: 'field_popp_tty_landscape_rel'.
   $field_bases['field_popp_tty_landscape_rel'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3127,7 +3139,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_tty_language'
+  // Exported field_base: 'field_popp_tty_language'.
   $field_bases['field_popp_tty_language'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3157,7 +3169,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_tty_photo_number'
+  // Exported field_base: 'field_popp_tty_photo_number'.
   $field_bases['field_popp_tty_photo_number'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3177,7 +3189,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_tty_place'
+  // Exported field_base: 'field_popp_tty_place'.
   $field_bases['field_popp_tty_place'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3201,7 +3213,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_tty_recording_date'
+  // Exported field_base: 'field_popp_tty_recording_date'.
   $field_bases['field_popp_tty_recording_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3231,7 +3243,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_popp_tty_recording_method'
+  // Exported field_base: 'field_popp_tty_recording_method'.
   $field_bases['field_popp_tty_recording_method'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3253,7 +3265,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_tty_resp_structure'
+  // Exported field_base: 'field_popp_tty_resp_structure'.
   $field_bases['field_popp_tty_resp_structure'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3289,7 +3301,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_popp_tty_rights'
+  // Exported field_base: 'field_popp_tty_rights'.
   $field_bases['field_popp_tty_rights'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3319,7 +3331,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_popp_tty_type'
+  // Exported field_base: 'field_popp_tty_type'.
   $field_bases['field_popp_tty_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3345,7 +3357,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_popp_tty_weather'
+  // Exported field_base: 'field_popp_tty_weather'.
   $field_bases['field_popp_tty_weather'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3367,7 +3379,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_year'
+  // Exported field_base: 'field_popp_year'.
   $field_bases['field_popp_year'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3400,7 +3412,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_regional_code'
+  // Exported field_base: 'field_regional_code'.
   $field_bases['field_regional_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3422,7 +3434,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_tags'
+  // Exported field_base: 'field_tags'.
   $field_bases['field_tags'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -3448,7 +3460,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'group_group'
+  // Exported field_base: 'group_group'.
   $field_bases['group_group'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3473,7 +3485,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'og_group_ref'
+  // Exported field_base: 'og_group_ref'.
   $field_bases['og_group_ref'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -3519,7 +3531,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'og_membership_request'
+  // Exported field_base: 'og_membership_request'.
   $field_bases['og_membership_request'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3540,7 +3552,7 @@ function structure_front_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'og_user_node'
+  // Exported field_base: 'og_user_node'.
   $field_bases['og_user_node'] = array(
     'active' => 1,
     'cardinality' => -1,

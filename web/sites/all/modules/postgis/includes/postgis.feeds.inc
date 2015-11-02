@@ -44,46 +44,52 @@ function postgis_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_
 /**
  * Callback function for Feeds processor to convert GML geometries to WKT.
  */
-function postgis_feeds_set_target_gml($source, $entity, $target, $value) {
+function postgis_feeds_set_target_gml($source, $entity, $target, array $values, $mapping) {
 
-  $value = db_query("SELECT ST_AsText(ST_GeomFromGML(:gml));",
-          array(':gml' => $value))->fetchField();
+  foreach ($values as &$value) {
+    $value = db_query("SELECT ST_AsText(ST_GeomFromGML(:gml));",
+            array(':gml' => $value))->fetchField();
+  }
 
-  postgis_feeds_set_target($source, $entity, $target, $value);
+  postgis_feeds_set_target($source, $entity, $target, $values, $mapping);
 }
 
 /**
  * Callback function for Feeds processor to convert KML geometries to WKT.
  */
-function postgis_feeds_set_target_kml($source, $entity, $target, $value) {
+function postgis_feeds_set_target_kml($source, $entity, $target, array $values, $mapping) {
 
-  $value = db_query("SELECT ST_AsText(ST_GeomFromKML(:kml));",
+  foreach ($values as &$value) {
+    $value = db_query("SELECT ST_AsText(ST_GeomFromKML(:kml));",
           array(':kml' => $value))->fetchField();
+  }
 
-  postgis_feeds_set_target($source, $entity, $target, $value);
+  postgis_feeds_set_target($source, $entity, $target, $values, $mapping);
 }
 
 
 /**
  * Callback function for Feeds processor to convert GeoJSON geometries to WKT.
  */
-function postgis_feeds_set_target_geojson($source, $entity, $target, $value) {
+function postgis_feeds_set_target_geojson($source, $entity, $target, array $values, $mapping) {
 
-  $value = db_query("SELECT ST_AsText(ST_GeomFromGeoJSON(:geojson));",
-          array(':geojson' => $value))->fetchField();
+  foreach ($values as &$value) {
+    $value = db_query("SELECT ST_AsText(ST_GeomFromGeoJSON(:geojson));",
+            array(':geojson' => $value))->fetchField();
+  }
 
-  postgis_feeds_set_target($source, $entity, $target, $value);
+  postgis_feeds_set_target($source, $entity, $target, $values, $mapping);
 }
 
 /**
  * Callback function for Feeds processor to import WKT.
  */
-function postgis_feeds_set_target($source, $entity, $target, $value) {
-
-  $field = isset($entity->$target) ? $entity->$target : array();
-  $field[$entity->language][0]['wkt'] = $value;
-  $field[$entity->language][0]['feeds'] = TRUE;
-
-  $target = substr($target, 0, strpos($target, ':'));
-  $entity->{$target} = $field;
+function postgis_feeds_set_target($source, $entity, $target, array $values, $mapping) {
+  $delta = 0;
+  $field = explode(':', $target);
+  foreach ($values as $value) {
+    $entity->{$field[0]}[$entity->language][$delta]['wkt'] = $value;
+    $entity->{$field[0]}[$entity->language][$delta]['feeds'] = TRUE;
+    $delta++;
+  }
 }

@@ -272,6 +272,7 @@ class PostgisGeometrySet {
    */
   function getText() {
 
+    $text = '';
     $wkt = array();
     foreach ($this->geometries as $geometry) {
       $single_wkt = $geometry->getText();
@@ -280,13 +281,14 @@ class PostgisGeometrySet {
         $single_wkt = mb_substr($single_wkt, mb_strlen('GEOMETRYCOLLECTION('),
             mb_strlen($single_wkt) - 1 - mb_strlen('GEOMETRYCOLLECTION('));
       }
-      $wkt[] = $single_wkt;
+      if ($single_wkt != 'GEOMETRYCOLLECTION EMPTY') {
+        $wkt[] = $single_wkt;
+      }
     }
-    if (count($wkt) === 0) {
-      // An empty collection needs to contain the string EMPTY to be valid.
-      $wkt[] = 'EMPTY';
+    if (count($wkt) > 0) {
+      $text = 'GEOMETRYCOLLECTION(' . implode(',', $wkt) . ')';
     }
-    return 'GEOMETRYCOLLECTION(' . implode(',', $wkt) . ')';
+    return $text != '' ? $text : NULL;
   }
 
   /**

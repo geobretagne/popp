@@ -715,7 +715,7 @@ function getPhotosBetweenInterval($series, $start, $end, $interval)
                 $thesElt = taxonomy_term_load($tid);
                 $tmp     = [
                     $suppStruct,
-                    $serie->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'],
+                    !empty($serie->field_popp_serie_identifier[LANGUAGE_NONE])?$serie->field_popp_serie_identifier[LANGUAGE_NONE][0]['value']:'',
                     $town->name,
                     isset($town->field_insee_code[LANGUAGE_NONE][0]['value']) ? $town->field_insee_code[LANGUAGE_NONE][0]['value'] : 'N/A',
                     str_replace('))', '', str_replace('GEOMETRYCOLLECTION(POINT(', '', $pgs->getText()))

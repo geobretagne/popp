@@ -91,4 +91,4 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/caddy.js');
 </div><?php /* class view */ ?>
 
 <div class="pull-right"><a id="photoExport" href="/caddy/zipexport" class="btn btn-info">Exporter les photos</a>&nbsp;
-    <a id="thesExport" href="/caddy/export" class="btn btn-info">Exporter le thésaurus</a></div>
+    <a id="thesExport" href="/caddy/export" class="btn btn-info">Exporter les changements</a></div>
