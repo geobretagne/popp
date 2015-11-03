@@ -10,7 +10,7 @@
 function term_taxonomy_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-county-field_county_code'
+  // Exported field_instance: 'taxonomy_term-county-field_county_code'.
   $field_instances['taxonomy_term-county-field_county_code'] = array(
     'bundle' => 'county',
     'default_value' => NULL,
@@ -44,7 +44,7 @@ function term_taxonomy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-landscape_set-field_regional_code'
+  // Exported field_instance: 'taxonomy_term-landscape_set-field_regional_code'.
   $field_instances['taxonomy_term-landscape_set-field_regional_code'] = array(
     'bundle' => 'landscape_set',
     'default_value' => NULL,
@@ -78,7 +78,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-landscape_typologies-field_regional_code'
+  // 'taxonomy_term-landscape_typologies-field_regional_code'.
   $field_instances['taxonomy_term-landscape_typologies-field_regional_code'] = array(
     'bundle' => 'landscape_typologies',
     'default_value' => NULL,
@@ -112,7 +112,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-landscape_units-field_regional_code'
+  // 'taxonomy_term-landscape_units-field_regional_code'.
   $field_instances['taxonomy_term-landscape_units-field_regional_code'] = array(
     'bundle' => 'landscape_units',
     'default_value' => NULL,
@@ -145,7 +145,7 @@ function term_taxonomy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-popp_countries-field_country_code'
+  // Exported field_instance: 'taxonomy_term-popp_countries-field_country_code'.
   $field_instances['taxonomy_term-popp_countries-field_country_code'] = array(
     'bundle' => 'popp_countries',
     'default_value' => NULL,
@@ -179,7 +179,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_area'
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_area'.
   $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_area'] = array(
     'bundle' => 'popp_tax_thepopp',
     'default_value' => NULL,
@@ -214,7 +214,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_creation_year'
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_creation_year'.
   $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_creation_year'] = array(
     'bundle' => 'popp_tax_thepopp',
     'default_value' => NULL,
@@ -255,7 +255,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_technicity'
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_technicity'.
   $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_technicity'] = array(
     'bundle' => 'popp_tax_thepopp',
     'default_value' => NULL,
@@ -290,7 +290,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_valuation'
+  // 'taxonomy_term-popp_tax_thepopp-field_popp_opp_valuation'.
   $field_instances['taxonomy_term-popp_tax_thepopp-field_popp_opp_valuation'] = array(
     'bundle' => 'popp_tax_thepopp',
     'default_value' => NULL,
@@ -325,7 +325,7 @@ function term_taxonomy_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-popp_tax_thepopp-field_regional_code'
+  // 'taxonomy_term-popp_tax_thepopp-field_regional_code'.
   $field_instances['taxonomy_term-popp_tax_thepopp-field_regional_code'] = array(
     'bundle' => 'popp_tax_thepopp',
     'default_value' => NULL,
@@ -358,7 +358,7 @@ function term_taxonomy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-popp_towns-field_insee_code'
+  // Exported field_instance: 'taxonomy_term-popp_towns-field_insee_code'.
   $field_instances['taxonomy_term-popp_towns-field_insee_code'] = array(
     'bundle' => 'popp_towns',
     'default_value' => NULL,

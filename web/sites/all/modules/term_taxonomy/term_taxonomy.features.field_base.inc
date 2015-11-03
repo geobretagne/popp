@@ -10,7 +10,7 @@
 function term_taxonomy_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_country_code'
+  // Exported field_base: 'field_country_code'.
   $field_bases['field_country_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function term_taxonomy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_county_code'
+  // Exported field_base: 'field_county_code'.
   $field_bases['field_county_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -53,7 +53,7 @@ function term_taxonomy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_insee_code'
+  // Exported field_base: 'field_insee_code'.
   $field_bases['field_insee_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -78,7 +78,7 @@ function term_taxonomy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_opp_area'
+  // Exported field_base: 'field_popp_opp_area'.
   $field_bases['field_popp_opp_area'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -103,7 +103,7 @@ function term_taxonomy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_popp_opp_creation_year'
+  // Exported field_base: 'field_popp_opp_creation_year'.
   $field_bases['field_popp_opp_creation_year'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -123,7 +123,7 @@ function term_taxonomy_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_popp_opp_technicity'
+  // Exported field_base: 'field_popp_opp_technicity'.
   $field_bases['field_popp_opp_technicity'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -147,7 +147,7 @@ function term_taxonomy_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_popp_opp_valuation'
+  // Exported field_base: 'field_popp_opp_valuation'.
   $field_bases['field_popp_opp_valuation'] = array(
     'active' => 1,
     'cardinality' => 1,

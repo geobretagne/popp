@@ -27,9 +27,9 @@ function structure_front_views_default_views() {
   $handler->display->display_options['use_more_text'] = 'plus';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
-    4 => '4',
     3 => '3',
     2 => '2',
+    4 => '4',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -531,16 +531,14 @@ function structure_front_views_default_views() {
   $handler->display->display_options['filters']['vid']['field'] = 'vid';
   $handler->display->display_options['filters']['vid']['value'] = array(
     17 => '17',
-    18 => '18',
     19 => '19',
-    2 => '2',
     13 => '13',
     3 => '3',
     11 => '11',
-    6 => '6',
-    20 => '20',
+    15 => '15',
     4 => '4',
     5 => '5',
+    18 => '18',
   );
 
   /* Display: Data export */

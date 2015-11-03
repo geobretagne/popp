@@ -378,7 +378,7 @@ function term_taxonomy_taxonomy_default_vocabularies() {
       ),
     ),
     'popp_thematic_local_axes' => array(
-      'name' => 'Axes thématiques locaux',
+      'name' => 'Unités paysagères locales',
       'machine_name' => 'popp_thematic_local_axes',
       'description' => '',
       'hierarchy' => 0,
