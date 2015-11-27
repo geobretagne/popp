@@ -10,7 +10,7 @@
 function admin_structure_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-faq-body'
+  // Exported field_instance: 'node-faq-body'.
   $field_instances['node-faq-body'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,

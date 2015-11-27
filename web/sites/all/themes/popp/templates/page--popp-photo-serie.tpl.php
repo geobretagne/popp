@@ -249,7 +249,7 @@ drupal_add_js(drupal_get_path('theme', 'popp') . '/js/photo_display.js');
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         Série <span
-                                            id="serieId"><?= $nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] ?></span>
+                                            id="serieId"><?= empty($nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'])?'':$nodeToDisplay['#node']->field_popp_serie_identifier[LANGUAGE_NONE][0]['value'] ?></span>
                                     </a>
                                 </h4>
                             </div>

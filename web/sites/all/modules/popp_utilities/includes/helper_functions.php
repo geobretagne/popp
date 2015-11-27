@@ -24,6 +24,7 @@ function getInfosFromSeries()
         fetchTaxonomyField($searchFields, $node, t('Département'), t('Localisation'), 'counties', 'field_popp_serie_county');
         fetchTaxonomyField($searchFields, $node, t('Commune'), t('Localisation'), 'towns', 'field_popp_serie_town');
         fetchClassicalField($searchFields, $node, t('Identifiant de la série'), t('Avancée'), 'years', 'field_popp_serie_identifier');
+        fetchOppField($searchFields, $node, t('Porteur OPP'), t('Avancée'), 'opp_struct', 'field_popp_serie_supp_struct');
         getDatesFromPhotoSerie($searchFields, t('Avancée'), $node);
     }
     setInfosUnique($searchFields);
@@ -65,7 +66,7 @@ function getTermsList($data, $level = 3)
         return "";
     }
     foreach ($data as $category) {
-        $result .= '<tr class="collapseChilds" data-target=".' . sanitizeForClassName($category['name']) . '"><td colspan="3"><span class="glyphicon glyphicon-plus"></span> ' . $category['name'] . '</td></tr>';
+        $result .= '<tr class="collapseChilds" popp-target=".' . sanitizeForClassName($category['name']) . '"><td colspan="3"><span class="glyphicon glyphicon-plus"></span> ' . $category['name'] . '</td></tr>';
         $result .= '<tr style="display:none;" class="' . sanitizeForClassName($category['name']) . '"><th>Thème</th><th>Éléments</th><th>Variations</th></tr>';
         foreach ($category['child'] as $child) {
             $result .= '<tr style="display:none;" class="' . sanitizeForClassName($category['name']) . '"><td>' . $child['name'] . '</td><td colspan="2">' . getTermsWithInputs($child['child']) . '</td></tr>';
@@ -201,6 +202,19 @@ function fetchClassicalField(&$resultArray, $node, $label, $category, $readableN
         $val                                                                      = $node->{$fieldName}['und'][0]['value'];
         $resultArray[$category][$readableName]['values'][$val]['presentOnNode'][] = $node->nid;
         $resultArray[$category][$readableName]['values'][$val]['label']           = $val;
+    }
+    $resultArray[$category][$readableName]['type']  = 'select';
+    $resultArray[$category][$readableName]['label'] = $label;
+}
+
+function fetchOppField(&$resultArray, $node, $label, $category, $readableName, $fieldName)
+{
+    $results = [];
+    if (isset($node->{$fieldName}['und'][0]['target_id'])) {
+        $val                                                                      = $node->{$fieldName}['und'][0]['target_id'];
+        $resultArray[$category][$readableName]['values'][$val]['presentOnNode'][] = $node->nid;
+        $nodeOpp = node_load($val);
+        $resultArray[$category][$readableName]['values'][$val]['label']           = $nodeOpp->title;
     }
     $resultArray[$category][$readableName]['type']  = 'select';
     $resultArray[$category][$readableName]['label'] = $label;

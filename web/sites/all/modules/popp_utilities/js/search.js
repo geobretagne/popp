@@ -10,15 +10,9 @@
             }
         });
         $(".collapseChilds").click(function () {
-            var className = $(this).attr('data-target');
+            var className = $(this).attr('popp-target');
             $(className).toggle('slow');
-            var classes = $(this).find("span").attr('class');
-            if (classes == 'glyphicon glyphicon-plus') {
-                classes = 'glyphicon glyphicon-minus';
-            } else {
-                classes = 'glyphicon glyphicon-plus';
-            }
-            $(this).find("span").attr('class', classes);
+            $(this).find("span").toggleClass('glyphicon-plus glyphicon-minus');
         })
     });
 })(jQuery);

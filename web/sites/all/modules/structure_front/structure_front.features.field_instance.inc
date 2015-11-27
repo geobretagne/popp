@@ -2622,7 +2622,7 @@ function structure_front_field_default_field_instances() {
     'description' => 'Appuyez sur CTRL + clic pour sélectionner plusieurs éléments',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
@@ -2644,7 +2644,7 @@ function structure_front_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_popp_serie_loc_axes',
-    'label' => 'Unité de paysage locale',
+    'label' => 'Unité(s) paysagère(s) locale(s)',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -6195,7 +6195,7 @@ function structure_front_field_default_field_instances() {
   t('Typologie de paysage');
   t('Téléphone');
   t('Unité de paysage');
-  t('Unité de paysage locale');
+  t('Unité(s) paysagère(s) locale(s)');
   t('Ville');
   t('Élément');
   t('Évolution');

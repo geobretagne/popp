@@ -100,12 +100,13 @@ function popp_mass_import_form_step_one_validate($form, &$form_state)
     $file       = file_save_upload('zip', $validators, 'temporary://');
     if (false === $file) {
         form_set_error('zip', t('Impossible de sauvegarder le fichier zip'));
+
         return;
     }
-    if(!is_dir(drupal_realpath("public://unzip/"))){
+    if (! is_dir(drupal_realpath("public://unzip/"))) {
         mkdir(drupal_realpath("public://unzip/"));
     }
-	 if(!is_dir(drupal_realpath("public://uploadedPhotos/"))){
+    if (! is_dir(drupal_realpath("public://uploadedPhotos/"))) {
         mkdir(drupal_realpath("public://uploadedPhotos/"));
     }
     $zip      = new ArchiverZip(drupal_realpath($file->uri));
@@ -116,6 +117,7 @@ function popp_mass_import_form_step_one_validate($form, &$form_state)
         drupal_set_message('Impossible d\'envoyer le fichier ZIP');
         file_delete($file, true);
         unset($zip);
+
         return;
     }
     $form_state['storage']['to_remove'] = drupal_realpath("public://unzip/" . $file->filename);
@@ -269,7 +271,7 @@ function checkMandatorySerie($serie)
 
 function checkMandatoryPhoto($photo, $folderName)
 {
-    if (trim($photo[0]) == "" || trim($photo[5]) == "" || trim($photo[18]) == "") {
+    if (trim($photo[0]) == "" || trim($photo[2]) == "" || trim($photo[5]) == "" || trim($photo[18]) == "") {
         return false;
     }
     if (! is_file(drupal_realpath('public://unzip/' . $folderName . '/' . $photo[18]))) {
