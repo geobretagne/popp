@@ -164,7 +164,8 @@
     }
 
     function changeLightBoxUrl() {
-        var src = $("#photoPh").find("img").attr("src");
+		var src = $("#photoPh").find("img").attr("src");
+		src = src.replace('styles/photo_sheet_display/public', '');
         $("#showInBox").attr("href", src);
     }
 
